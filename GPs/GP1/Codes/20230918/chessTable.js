@@ -6,6 +6,12 @@ function dibuixar() {  // This function is to execute the canvas when the webpag
     ctx.lineWidth = 2;
 
     for (let i = 0; i < 8; i++, increment += 75) {
+        if (i % 6.5 == 0.5) {
+            ctx.strokeStyle = "red";
+        } else if (i % 6 == 0.5) {
+            ctx.strokeStyle = "white";
+        }
+
         ctx.strokeRect(100, 100, increment, 75);
         ctx.strokeRect(100, 175, increment, 75);
         ctx.strokeRect(100, 250, increment, 75);
