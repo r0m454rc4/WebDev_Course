@@ -1,0 +1,20 @@
+</html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<title>EXEMPLES DE FORMULARIS</title>	
+	</head>  
+	<body>
+		<form name=frm_combo action="http://localhost:8080/combo.php" method="GET">
+			<font face="Arial">
+				Selecciona la ciutat a la qual vols viatjar:<br>
+				<select name="viatge" onChange="frm_combo.submit();">
+				<!-- <select name="viatge" multiple onChange="frm_combo.submit();"> => Elecció de múltiples opcions -->	
+				<option value="Londres">Londres</option>
+				<option value="Paris">Paris</option>
+				<option value="New York">New York</option>
+				<option value="Tokyo">Tokyo</option>
+				</select>
+			</font>
+		</form>
+	</body>
+</html>

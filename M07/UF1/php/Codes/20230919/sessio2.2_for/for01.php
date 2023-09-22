@@ -7,8 +7,8 @@
 		<?php
 			if ($_GET["vinic"] && $_GET["vfin"]) {
 				$x = $_GET["vinic"];
-				for ($x = $_GET["vinic"]; $x <= $_GET["vfin"]; $x+=$_GET["incr"]) {
-					echo "El valor actual de ".'$x'." és: "."$x<br>\n";
+				for ($x = $_GET["vinic"]; $x <= $_GET["vfin"]; $x+=$_GET["incr"]) {  // I increment the amount of the value of "incr".
+					echo "El valor actual de ".'$x'." és: "."$x<br>\n";  // The "." is to concatenate.
 				}
 			}
 		?>
