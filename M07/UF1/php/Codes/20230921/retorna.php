@@ -14,7 +14,7 @@
 		?>
 		<!--<form action="http://localhost/retorna.html">-->
 			<!--<input type="submit" value="Torna a la pàgina anterior" />-->
-			<button onclick="location.href='http://localhost/retorna.html'" type="button">Retorna</button>
+			<button onclick="location.href='http://localhost:8080/retorna.html'" type="button">Retorna</button>
 		<!--</form>-->
 	</body>
 </html>
