@@ -12,7 +12,7 @@
 			 echo "Tens ". $_GET['edat']. " anys<br>";			 
 		  }
 		?>
-		<a href="http://localhost/retorna_link.html">Torna a la pàgina anterior</a>
+		<a href="http://localhost:8080/retorna_link.html">Torna a la pàgina anterior</a>
 		</form>
 	</body>
 </html>

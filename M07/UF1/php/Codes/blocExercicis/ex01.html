@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="http://localhost:8080/ex01.php" method="get">
+      <input type="checkbox" name="opc[]" value="vServerApache" />
+      <!-- Value is the "case" for the switch. -->
+      Versió del servidor Apache2
+      <br />
+      <input type="checkbox" name="opc[]" value="vProtHTTP" />
+      Versió del protocol HTTP del servidor <br />
+      <input type="checkbox" name="opc[]" value="portServer" />
+      Port del servidor <br />
+      <input type="checkbox" name="opc[]" value="vPHP" />
+      Versió del PHP <br />
+      Nom d'usuari: <input type="text" name="usuari" /> <br />
+      Contransenya: <input type="password" name="passwd" /><br />
+      <input type="submit" value="Envia" />
+      <input type="reset" value="Esborra" />
+    </form>
+  </body>
+</html>
