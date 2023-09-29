@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Taula multiplicar.</title>
 
     <script>
-        window.onload = function () {
-            let nombre = 0;
-            let taula = document.getElementById("taulaMultiplicar");
+      window.onload = function () {
+        let nombre = 0;
+        let taula = document.getElementById("taulaMultiplicar");
 
-            for (let i = 0; i < 11; i++) {
-                for (let j = 0; j < 11; j++) {
-                    taula.innerHTML += '<tr><td>' + j + ' * ' + nombre + ' = ' + j * nombre + '</td></tr>';
-                }
-                if (i < 10) {
-                    taula.innerHTML += '<br>'
-                }
+        for (let i = 0; i < 11; i++) {
+          for (let j = 0; j < 11; j++) {
+            taula.innerHTML +=
+              "<tr><td>" +
+              j +
+              " * " +
+              nombre +
+              " = " +
+              j * nombre +
+              "</td></tr>";
+          }
 
-                nombre += 1;
-            }
+          if (i < 10) {
+            taula.innerHTML += "<br>";
+          }
+
+          nombre += 1;
         }
+      };
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <table id="taulaMultiplicar" border="1"></table>
-</body>
-
+  </body>
 </html>

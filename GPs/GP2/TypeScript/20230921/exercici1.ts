@@ -49,17 +49,3 @@ function salutar1(nom: string, ...cognom: string[]) {  // The ellipsis is to be 
 }
 
 console.log(salutar1("Pepe", "Garcia", "López"));
-
-console.log("-------------------------------");
-
-// EXERCICI De classe, saber si un número és primer.
-
-function esPrimer(num: number) {
-    if (num % 2 == 0) {
-        return console.log("El número no és primer");
-    } else {
-        return console.log("El número és primer");
-    }
-}
-
-console.log(esPrimer(0));
