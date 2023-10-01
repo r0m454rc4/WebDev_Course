@@ -7,7 +7,7 @@
 const express = require("express");
 const app = express();
 
-app.use(express.urlencoded({ extended: true })); // In order to code the url.
+app.use(express.urlencoded({ extended: true })); // In order to encode the url.
 app.use(express.json()); // per analitzar les peticions HTTP que portin JSON al body
 
 let alumnes = [
