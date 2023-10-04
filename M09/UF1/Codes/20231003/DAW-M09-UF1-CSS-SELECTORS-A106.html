@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>A106 - Pseudo-classes</title>
+    <style type="text/css">
+      /*Estil predefinit*/
+
+      * {
+        margin: 0 auto;
+        font-family: sans-serif;
+        font-size: 20px;
+        list-style-type: none;
+      }
+
+      .llista {
+        width: 30%;
+        border: solid 1px #e6e6e6;
+      }
+
+      .formulari {
+        padding: 2px;
+        width: 60%;
+        border: solid 1px #e6e6e6;
+      }
+
+      .enllac {
+        width: 30%;
+        border: solid 1px #e6e6e6;
+      }
+
+      .enllac a {
+        padding-left: 30px;
+      }
+
+      /* FIrst part of the exercice. */
+      div p {
+        padding: 8px 8px 8px 30px;
+      }
+
+      p:first-child {
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      p:nth-child(even) {
+        background-color: lightgrey;
+        color: black;
+      }
+
+      p:hover {
+        background-color: black;
+        color: white;
+      }
+
+      /* Second part of the exercice.. */
+
+      a:link {
+        color: black;
+        text-decoration: none; /* Delete underline from the link. */
+      }
+
+      a:hover {
+        font-weight: bold;
+        color: black;
+      }
+
+      a:active {
+        font-weight: red;
+        color: black;
+      }
+
+      a:visited {
+        color: lightgrey;
+      }
+
+      /* Third part of the exercice.. */
+
+      input:focus {
+        background-color: whitesmoke;
+      }
+      /*Estils definits amb pseudo-classes*/
+    </style>
+  </head>
+
+  <body>
+    <br />
+    <div class="llista">
+      <p>Llista</p>
+      <p>Primera línia de la llista</p>
+      <p>Segona línia de la llista</p>
+      <p>Tercera línia de la llista</p>
+      <p>Quarta línia de la llista</p>
+      <p>Cinquena línia de la llista</p>
+      <p>Sisena línia de la llista</p>
+      <p>Setena línia de la llista</p>
+      <p>Vuitena línia de la llista</p>
+      <p>Novena línia de la llista</p>
+      <p>Desena línia de la llista</p>
+    </div>
+
+    <br />
+
+    <div class="enllac">
+      <p>Enllaços d'interès</p>
+      <a href="https://www.w3.org/">World Wide Web Consortium</a><br />
+      <a href="https://www.python.org/">Python Software Foundation</a><br />
+      <a href="http://php.net/">PHP: Hypertext Preprocessor</a><br />
+      <a href="https://www.perl.org/">Perl</a><br />
+      <a href="https://www.javascript.com/">JavaScript</a><br />
+      <a href="https://www.mysql.com/">MySQL</a><br />
+      <a href="http://httpd.apache.org/">Apache. HTTP Server Project</a>
+      <a href=""></a>
+    </div>
+
+    <br />
+
+    <div class="formulari">
+      <p>Formulari de contacte</p>
+      <ul>
+        <br />
+        <li>Nom</li>
+        <li><input name="edad" maxlength="50" size="60" type="text" /></li>
+        <br />
+        <li>eMail</li>
+        <li><input name="edad" maxlength="50" size="60" type="text" /></li>
+        <br />
+        <li>Missatge</li>
+        <li><textarea name="Missatge" rows="20" cols="60"></textarea></li>
+        <br />
+      </ul>
+    </div>
+  </body>
+</html>
