@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>DAW-M09-UF1-CSS-SELECTORS AVAN�ATS-A05</title>
+    <style type="text/css">
+      * {
+        text-align: center;
+        margin: 10px;
+        font-size: 16px;
+        font-family: tahoma;
+      }
+
+      div {
+        width: 30%;
+        background-color: #e1e1e1;
+        border: 2px solid #c2c2c2;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      div[id] {
+        color: blue;
+      }
+
+      div[class="verd"] {
+        color: green;
+      }
+
+      a[href="http://www.fje.edu"]
+      {
+        color: black;
+      }
+
+      img[title="rosa"] {
+        border: solid 5px;
+        border-color: blue;
+      }
+
+      img[title~="blanc"] {
+        border: solid 5px;
+        border-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <br />
+    <div id="blau">Frase de color blau</div>
+    <div class="verd">Frase de color verd</div>
+    <div class="enllacos">
+      <a href="http://www.fje.edu">Fundaci� Jesu�tes Educaci�</a><br />
+      <a href="http://www.clot.fje.edu/ca">Escola Jesu�tes El Clot</a>
+    </div>
+    <br />
+    <img src="rosa.png" title="rosa" width="30%" />
+    <img src="daisy.png" title="daisy" width="30%" />
+    <img src="gessami.png" title="gessami blanc" width="30%" />
+  </body>
+</html>

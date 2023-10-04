@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naixement</title>
+  </head>
+
+  <body>
+    <input type="date" placeholder="dd-mm-yyyy" id="dataNaixement" /> <br />
+
+    <label id="label1"></label>
+
+    <script>
+      let diaSeleccionat = document.getElementById("dataNaixement");
+
+      // console.log((new Date() - new Date(2023, 9, 1)) / 86_400_400);
+
+      document.getElementById("dataNaixement").onchange = function () {
+        let diesPassats =
+          (new Date() - new Date(diaSeleccionat.value)) / 86_400_400; // 86_400_400 are the millisecons that a day has.
+
+        document.getElementById("label1").innerHTML =
+          "Han passat " + Math.floor(diesPassats) + " des que has nasctut";
+      };
+    </script>
+  </body>
+</html>
+
+<!-- Exercici per saber les vocals d'un input. -->

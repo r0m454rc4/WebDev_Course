@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" id="dadesEntrades" /> <br />
+    <button type="button" id="botoEnvia">Envia</button>
+
+    <p id="p1"></p>
+
+    <script>
+      let dades;
+      let vocals = "aeiou";
+      let cmpt = 0;
+
+      document.getElementById("botoEnvia").onclick = function () {
+        dades = document.getElementById("dadesEntrades").value;
+        dades = String(dades);
+        // console.log(dades);
+
+        for (let i = 0; i <= dades; i++) {
+          if (dades[i] === vocals[i]) {
+            cmpt += 1;
+          }
+        }
+
+        document.getElementById(
+          "p1"
+        ).innerHTML = `El text és ${dades} i té ${cmpt} vocals`;
+      };
+    </script>
+  </body>
+</html>
+
+<!-- Exercici per saber les vocals d'un input. -->

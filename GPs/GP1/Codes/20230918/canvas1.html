@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canvas 1.</title>
 
     <script type="text/javascript">
-        function dibuixar() {  // This function is to execute the canvas when the webpage is loaded.
-            let canvas = document.getElementById('areaDibuix');
-            let ctx = canvas.getContext('2d');  // ctx (context) is an object.
-            // TRIANGLE.
-            ctx.beginPath();
-            ctx.moveTo(50, 50);
-            ctx.lineTo(100, 100);
-            ctx.lineTo(200, 50);
-            ctx.closePath();  // Close the canvas.
-            ctx.stroke()  // This is to draw the canvas.
-            // ctx.fill();
-        }
+      function dibuixar() {
+        // This function is to execute the canvas when the webpage is loaded.
+        let canvas = document.getElementById("areaDibuix");
+        let ctx = canvas.getContext("2d"); // ctx (context) is an object.
+        // TRIANGLE.
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+        ctx.lineTo(100, 100);
+        ctx.lineTo(200, 50);
+        ctx.closePath(); // Close the canvas.
+        ctx.stroke(); // This is to draw the canvas.
+        // ctx.fill();
+      }
     </script>
-</head>
+  </head>
 
-<body onload="dibuixar()">
+  <body onload="dibuixar()">
     Anem a dibuixar amb HTML5.
     <canvas id="areaDibuix" width="400" height="400">
-        El teu navegador no suporta canvas.
+      El teu navegador no suporta canvas.
     </canvas>
-</body>
-
+  </body>
 </html>

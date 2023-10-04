@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" id="fraseEscrita" /> <br />
+
+    <label id="label1"></label>
+
+    <script>
+      let dades = document.getElementById("fraseEscrita");
+      let vocals = "aeiou";
+      let cmpt = 0;
+
+      document.getElementById("fraseEscrita").oninput = function () {
+        dades = String(dades);
+        console.log(dades.value);
+
+        for (let i = 0; i <= dades; i++) {
+          if (dades[i] === vocals[i]) {
+            cmpt += 1;
+          }
+        }
+
+        document.getElementById("label1").innerHTML = `
+        El text ${dades} té ${cmpt} a
+        <br>
+        El text ${dades} té ${cmpt} e
+        <br>
+        El text ${dades} té ${cmpt} i
+        <br>
+        El text ${dades} té ${cmpt} o
+        <br>
+        El text ${dades} té ${cmpt} u
+        `;
+      };
+    </script>
+  </body>
+</html>
+
+<!-- Exercici per saber les vocals d'un input. -->
