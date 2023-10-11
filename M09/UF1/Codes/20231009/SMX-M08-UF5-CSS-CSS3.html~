@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='CA-CA' xml:lang='CA-CA' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>NOVETATS DE CSS3</title>
+<style>
+	
+/* DEFINICIÓ DEL TIPUS DE LLETRA */
+	
+@font-face {
+	font-family: "UbuntuRegular";
+	src: url(Ubuntu-R.ttf);
+	font-style: normal;
+	font-weight: normal;
+}
+	
+@font-face {
+	font-family: "AcornInitials";
+	src: url(acorninitials.ttf);
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "KaushanScript";
+	src: url(KaushanScript-Regular.otf);
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Archistico";
+	src: url(Archistico_Bold.ttf);
+	font-style: normal;
+	font-weight: normal;
+}
+	
+/* FORMAT D'ELEMENTS */
+	
+* {
+	font-family: "UbuntuRegular";
+	font-weight: normal;
+	color: #000000;
+}
+
+#header {
+	text-align: center; 
+	font-family: "UbuntuRegular";
+	font-size: 14px;
+	font-weight: bolder;
+	background-color: #E6E6E6;
+	border: 1px solid black;
+	width:100%;
+	position: fixed; 
+	padding: 1px;
+	z-index:1;
+	
+	filter:alpha(opacity=90);
+	opacity: 0.90;
+}
+	
+h1 {
+	text-align: center;
+	font-family: "UbuntuRegular";
+	font-weight: bolder;
+	color: #000000;
+}
+	
+h3 {
+	text-align: center;
+	font-family: "UbuntuRegular";
+	font-weight: bold;
+	color: #000000;
+}
+
+h4 {
+	text-align: center;
+	font-family: "UbuntuRegular";
+	font-weight: bold;
+	color: #A4A4A4;
+}
+
+a {
+	font-weight: bold;
+	color: #A4A4A4;
+}
+
+hr { 
+  background-color: black; 
+  height: 1px;
+  width: 75%
+}
+
+/* CANTONADES ARRODONIDES */
+	
+.border-radius {
+	border-radius:20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	background-color: #58FA82;
+	height:150px;
+	width:600px;
+	margin:0 auto;
+}
+
+/* OMBRA DE CAIXA */
+
+.boxshadow {
+	background-color:#B40404;
+	height:150px;
+	width:600px;
+	margin:0 auto;
+	box-shadow: 10px 10px 5px 5px rgba(100, 100, 100, 0.5);
+	
+	-moz-box-shadow: 10px 10px 5px 5px rgba(100, 100, 100, 0.5);
+	-webkit-box-shadow: 10px 10px 5px 5px rgba(100, 100, 100, 0.5);
+	-o-box-shadow: 10px 10px 5px 5px rgba(100, 100, 100, 0.5);
+	
+}
+	
+/* VORES AMB IMATGES */
+	
+.border-image {
+	height:150px;
+	width:600px;
+	margin:0 auto;
+	border: 30px solid transparent;
+	border-image: url(border.jpeg) 25 25 round;
+	
+	-moz-border-image: url(border.jpeg) 25 25 round;
+	-webkit-border-image: url(border.jpeg) 25 25 round;
+	-moz-border-image: url(border.jpeg) 25 25 round;
+}
+
+/* DEGRADATS */
+
+.gradient-l {
+	background:linear-gradient (#0000FF, #FF0040);
+	height:150px;
+	width:600px;
+	margin:0 auto;
+	
+	background: -webkit-linear-gradient(#0000FF, #FF0040);
+	background: -moz-linear-gradient(#0000FF, #FF0040);
+	background: -o-linear-gradient(#0000FF, #FF0040);
+}	
+	
+.gradient-r {
+	background:radial-gradient (center, circle, #FF0040 #0000FF);
+	height:150px;
+	width:600px;
+	margin:0 auto;
+	
+	background: -webkit-radial-gradient(center, circle, #FF0040, #0000FF);
+	background: -moz-radial-gradient(center, circle, #FF0040, #0000FF);
+	background: -o-radial-gradient(center, circle, #FF0040, #0000FF);
+	
+}	
+
+/* MULTI-COLUMNES */
+
+.multi-column {
+	-moz-column-count: 4;
+	-moz-column-gap: 4em;
+	-moz-column-rule: 1px solid #ccf;
+
+	-webkit-column-count: 4;
+	-webkit-column-gap: 4em;
+	-webkit-column-rule: 1px solid #ccf;
+	
+	-o-column-count: 4;
+	-o-column-gap: 4em;
+	-o-column-rule: 1px solid #ccf;
+}
+
+/* OMBRA AL TEXT */
+
+.text-shadow {
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 3px 3px 5px #323045;
+}
+
+/* TIPUS DE LLETRES AFEGITS */
+
+.Archistico {
+	text-align: center;
+	font-family: "Archistico";
+	font-size: 54px;
+	font-weight: ;
+	color: #0040FF;
+}
+
+.KaushanScript {
+	text-align: center;
+	font-family: "KaushanScript";
+	font-size: 54px;
+	font-weight: bold;
+	color: #0040FF;
+}
+
+.AcornInitials {
+	text-align: center;
+	font-family: "AcornInitials";
+	font-size: 48px;
+	font-weight: normal;
+	color: #0040FF;
+}
+
+/* TRANSICIONS */
+
+.transition{
+	margin:0 auto;
+	border:1px solid #CCC;
+	
+/* PROPIETATS AFECTADES */
+	height:50px;
+	width:50px;
+	background-color:#848484;
+/* -------------------- */
+    
+   transition-property: width, height, background-color; 
+   transition-duration: 0.5s, 1s, 1s; 
+   transition-timing-function: ease, ease-out, ease;
+   transition-delay:0s ,0.5s, 1.5s;
+    
+   -webkit-transition-property: width, height, background-color; 
+   -webkit-transition-duration: 0.5s, 1s, 1s; 
+   -webkit-transition-timing-function: ease, ease-out, ease;
+   -webkit-transition-delay:0s ,0.5s, 1.5s;
+   
+   -moz-transition-property: width, height, background-color; 
+   -moz-transition-duration: 0.5s, 1s, 1s; 
+   -moz-transition-timing-function: ease, ease-out, ease;
+   -moz-transition-delay:0s ,0.5s, 1.5s;
+   
+   -o-transition-property: width, height, background-color; 
+   -o-transition-duration: 0.5s, 1s, 1s; 
+   -o-transition-timing-function: ease, ease-out, ease;
+   -o-transition-delay:0s ,0.5s, 1.5s;
+}
+ 
+.transition:hover{
+    height:150px;
+    width:600px;
+    background-color:#FF0000;
+}
+
+.transition2 {
+	margin: 0 auto;  
+	height:50px;
+	width:50px;
+	background-color: #58FA82;
+	border-radius:25px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	background-color: #58FA82;
+    
+    transition-property: height, with, border-radius, background-color;
+    transition-duration: 1s, 1s, 0.5s, 1s;
+    transition-timing-function: cubic-bezier(.42, 0, .58, 1),
+    transition-delay: 1s, 1s, 0.5s, 1.5s;
+}
+
+.transition2:hover{
+    height:100px;
+    width:100px;
+    border-radius:50px;
+    background-color:#FF0000;
+
+}
+    
+.rotate {
+   margin: 0 auto;  
+	height:120px;
+	width:120px;
+	background-color: #000000;
+}
+
+.rotate:hover {
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	transform:rotate(45deg);
+	transition-property: rotate;
+	transition-duration: 10s;
+}
+
+.scale img {
+width:200px;
+height:200px;
+overflow:hidden;
+}
+
+.scale img {
+-webkit-transition:all .9s ease; /* Safari y Chrome */
+-moz-transition:all .9s ease; /* Firefox */
+-o-transition:all .9s ease; /* IE 9 */
+-ms-transition:all .9s ease; /* Opera */
+width:25%;
+}
+
+.scale:hover img {
+-webkit-transform:scale(1.25);
+-moz-transform:scale(1.25);
+-ms-transform:scale(1.25);
+-o-transform:scale(1.25);
+transform:scale(1.25);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<br />
+
+<div id="header">
+	<h1>SMX - M08 - APLICACIONS WEB</h1>
+	<h1>UF5 - LLENGUATGES DE MARQUES I FULLS D'ESTIL</h1>
+	<h2>CSS3</h2>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+<h3>Cantonades arrodonides (sense haver d'emprar JavaScript ni imatges)</h3>
+<h4><a href="http://www.w3schools.com/cssref/css3_pr_border-radius.asp"> border-radius </a></h4>
+<br />
+<div class="border-radius"></div>
+
+<br /><br /><br /><br /><hr /><br /><br />
+
+<h3>Ombres als elements</h3>
+<h4><a href="http://www.w3schools.com/cssref/css3_pr_box-shadow.asp"> box-shadow </a></h4>
+<br />
+<div class="boxshadow"></div>
+
+<br /><br /><br /><br /><hr /><br /><br />
+
+<h3>Creació de vores amb imatges</h3>
+<h4><a href="http://www.w3schools.com/cssref/css3_pr_border-image.asp"> border-image </a></h4>
+<br />
+<div class="border-image"></div>
+
+<br /><br /><br /><br /><hr /><br /><br />
+
+<h3>Degradats de color</h3>
+<br />
+<div class="gradient-l"></div>
+
+<h4>Linial</h4>
+<h4><a href="http://www.w3schools.com/css/css3_gradients.asp"> linear-gradient </a></h4>
+
+<br /><br /><br />
+
+<div class="gradient-r"></div>
+
+<h4>Radial</h4>
+<h4><a href="http://www.w3schools.com/svg/svg_grad_radial.asp"> radial-gradient </a></h4>
+
+<br /><br /><br /><br /><hr /><br /><br />
+
+<h3>Columnes múltiples</h3>
+<h4><a href="http://www.w3schools.com/css/css3_multiple_columns.asp"> column-count column-gap column-rule </a></h4>
+<br />
+<div class="multi-column">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+</div>
+
+<br /><br /><br /><br /><hr /><br /><br />
+
+<h3>Ombres al text</h3>
+<h4><a href="http://www.w3schools.com/cssref/css3_pr_text-shadow.asp"> text-shadow </a></h4>
+<br />
+<div class="text-shadow">Lorem ipsum dolor sit amet</div>
+
+<br /><br /><br /><hr /><br /><br />
+
+<h3>Ús de tipus de lletres no instal·lades al sistema</h3>
+<h4><a href="http://www.w3schools.com/cssref/css3_pr_font-face_rule.asp"> @font-face </a></h4>
+
+<br />
+
+<div class="AcornInitials">Lorem ipsum dolor sit amet</div>
+
+<br />
+
+<div class="KaushanScript">Lorem ipsum dolor sit amet</div>
+
+<br />
+
+<div class="Archistico">Lorem ipsum dolor sit amet</div>
+
+<br /><br />
+
+<h3>Llocs web per a la descàrrega de tipus de lletra</h3>
+
+<h4><a href="http://www.fontsquirrel.com/"> Font Squirrel </a></h4>
+<h4><a href="http://www.dafont.com/"> dafont.com </a></h4>
+<h4><a href="http://www.1001fonts.com/"> 1001 Fonts </a></h4>
+
+<br /><br /><br /><hr /><br /><br />
+
+<h3>Transicions</h3>
+<h4><a href="http://www.w3schools.com/css/css3_transitions.asp"> transitions </a></h4>
+<br />
+<div class="transition"></div>
+
+<br /><br /><br />
+    
+<div class="transition2"></div>
+
+<br /><br /><br /><hr /><br /><br /><br />
+
+<h3>Girs</h3>
+<h4><a href="http://www.w3schools.com/css/css3_2dtransforms.asp"> transform: rotate </a></h4>
+<br />
+<div class="rotate"></div>
+
+<br /><br /><br /><hr /><br /><br /><br />
+
+<h3>Grandària</h3>
+<h4><a href=""> transform: scale </a></h4>
+<img class="scale" src="127243-simple-black-square-icon-natural-wonders-flower17.png" alt="Flower Icon" >
+<br />
+<div class="scale"></div>
+
+<br /><br /><br /><hr /><br /><br /><br />
+
+</body>
+</html>

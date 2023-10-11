@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- dibuixa un arbre -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <title>Exercicis HTML5</title>
+
+    <style>
+      body {
+        font-family: "Amatic SC", cursive;
+      }
+    </style>
+    <script type="text/javascript">
+      function dibuixaRectangle(context) {
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(100, 0);
+        context.lineTo(100, 100);
+        context.lineTo(0, 100);
+        context.closePath();
+      }
+
+      function dibuixar() {
+        var canvas = document.getElementById("exercici");
+        if (canvas.getContext) {
+          var context = canvas.getContext("2d");
+          dibuixaRectangle(context);
+          context.fill();
+
+          //canviem l'origen
+          context.save();
+          context.translate(100, 100); // The new coordinate "0, 0" will be on "100, 100".
+          context.rotate(Math.PI / 4); // gira tot el canvas
+          dibuixaRectangle(context);
+          context.stroke();
+          context.restore();
+
+          context.strokeStyle = "red"; // On the top and left part will appear weird becasue there's some part that will be drawed on the outside of the page.
+          context.lineWidth = 20;
+          dibuixaRectangle(context);
+          context.stroke();
+
+          context.font = "60px Amatic SC"; // I use a font that I added from Google fonts.
+          context.fillStyle = "#996600";
+          context.textAlign = "center";
+          context.fillText("Canvas!", 200, 60, 400);
+        }
+      }
+    </script>
+  </head>
+  <body onload="dibuixar();">
+    <canvas id="exercici" width="300" height="300">
+      Actualitza el teu navegador!
+    </canvas>
+  </body>
+</html>

@@ -9,26 +9,26 @@ window.onload = function () {
     }
   }
 
-  let llistaAlumnes = [
-    // List that contains all of the alumns.
-    (alumne1 = new Alumne("1111111A", "Leo", "Herrera", "DAW2", 6)),
-    (alumne2 = new Alumne("2222222A", "Romà", "Sardá", "DAW2", 6.5)),
-    (alumne3 = new Alumne("3333333A", "Victor", "Toro", "DAW2", 6)),
-    // 2nd group.
-    (alumne4 = new Alumne("4444444B", "Alejando", "Torrente", "DAW2", 7)),
-    (alumne5 = new Alumne("4444444B", "Bru", "Carreras", "DAW2", 5.5)),
-    (alumne6 = new Alumne("5555555B", "Javier", "Pérez", "DAW2", 6.05)),
-    // 3rd group.
-    (alumne7 = new Alumne("4444444C", "Bru", "Carreras", "DAW2", 5.5)),
-    (alumne8 = new Alumne("5555555C", "Javier", "Pérez", "DAW2", 7.12)),
-    (alumne9 = new Alumne("6666666C", "Toni", "Varon", "DAW2", 6.05)),
-    // 4th group.
-    (alumne7 = new Alumne("7777777D", "Alex", "Maench", "DAW2", 8.25)),
-    (alumne8 = new Alumne("8888888D", "Adrià", "Millian", "DAW2", 6.69)),
-    (alumne9 = new Alumne("9999999D", "Arnau", "Vicente", "DAW2", 4.35)),
-  ];
-
   function crearGrupsAlunes() {
+    let llistaAlumnes = [
+      // List that contains all of the alumns.
+      (alumne1 = new Alumne("1A", "Leo", "Herrera", "DAW2", 6)),
+      (alumne2 = new Alumne("2A", "Romà", "Sardá", "DAW2", 6.5)),
+      (alumne3 = new Alumne("3A", "Victor", "Toro", "DAW2", 6)),
+      // 2nd group.
+      (alumne4 = new Alumne("4B", "Alejando", "Torrente", "DAW2", 7)),
+      (alumne5 = new Alumne("5B", "Bru", "Carreras", "DAW2", 5.5)),
+      (alumne6 = new Alumne("6B", "Javier", "Pérez", "DAW2", 6.05)),
+      // 3rd group.
+      (alumne7 = new Alumne("7C", "Helena", "Alba", "DAW2", 5.5)),
+      (alumne8 = new Alumne("8C", "Daniel", "Collados", "DAW2", 7.12)),
+      (alumne9 = new Alumne("9C", "Toni", "Varon", "DAW2", 6.05)),
+      // 4th group.
+      (alumne7 = new Alumne("10D", "Alex", "Maench", "DAW2", 8.25)),
+      (alumne8 = new Alumne("11D", "Adrià", "Millian", "DAW2", 6.69)),
+      (alumne9 = new Alumne("12D", "Arnau", "Vicente", "DAW2", 4.35)),
+    ];
+
     let grups = [];
 
     console.log(grups);
@@ -37,12 +37,16 @@ window.onload = function () {
       let grup = [];
 
       for (let j = 0; j < 3; j++) {
-        let alumne = llistaAlumnes[j];
-        grup.push(alumne); // With push I add "alumne" to the end of "grup" array.
+        let alumne = i * 3 + j; // Get the index of an alumn.
+        if (alumne < llistaAlumnes.length) {
+          grup.push(llistaAlumnes[alumne]); // With push I add "alumne" to the end of "grup" array.
+        }
       }
 
       grups.push(grup);
     }
+
+    return grups;
   }
 
   crearGrupsAlunes();

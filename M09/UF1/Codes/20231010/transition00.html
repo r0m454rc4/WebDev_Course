@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-UTF-8" />
+    <title>Transició</title>
+    <style>
+      /* transició */
+
+      .transicio {
+        margin: 0 auto;
+        position: absolute;
+        top: 35%;
+        left: 40%;
+        /*propietats originals*/
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        background-color: #58fa82;
+      }
+
+      .transicio:hover {
+        height: 100px;
+        width: 100px;
+        border-radius: 0px;
+        background-color: #ff0000;
+
+        transform: rotate(45deg) scale(1.3);
+        transition-duration: 0.75s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="transicio"></div>
+  </body>
+</html>
