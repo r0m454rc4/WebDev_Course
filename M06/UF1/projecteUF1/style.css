@@ -1,0 +1,27 @@
+table {
+  border: solid 5px;
+  padding: 5px;
+  box-shadow: inset 0 0 0 20px #add8e6;
+  border-spacing: 15px;
+}
+
+tr {
+  color: blue;
+}
+
+tr#grup1:hover {
+  background-color: lightcoral;
+}
+
+tr#grup2:hover {
+  background-color: lightgoldenrodyellow;
+}
+
+/* tr#grup2, tr#grup4{
+  white-space: nowrap;
+} */
+
+td {
+  border: solid 5px;
+  padding: 40px;
+}

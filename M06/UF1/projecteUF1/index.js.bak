@@ -9,8 +9,7 @@ window.onload = function () {
     }
   }
 
-  function crearGrupsAlunes(numeroGrup) {
-    // numeroGrup is a parameter to select the group number.
+  function crearGrupsAlunes() {
     const llistaAlumnes = [
       // List that contains all of the alumns.
       (alumne1 = new Alumne("1A", "Leo", "Herrera", "DAW2", 6)),
@@ -44,7 +43,7 @@ window.onload = function () {
       for (let j = 0; j < 3; j++) {
         let alumne = i * 3 + j; // Get the index of an alumn.
 
-        // This part I did it with the help of ChatGPT.
+        // THis part I did it with help of ChatGPT.
         if (alumne < llistaAlumnes.length) {
           grup.push(llistaAlumnes[alumne]); // With push I add "alumne" to the end of "grup" array.
         }
@@ -53,22 +52,18 @@ window.onload = function () {
       grups.push(grup);
     }
 
-    let nomAlumnesPerGrup = [];
-
-    for (let alumne of grups[numeroGrup]) {
+    for (let alumne of grups[0]) {
       // If I don't use a for of, I'll get "undefined".
-      // console.log(alumne.nomAlumne);
-      nomAlumnesPerGrup.push(alumne.nomAlumne);
+      console.log(alumne.nomAlumne);
     }
 
-    return nomAlumnesPerGrup;
+    return grups;
   }
 
-  document.getElementById("grup1").onclick = function () {
-    document.getElementById("grup").innerHTML = `<br>` + crearGrupsAlunes(0);
-  };
+  crearGrupsAlunes();
 
-  document.getElementById("grup2").onclick = function () {
-    document.getElementById("grup").innerHTML = `<br>` + crearGrupsAlunes(1);
+  document.getElementById("grup1").onclick = function () {
+    document.getElementById("grup").innerHTML = `PEPE`;
+    crearGrupsAlunes();
   };
 };
