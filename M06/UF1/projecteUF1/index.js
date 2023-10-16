@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = () => {
   class Alumne {
     constructor(dniAlumne, nomAlumne, cognomAlumne, cursAlumne, notaAlumne) {
       this.dniAlumne = dniAlumne;
@@ -9,7 +9,7 @@ window.onload = function () {
     }
   }
 
-  function crearGrupsAlunes(numeroGrup) {
+  let crearGrupsAlunes = (numeroGrup) => {
     // numeroGrup is a parameter to select the group number.
     const llistaAlumnes = [
       // List that contains all of the alumns.
@@ -66,11 +66,7 @@ window.onload = function () {
     }
 
     return nomAlumnesPerGrup;
-  }
-
-  // --  REMOVE COMMAS FROM ARRAYS -- //
-
-  function borrarComes(nomArray) {}
+  };
 
   // --- GRUPS --- //
 
@@ -79,34 +75,101 @@ window.onload = function () {
   for (let i = 1; i <= 10; i++) {
     nGrup.push("Grup " + i);
   }
-  // console.log(nGrup);
 
-  document.getElementById("grups").innerHTML = `
-  <br> ${nGrup} <br>
+  // nGrup = nGrup.join(" "); // In order to delete the commas from the array.
+
+  document.getElementById("llistaGrups").innerHTML = `
+  <table>
+    <tr id="llistaGrups">
+      <td id="llistaGrup1">
+        ${nGrup[0]}
+      </td>
+      <td id="llistaGrup2">
+        ${nGrup[1]}
+      </td>
+      <td id="llistaGrup3">
+       ${nGrup[2]}
+      </td>
+      <td id="llistaGrup4">
+        ${nGrup[3]}
+      </td>
+      <td id="llistaGrup5">
+        ${nGrup[4]}
+      </td>
+      <td id="llistaGrup6">
+        ${nGrup[5]}
+      </td>
+    </tr>
+  </table>
   `;
 
   // --- MOSTRAR USUARIS -- //
-  document.getElementById("grup1").onclick = function () {
-    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(0);
+
+  // document.getElementById("grup1").onclick = function () {
+  //   document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(0);
+  // };
+
+  let crearLlistaAlunes = (nGrup) => {
+    document.getElementById("llistaAlumnes").innerHTML = `
+    <table>
+      <tr id="llistaAlumnes">
+        <td id="llistaAlumnes1">
+          ${crearGrupsAlunes(0)}
+        </td>
+        <td id="llistaAlumnes2">
+          ${crearGrupsAlunes(1)}
+        </td>
+        <td id="llistaAlumnes3">
+         ${crearGrupsAlunes(2)}
+        </td>
+        <td id="llistaAlumnes4">
+          ${crearGrupsAlunes(3)}
+        </td>
+        <td id="llistaAlumnes5">
+          ${crearGrupsAlunes(4)}
+        </td>
+        <td id="llistaAlumnes6">
+          ${crearGrupsAlunes(5)}
+        </td>
+      </tr>
+    </table>
+    `;
   };
 
-  document.getElementById("grup2").onclick = function () {
-    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(1);
+  document.getElementById("llistaGrup1").onclick = function () {
+    console.log("LlistaGrup1 clicat");
+
+    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(0); // I write the name of the alumns.
   };
 
-  document.getElementById("grup3").onclick = function () {
-    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(2);
+  // document.getElementById("llistaGrup1").onclick = function () {
+  //   console.log("LlistaGrup1 clicat");
+
+  //   document.getElementById("alumnes").innerHTML =
+  //     `<br>` + crearLlistaAlunes(nGrup[0]); // I write the name of the alumns.
+  // };
+
+  document.getElementById("llistaGrup2").onclick = function () {
+    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(1); // I write the name of the alumns.
   };
 
-  document.getElementById("grup4").onclick = function () {
-    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(3);
+  document.getElementById("llistaGrup3").onclick = function () {
+    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(2); // I write the name of the alumns.
   };
 
-  document.getElementById("grup5").onclick = function () {
-    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(4);
+  document.getElementById("llistaGrup4").onclick = function () {
+    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(3); // I write the name of the alumns.
   };
 
-  document.getElementById("grup6").onclick = function () {
-    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(5);
+  document.getElementById("llistaGrup5").onclick = function () {
+    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(4); // I write the name of the alumns.
   };
+
+  document.getElementById("llistaGrup6").onclick = function () {
+    document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(5); // I write the name of the alumns.
+  };
+
+  // document.getElementById("grup2").onclick = function () {
+  //   document.getElementById("alumnes").innerHTML = `<br>` + crearGrupsAlunes(1);
+  // };
 };

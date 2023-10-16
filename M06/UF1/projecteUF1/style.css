@@ -1,4 +1,4 @@
-table {
+table#distribucioGrups {
   border: solid 5px;
   padding: 5px;
   box-shadow: inset 0 0 0 20px #add8e6;
@@ -9,6 +9,10 @@ table {
 tr {
   color: blue;
   float: left;
+}
+
+tr#llistaGrups {
+  color:blueviolet;
 }
 
 tr#grup1:hover {
@@ -40,6 +44,9 @@ td {
   padding: 40px;
 }
 
-/* label#grups {
+td#llistaGrups {
   border: solid 3px;
-} */
+  border-color: black;
+  border-radius: 10px;
+  padding: 0px;
+}
