@@ -3,10 +3,12 @@ table {
   padding: 5px;
   box-shadow: inset 0 0 0 20px #add8e6;
   border-spacing: 15px;
+  width: 710px;
 }
 
 tr {
   color: blue;
+  float: left;
 }
 
 tr#grup1:hover {
@@ -14,14 +16,30 @@ tr#grup1:hover {
 }
 
 tr#grup2:hover {
-  background-color: lightgoldenrodyellow;
+  background-color: lightgray;
 }
 
-/* tr#grup2, tr#grup4{
-  white-space: nowrap;
-} */
+tr#grup3:hover {
+  background-color: lightgreen;
+}
+
+tr#grup4:hover {
+  background-color: lightsalmon;
+}
+
+tr#grup5:hover {
+  background-color: lightseagreen;
+}
+
+tr#grup6:hover {
+  background-color: lightskyblue;
+}
 
 td {
   border: solid 5px;
   padding: 40px;
 }
+
+/* label#grups {
+  border: solid 3px;
+} */
