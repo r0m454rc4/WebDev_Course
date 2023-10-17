@@ -89,8 +89,7 @@ window.onload = () => {
     return nomAlumnesPerGrup;
   };
 
-  // --- GRUPS --- //
-  let crearGrups = () => {};
+  // --- GROUPS. --- //
 
   let nGrup = [];
 
@@ -98,7 +97,7 @@ window.onload = () => {
     nGrup.push("Grup " + i);
   }
 
-  console.log(nGrup);
+  // console.log(nGrup);
 
   document.getElementById("llistaGrups").innerHTML = `
   <table>
@@ -110,31 +109,44 @@ window.onload = () => {
         <td id="llistaGrup2">
           ${nGrup[1]}
         </td>
+      </tr>
+
+      <tr>
         <td id="llistaGrup3">
         ${nGrup[2]}
         </td>
         <td id="llistaGrup4">
           ${nGrup[3]}
         </td>
+      </tr>
+
+      <tr>
         <td id="llistaGrup5">
           ${nGrup[4]}
         </td>
         <td id="llistaGrup6">
           ${nGrup[5]}
         </td>
+      </tr>
+
+      <tr>
         <td id="llistaGrup7">
           ${nGrup[6]}
         </td>
-      </tr>
-      <tr>
         <td id="llistaGrup8">
           ${nGrup[7]}
         </td>
+      </tr>
+
+      <tr>
         <td id="llistaGrup9">
           ${nGrup[8]}
         </td>
         <td id="llistaGrup10">
           ${nGrup[9]}
+      </tr>
+
+      <tr>
         </td>
         <td id="llistaGrup11">
           ${nGrup[10]}
@@ -142,6 +154,9 @@ window.onload = () => {
         <td id="llistaGrup12">
           ${nGrup[11]}
         </td>
+      </tr>
+
+      <tr>
         <td id="llistaGrup13">
           ${nGrup[12]}
         </td>
@@ -153,75 +168,17 @@ window.onload = () => {
   </table>
   `;
 
-  // --- MOSTRAR USUARIS -- //
+  // --- SHOW ALUMNS. -- //
 
-  document.getElementById("llistaGrup1").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(0); // I write the name of the alumns.
-  };
+  // I have done this with the help of ChatGPT.
+  for (let i = 1; i <= nGrup.length; i++) {
+    let usuarisGrupClicat = document.getElementById(`llistaGrup${i}`);
+    // console.log(usuarisGrupClicat);
 
-  document.getElementById("llistaGrup2").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(1); // I write the name of the alumns.
-  };
-
-  document.getElementById("llistaGrup3").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(2);
-  };
-
-  document.getElementById("llistaGrup4").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(3);
-  };
-
-  document.getElementById("llistaGrup5").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(4);
-  };
-
-  document.getElementById("llistaGrup6").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(5);
-  };
-
-  document.getElementById("llistaGrup7").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(6);
-  };
-
-  document.getElementById("llistaGrup8").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(7);
-  };
-
-  document.getElementById("llistaGrup9").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(8);
-  };
-
-  document.getElementById("llistaGrup10").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(9);
-  };
-
-  document.getElementById("llistaGrup11").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(10);
-  };
-
-  document.getElementById("llistaGrup12").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(11);
-  };
-
-  document.getElementById("llistaGrup13").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(12);
-  };
-
-  document.getElementById("llistaGrup14").onclick = function () {
-    document.getElementById("llistaAlumnesGrup").innerHTML =
-      `<br>` + crearAlumesPerGrup(13);
-  };
+    usuarisGrupClicat.onclick = () => {
+      // console.log("PEPE " + i);
+      document.getElementById("llistaAlumnesGrups").innerHTML =
+        `<br>` + crearAlumesPerGrup(i - 1);
+    };
+  }
 };

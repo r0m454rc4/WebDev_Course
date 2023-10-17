@@ -1,3 +1,30 @@
+/* Style the grid table. */
+.grps {
+  grid-area: grps;
+  height: 200px;
+}
+.almns {
+  grid-area: almns;
+}
+.taulaClasse {
+  grid-area: taulaClasse;
+}
+
+.contenidor-grid {
+  display: grid;
+  grid-template-areas:
+    "grps taulaClasse taulaClasse taulaClasse taulaClasse taulaClasse"
+    "almns taulaClasse taulaClasse taulaClasse taulaClasse taulaClasse";
+  padding: 10px;
+  max-width: 850px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
 /* Style the main table */
 
 table#distribucioGrups {
@@ -9,83 +36,67 @@ table#distribucioGrups {
 }
 
 /* Style the group rows */
-tr#grup1,
-tr#grup2,
-tr#grup3,
-tr#grup4,
-tr#grup5,
-tr#grup6,
-tr#grup7,
-tr#grup8,
-tr#grup9,
-tr#grup10,
-tr#grup11,
-tr#grup12,
-tr#grup13,
-tr#grup14 {
+[id^="grup"] {
+  /* id^="grup" is to select all of the attributes with "grup" as id. */
   float: left;
 }
 
 /* Style the list of groups */
-tr#llistaGps {
-  /* This one comes from JS code. */
-  color: blueviolet;
-}
 
 /* Hover effect for group rows */
 tr#grup1:hover {
   background-color: lightcoral;
 }
 
-tr#grup2:hover {
+#grup2:hover {
   background-color: lightgray;
 }
 
-tr#grup3:hover {
+#grup3:hover {
   background-color: lightgreen;
 }
 
-tr#grup4:hover {
+#grup4:hover {
   background-color: lightsalmon;
 }
 
-tr#grup5:hover {
+#grup5:hover {
   background-color: lightseagreen;
 }
 
-tr#grup6:hover {
+#grup6:hover {
   background-color: lightskyblue;
 }
 
-tr#grup7:hover {
+#grup7:hover {
   background-color: lightslategray;
 }
 
-tr#grup8:hover {
+#grup8:hover {
   background-color: red;
 }
 
-tr#grup9:hover {
+#grup9:hover {
   background-color: orange;
 }
 
-tr#grup10:hover {
+#grup10:hover {
   background-color: blue;
 }
 
-tr#grup11:hover {
+#grup11:hover {
   background-color: violet;
 }
 
-tr#grup12:hover {
+#grup12:hover {
   background-color: papayawhip;
 }
 
-tr#grup13:hover {
+#grup13:hover {
   background-color: palevioletred;
 }
 
-tr#grup14:hover {
+#grup14:hover {
   background-color: blueviolet;
 }
 
@@ -98,28 +109,23 @@ td {
 /* Style the td elements inside table#distribucioGrups with larger padding */
 
 table#llistaOrdenadaGrups {
-  margin: auto;
+  /* margin: auto; */
+  text-align: center;
 }
 
-table#distribucioGrups td {
+#distribucioGrups td {
   padding: 25px;
 }
 
 /* Style the list of groups */
 td#llistaGrups {
-  border: 3px solid black;
+  border: 3px solid lightblue;
   border-radius: 10px;
   padding: 10px;
   width: auto;
 }
 
 /* Style the list of students */
-td#llistaAlumnes {
-  border: 3px solid black;
-  border-radius: 10px;
-  padding: 10px;
-}
 
-label#llistaAlumnesGrups {
-  margin: 900;
-}
+/* #llistaAlumnesGrups {
+} */
