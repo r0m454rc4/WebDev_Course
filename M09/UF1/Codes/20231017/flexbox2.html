@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-UTF-8" />
+    <title>Flexbox 2</title>
+    <style type="text/css">
+      #contenidor {
+        display: flex;
+        flex-direction: row;
+
+        font-family: Verdana;
+        background-color: #000;
+        height: 500px;
+        color: white;
+        font-size: 2rem;
+      }
+
+      #item1 {
+        text-align: center;
+        background-color: #2e3c7d;
+      }
+
+      #item2 {
+        flex-grow: 1;
+
+        text-align: center;
+        background-color: #900c3f;
+      }
+
+      #item3 {
+        text-align: center;
+        background-color: #ff5733;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="contenidor">
+      <div id="item1">Caixa 1</div>
+      <div id="item2">Caixa 2</div>
+      <div id="item3">Caixa 3</div>
+    </div>
+  </body>
+</html>

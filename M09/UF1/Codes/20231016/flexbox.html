@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-UTF-8" />
+    <title>Flexbox 2</title>
+    <style type="text/css">
+      #contenidor {
+        display: flex;
+        /* flex-wrap: wrap; */
+        flex-wrap: wrap-reverse;
+        /* flex-direction: row-reverse; */
+        /* flex-direction: column;
+        flex-direction: column-reverse; */
+        justify-content: center;
+
+        width: 600px;
+        height: auto;
+        background-color: black;
+      }
+
+      #element {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        background-color: grey;
+        margin: 5px;
+      }
+
+      #element1 {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        background-color: grey;
+        margin: 5px;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="contenidor">
+      <div id="element">Caixa 1</div>
+      <div id="element">Caixa 2</div>
+      <div id="element">Caixa 3</div>
+      <div id="element">Caixa 4</div>
+      <div id="element">Caixa 5</div>
+      <div id="element">Caixa 6</div>
+      <div id="element">Caixa 7</div>
+      <div id="element">Caixa 8</div>
+      <div id="element1">Caixa 9</div>
+    </div>
+  </body>
+</html>

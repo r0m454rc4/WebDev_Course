@@ -1,20 +1,38 @@
+/* Style the main table */
+
 table#distribucioGrups {
-  border: solid 5px;
-  padding: 5px;
-  box-shadow: inset 0 0 0 20px #add8e6;
+  border: 5px solid #add8e6;
+  width: 525px;
   border-spacing: 15px;
-  width: 710px;
+  margin: 0 auto;
+  box-shadow: inset 0 0 0 20px lightblue;
 }
 
-tr {
-  color: blue;
+/* Style the group rows */
+tr#grup1,
+tr#grup2,
+tr#grup3,
+tr#grup4,
+tr#grup5,
+tr#grup6,
+tr#grup7,
+tr#grup8,
+tr#grup9,
+tr#grup10,
+tr#grup11,
+tr#grup12,
+tr#grup13,
+tr#grup14 {
   float: left;
 }
 
-tr#llistaGrups {
-  color:blueviolet;
+/* Style the list of groups */
+tr#llistaGps {
+  /* This one comes from JS code. */
+  color: blueviolet;
 }
 
+/* Hover effect for group rows */
 tr#grup1:hover {
   background-color: lightcoral;
 }
@@ -39,14 +57,69 @@ tr#grup6:hover {
   background-color: lightskyblue;
 }
 
-td {
-  border: solid 5px;
-  padding: 40px;
+tr#grup7:hover {
+  background-color: lightslategray;
 }
 
+tr#grup8:hover {
+  background-color: red;
+}
+
+tr#grup9:hover {
+  background-color: orange;
+}
+
+tr#grup10:hover {
+  background-color: blue;
+}
+
+tr#grup11:hover {
+  background-color: violet;
+}
+
+tr#grup12:hover {
+  background-color: papayawhip;
+}
+
+tr#grup13:hover {
+  background-color: palevioletred;
+}
+
+tr#grup14:hover {
+  background-color: blueviolet;
+}
+
+/* Style all table cells (desks) with increased padding */
+td {
+  border: 5px solid lightpink;
+  padding: 10px;
+}
+
+/* Style the td elements inside table#distribucioGrups with larger padding */
+
+table#llistaOrdenadaGrups {
+  margin: auto;
+}
+
+table#distribucioGrups td {
+  padding: 25px;
+}
+
+/* Style the list of groups */
 td#llistaGrups {
-  border: solid 3px;
-  border-color: black;
+  border: 3px solid black;
   border-radius: 10px;
-  padding: 0px;
+  padding: 10px;
+  width: auto;
+}
+
+/* Style the list of students */
+td#llistaAlumnes {
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+label#llistaAlumnesGrups {
+  margin: 900;
 }

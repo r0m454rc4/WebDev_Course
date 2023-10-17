@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-UTF-8" />
+    <title>Flexbox</title>
+
+    <style type="text/css">
+      body {
+        font-family: Verdana;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      header {
+        padding: 20px;
+        color: white;
+        font-weight: bold;
+        text-align: right;
+        background-color: black;
+        font-size: 2em;
+      }
+
+      section {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      article {
+        padding: 10px;
+        text-align: center;
+        width: 400px;
+      }
+
+      .article_1 {
+        background-color: greenyellow;
+      }
+
+      .article_2 {
+        background-color: lightblue;
+      }
+
+      .article_3 {
+        background-color: darkred;
+      }
+
+      p {
+        text-align: justify;
+      }
+
+      img {
+        width: 100%;
+      }
+    </style>
+    <body>
+      <header>Lorem ipsum</header>
+
+      <section>
+        <article class="article_1">
+          <img src="pexels-photo-352096.jpeg" />
+          <h1>Lorem ipsum dolor sit amet</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            iaculis mauris eget turpis pellentesque, ut congue orci faucibus.
+            Etiam pharetra malesuada tincidunt. Vestibulum at commodo odio, vel
+            eleifend enim. Etiam sit amet cursus odio. In et maximus felis.
+            Vestibulum egestas venenatis nulla, ac hendrerit lectus placerat
+            sed. Nam in metus vulputate, bibendum turpis nec, dictum urna. Donec
+            leo erat, cursus ut tellus eget, feugiat mattis justo.
+          </p>
+        </article>
+
+        <article class="article_2">
+          <img src="pexels-photo-255379.jpeg" />
+          <h1>Etiam luctus sem ac magna mattis maximus.</h1>
+          <p>
+            Fusce scelerisque, ex nec aliquam convallis, lorem ex aliquet risus,
+            et consequat ante sem vitae sapien. Praesent posuere iaculis odio,
+            eu congue turpis auctor venenatis. Duis sagittis condimentum ante, a
+            volutpat odio pretium in. Vestibulum ante ipsum primis in faucibus
+            orci luctus et ultrices posuere cubilia curae; Quisque ut dapibus
+            tortor. Nullam sed magna sit amet turpis imperdiet porttitor. Nullam
+            hendrerit, sem semper volutpat semper, ex ligula elementum diam, in
+            sodales magna metus ac nibh. Morbi tincidunt risus sit amet ultrices
+            egestas. Fusce tristique volutpat interdum. Aliquam erat volutpat.
+          </p>
+        </article>
+
+        <article class="article_3">
+          <img src="pexels-photo-1040473.jpeg" />
+          <h1>Nullam tristique maximus tincidunt.</h1>
+          <p>
+            Aenean finibus nibh eu tincidunt lacinia. Fusce pulvinar accumsan
+            dui, nec vestibulum quam. Fusce magna diam, pharetra eget urna quis,
+            congue mattis libero. Pellentesque sed dictum risus. Duis venenatis
+            massa ac dolor laoreet, at ullamcorper massa ornare. Quisque
+            interdum in leo at euismod. Cras id tempus dolor, eu tincidunt orci.
+            Praesent elementum, diam a consequat placerat, urna eros ornare
+            quam, in eleifend enim dolor eu ex. Curabitur hendrerit sodales
+            ipsum vel gravida. Ut bibendum odio urna, vitae elementum tellus
+            porttitor a.
+          </p>
+        </article>
+      </section>
+    </body>
+  </head>
+</html>
