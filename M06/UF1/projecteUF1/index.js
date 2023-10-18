@@ -35,30 +35,64 @@ window.onload = () => {
     new Alumne("17F", "Sergi", "Grau", "DAW2", 10.0),
     new Alumne("18F", "Jordi", "Binefa", "DAM2", 8.99),
     // 7th group.
-    new Alumne("19F", "Sandra", "Herranz", "DAW2", 9.18),
-    new Alumne("20F", "Marta", "Coll", "DAW2", 10.0),
-    new Alumne("21F", "David", "Pérez", "SMX2", 8.99),
+    new Alumne("19G", "Sandra", "Herranz", "DAW2", 9.18),
+    new Alumne("20G", "Marta", "Coll", "DAW2", 10.0),
+    new Alumne("21G", "David", "Pérez", "SMX2", 8.99),
     // 8th group.
-    (alumne22 = new Alumne("19F", "Pepe", "García", "DAW2", 9.18)),
-    (alumne23 = new Alumne("20F", "Manuel", "Sánchez", "DAW2", 10.0)),
-    (alumne24 = new Alumne("21F", "Jaume", "Reixac", "SMX2", 8.99)),
+    new Alumne("22H", "Pepe", "García", "DAW2", 9.18),
+    new Alumne("23H", "Manuel", "Sánchez", "DAW2", 10.0),
+    new Alumne("24H", "Jaume", "Reixac", "SMX2", 8.99),
     // 9th group.
-    (alumne25 = new Alumne("19F", "Josefa", "Huerto", "DAW2", 9.18)),
-    (alumne26 = new Alumne("20F", "Pepa", "Cerdita", "DAW2", 10.0)),
-    (alumne27 = new Alumne("21F", "Pau", "Jaimejuan", "SMX2", 8.99)),
+    new Alumne("25I", "Josefa", "Huerto", "DAW2", 9.18),
+    new Alumne("26I", "Pepa", "Cerdita", "DAW2", 10.0),
+    new Alumne("27I", "Pau", "Jaimejuan", "SMX2", 8.99),
     // 10th group.
-    (alumne28 = new Alumne("19F", "Mario", "Gallego", "DAW2", 9.18)),
-    (alumne29 = new Alumne("20F", "Júlia", "Serra", "DAW2", 10.0)),
-    (alumne30 = new Alumne("21F", "Miquel", "Baztan", "SMX2", 8.99)),
+    new Alumne("28J", "Mario", "Gallego", "DAW2", 9.18),
+    new Alumne("29J", "Júlia", "Serra", "DAW2", 10.0),
+    new Alumne("30J", "Miquel", "Baztan", "SMX2", 8.99),
     // 11th group.
-    (alumne31 = new Alumne("19F", "Rosa", "Gabaldon", "DAW2", 9.18)),
-    (alumne32 = new Alumne("20F", "María", "Cubells", "DAW2", 10.0)),
-    (alumne33 = new Alumne("21F", "Gemma", "Simó", "SMX2", 8.99)),
+    new Alumne("31K", "Rosa", "Gabaldon", "DAW2", 9.18),
+    new Alumne("32K", "María", "Cubells", "DAW2", 10.0),
+    new Alumne("33K", "Gemma", "Simó", "SMX2", 8.99),
     // 12th group.
-    (alumne34 = new Alumne("19F", "Abdou", "Diawara", "DAW2", 9.18)),
-    (alumne35 = new Alumne("20F", "Laia", "Sánchez", "DAW2", 10.0)),
-    (alumne36 = new Alumne("21F", "Anna", "Martín", "SMX2", 8.99)),
+    new Alumne("34L", "Abdou", "Diawara", "DAW2", 9.18),
+    new Alumne("35L", "Laia", "Sánchez", "DAW2", 10.0),
+    new Alumne("36L", "Anna", "Martín", "SMX2", 8.99),
+    // 13th group.
+    new Alumne("37M", "Fernanda", "Calla", "DAW2", 9.18),
+    new Alumne("38M", "Carla", "Alfonso", "DAW2", 10.0),
+    new Alumne("39M", "Alberto", "García", "SMX2", 8.99),
+    // 14th group.
+    new Alumne("40N", "Josep", "Gil", "DAW2", 9.18),
+    new Alumne("41N", "Sandra", "Piñeiro", "DAW2", 10.0),
+    new Alumne("42N", "Laia", "Cantos", "SMX2", 8.99),
   ];
+
+  // -- CREATE TABLE WHERE THE NAME OF THE ALUMNS WILL BE. -- //
+
+  function crearTaulaAlumnes(nomAlumne) {
+    let taulaAlumnes = `
+      <table id="llistaOrdAl">
+        <tr>
+          <td>
+            ${nomAlumne[0]}
+          </td>
+          <td>
+            ${nomAlumne[1]}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            ${nomAlumne[2]}
+          </td>
+        </tr>
+      </table>
+      `;
+
+    return taulaAlumnes;
+  }
+
+  // -- CREATE ALUMNS FOR GROUPS.  -- //
 
   let crearAlumesPerGrup = (numeroGrup) => {
     // numeroGrup is a parameter to select the group number.
@@ -86,7 +120,11 @@ window.onload = () => {
       nomAlumnesPerGrup.push(alumne.nomAlumne);
     }
 
-    return nomAlumnesPerGrup;
+    let nAlumne = nomAlumnesPerGrup;
+
+    nAlumne = crearTaulaAlumnes(nAlumne);
+
+    return nAlumne;
   };
 
   // --- GROUPS. --- //
@@ -96,8 +134,6 @@ window.onload = () => {
   for (let i = 1; i <= llistaAlumnes.length / 3; i++) {
     nGrup.push("Grup " + i);
   }
-
-  // console.log(nGrup);
 
   document.getElementById("llistaGrups").innerHTML = `
   <table>
@@ -170,15 +206,16 @@ window.onload = () => {
 
   // --- SHOW ALUMNS. -- //
 
-  // I have done this with the help of ChatGPT.
+  // I have done this with a little bit of help from ChatGPT.
   for (let i = 1; i <= nGrup.length; i++) {
     let usuarisGrupClicat = document.getElementById(`llistaGrup${i}`);
-    // console.log(usuarisGrupClicat);
 
     usuarisGrupClicat.onclick = () => {
       // console.log("PEPE " + i);
       document.getElementById("llistaAlumnesGrups").innerHTML =
-        `<br>` + crearAlumesPerGrup(i - 1);
+        crearAlumesPerGrup(i - 1);
+
+      console.log(usuarisGrupClicat);
     };
   }
 };

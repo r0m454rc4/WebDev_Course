@@ -49,24 +49,24 @@ function generarNeu(imageObj, context, canvas) {
     pixels[i + 1] = pixels[i + 1];
     pixels[i + 2] = pixels[i];
 
-    // for (let x = 0; x < 1000; i++) {
-    //   let coordAleatoriaX = Math.random() * 300;
-    //   let coordAleatoriaY = Math.random() * 300;
-    //   // let blancAleatori = Math.random() * 128 + 127;
+    for (let x = 0; x < 1000; x++) {
+      let coordAleatoriaX = Math.random() * 300;
+      let coordAleatoriaY = Math.random() * 300;
+      // let blancAleatori = Math.random() * 128 + 127;
 
-    //   console.log(parseInt(canvas.width * coordAleatoriaY) + coordAleatoriaX) *
-    //     4;
+      console.log(parseInt(canvas.width * coordAleatoriaY) + coordAleatoriaX) *
+        4;
 
-    //   // pixels[
-    //   //   parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4)
-    //   // ] = 0;
-    //   // pixels[
-    //   //   parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 1)
-    //   // ] = 0;
-    //   // pixels[
-    //   //   parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 2)
-    //   // ] = 0;
-    // }
+      pixels[
+        parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4)
+      ] = 0;
+      pixels[
+        parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 1)
+      ] = 0;
+      pixels[
+        parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 2)
+      ] = 0;
+    }
   }
 
   // Here I draw the image I modified.

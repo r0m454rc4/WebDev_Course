@@ -1,7 +1,8 @@
 /* Style the grid table. */
 .grps {
   grid-area: grps;
-  height: 200px;
+  height: 400px;
+  width: 230px;
 }
 .almns {
   grid-area: almns;
@@ -44,60 +45,60 @@ table#distribucioGrups {
 /* Style the list of groups */
 
 /* Hover effect for group rows */
-tr#grup1:hover {
+td#llistaGrup1:hover {
   background-color: lightcoral;
 }
 
-#grup2:hover {
+#llistaGrup2:hover {
   background-color: lightgray;
 }
 
-#grup3:hover {
+#llistaGrup3:hover {
   background-color: lightgreen;
 }
 
-#grup4:hover {
+#llistaGrup4:hover {
   background-color: lightsalmon;
 }
 
-#grup5:hover {
+#llistaGrup5:hover {
   background-color: lightseagreen;
 }
 
-#grup6:hover {
+#llistaGrup6:hover {
   background-color: lightskyblue;
 }
 
-#grup7:hover {
+#llistaGrup7:hover {
   background-color: lightslategray;
 }
 
-#grup8:hover {
+#llistaGrup8:hover {
   background-color: red;
 }
 
-#grup9:hover {
+#llistaGrup9:hover {
   background-color: orange;
 }
 
-#grup10:hover {
-  background-color: blue;
+#llistaGrup10:hover {
+  background-color: goldenrod;
 }
 
-#grup11:hover {
+#llistaGrup11:hover {
   background-color: violet;
 }
 
-#grup12:hover {
+#llistaGrup12:hover {
   background-color: papayawhip;
 }
 
-#grup13:hover {
+#llistaGrup13:hover {
   background-color: palevioletred;
 }
 
-#grup14:hover {
-  background-color: blueviolet;
+#llistaGrup14:hover {
+  background-color: hotpink;
 }
 
 /* Style all table cells (desks) with increased padding */
@@ -108,24 +109,18 @@ td {
 
 /* Style the td elements inside table#distribucioGrups with larger padding */
 
-table#llistaOrdenadaGrups {
-  /* margin: auto; */
-  text-align: center;
-}
-
 #distribucioGrups td {
   padding: 25px;
 }
 
-/* Style the list of groups */
-td#llistaGrups {
+/* Style the list of groups and students */
+td#llistaGrups,
+table#llistaOrdAl {
   border: 3px solid lightblue;
   border-radius: 10px;
-  padding: 10px;
-  width: auto;
+  padding: 13px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-
-/* Style the list of students */
-
-/* #llistaAlumnesGrups {
-} */

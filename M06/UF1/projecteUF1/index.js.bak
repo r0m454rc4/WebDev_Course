@@ -39,25 +39,25 @@ window.onload = () => {
     new Alumne("20F", "Marta", "Coll", "DAW2", 10.0),
     new Alumne("21F", "David", "Pérez", "SMX2", 8.99),
     // 8th group.
-    (alumne22 = new Alumne("19F", "Pepe", "García", "DAW2", 9.18)),
-    (alumne23 = new Alumne("20F", "Manuel", "Sánchez", "DAW2", 10.0)),
-    (alumne24 = new Alumne("21F", "Jaume", "Reixac", "SMX2", 8.99)),
+    new Alumne("20F", "Pepe", "García", "DAW2", 9.18),
+    new Alumne("21F", "Manuel", "Sánchez", "DAW2", 10.0),
+    new Alumne("22F", "Jaume", "Reixac", "SMX2", 8.99),
     // 9th group.
-    (alumne25 = new Alumne("19F", "Josefa", "Huerto", "DAW2", 9.18)),
-    (alumne26 = new Alumne("20F", "Pepa", "Cerdita", "DAW2", 10.0)),
-    (alumne27 = new Alumne("21F", "Pau", "Jaimejuan", "SMX2", 8.99)),
+    new Alumne("23F", "Josefa", "Huerto", "DAW2", 9.18),
+    new Alumne("24F", "Pepa", "Cerdita", "DAW2", 10.0),
+    new Alumne("25F", "Pau", "Jaimejuan", "SMX2", 8.99),
     // 10th group.
-    (alumne28 = new Alumne("19F", "Mario", "Gallego", "DAW2", 9.18)),
-    (alumne29 = new Alumne("20F", "Júlia", "Serra", "DAW2", 10.0)),
-    (alumne30 = new Alumne("21F", "Miquel", "Baztan", "SMX2", 8.99)),
+    new Alumne("26F", "Mario", "Gallego", "DAW2", 9.18),
+    new Alumne("27F", "Júlia", "Serra", "DAW2", 10.0),
+    new Alumne("28F", "Miquel", "Baztan", "SMX2", 8.99),
     // 11th group.
-    (alumne31 = new Alumne("19F", "Rosa", "Gabaldon", "DAW2", 9.18)),
-    (alumne32 = new Alumne("20F", "María", "Cubells", "DAW2", 10.0)),
-    (alumne33 = new Alumne("21F", "Gemma", "Simó", "SMX2", 8.99)),
+    new Alumne("29F", "Rosa", "Gabaldon", "DAW2", 9.18),
+    new Alumne("30F", "María", "Cubells", "DAW2", 10.0),
+    new Alumne("31F", "Gemma", "Simó", "SMX2", 8.99),
     // 12th group.
-    (alumne34 = new Alumne("19F", "Abdou", "Diawara", "DAW2", 9.18)),
-    (alumne35 = new Alumne("20F", "Laia", "Sánchez", "DAW2", 10.0)),
-    (alumne36 = new Alumne("21F", "Anna", "Martín", "SMX2", 8.99)),
+    new Alumne("32F", "Abdou", "Diawara", "DAW2", 9.18),
+    new Alumne("33F", "Laia", "Sánchez", "DAW2", 10.0),
+    new Alumne("34F", "Anna", "Martín", "SMX2", 8.99),
   ];
 
   let crearAlumesPerGrup = (numeroGrup) => {
@@ -170,7 +170,11 @@ window.onload = () => {
 
   // --- SHOW ALUMNS. -- //
 
-  // I have done this with the help of ChatGPT.
+  // let crearLListaUsuaris = (llistaUsuaris) => {
+  //   document.getElementById("llistaAlumnesGrups") = innerHTML()
+  // };
+
+  // I have done this with a little bit of help from ChatGPT.
   for (let i = 1; i <= nGrup.length; i++) {
     let usuarisGrupClicat = document.getElementById(`llistaGrup${i}`);
     // console.log(usuarisGrupClicat);
@@ -178,7 +182,7 @@ window.onload = () => {
     usuarisGrupClicat.onclick = () => {
       // console.log("PEPE " + i);
       document.getElementById("llistaAlumnesGrups").innerHTML =
-        `<br>` + crearAlumesPerGrup(i - 1);
+        crearAlumesPerGrup(i - 1);
     };
   }
 };
