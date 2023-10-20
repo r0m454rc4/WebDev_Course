@@ -70,7 +70,7 @@ window.onload = () => {
 
   // -- CREATE TABLE WHERE THE NAME OF THE ALUMNS WILL BE. -- //
 
-  function crearTaulaAlumnes(nomAlumne) {
+  let crearTaulaAlumnes = (nomAlumne) => {
     let taulaAlumnes = `
       <table id="llistaOrdAl">
         <tr>
@@ -90,7 +90,7 @@ window.onload = () => {
       `;
 
     return taulaAlumnes;
-  }
+  };
 
   // -- CREATE ALUMNS FOR GROUPS.  -- //
 
@@ -109,6 +109,7 @@ window.onload = () => {
           grup.push(llistaAlumnes[alumne]); // With push I add "alumne" to the end of "grup" array.
         }
       }
+      // console.log(grup);
 
       grups.push(grup);
     }
@@ -121,13 +122,14 @@ window.onload = () => {
     }
 
     let nAlumne = nomAlumnesPerGrup;
+    // console.log(`nAlumne: ${nAlumne}`)
 
     nAlumne = crearTaulaAlumnes(nAlumne);
 
     return nAlumne;
   };
 
-  // --- GROUPS. --- //
+  // --- SHOW GROUPS. --- //
 
   let nGrup = [];
 
@@ -135,7 +137,9 @@ window.onload = () => {
     nGrup.push("Grup " + i);
   }
 
-  document.getElementById("llistaGrups").innerHTML = `
+  // console.log(`nGrup: ${nGrup}`);
+
+  document.getElementById("llistaGps").innerHTML = `
   <table>
     <tr id="llistaGps">
       <tr>
@@ -204,18 +208,53 @@ window.onload = () => {
   </table>
   `;
 
+  // --- SHOW GROUPS ON THE CLASSROOM. --- //
+
+  let borrarPosicioGrup = 0;
+
+  for (let i = 1; i <= nGrup.length; i++) {
+    let grupClicat = document.getElementById(`llistaGrup${i}`);
+    let grp = document.getElementById(`grup${i}`);
+
+    grupClicat.ondblclick = () => {
+      // ondblclick is to execute when I double click.
+
+      if (borrarPosicioGrup != 0) {
+        // If a row has been previously selected, I reset the color to white.
+
+        document.getElementById(
+          `grup${borrarPosicioGrup}`
+        ).style.backgroundColor = "white";
+        console.log(`Previously selected: ${borrarPosicioGrup}`);
+      }
+
+      if (borrarPosicioGrup == i) {
+        // If I double click on the same group again.
+
+        borrarPosicioGrup = -i;
+        console.log(`Delesect group: ${borrarPosicioGrup}`);
+
+        borrarPosicioGrup = 0; // If I don't have it I won't be able to select another group after deselecting.
+      } else {
+        // Select a group.
+
+        grp.style.backgroundColor = "violet";
+        borrarPosicioGrup = i;
+        console.log(`Select group: ${borrarPosicioGrup}`);
+      }
+    };
+  }
+
   // --- SHOW ALUMNS. -- //
 
   // I have done this with a little bit of help from ChatGPT.
   for (let i = 1; i <= nGrup.length; i++) {
-    let usuarisGrupClicat = document.getElementById(`llistaGrup${i}`);
+    let alumnesGrupClicat = document.getElementById(`llistaGrup${i}`);
 
-    usuarisGrupClicat.onclick = () => {
-      // console.log("PEPE " + i);
+    alumnesGrupClicat.onclick = () => {
       document.getElementById("llistaAlumnesGrups").innerHTML =
-        crearAlumesPerGrup(i - 1);
-
-      console.log(usuarisGrupClicat);
+        crearAlumesPerGrup(i - 1); // Because the array starts from 0 not from 1.
+      // console.log(`llistaGrup${i}`);
     };
   }
 };
