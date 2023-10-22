@@ -1,4 +1,4 @@
-window.onload = () => {
+window.addEventListener("load", function () {
   class Alumne {
     constructor(dniAlumne, nomAlumne, cognomAlumne, cursAlumne, notaAlumne) {
       this.dniAlumne = dniAlumne;
@@ -129,7 +129,7 @@ window.onload = () => {
     return nAlumne;
   };
 
-  // --- SHOW GROUPS. --- //
+  // --- SHOW TABLE OF GROUPS. --- //
 
   let nGrup = [];
 
@@ -137,76 +137,26 @@ window.onload = () => {
     nGrup.push("Grup " + i);
   }
 
-  // console.log(`nGrup: ${nGrup}`);
+  let llistaGps = document.getElementById("llistaGps");
+  let grups = "<table>";
 
-  document.getElementById("llistaGps").innerHTML = `
-  <table>
-    <tr id="llistaGps">
-      <tr>
-        <td id="llistaGrup1">
-          ${nGrup[0]}
-        </td>
-        <td id="llistaGrup2">
-          ${nGrup[1]}
-        </td>
-      </tr>
+  for (let j = 0; j < 14; j++) {
+    console.log(j);
 
-      <tr>
-        <td id="llistaGrup3">
-        ${nGrup[2]}
-        </td>
-        <td id="llistaGrup4">
-          ${nGrup[3]}
-        </td>
-      </tr>
+    if (j % 2 == 0) {
+      grups += "<tr></tr>";
+    }
 
-      <tr>
-        <td id="llistaGrup5">
-          ${nGrup[4]}
-        </td>
-        <td id="llistaGrup6">
-          ${nGrup[5]}
-        </td>
-      </tr>
+    grups += `
+      <td id="llistaGrup${j + 1}">
+        ${nGrup[j]}
+      </td>`;
+  }
 
-      <tr>
-        <td id="llistaGrup7">
-          ${nGrup[6]}
-        </td>
-        <td id="llistaGrup8">
-          ${nGrup[7]}
-        </td>
-      </tr>
+  grups += "</table>";
 
-      <tr>
-        <td id="llistaGrup9">
-          ${nGrup[8]}
-        </td>
-        <td id="llistaGrup10">
-          ${nGrup[9]}
-      </tr>
-
-      <tr>
-        </td>
-        <td id="llistaGrup11">
-          ${nGrup[10]}
-        </td>
-        <td id="llistaGrup12">
-          ${nGrup[11]}
-        </td>
-      </tr>
-
-      <tr>
-        <td id="llistaGrup13">
-          ${nGrup[12]}
-        </td>
-        <td id="llistaGrup14">
-          ${nGrup[13]}
-        </td>
-      </tr>
-    </tr>
-  </table>
-  `;
+  console.log(grups);
+  llistaGps.innerHTML = grups;
 
   // --- SHOW GROUPS ON THE CLASSROOM. --- //
 
@@ -220,27 +170,31 @@ window.onload = () => {
       // ondblclick is to execute when I double click.
 
       if (borrarPosicioGrup != 0) {
-        // If a row has been previously selected, I reset the color to white.
+        // If a row has been previously selected, I reset the color to lightcyan.
 
         document.getElementById(
           `grup${borrarPosicioGrup}`
-        ).style.backgroundColor = "white";
-        console.log(`Previously selected: ${borrarPosicioGrup}`);
+        ).style.backgroundColor = "lightcyan";
+
+        document.getElementById(
+          `llistaGrup${borrarPosicioGrup}`
+        ).style.backgroundColor = "lightcyan";
+        // console.log(`Previously selected: ${borrarPosicioGrup}`);
       }
 
       if (borrarPosicioGrup == i) {
         // If I double click on the same group again.
 
         borrarPosicioGrup = -i;
-        console.log(`Delesect group: ${borrarPosicioGrup}`);
-
+        // console.log(`Delesect group: ${borrarPosicioGrup}`);
         borrarPosicioGrup = 0; // If I don't have it I won't be able to select another group after deselecting.
       } else {
         // Select a group.
 
         grp.style.backgroundColor = "violet";
+        grupClicat.style.backgroundColor = "violet";
         borrarPosicioGrup = i;
-        console.log(`Select group: ${borrarPosicioGrup}`);
+        // console.log(`Select group: ${borrarPosicioGrup}`);
       }
     };
   }
@@ -257,4 +211,4 @@ window.onload = () => {
       // console.log(`llistaGrup${i}`);
     };
   }
-};
+});

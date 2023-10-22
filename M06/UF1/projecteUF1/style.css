@@ -1,3 +1,74 @@
+/* Style the breadcrumb, code modified from W3Schools.  */
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  background-color: lightblue;
+  border-radius: 7.5px;
+  text-align: center;
+}
+
+ul.breadcrumb li {
+  display: inline;
+  font-size: 19px;
+}
+
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: "/";
+}
+
+ul.breadcrumb li a {
+  color: black;
+  text-decoration: none; /* In order no to show the underline. */
+}
+
+ul.breadcrumb li a:hover {
+  color: lightcoral;
+  text-decoration: underline;
+}
+
+/* Add style to the first page. */
+body#index {
+  background-color: lightcyan;
+}
+
+#pgText {
+  text-align: center;
+  margin-top: 3%;
+  font-family: "Aleo", serif;
+}
+
+.transicio {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 550px;
+  transition: transform 0.75s;
+}
+
+.transicio:hover {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+#mostraText {
+  color: black;
+  background-color: lightblue;
+  text-align: center;
+  position: absolute;
+  width: 550px;
+  height: 300px;
+  font-size: 50px;
+}
+
+/* Second page. */
+
+body#aulaAlumnes {
+  background-color: lightcyan;
+}
+
 /* Style the grid table. */
 .grps {
   grid-area: grps;
@@ -44,10 +115,11 @@ table#distribucioGrups {
 
 /* Hover effect for llistaGrup. */
 [id^="llistaGrup"]:hover {
-  background-color: lightgrey;
+  background-color: lightblue !important;
+  /* !important is to be able to change the background-color after deselecting a group. */
 }
 
-/* Style all table cells (desks) with increased padding */
+/* Style all tables with increased padding */
 td {
   border: 5px solid lightpink;
   padding: 10px;
