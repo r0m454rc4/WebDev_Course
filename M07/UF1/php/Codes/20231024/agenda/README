@@ -1,0 +1,31 @@
+A) ALGUNS CODIS AMB IDEES SOBRE LOGIN, MANTENIMENT DE SESSIÓ I LOGOUT
+1- https://codewithbish.com/how-to-build-a-php-login-system-with-session-step-by-step/
+2- https://www.studentstutorial.com/php/login-logout-with-session
+3- https://technosmarter.com/php/PHP-Login-session-start-destroyed.html
+4- https://parzibyte.me/blog/2019/01/22/ejemplo-simple-login-php/
+
+
+B) Generador de passwords hash per PHP on line: https://phppasswordhash.com/
+
+
+C) PER EVITAR QUE EL FITXER usuari i els fitxers d'agenda siguin llegits
+des del navegador:
+
+	1- Obre /etc/apache2/apache2.conf
+	2- Busca aquests paràmetres de configuració:
+		<Directory /var/www/>
+			Options Indexes FollowSymLinks
+			AllowOverride None -----> Canvia None a All
+			Require all granted
+		</Directory>
+	3- Canvi: AllowOverride None -->  AllowOverride All
+	4- Afegeix al directori usuaris i agenda un fitxer de nom .htaccess amb la línia:
+		deny from all
+	5- Reinicia apache2
+
+D) Comentaris sobre seguretat de sessions:
+https://www.helpnetsecurity.com/2006/06/20/security-for-websites---breaking-sessions-to-hack-into-a-machine/
+
+E) Per provar el programa tenim els següents programes predefinits:
+	Usuari 1 --> nom: dacomo - contrasenya: fjeclot
+	Usuari 2 --> nom: daniel - contrasenya: clotfje

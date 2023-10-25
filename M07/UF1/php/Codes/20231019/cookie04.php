@@ -6,8 +6,8 @@ if ($_GET['resp'] == "si") {
 	if (isset($_COOKIE['comptador'])) {
 		setcookie("comptador", "", time() - 3600);
 	}
-	if (isset($_COOKIE['nom_usuari'])) {
-		setcookie("nom_usuari", "", time() - 3600);
+	if (isset($_COOKIE['n_usuari'])) {
+		setcookie("n_usuari", "", time() - 3600);
 	}
 }
 ?>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+
+    <style>
+      .container {
+        font-weight: bold;
+        font-size: large;
+
+        display: grid;
+        grid-template-rows: 100px 100px 100px 100px;
+
+        grid-template-columns: auto, auto, auto auto;
+        grid-gap: 3px;
+
+        grid-template-areas:
+          "area1 area1 area1 area1 area1 "
+          "area2 area2 area3 . ." /* ". ."  is beause I don't want to have this area. */
+          "area2 area2 area4 area4 area4";
+      }
+
+      .element1 {
+        background-color: blue;
+        text-align: center;
+        border: solid 4px;
+        grid-area: area1;
+      }
+
+      .element2 {
+        background-color: grey;
+        text-align: center;
+        border: solid 3px;
+        grid-area: area2;
+      }
+
+      .element3 {
+        background-color: grey;
+        text-align: center;
+        border: solid 3px;
+        grid-area: area3;
+      }
+
+      .element4 {
+        background-color: grey;
+        text-align: center;
+        border: solid 3px;
+        grid-area: area4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="element1">1</div>
+      <div class="element2">2</div>
+      <div class="element3">3</div>
+      <div class="element4">4</div>
+    </div>
+  </body>
+</html>

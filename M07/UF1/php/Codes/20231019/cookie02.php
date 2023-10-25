@@ -2,12 +2,12 @@
 define("VALOR_INICIAL", 1);
 
 if (isset($_COOKIE['comptador'])) {  // The second time, I'll get this, because I already have "comptador".
-	if ($_GET['nom_usuari'] == $_COOKIE['nom_usuari']) {
+	if ($_GET['nom_usuari'] == $_COOKIE['n_usuari']) {
 		$comptador = $_COOKIE['comptador'] + 1;
 		setcookie("comptador", $comptador, time() + (86400 * 30), "/");
 	}
 } else {  // On the beggining I'll go this way, because I don't have the cookie called "comptador".
-	setcookie("nom_usuari", $_GET['nom_usuari'], time() + (86400 * 30), "/");
+	setcookie("n_usuari", $_GET['nom_usuari'], time() + (86400 * 30), "/");
 	setcookie("comptador", VALOR_INICIAL, time() + (86400 * 30), "/");
 }
 ?>
@@ -23,7 +23,7 @@ if (isset($_COOKIE['comptador'])) {  // The second time, I'll get this, because 
 	TREBALLLANT AMB COOKIES. MODIFICANT COOKIES - I<br>
 	<?php
 	if (isset($_COOKIE['comptador'])) {
-		if ($_GET['nom_usuari'] != $_COOKIE['nom_usuari']) {
+		if ($_GET['nom_usuari'] != $_COOKIE['n_usuari']) {
 			echo "El nom d'usuari actual no coincideix amb el de la primera visita<br>";
 		} else {
 			echo "Hola " . $_GET['nom_usuari'] . "<br>";

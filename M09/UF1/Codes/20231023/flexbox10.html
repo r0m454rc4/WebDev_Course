@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-UTF-8" />
+    <title>Flexbox</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .row {
+        display: flex;
+        padding: 5px;
+        flex-wrap: wrap;
+      }
+
+      .column {
+        flex: 25%;
+        padding: 5px;
+      }
+
+      .column img {
+        margin-top: 5px;
+      }
+
+      @media (max-width: 600px) {
+        .column {
+          flex: 50%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="column">
+        <img src="img/pexels-aleksandr-slobodianyk-989959.jpg" alt="Imatge" />
+        <img src="img/pexels-burak-the-weekender-65539.jpg" alt="Imatge" />
+        <img src="img/pexels-cliford-mervil-2469122.jpg" alt="Imatge" />
+        <img src="img/pexels-simon-berger-1266810.jpg" alt="Imatge" />
+        <img src="img/pexels-cameron-casey-1722183.jpg" alt="Imatge" />
+      </div>
+
+      <div class="column">
+        <img src="img/pexels-david-gierth-3736210.jpg" alt="Imatge" />
+        <img src="img/pexels-pixabay-209035.jpg" alt="Imatge" />
+        <img
+          src="img/pexels-eberhard-grossgasteiger-2086267.jpg"
+          alt="Imatge"
+        />
+        <img src="img/pexels-nashrodin-aratuc-802127.jpg" alt="Imatge" />
+        <img src="img/pexels-cottonbro-studio-5082556.jpg" alt="Imatge" />
+      </div>
+
+      <div class="column">
+        <img src="img/pexels-matheus-bertelli-2351649.jpg" alt="Imatge" />
+        <img src="img/pexels-willian-santos-7444084.jpg" alt="Imatge" />
+        <img src="img/pexels-kelly-2382848.jpg" alt="Imatge" />
+        <img src="img/pexels-pixabay-67235.jpg" alt="Imatge" />
+        <img src="img/pexels-pixabay-269176.jpg" alt="Imatge" />
+      </div>
+
+      <div class="column">
+        <img src="img/pexels-simon-berger-1266810.jpg" alt="Imatge" />
+        <img src="img/pexels-pavel-danilyuk-7120851.jpg" alt="Imatge" />
+        <img src="img/pexels-cottonbro-studio-4273440.jpg" alt="Imatge" />
+        <img src="img/pexels-nancy-bourque-1209978.jpg" alt="Imatge" />
+        <img src="img/pexels-magda-ehlers-2606612.jpg" alt="Imatge" />
+      </div>
+    </div>
+  </body>
+</html>
