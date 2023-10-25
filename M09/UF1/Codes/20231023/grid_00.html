@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+
+    <style>
+      .container {
+        display: grid;
+        grid-template: 100px 175px / auto auto;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-gap: 3px;
+      }
+
+      .element1 {
+        background-color: blue;
+        text-align: center;
+
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+
+      .element2 {
+        background-color: grey;
+        text-align: center;
+        border: solid 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="element1">1</div>
+      <div class="element2">2</div>
+      <div class="element2">3</div>
+      <div class="element2">4</div>
+      <div class="element2">5</div>
+      <div class="element2">6</div>
+    </div>
+  </body>
+</html>

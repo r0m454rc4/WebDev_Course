@@ -138,13 +138,13 @@ window.addEventListener("load", function () {
   }
 
   let llistaGps = document.getElementById("llistaGps");
-  let grups = "<table>";
+  let grups = "<table>"; // grups now is a table.
 
   for (let j = 0; j < 14; j++) {
-    console.log(j);
+    // console.log(j);
 
     if (j % 2 == 0) {
-      grups += "<tr></tr>";
+      grups += "<tr></tr>"; // In order to have two columns.
     }
 
     grups += `
@@ -155,8 +155,8 @@ window.addEventListener("load", function () {
 
   grups += "</table>";
 
-  console.log(grups);
-  llistaGps.innerHTML = grups;
+  // console.log(grups);
+  llistaGps.innerHTML = grups; // Draw the table.
 
   // --- SHOW GROUPS ON THE CLASSROOM. --- //
 
