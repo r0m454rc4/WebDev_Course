@@ -12,9 +12,9 @@ session_start(); #session_start() — Start new or resume existing session
 
 	<body>
 		<b>SELECCIONA UNA OPCIÓ:</b><br>
-		<a href="http://localhost/vendes/producte.php">Selecciona el producte</a><br>
-		<a href="http://localhost/vendes/quantitat.php">Selecciona la quantitat</a><br>
-		<a href="http://localhost/vendes/confirma.php">Confirma selecció i tanca sessió</a><br>
+		<a href="http://localhost:8080/producte.php">Selecciona el producte</a><br>
+		<a href="http://localhost:8080/quantitat.php">Selecciona la quantitat</a><br>
+		<a href="http://localhost:8080/confirma.php">Confirma selecció i tanca sessió</a><br>
 	</body>
 
 </html>

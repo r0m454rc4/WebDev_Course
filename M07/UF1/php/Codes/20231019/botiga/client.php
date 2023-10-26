@@ -13,7 +13,7 @@
 		else $client = null;
 		?>
 		<p>
-			Indica el teu codi de client: <input type="text" name="client" value=<?php echo $client ?>>
+			Indica el teu codi de client: <input type="text" name="client">
 		</p>
 		<table>
 			<tbody>

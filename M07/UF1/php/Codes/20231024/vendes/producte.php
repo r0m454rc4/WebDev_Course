@@ -17,7 +17,7 @@ session_start();
 	}
 	?>
 	<b><u>LLISTA DE PRODUCTES:</u></b><br>
-	<form action="http://localhost/vendes/producte.php" method="POST">
+	<form action="http://localhost:8080/vendes/producte.php" method="POST">
 		<input type="radio" name="producte" value="bombetes30W" /> Bombetes de 30 W<br />
 		<input type="radio" name="producte" value="bombetes60W" /> Bombetes de 60 W<br />
 		<input type="radio" name="producte" value="bombetes100W" /> Bombetes de 100 W<br />

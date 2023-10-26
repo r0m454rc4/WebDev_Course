@@ -18,7 +18,7 @@ if (isset($_POST['producte'])) {
 		if (isset($_COOKIE['quantitat'])) $quantitat = ($_COOKIE['quantitat']);
 		else $quantitat = null;
 		?>
-		<p><input type="text" name="quantitat" value=<?php echo $quantitat ?>></p>
+		<p><input type="number" name="quantitat" min="0" max="100" value="0"></p>
 		<table>
 			<tbody>
 				<tr>
