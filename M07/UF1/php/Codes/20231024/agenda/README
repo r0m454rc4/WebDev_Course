@@ -19,7 +19,7 @@ des del navegador:
 			Require all granted
 		</Directory>
 	3- Canvi: AllowOverride None -->  AllowOverride All
-	4- Afegeix al directori usuaris i agenda un fitxer de nom .htaccess amb la línia:
+	4- Afegeix al directori usuaris i dades un fitxer de nom .htaccess amb la línia:
 		deny from all
 	5- Reinicia apache2
 

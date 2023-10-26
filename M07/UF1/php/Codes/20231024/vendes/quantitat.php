@@ -17,7 +17,7 @@ session_start();
 	}
 	?>
 	<b><u>QUANTITAT:</u></b><br>
-	<form action="http://localhost/vendes/quantitat.php" method="POST">
+	<form action="http://localhost:8080/vendes/quantitat.php" method="POST">
 		<input type="text" name="quantitat"><br>
 		<input value="Selecciona" type="submit"><br>
 	</form>
