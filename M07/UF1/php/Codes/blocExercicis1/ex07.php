@@ -2,18 +2,14 @@
 <header>
   <style>
     table,
-    td {
+    td,
+    th {
       border: solid 1px;
       text-align: center;
     }
 
     td {
       padding: 5px;
-    }
-
-    td#cognom,
-    #frequencia {
-      font-weight: bold;
     }
   </style>
 </header>
@@ -25,14 +21,15 @@
   arsort($frequencia);
 
   echo "<table>";
+  echo "<th>COGNOM</th>";
+  echo "<th>FREQ.</th>";
 
-  foreach ($frequencia as $freq) {
+  foreach ($frequencia as $cogn => $quantitat) {
     echo "<tr>";
-    // echo $cognom . "<br>";
-    echo "<td>" . $freq . "</td>";
+    echo "<td>" . $cogn . "</td>";
+    echo "<td>" . $quantitat . "</td>";
+    echo "</tr>";
   }
-  echo "</table>"
-
   ?>
 </body>
 

@@ -1,0 +1,23 @@
+</html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<title>FORMULARI DE L'EXERCICI 1</title>	
+	</head>  
+	<body>
+		<form name=frm_combo action="ex01.php" method="GET">
+			<font face="Arial">
+				<b>PARÀMETRES DE CONFIGURACIÓ DEL SERVIDOR:</b><br>
+				Paràmetres a visualitzar:<br>
+				<input type="checkbox" name="serv[]" value="SERVER_SOFTWARE"/>Versió del servidor Apache2<br/>
+				<input type="checkbox" name="serv[]" value="SERVER_PROTOCOL"/> Versió del protocol HTTP del servidor<br/>
+				<input type="checkbox" name="serv[]" value="SERVER_PORT"/> Port del servidor<br/>
+				<input type="checkbox" name="serv[]" value="PHP"/> Versió de PHP<br/> 
+				Nom de l'usuari: 
+				<input type="text" name="nom"><br> 
+				Contrasenya: 
+				<input type="password" name="ctsnya"><br> 
+				<input type="submit" value="Envia"/><input type="reset" value="Esborra"/>
+			</font>
+		</form>
+	</body>
+</html>

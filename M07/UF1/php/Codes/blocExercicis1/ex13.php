@@ -32,48 +32,31 @@
       sort($dades_ordre_antic);
     }
   }
-
   // print_r(ordena_array($dades, 0));
 
   function mostra_dades($dades_actuals, $tipus_mostra)
   {
     if ($tipus_mostra == 0) {
+      $missatge  = "Array ordenat de major a menor.";
       ordena_array($dades_actuals, $tipus_mostra);
-      echo "<table>";
-      echo "<tr>";
-      echo "<td id='llista' colspan='10'>" . "Array ordenat de major a menor" . "</td>" . "<br>";
-      echo "</tr>";
-
-      echo "<tr>";
-      foreach ($dades_actuals as $dada) {
-        echo "<td>" . $dada . "</td>";
-      }
     } else if ($tipus_mostra == 1) {
+      $missatge  = "Array ordenat de menor a major.";
       ordena_array($dades_actuals, $tipus_mostra);
-      echo "<table>";
-      echo "<tr>";
-      echo "<td id='llista' colspan='10'>" . "Array ordenat de menor a major" . "</td>" . "<br>";
-      echo "</tr>";
-
-      echo "<tr>";
-      foreach ($dades_actuals as $dada) {
-        echo "<td>" . $dada . "</td>";
-      }
-      echo "</tr>";
-      echo "</table>";
     } else {
-      echo "<table>";
-      echo "<tr>";
-      echo "<td id='llista' colspan='10'>" . "Estat inicial de l'array" . "</td>" . "<br>";
-      echo "</tr>";
-
-      echo "<tr>";
-      foreach ($dades_actuals as $dada) {
-        echo "<td>" . $dada . "</td>";
-      }
-      echo "</tr>";
-      echo "</table>";
+      $missatge = "Estat inicial de l'array.";
     }
+
+    echo "<table>";
+    echo "<tr>";
+    echo "<td id='llista' colspan='10'>" . $missatge . "</td>" . "<br>";
+    echo "</tr>";
+
+    echo "<tr>";
+    foreach ($dades_actuals as $dada) {
+      echo "<td>" . $dada . "</td>";
+    }
+    echo "</tr>";
+    echo "</table>";
   }
 
   mostra_dades($dades, 73);  // Estat inicial de l'array.

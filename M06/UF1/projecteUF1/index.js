@@ -140,7 +140,7 @@ window.addEventListener("load", function () {
   let llistaGps = document.getElementById("llistaGps");
   let grups = "<table>"; // grups now is a table.
 
-  for (let j = 0; j < 14; j++) {
+  for (let j = 0; j < llistaAlumnes.length / 3; j++) {
     // console.log(j);
 
     if (j % 2 == 0) {
@@ -160,7 +160,7 @@ window.addEventListener("load", function () {
 
   // --- SHOW GROUPS ON THE CLASSROOM. --- //
 
-  let borrarPosicioGrup = 0;
+  let posicioGrup = -1;
 
   for (let i = 1; i <= nGrup.length; i++) {
     let grupClicat = document.getElementById(`llistaGrup${i}`);
@@ -169,32 +169,31 @@ window.addEventListener("load", function () {
     grupClicat.ondblclick = () => {
       // ondblclick is to execute when I double click.
 
-      if (borrarPosicioGrup != 0) {
-        // If a row has been previously selected, I reset the color to lightcyan.
+      if (posicioGrup != -1) {
+        // If a group has been previously selected, I reset the color to lightcyan.
+
+        document.getElementById(`grup${posicioGrup}`).style.backgroundColor =
+          "lightcyan";
 
         document.getElementById(
-          `grup${borrarPosicioGrup}`
+          `llistaGrup${posicioGrup}`
         ).style.backgroundColor = "lightcyan";
-
-        document.getElementById(
-          `llistaGrup${borrarPosicioGrup}`
-        ).style.backgroundColor = "lightcyan";
-        // console.log(`Previously selected: ${borrarPosicioGrup}`);
+        // console.log(`Previously selected: ${posicioGrup}`);
       }
 
-      if (borrarPosicioGrup == i) {
+      if (posicioGrup == i) {
         // If I double click on the same group again.
 
-        borrarPosicioGrup = -i;
-        // console.log(`Delesect group: ${borrarPosicioGrup}`);
-        borrarPosicioGrup = 0; // If I don't have it I won't be able to select another group after deselecting.
+        posicioGrup = -i;
+        // console.log(`Delesect group: ${posicioGrup}`);
+        posicioGrup = -1; // If I don't have it I won't be able to select another group after deselecting.
       } else {
         // Select a group.
 
         grp.style.backgroundColor = "violet";
         grupClicat.style.backgroundColor = "violet";
-        borrarPosicioGrup = i;
-        // console.log(`Select group: ${borrarPosicioGrup}`);
+        posicioGrup = i;
+        // console.log(`Select group: ${posicioGrup}`);
       }
     };
   }

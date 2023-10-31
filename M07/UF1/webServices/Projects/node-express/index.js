@@ -9,32 +9,36 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To analize the HTTP petitions that have JSON.
 
-app.post("/iniciarJoc/:codiPartida", (req, res) => {}); // To say the number of players, I need to to change the url to /iniciarJoc/1 (if I have one player), /iniciarJoc/2 (if I have two players), and this will be the number of the player.
+app.post("/iniciarJoc/:codiPartida/:numJug", (req, res) => {}); // To say the number of players, I need to to change the url to /iniciarJoc/:codiPartida/1 (for the player 1), /iniciarJoc/:codiPartida/2 (for player 2), and this will be the number of the player.
 
 app.get("/obtenirCarta/:codiPartida", (req, res) => {
+  let nCmpt = 0;
+
   let generarTipusCarta = (tpCartaAl) => {
     for (let i in tpCartaAl) {
       i = Math.floor(Math.random() * tipusCarta.length);
-      tpCaAl = tpCartaAl = tpCartaAl[i];
+      tpCartaAl = tpCartaAl[i];
 
       return tpCartaAl;
     }
   };
+  // console.log(generarTipusCarta(tipusCarta));
+
+  let genNumCartaAleatoria = () => {
+    let cartaAleatoria = Math.floor(Math.random() * 12) + 1;
+
+    return cartaAleatoria;
+  };
+  // console.log(genNumCartaAleatoria());
 
   let tipusCarta = "ors copes espases bastons";
   tipusCarta = tipusCarta.split(" ");
 
-  console.log(generarTipusCarta(tipusCarta));
-
-  let generarCartaAleatoria = (cartaAleatoria) => {
-    cartaAleatoria = Math.floor(Math.random() * 12) + 1;
-
-    return cartaAleatoria;
-  };
-
-  // console.log(generarCartaAleatoria(12));
-
-  res.send(`La carta aleatòria és: `);
+  res.send(
+    `La carta aleatòria és: ${genNumCartaAleatoria()} de ${generarTipusCarta(
+      tipusCarta
+    )}`
+  );
 });
 
 app.get("/mostrarCartes/:codiPartida", (req, res) => {});

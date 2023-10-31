@@ -24,39 +24,8 @@
 						echo "Versió del PHP: " . phpversion() . "<br>";
 						break;
 				}
-
-				// if ($opcio) {
-				// 	echo "$opcio" . "<br>";
-				// }
 			}
 		}
-
-		// if ($key == "versioServer") {
-		// 	echo "Has seleccionat veure la versió del servidor." . "<br>";
-		// } elseif ($key == "versioHTTP") {
-		// 	echo "Has seleccionat veure la versió del HTTP." . "<br>";
-		// } elseif ($key == "portServer") {
-		// 	echo "Has seleccionat veure el port del servidor" . "<br>";
-		// } elseif ($key == "versioPHP") {
-		// 	echo "Has seleccionat veure la versió del PHP" . "<br>";
-		// } else {
-		// 	echo "No has demanat visualitzar cap paràmetre." . "<br>";
-		// 	exit(1);
-		// }
-		// }
-
-		// if ($_GET["versioServer"]) {
-		// 	echo "Has seleccionat veure la versió del servidor.";
-		// } elseif ($_GET["versioHTTP"]) {
-		// 	echo "Has seleccionat veure la versió del HTTP.";
-		// } elseif ($_GET["portServer"]) {
-		// 	echo "Has seleccionat veure el port del servidor";
-		// } elseif ($_GET["versioPHP"]) {
-		// 	echo "Has seleccionat veure la versió del PHP";
-		// } else {
-		// 	echo "No has demanat visualitzar cap paràmetre.<br>";
-		// 	exit(1);
-		// }
 	} else {
 		echo "No tens permís per accedir a aquesta web." . "<br>";
 	}
