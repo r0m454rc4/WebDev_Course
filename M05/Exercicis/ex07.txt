@@ -1,0 +1,4 @@
+Un grup ha de tenir una sala confirmada per cap o més d'una data.
+
+Crec que hi hauria d'haver una restricció, dos grups diferents no haurien de poder
+tenir un concert a una sala a una mateixa data a la vegada.
