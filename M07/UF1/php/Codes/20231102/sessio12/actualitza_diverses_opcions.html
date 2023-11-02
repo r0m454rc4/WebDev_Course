@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<meta charset="utf-8">
+		<title>Actualització d'un fitxer de texte</title>	
+	</head>  
+	<body onload="desNouText()">
+		<p><b>ACTUALITZACIONS DIVERSES D'UN FITXERS: AFEGINT DADES AL FINAL, ESBORRANT DADES, MODIFICANT DADES</b></p>
+		<form action="http://localhost:8080/actualitza_diverses_opcions.php" method="POST">
+			<input type="hidden" name="metode" value="PUT"/>
+			Indica un nom de fitxer:<br>
+			<input type="text" size="20" name="nom"><br>
+			<br>
+			Indica el text amb el qual vols treballar:<br>
+			<input type="text" name="text" size="60"><br>
+			<br>
+			<span id="noutext">
+				Indica el nout text:<br>
+				<input type="text" name="noutext" size="60" value=""><br>
+				<br>				
+			</span>
+			Indica que vols fer amb el text:<br>
+			<input type="radio" name="opc" value="esb"onclick="desNouText()"/>Esborra el text<br/>
+			<input type="radio" name="opc" value="mod" onclick="habNouText()"/>Modifica el text<br/>
+			<input type="radio" name="opc" value="nou" onclick="desNouText()" checked/>Afegeix el nou text<br/>
+			<br>			
+			<input type="submit" value="Envia"/><input type="reset" value="Esborra"/>
+		</form>
+		<br>
+		<a href="http://localhost:8080/menu.html">Torna al menú</a>
+		<script>
+			function desNouText() {
+				document.getElementById("noutext").style.display = "none";				
+			}
+			function habNouText() {
+				document.getElementById("noutext").style.display = "inline";
+								
+			}
+		</script>
+	</body>
+</html>

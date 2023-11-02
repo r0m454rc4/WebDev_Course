@@ -5,14 +5,15 @@
 
 const express = require("express");
 const app = express();
+const PORT = 8888;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To analize HTTP petitions that have JSON.
 
-let partidaIniciada = []; // I use an array because I want to be able to access codiPartida.
+let partidaIniciada = [],
+  totalCartes = [];
 let codiPartida = 0,
   numJug = 0;
-let totalCartes = [[], []]; // Array that stores the cards from the player.
 
 app.post("/iniciarJoc/:codiPartida", (req, res) => {
   // http://localhost:8888/iniciarJoc/1
@@ -60,16 +61,16 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
     let tipusCarta = ["ors", "espases", "copes", "bastons"];
     let cartaTirada = generarCarta(tipusCarta);
 
-    // If I don't have the array for the player:
+    // If I don't have the array to store the cards from the player:
     if (!totalCartes[numJug]) {
       totalCartes[numJug] = []; // I create it.
     }
-
-    console.log(cartaTirada);
+    console.log(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
 
     totalCartes[numJug].push(cartaTirada);
 
-    res.send(`La carta aleatòria és: ${cartaTirada}`);
+    res.json(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
+    // res.send(`La carta aleatòria és: ${cartaTirada}`);
   } else {
     res.status(404).send(`La partida encara no ha estat iniciada.`);
   }
@@ -84,25 +85,81 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
 
   if (partidaIniciada[codiPartida]) {
     // If the player doesn't have any card:
-    if (totalCartes[numJug].length == 0) {
+    if (totalCartes[numJug] == undefined) {
       res
         .status(404)
-        .send(`El judagor ${numJug} encara no té cap carta per mostrar.`);
+        .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
+    } else if (totalCartes[numJug].length == 0) {
+      // Here I'll never enter.
+      res.status(404).send(`El jugador ${numJug} no té cap carta per mostrar.`);
     } else {
-      res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
+      res.json(totalCartes[numJug]);
+      // res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
     }
   } else {
     res.status(404).send(`La partida encara no ha estat iniciada.`);
   }
 });
 
-app.put("/tirarCarta/:codiPartida/:numJug/:carta", (req, res) => {});
+app.put("/tirarCarta/:codiPartida/:numJug/:carta", (req, res) => {
+  // http://localhost:8888/tirarCarta/1/1/1 --> Player 1 throws the second card on codiPartida = 1.
+  // http://localhost:8888/tirarCarta/1/2/2 --> Player 2 throws the third card on codiPartida = 1.
+
+  codiPartida = req.params.codiPartida;
+  numJug = req.params.numJug;
+  carta = req.params.carta;
+
+  if (partidaIniciada[codiPartida]) {
+    // If the player doesn't have any card:
+    if (totalCartes[numJug] == undefined) {
+      res
+        .status(404)
+        .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
+    } else if (totalCartes[numJug][carta] == undefined) {
+      res.status(404).send(`El jugador ${numJug} no disposa d'aquesta carta.`);
+    } else if (totalCartes[numJug].length == 0) {
+      // Here I'll never enter.
+      res.status(404).send(`El jugador ${numJug} no té cap carta per mostrar.`);
+    } else {
+      res.send(
+        `El jugador ${numJug} tira la carta ${totalCartes[numJug][carta]}`
+      );
+
+      totalCartes[numJug].splice([carta], [carta]); // I delete the card from totalCartes[numJug].
+
+      // The player always will have the card from index 0.
+      console.log(`El jugador ${numJug} ara té ${totalCartes[numJug]}`);
+    }
+  } else {
+    res.status(404).send(`La partida encara no ha estat iniciada.`);
+  }
+});
+
 app.put(
   "/moureJugador/:codiPartida/:numJug/:aposta/:quantitat",
   (req, res) => {}
 );
 app.put("/moureJugador/:codiPartida/:numJug/:aposta/:passa", (req, res) => {});
 
-app.delete("/acabarJoc/:codiPartida", (req, res) => {});
+app.delete("/acabarJoc/:codiPartida", (req, res) => {
+  // http://localhost:8888/acabarJoc/1
 
-app.listen(8888, () => console.log("Inici servidor"));
+  codiPartida = req.params.codiPartida; // codiPartida has the value of the parameter from the url.
+
+  if (partidaIniciada[codiPartida]) {
+    // If the game hasn't started yet.
+    partidaIniciada[codiPartida] = false;
+
+    res.send(
+      `La partida amb codi ${codiPartida} ha estat acabada correctament.`
+    );
+  } else {
+    res
+      .status(404)
+      .send(`La partida amb codi ${codiPartida} no està inicialitzada.`);
+  }
+});
+
+app.listen(PORT, () =>
+  console.log(`Servidor funcionant en http://localhost:${PORT}`)
+);

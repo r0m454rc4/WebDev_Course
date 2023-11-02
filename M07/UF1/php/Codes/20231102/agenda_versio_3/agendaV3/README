@@ -1,0 +1,13 @@
+A) CANVIS
+	a) El propietari i grup del fitxer usuaris ha de ser www-data. No cal canviar el propietari grup de la carpeta
+	b) Fitxer usuaris -> nou camp. Si val 1 l'usuari és administrador. Si val 0 no ho és
+    c) menu.php -> nova opció si l'usuari és administrador.
+    d) biblioteca.php -> nova funciona fAutoritzacio per autoritzar a crear nous usuaris.
+    e) biblioteca.php -> nova funciona fAutenticació per autenticar usuaris.
+    f) biblioteca.php -> nova funciona fActualitzaUsuaris per afegir nous usuaris.
+    g) biblioteca.php -> noves constants TIMEOUT i ADMIN
+    h) biblioteca.php -> He canviat agendaV2 per agendaV3 a FITXER_USUARIS, FITXER_PROFESSIONAL, FITXER_PERSONAL i FITXER_SERVEIS
+    i) registre.php --> Per afegir un nou usuari a l'aplicació
+    j) error_autoritzacio.php --> Missatge error d'autorització
+
+
