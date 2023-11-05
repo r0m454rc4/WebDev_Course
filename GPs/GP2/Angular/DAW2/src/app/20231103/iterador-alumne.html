@@ -1,0 +1,48 @@
+<h1>Iterador - Objecte Alumne</h1>
+
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Entra el nom de l'alumne"
+    #alumne
+    required
+  />
+
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Entra la nota de l'alumne"
+    #nota
+    required
+  />
+</div>
+
+<button
+  class="btn btn-primary"
+  (click)="afegirAlumne(alumne.value, nota.value)"
+>
+  Afegir
+</button>
+
+<button class="btn btn-primary" (click)="esborrarAlumne(alumne.value)">
+  Esborrar
+</button>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Nom i nota</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let alumne of llistaAlumnes;index as i">
+      <th scope="col">{{i+1}}</th>
+      <!--  With this, I show the index of the rows. -->
+      <td>Nom: <b>{{alumne.nom}}</b>, nota: <b>{{alumne.nota}}</b></td>
+    </tr>
+  </tbody>
+</table>

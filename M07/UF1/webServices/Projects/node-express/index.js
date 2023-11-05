@@ -72,7 +72,11 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
     res.json(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
     // res.send(`La carta aleatòria és: ${cartaTirada}`);
   } else {
-    res.status(404).send(`La partida encara no ha estat iniciada.`);
+    res
+      .status(404)
+      .send(
+        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+      );
   }
 });
 
@@ -97,7 +101,11 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
       // res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
     }
   } else {
-    res.status(404).send(`La partida encara no ha estat iniciada.`);
+    res
+      .status(404)
+      .send(
+        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+      );
   }
 });
 
@@ -131,15 +139,62 @@ app.put("/tirarCarta/:codiPartida/:numJug/:carta", (req, res) => {
       console.log(`El jugador ${numJug} ara té ${totalCartes[numJug]}`);
     }
   } else {
-    res.status(404).send(`La partida encara no ha estat iniciada.`);
+    res
+      .status(404)
+      .send(
+        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+      );
   }
 });
 
-app.put(
-  "/moureJugador/:codiPartida/:numJug/:aposta/:quantitat",
-  (req, res) => {}
-);
-app.put("/moureJugador/:codiPartida/:numJug/:aposta/:passa", (req, res) => {});
+// I NEED TO FINISH THIS.
+app.put("/moureJugador/:codiPartida/:numJug/aposta/:quantitat", (req, res) => {
+  // http://localhost:8888/moureJugador/1/1/aposta/30  --> Player 1 bets 30 points on codiPartida = 1.
+
+  let quantitatInicialPunts = [],
+    quantitat = 0,
+    quantitatRestant = 0;
+
+  quantitatInicialPunts[numJug] = 100;
+
+  codiPartida = req.params.codiPartida;
+  numJug = req.params.numJug;
+  quantitat = parseInt(req.params.quantitat);
+
+  if (partidaIniciada[codiPartida]) {
+    if (quantitatInicialPunts[numJug] >= quantitat) {
+      quantitatRestant = quantitatInicialPunts[numJug] - quantitat;
+
+      res.send(
+        `El jugador ${numJug} aposta ${quantitat} fitxes. Li queden ${quantitatRestant} fitxes`
+      );
+    } else if (quantitatRestant == 0) {
+      res.status(404).send(`El jugador ${numJug} no té cap fitxa restant.`);
+    }
+  } else {
+    res
+      .status(404)
+      .send(
+        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+      );
+  }
+});
+
+app.put("/moureJugador/:codiPartida/:numJug/aposta/passa", (req, res) => {
+  // http://localhost:8888/moureJugador/1/1/aposta/passa
+
+  codiPartida = req.params.codiPartida;
+  numJug = req.params.numJug;
+
+  if (partidaIniciada[codiPartida]) {
+  } else {
+    res
+      .status(404)
+      .send(
+        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+      );
+  }
+});
 
 app.delete("/acabarJoc/:codiPartida", (req, res) => {
   // http://localhost:8888/acabarJoc/1
@@ -156,7 +211,9 @@ app.delete("/acabarJoc/:codiPartida", (req, res) => {
   } else {
     res
       .status(404)
-      .send(`La partida amb codi ${codiPartida} no està inicialitzada.`);
+      .send(
+        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+      );
   }
 });
 

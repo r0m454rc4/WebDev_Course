@@ -13,16 +13,16 @@ import { Component } from '@angular/core';
     <h2 *ngIf="esParell">És parell</h2>
     <h3 *ngIf="!esParell">No és parell</h3>
   `,
-  styles: ['h2 { color: #900 }', 'h3 {color:#0F0}'],
+  styles: ['h2 { color: #0F0 }', 'h3 {color:#900}'],
 })
-export class M03_ParellSenar {
+export class ParellSenar {
   esParell: boolean;
 
   constructor() {
-    this.esParell = false; // On the beggining the result will be 0.
+    this.esParell = false; // On the beggining esParell will be false.
   }
 
   comprovarParell(nombre: string): void {
-    this.esParell = parseInt(nombre) % 2 == 0;
+    this.esParell = parseInt(nombre) % 2 == 0; // It returns false/true.
   }
 }

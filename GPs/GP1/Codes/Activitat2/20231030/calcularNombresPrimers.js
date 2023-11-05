@@ -18,18 +18,16 @@ http
 
         response.write("<table border='1'>");
 
-        for (let i = 0; i <= ventallNumeros; i++) {
+        for (let i = 2; i <= ventallNumeros; i++) {
           if (i <= 1) {
             bEsprimer = false;
           } else if (i == 2) {
             bEsprimer = true;
-          } //else if (i % 1 == 0 && 1 % i == 0) {
-          //   bEsprimer = true;
-          // }
-          else if (i % i == 0 || i % 1 == 1) {
-            bEsprimer = false;
-          } else {
+          } else if (i % 2 == 1) {
             bEsprimer = true;
+            // console.log(`${i} % 2 = ${i % 2}`);
+          } else {
+            bEsprimer = false;
           }
 
           response.write(
