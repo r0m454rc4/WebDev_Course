@@ -1,4 +1,19 @@
-Un grup ha de tenir una sala confirmada per cap o més d'una data.
+v.0.) Una sala està disponible per cap o moltes dates, en la qual sala i data hi
+ha d'haver un concert per part d'un grup.
 
-Crec que hi hauria d'haver una restricció, dos grups diferents no haurien de poder
-tenir un concert a una sala a una mateixa data a la vegada.
+
+RESTRICCIONS.) Crec que hi hauria d'haver una restricció, dos grups diferents no haurien de 
+poder tenir un concert a una sala a una mateixa data a la vegada, ja que en el gràfic actual 
+es pot canviar el grup cada segon, la qual cosa no té gire sentit, amb la qual 
+cosa, hem de fer això:
+
+-----
+Donada una instància de G i S no poden existir un parell d'instàncies de 
+data en que l'any sigui el matateix, el dia sigui el mateix i els minuts siguin
+els mateixos.
+-----
+
+
+(a,b) -> c
+(a,c) -> b
+(b,c) -> a

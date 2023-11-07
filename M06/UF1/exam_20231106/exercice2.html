@@ -1,0 +1,59 @@
+<!-- Genera una galeria d'imatges en una taula de manera dinàmica a partir d'unes imatges definides en una llista. En polsar a sonbre d'una de les imatges aquesta es veu més gran dins de la mateixa pàgina. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 2</title>
+    <style>
+      table {
+        border: solid 2px;
+      }
+      td {
+        border: solid 1.5px;
+        padding: 5px;
+      }
+
+      img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <label id="label1"></label>
+    <label id="imatgeAmplificada"></label>
+
+    <script>
+      let llistaImatges = [
+        "./hallstatt.jpg",
+        "./vienna.jpg",
+        "./vienna.jpg",
+        "./hallstatt.jpg",
+        "./hallstatt.jpg",
+        "./vienna.jpg",
+        "./vienna.jpg",
+        "./hallstatt.jpg",
+      ];
+
+      let etiqueta = document.getElementById("label1");
+      let generarTaula = "";
+
+      generarTaula += "<table>";
+
+      for (let i = 0; i < llistaImatges.length; i++) {
+        let afegirImatge = `<img src = ${llistaImatges[i]}>`;
+
+        if (i % 2 == 0) {
+          generarTaula += "<tr></tr>";
+        }
+
+        generarTaula += `<td>${afegirImatge}</td>`;
+      }
+
+      generarTaula += "</table>";
+
+      etiqueta.innerHTML = generarTaula;
+    </script>
+  </body>
+</html>

@@ -13,7 +13,8 @@ app.use(express.json()); // To analize HTTP petitions that have JSON.
 let partidaIniciada = [],
   totalCartes = [];
 let codiPartida = 0,
-  numJug = 0;
+  numJug = 0,
+  quantitatPuntsIni = 100; // I declare it here because I can't have it on "app.put" beucause it'll reset very time I request and quantitatRestant will always be the same.
 
 app.post("/iniciarJoc/:codiPartida", (req, res) => {
   // http://localhost:8888/iniciarJoc/1
@@ -52,7 +53,7 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
         carta = Math.floor(Math.random() * tipusCarta.length);
         tpCartaAl = tpCartaAl[carta];
 
-        break; // In order to get just one card.
+        break; // In order to get just one random card.
       }
 
       return `${cartaAleatoria} de ${tpCartaAl}`;
@@ -88,15 +89,16 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
   numJug = req.params.numJug;
 
   if (partidaIniciada[codiPartida]) {
-    // If the player doesn't have any card:
+    // If the player didn't get any yet, will be undefined.
     if (totalCartes[numJug] == undefined) {
       res
         .status(404)
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
+      // If the player doesn't have any card, because he already throwed them.
     } else if (totalCartes[numJug].length == 0) {
-      // Here I'll never enter.
       res.status(404).send(`El jugador ${numJug} no té cap carta per mostrar.`);
     } else {
+      // I send the cards that the player has in a JSON format.
       res.json(totalCartes[numJug]);
       // res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
     }
@@ -118,15 +120,15 @@ app.put("/tirarCarta/:codiPartida/:numJug/:carta", (req, res) => {
   carta = req.params.carta;
 
   if (partidaIniciada[codiPartida]) {
-    // If the player doesn't have any card:
     if (totalCartes[numJug] == undefined) {
       res
         .status(404)
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
     } else if (totalCartes[numJug][carta] == undefined) {
+      // If the player doesn't have the card.
       res.status(404).send(`El jugador ${numJug} no disposa d'aquesta carta.`);
     } else if (totalCartes[numJug].length == 0) {
-      // Here I'll never enter.
+      // If the player doesn't have any card, because he already throwed them.
       res.status(404).send(`El jugador ${numJug} no té cap carta per mostrar.`);
     } else {
       res.send(
@@ -147,29 +149,43 @@ app.put("/tirarCarta/:codiPartida/:numJug/:carta", (req, res) => {
   }
 });
 
-// I NEED TO FINISH THIS.
 app.put("/moureJugador/:codiPartida/:numJug/aposta/:quantitat", (req, res) => {
   // http://localhost:8888/moureJugador/1/1/aposta/30  --> Player 1 bets 30 points on codiPartida = 1.
 
-  let quantitatInicialPunts = [],
-    quantitat = 0,
+  let quantitatPuntsJug = [],
     quantitatRestant = 0;
 
-  quantitatInicialPunts[numJug] = 100;
+  quantitatPuntsJug[numJug] = quantitatPuntsIni;
 
   codiPartida = req.params.codiPartida;
   numJug = req.params.numJug;
   quantitat = parseInt(req.params.quantitat);
 
-  if (partidaIniciada[codiPartida]) {
-    if (quantitatInicialPunts[numJug] >= quantitat) {
-      quantitatRestant = quantitatInicialPunts[numJug] - quantitat;
+  // console.log(quantitatPuntsIni);
+  quantitatPuntsIni -= quantitat; // Here I rest the bet amount.
 
-      res.send(
-        `El jugador ${numJug} aposta ${quantitat} fitxes. Li queden ${quantitatRestant} fitxes`
-      );
-    } else if (quantitatRestant == 0) {
-      res.status(404).send(`El jugador ${numJug} no té cap fitxa restant.`);
+  if (partidaIniciada[codiPartida]) {
+    if (totalCartes[numJug] == undefined) {
+      res
+        .status(404)
+        .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
+    } else if (totalCartes[numJug].length == 0) {
+      // If the player doesn't have any card, because he already throwed them.
+      res
+        .status(404)
+        .send(
+          `El jugador ${numJug} no pot apostar fitxes a causa de no tenir cartes restants.`
+        );
+    } else {
+      if (quantitatPuntsJug[numJug] >= quantitat) {
+        quantitatRestant = quantitatPuntsJug[numJug] - quantitat;
+
+        res.send(
+          `El jugador ${numJug} aposta ${quantitat} fitxes. Li queden ${quantitatRestant} fitxes`
+        );
+      } else if (quantitatRestant == 0) {
+        res.status(404).send(`El jugador ${numJug} no té cap fitxa restant.`);
+      }
     }
   } else {
     res
@@ -180,13 +196,27 @@ app.put("/moureJugador/:codiPartida/:numJug/aposta/:quantitat", (req, res) => {
   }
 });
 
-app.put("/moureJugador/:codiPartida/:numJug/aposta/passa", (req, res) => {
-  // http://localhost:8888/moureJugador/1/1/aposta/passa
+app.put("/moureJugador/:codiPartida/:numJug/passa", (req, res) => {
+  // http://localhost:8888/moureJugador/1/1/passa
 
   codiPartida = req.params.codiPartida;
   numJug = req.params.numJug;
 
   if (partidaIniciada[codiPartida]) {
+    if (totalCartes[numJug] == undefined) {
+      res
+        .status(404)
+        .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
+    } else if (totalCartes[numJug].length == 0) {
+      // Here I'll never enter.
+      res
+        .status(404)
+        .send(
+          `El jugador ${numJug} no pot passar a causa de no tenir cartes restants.`
+        );
+    } else {
+      res.send(`El jugador ${numJug} decideix no apostar en aquest torn.`);
+    }
   } else {
     res
       .status(404)

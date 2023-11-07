@@ -1,0 +1,46 @@
+<!--  Desenvolupa un programa que mostri dues barres de progrés HTML5 que mostren un comptador de segons i minuts. S'actualitza cada segon. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 1</title>
+  </head>
+  <body>
+    <p>Segons: <label id="segons"></label></p>
+    <progress value="0" min="0" max="60" id="barraSegons"></progress>
+
+    <p>Minuts: <label id="minuts"></label></p>
+    <progress value="0" min="0" max="60" id="barraMinuts"></progress>
+
+    <script>
+      let cmptSegons = 0,
+        cmptMinuts = 0;
+
+      let incrementarSegons = () => {
+        let segonsActuals = document.getElementById("segons");
+        let minutsActuals = document.getElementById("minuts");
+        let barraSegons = document.getElementById("barraSegons");
+        let barraMinuts = document.getElementById("barraMinuts");
+        cmptSegons++;
+
+        segonsActuals.innerHTML = `${cmptSegons}`;
+
+        if (cmptSegons == 60) {
+          cmptSegons = 0; // If I reach 60 seconds, I the counter to 0.
+          cmptMinuts++;
+          minutsActuals.innerHTML = `${cmptMinuts}`;
+        }
+        if (cmptMinuts == 60) {
+          cmptMinuts = 0;
+        }
+
+        barraSegons.value = cmptSegons; // The value of barraSegons = the number of seconds.
+        barraMinuts.value = cmptMinuts;
+      };
+
+      setInterval(incrementarSegons, 1000); // In order to execute the code every 1 second.
+    </script>
+  </body>
+</html>

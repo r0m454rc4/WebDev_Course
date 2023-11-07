@@ -1,4 +1,3 @@
-const { log } = require("console");
 let http = require("http");
 
 http
@@ -10,12 +9,14 @@ http
     let generarNombresPrimers = () => {
       let bEsprimer = true;
 
-      for (let i = 2; i <= 10; i++) {
-        if (i == 2) {
+      for (let i = 0; i <= 10; i++) {
+        if (i <= 1) {
+          bEsprimer = false;
+        } else if (i == 2) {
           bEsprimer = true;
-        } else if (i % 2 == 1 || i % i == 1) {
+        } else if (i % 2 == 1) {
           bEsprimer = true;
-          // console.log(`${i} % 2 = ${i % 2}`);
+          console.log(`${i} % 2 = ${i % 2}`);
         } else {
           bEsprimer = false;
         }
@@ -23,7 +24,6 @@ http
         response.write(
           `<tr><td>És el número <b>${i}</b> primer: <b>${bEsprimer}</b></td></tr>`
         );
-        // console.log(`És ${i} primer: ${bEsprimer}`);
       }
 
       return "";

@@ -19,9 +19,7 @@ http
         response.write("<table border='1'>");
 
         for (let i = 2; i <= ventallNumeros; i++) {
-          if (i <= 1) {
-            bEsprimer = false;
-          } else if (i == 2) {
+          if (i == 2) {
             bEsprimer = true;
           } else if (i % 2 == 1) {
             bEsprimer = true;
