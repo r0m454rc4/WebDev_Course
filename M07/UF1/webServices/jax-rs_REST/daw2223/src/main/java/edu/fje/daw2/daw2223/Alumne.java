@@ -26,6 +26,7 @@ public class Alumne {
         this.nom = nom;
     }
 
+    // Here I configure the getters and setters.
     public int getCodi() {
         return codi;
     }
