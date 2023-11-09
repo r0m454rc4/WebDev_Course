@@ -15,7 +15,7 @@ export class IteradorAlumneComponent {
   ];
 
   afegirAlumne(alumne: string, nota: string): void {
-    let notaNum = parseInt(nota);
+    let notaNum = parseFloat(nota);
 
     // Convert NaN to 0.
     if (isNaN(notaNum)) {
@@ -32,9 +32,11 @@ export class IteradorAlumneComponent {
       }),
       1
     );
+  }
 
-    // if (this.llistaAlumnes.indexOf(alumne) >= 0) {
-    //   this.llistaAlumnes.splice(this.llistaAlumnes.indexOf(alumne), 1); // I delete one name from the array.
-    // }
+  mostrarMitja() {
+    for (let i of this.llistaAlumnes) {
+      `La mitja és ${[this.llistaAlumnes[i].nota]}`;
+    }
   }
 }

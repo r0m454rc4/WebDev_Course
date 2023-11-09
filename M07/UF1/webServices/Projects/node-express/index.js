@@ -1,6 +1,9 @@
 /**
  * Card game, 7 i mig.
+ *
  * @author roma.sarda.casellas373@gmail.com
+ * @version 1.0.
+ * @date 09.11.23.
  */
 
 const express = require("express");
@@ -151,6 +154,7 @@ app.put("/tirarCarta/:codiPartida/:numJug/:carta", (req, res) => {
 
 app.put("/moureJugador/:codiPartida/:numJug/aposta/:quantitat", (req, res) => {
   // http://localhost:8888/moureJugador/1/1/aposta/30  --> Player 1 bets 30 points on codiPartida = 1.
+  // http://localhost:8888/moureJugador/1/2/aposta/50  --> Player 2 bets 30 points on codiPartida = 1.
 
   let quantitatPuntsJug = [],
     quantitatRestant = 0;
@@ -179,10 +183,16 @@ app.put("/moureJugador/:codiPartida/:numJug/aposta/:quantitat", (req, res) => {
     } else {
       if (quantitatPuntsJug[numJug] >= quantitat) {
         quantitatRestant = quantitatPuntsJug[numJug] - quantitat;
-
         res.send(
           `El jugador ${numJug} aposta ${quantitat} fitxes. Li queden ${quantitatRestant} fitxes`
         );
+      } else if (quantitat >= quantitatRestant) {
+        // If the user wants to bet more points that he have:
+        res
+          .status(404)
+          .send(
+            `El jugador ${numJug} no pot apostar ${quantitat} fitxes, ja que superen la quantitat de fitxes actuals.`
+          );
       } else if (quantitatRestant == 0) {
         res.status(404).send(`El jugador ${numJug} no té cap fitxa restant.`);
       }
@@ -198,6 +208,7 @@ app.put("/moureJugador/:codiPartida/:numJug/aposta/:quantitat", (req, res) => {
 
 app.put("/moureJugador/:codiPartida/:numJug/passa", (req, res) => {
   // http://localhost:8888/moureJugador/1/1/passa
+  // http://localhost:8888/moureJugador/1/2/passa
 
   codiPartida = req.params.codiPartida;
   numJug = req.params.numJug;
@@ -215,7 +226,7 @@ app.put("/moureJugador/:codiPartida/:numJug/passa", (req, res) => {
           `El jugador ${numJug} no pot passar a causa de no tenir cartes restants.`
         );
     } else {
-      res.send(`El jugador ${numJug} decideix no apostar en aquest torn.`);
+      res.send(`El jugador ${numJug} decideix passar en aquest torn.`);
     }
   } else {
     res

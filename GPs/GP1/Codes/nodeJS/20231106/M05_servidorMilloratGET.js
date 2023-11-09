@@ -11,28 +11,38 @@ function iniciar() {
     let suma = 0,
       i = 0;
     if (reqUrl.pathname == "/mitjana") {
+      // http://localhost:8888/mitjana?nota=5?&nota=10
+
       consulta.forEach(function (valor, clau) {
         if (clau == "nota") {
           suma += parseInt(valor);
           i++;
         }
       });
-      res.write(`la mitjana és  ${(suma / i).toFixed(2)} `);
+      res.write(`La mitjana obtinguda equival a: ${(suma / i).toFixed(2)} `);
       res.end();
     } else if (reqUrl.pathname == "/pagina.html") {
+      // If I ask for pagina.html.
+
+      // fs.readFile is to read pagina.html.
       fs.readFile("pagina.html", function (err, sortida) {
         res.writeHead(200, {
+          // As I return an html, the MIME must be "text/html".
           "Content-Type": "text/html; charset=utf-8",
         });
-        console.log(+sortida);
+
+        // console.log(sortida);
         res.write(sortida);
         res.end();
       });
-    } else if (reqUrl.pathname == "/styles/style.css") {
+    }
+    // As pagina.html asks for style.css, because is linked on the html, I need to manually add the request.
+    else if (reqUrl.pathname == "/styles/style.css") {
       fs.readFile("./styles/style.css", function (err, sortida) {
         res.writeHead(200, {
           "Content-Type": "text/css; charset=utf-8",
         });
+
         res.write(sortida);
         res.end();
       });
@@ -41,6 +51,7 @@ function iniciar() {
         res.writeHead(200, {
           "Content-Type": "image/jpeg; charset=utf-8",
         });
+
         res.write(sortida);
         res.end();
       });
@@ -49,14 +60,17 @@ function iniciar() {
         res.writeHead(200, {
           "Content-Type": "image/vnd.microsoft.icon; charset=utf-8",
         });
+
         res.write(sortida);
         res.end();
       });
     } else {
+      // If I don't ask for any of the pages that were before, I send "Not found".
+
       res.writeHead(404, {
         "Content-Type": "text/html; charset=utf-8",
       });
-      res.write("not found");
+      res.write("Not found");
       res.end();
     }
   }
