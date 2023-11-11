@@ -1,5 +1,5 @@
 /**
- * Card game, 7 i mig.
+ * Card game, 7 & 1/2.
  *
  * @author roma.sarda.casellas373@gmail.com
  * @version 1.0.
@@ -13,6 +13,7 @@ const PORT = 8888;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To analize HTTP petitions that have JSON.
 
+// Here I declare some global variables.
 let partidaIniciada = [],
   totalCartes = [];
 let codiPartida = 0,

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "node-express"
+		},
+		{
+			"path": "jax-rs"
+		}
+	],
+	"settings": {}
+}

@@ -1,37 +1,48 @@
 /**
- * WebService que representa un joc de tres en ratlla
- * 
+ * Card game, 7 & 1/2.
+ *
  * @author roma.sarda.casellas373@gmail.com
  * @version 1.0.
  * @date 09.11.23.
  */
 
-package edu.fje.daw2.daw2223;
+package edu.fje.daw2.joccartes;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+
+import java.util.ArrayList;
 
 @Path("/")
 public class JocCarta {
     /**
      * Create a new game using codiPartida as an URL parameter.
-     * http://localhost:8888/iniciarJoc/1
-     * 
+     * http://localhost:8888/jocCartes_war_exploded/api/iniciarJoc/1.
+     *
      * @param codiPartida
      * @return True if codiPartida has been iniciated, or false if it hasn't.
      */
+
+    // Here I declare some global variables.
+    private static ArrayList<Integer> partidaIniciada = new ArrayList<>();
+    private static ArrayList<Integer> totalCartes = new ArrayList<>();
+    int codiPartida = 0, numJug = 0, quantitatPuntsIni = 100;
+
     @POST
     @Path("/iniciarJoc/{codiPartida}")
 
     @Produces(MediaType.TEXT_PLAIN)
     public String iniciarJoc(@PathParam("codiPartida") int codiPartida) {
+        if (!partidaIniciada.contains(codiPartida)) {
+            partidaIniciada.get(codiPartida) = True;
+        }
+
         return "La partida amb codi " + codiPartida + " ha estat inicialitzada correctament.";
     }
 
     /**
      * Method that will get a random card for the player.
-     * http://localhost:8888/obtenirCarta/1/1 --> Player 1 on codiPartida = 1.
-     * http://localhost:8888/obtenirCarta/1/2 --> Player 2 on codiPartida = 1.
+     * http://localhost:8888/jocCartes_war_exploded/api/obtenirCarta/1/1.
      * 
      * @param codiPartida
      * @param numJug
@@ -46,9 +57,8 @@ public class JocCarta {
 
     /**
      * Method that will show the cards that the player has.
-     * http://localhost:8888/mostrarCartes/1/1 --> Player 1 on codiPartida = 1.
-     * http://localhost:8888/mostrarCartes/1/2 --> Player 2 on codiPartida = 1.
-     * 
+     * http://localhost:8888/jocCartes_war_exploded/api/mostrarCartes/1/1.
+     *
      * @param codiPartida
      * @param numJug
      * @return The cards the the player has.
@@ -62,9 +72,8 @@ public class JocCarta {
 
     /**
      * Method that will throw a card from the player.
-     * http://localhost:8888/tirarCarta/1/1/1 --> Player 1 throws the second card.
-     * http://localhost:8888/tirarCarta/1/2/2 --> Player 2 throws the third card.
-     * 
+     * http://localhost:8888/jocCartes_war_exploded/api/tirarCarta/1/1/1.
+     *
      * @param codiPartida
      * @param numJug
      * @param carta
@@ -82,10 +91,8 @@ public class JocCarta {
 
     /**
      * Method to bet points on a game.
-     * http://localhost:8888/moureJugador/1/1/aposta/30 --> Player 1 bets 30 points.
-     * http://localhost:8888/moureJugador/1/2/aposta/50 --> Player 2 bets 30
-     * points.
-     * 
+     * http://localhost:8888/jocCartes_war_exploded/api/moureJugador/1/1/aposta/30.
+     *
      * @param codiPartida
      * @param numJug
      * @param quantitat
@@ -103,9 +110,8 @@ public class JocCarta {
 
     /**
      * Method for the user to say that don't want to play on the turn.
-     * http://localhost:8888/moureJugador/1/1/passa
-     * http://localhost:8888/moureJugador/1/2/passa
-     * 
+     * http://localhost:8888/jocCartes_war_exploded/api/moureJugador/1/1/passa.
+     *
      * @param codiPartida
      * @param numJug *
      * @return True if a player doesn't want to play, false if wants to play.
@@ -121,15 +127,15 @@ public class JocCarta {
 
     /**
      * Method to emd a game.
-     * http://localhost:8888/acabarJoc/1
-     * 
+     * http://localhost:8888/jocCartes_war_exploded/api/acabarJoc/1
+     *
      * @param codiPartida
      * @return End the game.
      */
     @DELETE
     @Path("/acabarJoc/{codiPartida}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String esborrarPartida(@FormParam("codiPartida") int codiPartida) {
+    public String esborrarPartida(@PathParam("codiPartida") int codiPartida) {
         return "La partida amb codi " + codiPartida + " ha estat acabada correctament";
     }
 }
