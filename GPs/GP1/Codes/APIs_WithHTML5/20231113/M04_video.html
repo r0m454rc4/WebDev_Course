@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <title>DAW2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <link rel="stylesheet" type="text/css" href="css/estils.css" />
+  </head>
+
+  <body>
+    <h1>Video API</h1>
+
+    <video
+      id="movies"
+      oncanplay="iniciVideo()"
+      onended="parar()"
+      autobuffer="true"
+      width="400px"
+      height="300px"
+    >
+      <source
+        src="media/big_buck_bunny.ogv"
+        type='video/ogg; codecs="theora, vorbis"'
+      />
+    </video>
+
+    <button id="estat">Reproducció</button>
+    <button id="inici" onclick="anarInici()">Inici</button>
+    <button id="final" onclick="anarFinal()">Final</button>
+    <label id="temps">0</label>
+
+    <canvas id="timeline" width="400px" height="300px"> </canvas>
+  </body>
+
+  <script>
+    var interval = 5000;
+
+    // Mida de la instantània
+    var ampladaInstantania = 100;
+    var alturaInstantania = 75;
+
+    // files i columnes del timeline
+    var nombreFiles = 4;
+    var nombreColumnes = 4;
+    var graella = nombreFiles * nombreColumnes;
+
+    // comptador instantania
+    var comptadorInstantania = 0;
+
+    // to cancel the timer at end of play
+    var intervalId;
+
+    var estat = document.getElementById("estat");
+    var temps = document.getElementById("temps");
+
+    var videoIniciat = false;
+    var video = document.getElementById("movies");
+
+    function iniciVideo() {
+      // posa en marxa el timer només el primer cop
+      if (videoIniciat) return;
+      videoIniciat = true;
+
+      // calcula una instantania incial i crea la resta segons el timer
+      actualitzarCanvas();
+      intervalId = setInterval(actualitzarCanvas, interval);
+
+      // manegador per anar al punt del video en funció de la zona del canvas polsada
+      var timeline = document.getElementById("timeline");
+      timeline.onclick = function (evt) {
+        var offX = evt.layerX - timeline.offsetLeft;
+        var offY = evt.layerY - timeline.offsetTop;
+
+        // calcula la posició de la graella que s'ha polsat, index zero
+        var posicio = Math.floor(offY / alturaInstantania) * frameRows;
+        posicio += Math.floor(offX / ampladaInstantania);
+
+        // calcula el temps de la instantania seleccionada
+        var instantaniaSeleccionada =
+          Math.floor(comptadorInstantania / graella) * graella + posicio;
+
+        // arrodoniment en funció d'on es polsa
+        if (posicio > comptadorInstantania % 16)
+          instantaniaSeleccionada -= graella;
+
+        // no podem seleccionar valors anteriors a zero
+        if (instantaniaSeleccionada < 0) return;
+
+        // cerquem el tros de video que correspon
+
+        video.currentTime =
+          (instantaniaSeleccionada * tempsActualitzacio) / 1000;
+        comptadorInstantania = instantaniaSeleccionada;
+      };
+    }
+
+    // dibuixa una instantània en el canvas
+    function actualitzarCanvas() {
+      var timeline = document.getElementById("timeline");
+
+      var ctx = timeline.getContext("2d");
+
+      // calcula la posció actual basat en el comptador d'instantanies
+      // i dibuixa la imatge a partir del video
+      var posicioInstantania = comptadorInstantania % graella;
+      var x = (posicioInstantania % nombreColumnes) * ampladaInstantania;
+      var y = Math.floor(posicioInstantania / nombreFiles) * alturaInstantania;
+      ctx.drawImage(
+        video,
+        0,
+        0,
+        400,
+        300,
+        x,
+        y,
+        ampladaInstantania,
+        alturaInstantania
+      );
+      comptadorInstantania++;
+    }
+
+    // atura la creació d'instantànies
+    function parar() {
+      clearInterval(intervalId);
+    }
+
+    document
+      .getElementById("estat")
+      .addEventListener("click", canviaEstat, true);
+    document.getElementById("inici").addEventListener("click", anarInici, true);
+    document.getElementById("final").addEventListener("click", anarFinal, true);
+
+    function canviaEstat() {
+      if (video.paused) {
+        video.play();
+        estat.innerHTML = "Pausa";
+      } else {
+        video.pause();
+        estat.innerHTML = "Reproducció";
+      }
+    }
+
+    function anarInici() {
+      video.currentTime = 0;
+    }
+
+    function anarFinal() {
+      video.currentTime = video.duration;
+    }
+
+    setInterval(mostraTemps, 1000); // To execute mostraTemps every second.
+
+    function mostraTemps() {
+      temps.innerHTML = video.currentTime;
+    }
+  </script>
+</html>
