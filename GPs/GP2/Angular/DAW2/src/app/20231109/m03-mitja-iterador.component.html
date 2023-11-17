@@ -1,0 +1,56 @@
+<h1>iterador</h1>
+
+<div class="form-group">
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Entra el id de l'alumne"
+    #id
+    required
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Entra el nom de l'alumne"
+    #nom
+    required
+  />
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Entra el nota de l'alumne"
+    #nota
+    required
+  />
+</div>
+<button
+  class="btn btn-primary"
+  (click)="afegirAlumne(id.value, nom.value, nota.value)"
+>
+  afegir
+</button>
+<button class="btn btn-primary" (click)="esborrarAlumne(id.value)">
+  esborrar
+</button>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let alumne of llistaAlumnes;index as i; first as isPrimer">
+      <td>{{alumne.id}}</td>
+      <td>{{alumne.nom}}</td>
+      <td>{{alumne.nota}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <td></td>
+    <td></td>
+    <td>{{mitjanaNotes}}</td>
+  </tfoot>
+</table>
