@@ -1,5 +1,6 @@
-var http = require("http");
-var url = require("url");
+// http://localhost:8888/operacions?parametre=suma&n1=10&n2=15
+
+let http = require("http");
 
 function iniciar() {
   function onPeticio(req, res) {
@@ -14,8 +15,9 @@ function iniciar() {
     res.write("Camí: " + reqUrl.pathname + "\n");
     res.write("Consulta: " + reqUrl.search + "\n");
     // searchParams retorna un objecte del tipus URLSearchParams
-    res.write("Paràmetre: " + reqUrl.searchParams.get("parametre") + "\n"); // If I write something else on postman, such as "saw", I'll get null.
-    res.write("Paràmetre: " + reqUrl.searchParams.get("n1") + "\n");
+    res.write("Paràmetre: " + reqUrl.searchParams.get("parametre") + "\n"); // If I write something else on postman, such as "pepe", I'll get null.
+    res.write("N1: " + reqUrl.searchParams.get("n1") + "\n");
+    res.write("N2: " + reqUrl.searchParams.get("n2") + "\n");
     res.end();
   }
 

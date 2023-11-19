@@ -25,7 +25,7 @@ public class JocCarta {
 
     // Here I declare some global variables.
     private static ArrayList<Integer> partidaIniciada = new ArrayList<>();
-    
+
     // This I have two ArrayList because I'll have a nested ArrayList.
     private static ArrayList<ArrayList<String>> totalCartes = new ArrayList<>();
 

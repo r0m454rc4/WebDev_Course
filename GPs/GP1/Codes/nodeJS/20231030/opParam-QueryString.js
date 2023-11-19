@@ -2,7 +2,6 @@
 // http://localhost:8888/resta?n1=1&n2=4
 
 var http = require("http");
-var url = require("url");
 
 function iniciar() {
   function onPeticio(req, res) {

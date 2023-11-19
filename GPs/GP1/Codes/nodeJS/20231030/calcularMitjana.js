@@ -1,7 +1,6 @@
 // http://localhost:8888/notes?nota=5&nota=10&nota=7
 
-var http = require("http");
-var url = require("url");
+let http = require("http");
 
 function iniciar() {
   function onPeticio(req, res) {
@@ -14,6 +13,7 @@ function iniciar() {
     let mitja = 0,
       i = 0;
 
+    // If I enter /notes as a path.
     if (reqUrl.pathname == "/notes") {
       res.writeHead(200, {
         "Content-Type": "text/plain; charset=utf-8",
@@ -21,18 +21,21 @@ function iniciar() {
 
       consulta.forEach(function (valor, clau) {
         if (clau == "nota") {
-          // If the name of the key is "nota".
+          // If the name of the key is "nota", I will enter.
+
           mitja += parseInt(valor);
           i++;
         }
       });
+
+      res.write(`La mitja és <b> ${(mitja / i).toFixed(2)} </b>`);
     } else {
       res.writeHead(404, {
         "Content-Type": "text/plain; charset=utf-8",
       });
+      res.write("Has d'introduïr una URL vàlida.");
     }
 
-    res.write(`La mitja és <b> ${(mitja / i).toFixed(2)} </b>`);
     res.end();
   }
 
