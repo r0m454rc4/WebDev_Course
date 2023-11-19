@@ -1,12 +1,12 @@
-import http from "node:http"; // Una altra forma de fer servir el mòdul.
+var http = require("http");
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(
-    JSON.stringify({
-      data: "Hello World!",
-    })
-  );
-});
+function onRequest(request, response) {
+  console.log("Petició Rebuda.");
+  response.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+  response.write("Hola Món 2"); // If I use a web browser, I'll get it twice, because of the favicon.
+  response.end();
+}
 
-server.listen(8888);
+http.createServer(onRequest).listen(8888);
+
+console.log("Servidor iniciat.");

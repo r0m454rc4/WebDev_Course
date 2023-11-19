@@ -1,6 +1,6 @@
+// http://localhost:8888/resta?n1=1&n2=4&resultat=5
+
 var http = require("http");
-var url = require("url");
-var querystring = require("querystring");
 
 function iniciar() {
   function onRequest(req, res) {
