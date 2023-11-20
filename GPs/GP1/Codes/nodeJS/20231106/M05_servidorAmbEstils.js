@@ -1,7 +1,10 @@
 let http = require("http");
 let fs = require("fs");
+let puppeteer = require('puppeteer');
 
 function iniciar() {
+  const browser = puppeteer.launch();
+
   function onRequest(req, res) {
     const baseURL = req.protocol + "://" + req.headers.host + "/";
     const reqUrl = new URL(req.url, baseURL);
@@ -19,10 +22,11 @@ function iniciar() {
           i++;
         }
       });
+
       res.write(`La mitjana obtinguda equival a: ${(suma / i).toFixed(2)} `);
       res.end();
-    } else if (reqUrl.pathname == "/pagina.html") {
-      // If I ask for pagina.html.
+    } else if (reqUrl.pathname == "/pagina") {
+      // If I ask for pagina.
 
       // fs.readFile is to read pagina.html.
       fs.readFile("pagina.html", function (err, sortida) {
@@ -31,6 +35,7 @@ function iniciar() {
           "Content-Type": "text/html; charset=utf-8",
         });
 
+        getElement
         // console.log(sortida);
         res.write(sortida);
         res.end();

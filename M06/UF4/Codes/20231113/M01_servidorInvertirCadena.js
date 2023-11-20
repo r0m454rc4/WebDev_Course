@@ -17,7 +17,6 @@
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
  */
 var http = require("http");
-var url = require("url");
 var fs = require("fs");
 
 function iniciar() {
@@ -30,6 +29,7 @@ function iniciar() {
 
     // localhost:8888/formulari
     if (pathname == "/formulari") {
+      //f s.readFile is to read a file.
       fs.readFile("./M01_invertirCadena.html", function (err, sortida) {
         response.writeHead(200, {
           "Content-Type": "text/html",
@@ -37,13 +37,15 @@ function iniciar() {
         response.write(sortida);
         response.end();
       });
+
+      // localhost:8888/invertir?cadena=Hola
     } else if (pathname == "/invertir") {
       response.writeHead(200, {
         "Content-Type": "text/plain; charset=utf-8",
       });
 
       let cadena = reqUrl.searchParams.get("cadena"); // Hola.
-      sortida = cadena.split("").reverse().join(""); // sortida = ["H", "O", "L", "A"] -> ["A", "L", "O", "H"].
+      sortida = cadena.split("").reverse().join(""); // Output = ["H", "O", "L", "A"] -> ["A", "L", "O", "H"].
       response.write(sortida);
       response.end();
     } else {

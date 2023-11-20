@@ -17,7 +17,6 @@
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
  */
 var http = require("http");
-var url = require("url");
 var fs = require("fs");
 
 function iniciar() {
@@ -39,7 +38,7 @@ function iniciar() {
         response.end();
       });
 
-      // http://localhost:8888/operacions?num1=4
+      // http://localhost:8888/operacions?num1=4&num2=2
     } else if (pathname == "/operacions") {
       response.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",

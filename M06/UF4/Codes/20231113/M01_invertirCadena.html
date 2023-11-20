@@ -34,6 +34,7 @@
       function ajaxFunction(cadena) {
         // Callback.
         xhr.onreadystatechange = function () {
+          // xhr.readyState == 4 means that the AJAX call has been completed.
           if (xhr.readyState == 4) {
             // If the user enters some keys.
             document.getElementById("cadenaInvertida").innerHTML =
