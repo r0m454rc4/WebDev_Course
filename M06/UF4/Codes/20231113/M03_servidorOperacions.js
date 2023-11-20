@@ -15,7 +15,6 @@
  * Desenvolupament Aplicacions Web. Jesuïtes el Clot
  */
 var http = require("http");
-var url = require("url");
 var fs = require("fs");
 var operacions = ["1+2", "2*2", "5*5", "10/2"];
 var numOperacio = 0;
@@ -57,7 +56,7 @@ function iniciar() {
       } else {
         // Check the last answer.
         if (res == eval(operacions[numOperacio - 1])) encertades++;
-        response.write("FINAL = " + encertades);
+        response.write("FINAL = " + encertades + " operacions encertades");
       }
       response.end();
     } else {
