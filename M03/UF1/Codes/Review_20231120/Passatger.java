@@ -1,5 +1,3 @@
-package edu.fje.daw2;
-
 import java.util.Objects;
 
 public class Passatger {
@@ -7,8 +5,8 @@ public class Passatger {
     private String dni = "";
     private int edat;
 
-    public Passatger(){
-        this.edat=18;
+    public Passatger() {
+        this.edat = 18;
     }
 
     public Passatger(String nom, String dni, int edat) {
@@ -19,13 +17,15 @@ public class Passatger {
 
     @Override
     public String toString() {
-        return  "Passatger amb nom "+nom+" y dni "+dni +" y edat "+edat;
+        return "Passatger amb nom " + nom + " y dni " + dni + " y edat " + edat;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Passatger passatger = (Passatger) o;
         return dni.equals(passatger.dni);
     }
@@ -35,8 +35,9 @@ public class Passatger {
         return Objects.hash(dni);
     }
 
-    public boolean esMenorEdat(){
-        if(edat<18) return true;
+    public boolean esMenorEdat() {
+        if (edat < 18)
+            return true;
         return false;
     }
 

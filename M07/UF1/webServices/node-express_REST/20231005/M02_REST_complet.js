@@ -36,12 +36,13 @@ app.get("/api/alumnes/:codi", (req, res) => {
   res.send(alumne);
 });
 
+// Create an alumn.
 app.post("/api/alumnes", (req, res) => {
   console.log("req.body.codi");
   let alumne = {
     codi: parseInt(req.body.codi),
     nom: req.body.nom,
-    nota: parseInt(req.params.codi),
+    nota: parseInt(req.params.nota),
   }; // If I don't have parseInt(req.body.codi) in codi, it adds the codi as a string.
   alumnes.push(alumne);
   res.send(alumnes);

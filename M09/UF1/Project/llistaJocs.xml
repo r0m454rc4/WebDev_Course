@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+  <row>
+    <index>0</index>
+    <Category>Action-adventure</Category>
+    <Platform>PC</Platform>
+    <Publisher>Valve</Publisher>
+    <Price>29.99</Price>
+  </row>
+  <row>
+    <index>1</index>
+    <Category>Puzzle</Category>
+    <Platform>PC</Platform>
+    <Publisher>Valve</Publisher>
+    <Price>9.99</Price>
+  </row>
+  <row>
+    <index>2</index>
+    <Category>Role-playing</Category>
+    <Platform>PC</Platform>
+    <Publisher>CD Projekt Red</Publisher>
+    <Price>49.99</Price>
+  </row>
+  <row>
+    <index>3</index>
+    <Category>Strategy</Category>
+    <Platform>PC</Platform>
+    <Publisher>Firaxis Games</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>4</index>
+    <Category>Sports</Category>
+    <Platform>PC</Platform>
+    <Publisher>2K Sports</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>5</index>
+    <Category>Action-adventure</Category>
+    <Platform>PlayStation 4</Platform>
+    <Publisher>Sony Interactive Entertainment</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>6</index>
+    <Category>Puzzle</Category>
+    <Platform>PlayStation 4</Platform>
+    <Publisher>Square Enix</Publisher>
+    <Price>19.99</Price>
+  </row>
+  <row>
+    <index>7</index>
+    <Category>Role-playing</Category>
+    <Platform>PlayStation 4</Platform>
+    <Publisher>Atlus</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>8</index>
+    <Category>Strategy</Category>
+    <Platform>PlayStation 4</Platform>
+    <Publisher>SIE Japan Studio</Publisher>
+    <Price>49.99</Price>
+  </row>
+  <row>
+    <index>9</index>
+    <Category>Sports</Category>
+    <Platform>PlayStation 4</Platform>
+    <Publisher>Electronic Arts</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>10</index>
+    <Category>Action</Category>
+    <Platform>Switch</Platform>
+    <Publisher>Nintendo</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>11</index>
+    <Category>Adventure</Category>
+    <Platform>Switch</Platform>
+    <Publisher>Ubisoft</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>12</index>
+    <Category>Fighting</Category>
+    <Platform>Switch</Platform>
+    <Publisher>Nintendo</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>13</index>
+    <Category>Platformer</Category>
+    <Platform>Switch</Platform>
+    <Publisher>Nintendo</Publisher>
+    <Price>59.99</Price>
+  </row>
+  <row>
+    <index>14</index>
+    <Category>Puzzle</Category>
+    <Platform>Switch</Platform>
+    <Publisher>Nintendo</Publisher>
+    <Price>19.99</Price>
+  </row>
+  <row>
+    <index>15</index>
+    <Category>Action-adventure</Category>
+    <Platform>Wii U</Platform>
+    <Publisher>Nintendo</Publisher>
+    <Price>5
+  </row>

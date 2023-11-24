@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      table {
+        text-align: center;
+      }
+
+      th,
+      td {
+        border: solid 1px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Creació de passatgers i avions, afegir passatgers a avions.</h1>
+
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Entra el nom del passatger"
+        #nom
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Entra el DNI del passatger"
+        #dni
+        required
+      />
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Entra l'edat del passatger"
+        #edat
+        required
+      />
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="crearPassatger(nom.value, dni.value, edat.value)"
+    >
+      Crear Passatger.
+    </button>
+
+    <button class="btn btn-primary" (click)="mostrarPassatgers()">
+      Llistar passatgers.
+    </button>
+    <br /><br />
+
+    <!-- *ngIf="mostrarTaulaAvions" is to show the table when I click the button -->
+    <table *ngIf="mostrarTaulaPassatgers">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">DNI</th>
+          <th scope="col">EDAT</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let passatger of llistaPassatgers; index as i">
+          <td>{{passatger.nom}}</td>
+          <td>{{passatger.dniPassatger}}</td>
+          <td>{{passatger.edat}}</td>
+        </tr>
+      </tbody>
+      <br />
+    </table>
+
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Número de sèrie de l'avió"
+        #numSerie
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Model de l'avió"
+        #model
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Seients de l'avió"
+        #seients
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="País origen de l'avió"
+        #origen
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Destí de l'avió"
+        #desti
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Dni del passatger"
+        #dniPassatger
+        required
+      />
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="crearAvio(numSerie.value,model.value, seients.value, origen.value, desti.value, dniPassatger.value)"
+    >
+      Crear Avio.
+    </button>
+
+    <button class="btn btn-primary" (click)="mostrarAvions()">
+      Llistar avions.
+    </button>
+    <br /><br />
+
+    <!-- *ngIf="mostrarTaulaAvions" is to show the table when I click the button -->
+    <table *ngIf="mostrarTaulaAvions">
+      <thead>
+        <tr>
+          <th scope="col">Num sèrie</th>
+          <th scope="col">Model</th>
+          <th scope="col">Seients de l'avió</th>
+          <th scope="col">Origen</th>
+          <th scope="col">Destí</th>
+          <!-- The maximum of passengers that I'll show by plane will be 5. -->
+          <th scope="col" colspan="5">Passatgers</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let avio of llistaAvions;index as i;">
+          <td>{{avio.numSerie}}</td>
+          <td>{{avio.model}}</td>
+          <td>{{avio.seients}}</td>
+          <td>{{avio.origen}}</td>
+          <td>{{avio.desti}}</td>
+
+          <!-- This is to be able to show the nif of the passenger. -->
+          <td *ngFor="let passatger of avio.dniPassatger; index as i">
+            {{passatger.dniPassatger}}
+          </td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </body>
+</html>

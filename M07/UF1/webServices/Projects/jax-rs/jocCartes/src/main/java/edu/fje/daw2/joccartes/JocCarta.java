@@ -87,7 +87,7 @@ public class JocCarta {
 
             totalCartes.get(numJug).add(cartaTirada);
 
-            return "El jugador " + numJug + " ha obtingut " + cartaTirada + "i té " + totalCartes;
+            return "El jugador " + numJug + " ha obtingut " + cartaTirada + " i té " + totalCartes;
         }
 
         return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";

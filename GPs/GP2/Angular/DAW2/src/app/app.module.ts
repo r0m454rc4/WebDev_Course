@@ -8,6 +8,8 @@ import { M03_IteradorComponent } from './20231103/m03-iterador.component';
 import { M03_mitja_iterador_component } from './20231109/m03-mitja-iterador.component';
 import { M04_PomodoroComponent } from './20231116/m04-pomodoro.component';
 
+import { repas_iterador_component } from './20231123_EXAMEN/examen-components';
+
 @NgModule({
   declarations: [
     M01_SalutacioComponent,
@@ -15,10 +17,11 @@ import { M04_PomodoroComponent } from './20231116/m04-pomodoro.component';
     ParellSenar,
     M03_IteradorComponent,
     M03_mitja_iterador_component,
-    M04_PomodoroComponent
+    M04_PomodoroComponent,
+    repas_iterador_component,
   ], // Here I must say the components I want to be able to use.
   imports: [BrowserModule],
   providers: [],
-  bootstrap: [M04_PomodoroComponent], // This is the component I'm using.
+  bootstrap: [repas_iterador_component], // This is the component I'm using.
 })
 export class AppModule {}

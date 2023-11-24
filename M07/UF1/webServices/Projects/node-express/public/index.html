@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7 & 1/2 en Node Express</title>
+    <script src="ajax.js"></script>
+  </head>
+
+  <body>
+    <label>Inicar partida</label><br />
+    <input type="number" id="codiPartida" placeholder="Codi de la partida" />
+    <br />
+    <button id="crearPartida">Crear partida</button>
+    <br /><br />
+
+    <label>Obtenir carta</label>
+    <br />
+    <input type="text" id="numJug" placeholder="Codi del jugador" />
+    <br />
+    <button id="obtenirCarta">Obtenir carta</button>
+    <br /><br />
+
+    <label>Mostrar cartes del jugador</label>
+    <br />
+    <button id="mostrarCartes">Mostrar cartes</button>
+    <br /><br />
+
+    <label>Tirar carta</label>
+    <br />
+    <input type="text" id="carta" placeholder="Número de carta a tirar" />
+    <br />
+    <button id="tirarCarta">Tirar carta</button>
+    <br /><br />
+
+    <label>Apostar fitxes</label>
+    <br />
+    <input
+      type="text"
+      id="quantitatApostada"
+      placeholder="Quantitat a apostar"
+    />
+    <br />
+    <button id="apostar">Apostar</button>
+    <br /><br />
+
+    <label>Passar</label>
+    <br />
+    <button id="passar">Passar</button>
+    <br /><br />
+
+    <label>Acabar el joc</label>
+    <br />
+    <button id="acabarJoc">Acabar el joc</button>
+    <br /><br />
+
+    <article id="llista"></article>
+  </body>
+</html>
