@@ -21,7 +21,6 @@ function obtenirProductes() {
       document.getElementById("llista").innerHTML = xhr.responseText;
     }
   };
-
   xhr.open("GET", "/api/productes");
   xhr.send(null);
 }
@@ -65,7 +64,6 @@ function modificarProducte() {
 function esborrarProducte() {
   let cat = document.getElementById("cat").value;
   let nom = document.getElementById("nom").value;
-  let preu = document.getElementById("preu").value;
 
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {

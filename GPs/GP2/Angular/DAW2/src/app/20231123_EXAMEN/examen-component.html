@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      table {
+        text-align: center;
+      }
+
+      th,
+      td {
+        border: solid 1px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Creació d'equips i esportistes.</h1>
+
+    <h3>Creació d'un esportista</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Entra el DNI de l'esportista"
+        #dniEsportista
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Entra el nom de l'esportista"
+        #nomEsportista
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Entra la posició de l'esportista"
+        #posicioEsportista
+        required
+      />
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="crearEsportista(dniEsportista.value, nomEsportista.value, posicioEsportista.value)"
+    >
+      Crear esportista.
+    </button>
+
+    <button class="btn btn-primary" (click)="mostrarEsportistes()">
+      Llistar esportistes
+    </button>
+    <br /><br />
+
+    <!-- *ngIf="mostrarTaulaAvions" is to show the table when I click the button -->
+    <table *ngIf="mostrarTaulaEsportistes">
+      <thead>
+        <tr>
+          <th scope="col">DNI esportista</th>
+          <th scope="col">Nom esportista</th>
+          <th scope="col">Posició esportista</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let esportista of llistaEsportistes; index as i">
+          <td>{{esportista.dniEsportista}}</td>
+          <td>{{esportista.nomEsportista}}</td>
+          <td>{{esportista.posicioEsportista}}</td>
+        </tr>
+      </tbody>
+      <br />
+    </table>
+
+    <h3>Creació d'un equip</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Esport"
+        #esport
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Categoria"
+        #categoriaEquip
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nom equip"
+        #nomEquip
+        required
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="DNI de l'esportista"
+        #dniEsportista
+        required
+      />
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="crearEQuip(esport.value, categoriaEquip.value, nomEquip.value, dniEsportista.value)"
+    >
+      Crear equip.
+    </button>
+
+    <button class="btn btn-primary" (click)="mostrarEquips()">
+      Llistar equips.
+    </button>
+    <br /><br />
+
+    <table *ngIf="mostrarTaulaEquips">
+      <thead>
+        <tr>
+          <th scope="col">Esport</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Nom equip</th>
+          <th scope="col" colspan="5">Jugadors</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let equip of llistaEquips;index as i;">
+          <td>{{equip.esport}}</td>
+          <td>{{equip.categoria}}</td>
+          <td>{{equip.nomEquip}}</td>
+
+          <!-- This is to be able to show the nif of the passenger. -->
+          <td *ngFor="let esportista of equip.dniEsportista; index as i">
+            {{esportista.dniEsportista}}
+          </td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+
+    <h3>Esborrar un esportista</h3>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="DNI esportista"
+        #dniEsportistaEliminar
+        required
+      />
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="esborrarEsportista(dniEsportistaEliminar.value)"
+    >
+      Esborrar esportista d'un equip.
+    </button>
+  </body>
+</html>

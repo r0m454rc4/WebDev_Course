@@ -4,6 +4,7 @@
  * @version 2.0 10.10.21
  */
 
+// http://localhost:8888
 const express = require("express");
 const app = express();
 
@@ -18,7 +19,6 @@ let productes = [
   { cat: "RAT", nom: "LG", preu: 45 },
 ];
 
-// http://localhost:8888/api/productes
 app.get("/api/productes", (req, res) => res.send(productes));
 
 app.get("/api/productes/:cat", (req, res) => {

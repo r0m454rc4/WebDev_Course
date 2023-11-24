@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta nom="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pàgina inicial</title>
+    <link rel="stylesheet" href="./CSS/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .breadcrumb {
+        padding: 10px 16px;
+        background-color: #3498db;
+        border-radius: 7.5px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .contact-form {
+        width: 300px;
+        margin: 20px auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form h2 {
+        color: #333333;
+        text-align: center;
+      }
+
+      .contact-form label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #333333;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .contact-form textarea {
+        resize: vertical;
+      }
+
+      .contact-form input[type="submit"] {
+        background-color: #3498db;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      .contact-form input[type="submit"]:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul class="breadcrumb">
+        <li><a href="index.html">Inici</a></li>
+        <li><a href="nosaltres.html">Sobre Nosaltres</a></li>
+        <li><a href="llistaVideojocs.html">Llista Videojocs</a></li>
+        <li><a href="contacte.html">Contacte</a></li>
+      </ul>
+    </div>
+
+    <!-- Other content sections -->
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h2>Contactan's</h2>
+      <form action="submit_form.php" method="post">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" nom="nom" required />
+
+        <label for="correu">Correu:</label>
+        <input type="correu" id="correu" nom="correu" required />
+
+        <label for="missage">Missatge:</label>
+        <textarea id="missage" nom="missage" rows="4" required></textarea>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
