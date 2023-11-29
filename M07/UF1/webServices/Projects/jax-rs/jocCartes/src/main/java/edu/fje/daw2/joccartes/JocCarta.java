@@ -27,14 +27,14 @@ public class JocCarta {
     private static ArrayList<Integer> partidaIniciada = new ArrayList<>();
 
     // This I have two ArrayList because I'll have a nested ArrayList.
-    private static ArrayList<ArrayList<String>> totalCartes = new ArrayList<>();
+    private static ArrayList<String> totalCartes = new ArrayList<>();
 
     Integer codiPartida = 0, numJug = 0, quantitatPuntsIni = 100;
 
     @POST
-    @Path("/iniciarJoc/{codiPartida}")
+    @Path("/iniciarJoc")
     @Produces(MediaType.TEXT_PLAIN)
-    public String iniciarJoc(@PathParam("codiPartida") Integer codiPartida) {
+    public String iniciarJoc(@FormParam("codiPartida") Integer codiPartida) {
         /*
          * partidaIniciada.contains(codiPartida) is to search there's codiPartida in the
          * array.
@@ -57,35 +57,19 @@ public class JocCarta {
      * @return Random card for the player.
      */
 
-    // Array that has the possible types of cards.
-    String tipusCarta[] = { "ors", "espases", "copes", "bastons" };
-
-    // Function that generates a random card, from 1 to 12.
-    String generarCarta(String[] tpCartaAl) {
-        int cartaAleatoria = (int) Math.floor(Math.random() * 12) + 1; // (int) Math.floor is to transform the double to
-                                                                       // int.
-        int cartaIndex = (int) Math.floor(Math.random() * tipusCarta.length);
-
-        tpCartaAl[0] = tipusCarta[(int) cartaIndex];
-
-        String cartaAl = Integer.toString(cartaAleatoria) + " de " + tpCartaAl[0];
-
-        return cartaAl;
-    }
-
+    // I need to finish it.
     @GET
     @Path("/obtenirCarta/{codiPartida}/{numJug}")
     @Produces(MediaType.TEXT_PLAIN)
     public String obtenirCarta(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug) {
         if (partidaIniciada.contains(codiPartida)) {
-            partidaIniciada.add(codiPartida); // This is to add codiPartida to the arraylist.
-            for (int i = totalCartes.size(); i <= numJug; i++) {
-                totalCartes.add(new ArrayList<>());
-            }
+            // Here I create a new instance of GenerarCarta as genCarta.
+            GenerarCarta genCarta = new GenerarCarta();
+            // Array that has the possible types of cards.
+            String tipusCarta[] = { "ors", "espases", "copes", "bastons" };
+            String cartaTirada = genCarta.generarCarta(tipusCarta);
 
-            String cartaTirada = generarCarta(tipusCarta);
-
-            totalCartes.get(numJug).add(cartaTirada);
+            totalCartes.add(cartaTirada);
 
             return "El jugador " + numJug + " ha obtingut " + cartaTirada + " i té " + totalCartes;
         }
@@ -105,7 +89,13 @@ public class JocCarta {
     @Path("/mostrarCartes/{codiPartida}/{numJug}")
     @Produces(MediaType.TEXT_PLAIN)
     public String mostrarCartes(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug) {
-        return "El jugador " + numJug + " de la partida " + codiPartida + " ha té moltes cartes.";
+        if (partidaIniciada.contains(codiPartida)) {
+            return "El jugador " + numJug + " ha té moltes cartes.";
+
+        }
+
+        return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
+
     }
 
     /**

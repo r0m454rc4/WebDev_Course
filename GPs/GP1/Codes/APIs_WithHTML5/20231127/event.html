@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="gp1">Global project 1.</div>
+    <div id="gp2">Global project 2.</div>
+
+    <script>
+      let divs = document.querySelector("div");
+      divs.foreach((div) => div.addEventListener("click", mostrarDades));
+
+      // let gp1 = document.getElementById("gp1");
+      // gp1.addEventListener("click", mostrarDades);
+      // let gp2 = document.getElementById("gp2");
+      // gp2.addEventListener("click", mostrarDades);
+
+      function mostrarDades(ev) {
+        alert(ev.target.innerHTML);
+      }
+    </script>
+  </body>
+</html>

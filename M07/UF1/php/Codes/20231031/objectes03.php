@@ -38,7 +38,7 @@ class cilindre
 	}
 }
 
-$cil = new cilindre();
-$cil->assigna_radi(10); // Si utilitzem $cil -> $radi = 10 el script no funciona perquè l'artribut és privat
-$cil->assigna_longitud(5); // Si utilitzem $cil -> $longitud = 5 el script no funciona perquè l'artribut és privat
+$cil = new cilindre(10, 5);
+// $cil->assigna_radi(10); // Si utilitzem $cil -> $radi = 10 el script no funciona perquè l'artribut és privat
+// $cil->assigna_longitud(5); // Si utilitzem $cil -> $longitud = 5 el script no funciona perquè l'artribut és privat
 echo "El volumen del cilindre és " . number_format($cil->volum(), 2) . " metres cúbics<br>";

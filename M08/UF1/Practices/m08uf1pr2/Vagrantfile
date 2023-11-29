@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   
 	config.vm.network "public_network"
          
-	config.vm.synced_folder "./projecte", "/var/www/html", owner: "www-data", group: "www-data"
+	config.vm.synced_folder "/home/vadimvolkov/DAW2/M07/UF1/php/Projecte/src", "/var/www/html", owner: "www-data", group: "www-data"
     
 	config.vm.provision "shell", inline: <<-SHELL
 		sudo apt-get update -y

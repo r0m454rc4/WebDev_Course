@@ -1,9 +1,9 @@
-public class Alumno {
+public class Gos {
   private String nombre;
   private String club_futbol;
   private boolean pelota;
 
-  public Alumno(String nom, String club, boolean pel) {
+  public Gos(String nom, String club, boolean pel) {
     this.nombre = nom;
     this.club_futbol = club;
     this.pelota = pel;

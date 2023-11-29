@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:300");
+body,
+input,
+button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+}
+
+h1 {
+  font-family: "Indie Flower", cursive;
+  font-size: 4em;
+}
+
+td.m06 {
+  width: 150px;
+  height: 100px;
+  padding: 0px;
+  border: 1px solid #aaaaaa;
+  margin: 0px;
+  cursor: pointer;
+}
+
+header {
+  background-color: #f47d31;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+}
+
+header h2 {
+  margin: 0px;
+}
+
+h1 {
+  font-size: 72px;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0px;
+  text-align: center;
+  color: #f47d31;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 0px;
+  text-align: center;
+  color: #f47d31;
+}
+
+h4 {
+  color: #f47d31;
+  background-color: #fff;
+  -webkit-box-shadow: 2px 2px 20px #888;
+  -webkit-transform: rotate(-45deg);
+  -moz-box-shadow: 2px 2px 20px #888;
+  -moz-transform: rotate(-45deg);
+  position: absolute;
+  padding: 0px 150px;
+  top: 50px;
+  left: -120px;
+  text-align: center;
+}
+
+nav {
+  display: block;
+  width: 25%;
+  float: left;
+}
+
+nav a:link,
+nav a:visited {
+  display: block;
+  border-bottom: 3px solid #fff;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 5px;
+}
+
+nav a:hover {
+  color: white;
+  background-color: #f47d31;
+}
+
+nav h3 {
+  margin: 15px;
+  color: white;
+}
+
+#container {
+  background-color: #888;
+}
+
+section {
+  display: block;
+  width: 50%;
+  float: left;
+}
+
+article {
+  background-color: #eee;
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+article header {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+article footer {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+article h1 {
+  font-size: 18px;
+}
+
+aside {
+  display: block;
+  width: 25%;
+  float: left;
+}
+
+aside h3 {
+  margin: 15px;
+  color: white;
+}
+
+aside p {
+  margin: 15px;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+}
+
+footer {
+  clear: both;
+  display: block;
+  background-color: #f47d31;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+}
+
+footer h2 {
+  font-size: 14px;
+  color: white;
+}
+
+/* links */
+
+a {
+  color: #f47d31;
+}
+
+a:hover {
+  text-decoration: underline;
+}
