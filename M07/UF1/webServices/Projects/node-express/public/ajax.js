@@ -127,19 +127,6 @@ function passar() {
   xhr.send(data);
 }
 
-function passar() {
-  // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
-
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
-
-  xhr.open("PUT", "http://localhost:8888/moureJugador/passa");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send(data);
-}
-
 function acabarJoc() {
   // Here I declare codiPartida that stores the value from the input.
   let codiPartida = document.getElementById("codiPartida").value;
