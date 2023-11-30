@@ -10,8 +10,14 @@ package edu.fje.daw2.joccartes;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
+
+// This three classes are for adding the generated card to the player.
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Path("/")
 public class JocCarta {
@@ -26,8 +32,9 @@ public class JocCarta {
     // Here I declare some global variables.
     private static ArrayList<Integer> partidaIniciada = new ArrayList<>();
 
-    // This I have two ArrayList because I'll have a nested ArrayList.
-    private static ArrayList<String> totalCartes = new ArrayList<>();
+    // I create a new Map called totalCartes, where the key is the name of the
+    // player, and the value is the content of the array.
+    private static Map<Integer, List<String>> totalCartes = new HashMap<>();
 
     Integer codiPartida = 0, numJug = 0, quantitatPuntsIni = 100;
 
@@ -57,21 +64,30 @@ public class JocCarta {
      * @return Random card for the player.
      */
 
-    // I need to finish it.
     @GET
     @Path("/obtenirCarta/{codiPartida}/{numJug}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String obtenirCarta(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug) {
+    @Produces(MediaType.APPLICATION_JSON) // I return a JSON.
+    public String obtenirCarta(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") Integer numJug) {
         if (partidaIniciada.contains(codiPartida)) {
-            // Here I create a new instance of GenerarCarta as genCarta.
-            GenerarCarta genCarta = new GenerarCarta();
+            // Here I create a new instance of ObtenirCarta as genCarta.
+            ObtenirCarta genCarta = new ObtenirCarta();
+
             // Array that has the possible types of cards.
-            String tipusCarta[] = { "ors", "espases", "copes", "bastons" };
+            String[] tipusCarta = { "ors", "espases", "copes", "bastons" };
             String cartaTirada = genCarta.generarCarta(tipusCarta);
 
-            totalCartes.add(cartaTirada);
+            /**
+             * This line is from ChatGPT, because I had no idea how to do it.
+             * totalCartes is the Map I created previously.
+             * computeIfAbsent() checks if numJug (key) is associated to an array, if isn't,
+             * creates a new ArrayList.
+             */
+            totalCartes.computeIfAbsent(numJug, k -> new ArrayList<String>());
 
-            return "El jugador " + numJug + " ha obtingut " + cartaTirada + " i té " + totalCartes;
+            // Add the card to the player's list.
+            totalCartes.get(numJug).add(cartaTirada);
+
+            return "El jugador " + numJug + " ha obtingut " + cartaTirada;
         }
 
         return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
@@ -87,15 +103,20 @@ public class JocCarta {
      */
     @GET
     @Path("/mostrarCartes/{codiPartida}/{numJug}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String mostrarCartes(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug) {
+    @Produces(MediaType.APPLICATION_JSON) // I return a JSON.
+    public String mostrarCartes(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") Integer numJug) {
         if (partidaIniciada.contains(codiPartida)) {
-            return "El jugador " + numJug + " ha té moltes cartes.";
-
+            if (totalCartes.get(numJug) == null) {
+                return "El jugador " + numJug + " no està jugant en aquesta partida.";
+            } else if (totalCartes.get(numJug).size() == 0) {
+                return "El jugador " + numJug + " no té cartes restants.";
+            } else {
+                // I covert ArrayList to string using .toString().
+                return totalCartes.get(numJug).toString();
+            }
         }
 
         return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
-
     }
 
     /**
@@ -108,13 +129,58 @@ public class JocCarta {
      * @return Thow a card from the player.
      */
     @PUT
-    @Path("/tirarCarta/{codiPartida}/{numJug}/{carta}")
+    @Path("/tirarCarta")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String tirarCarta(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug,
-            @PathParam("carta") int carta) {
+    public String tirarCarta(@FormParam("codiPartida") Integer codiPartida, @FormParam("numJug") Integer numJug,
+            @FormParam("carta") Integer carta) {
 
-        return "El jugador " + numJug + " de la partida " + codiPartida + " tira la carta " + carta + ".";
+        System.out.println("Partida iniciada: " + partidaIniciada.contains(codiPartida));
+        if (partidaIniciada.contains(codiPartida)) {
+            // This three first conditionals are to check if the parameters are set.
+            if (codiPartida == null) {
+                return "El jugador no pot tirar la carta a causa de no haver indicat el codi de partida.";
+            } else if (numJug == null) {
+                return "El jugador no pot jugar a la partida " + codiPartida
+                        + " a causa de no haver indicat el seu codi de jugador.";
+            } else if (carta == null) {
+                return "El jugador " + numJug
+                        + " no pot tirar la carta a causa de no haver indicat la carta que vol tirar.";
+            } else if (totalCartes.get(numJug) == null) {
+                return "El jugador " + numJug + " no està jugant en aquesta partida.";
+            } else {
+                boolean cartaTrobada = false;
+
+                for (int i = 0; i < totalCartes.get(numJug).size(); i++) {
+                    // "i + 1" is because I'd like to be able to delete the first card of the
+                    // array if the user enters 1.
+                    if (i + 1 == carta) {
+                        cartaTrobada = true;
+                        break;
+                    }
+                }
+
+                if (!cartaTrobada) {
+                    return "El jugador " + numJug + " no disposa d'aquesta carta";
+                } else if (totalCartes.get(numJug).size() == 0) {
+                    // If the player doesn't have any card.
+                    return "El jugador " + numJug + " no té cartes restants.";
+                } else {
+                    // Delete the card from the player using remove method, I rest 1 to carta
+                    // because I added it before.
+                    // System.out.println(totalCartes.get(numJug).remove(carta - 1));
+
+                    return "El jugador " + numJug + " de la partida " + codiPartida + " tira la carta "
+                            + totalCartes.get(numJug).remove(carta - 1) + ".";
+                }
+            }
+        } else {
+            if (codiPartida == null) {
+                return "La partida encara no ha estat inicialitzada.";
+            } else {
+                return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
+            }
+        }
     }
 
     /**
@@ -130,7 +196,7 @@ public class JocCarta {
     @Path("/moureJugador/{codiPartida}/{numJug}/aposta/{quantitat}")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String apostar(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug,
+    public String apostar(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") Integer numJug,
             @PathParam("quantitat") int quantitat) {
 
         return "El jugador " + numJug + " de la partida " + codiPartida + " aposta " + quantitat + " fitxes.";
@@ -148,7 +214,7 @@ public class JocCarta {
     @Path("/moureJugador/{codiPartida}/{numJug}/passa")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String passar(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") int numJug) {
+    public String passar(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") Integer numJug) {
 
         return "El jugador " + numJug + " de la partida " + codiPartida + " decideix passar en aquest torn.";
     }
@@ -166,6 +232,10 @@ public class JocCarta {
     public String esborrarPartida(@PathParam("codiPartida") Integer codiPartida) {
         if (partidaIniciada.contains(codiPartida)) {
             partidaIniciada.remove(codiPartida);
+            // totalCartes.get(codiPartida).clear(); is to reset the array, so the players
+            // doesn't have any
+            // card if they start the same game again.
+            totalCartes.get(codiPartida).clear();
 
             return "La partida amb codi " + codiPartida + " ha estat acabada correctament.";
         }

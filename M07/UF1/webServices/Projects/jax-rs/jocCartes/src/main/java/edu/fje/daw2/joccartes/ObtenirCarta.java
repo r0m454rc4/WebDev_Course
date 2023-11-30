@@ -1,6 +1,6 @@
 package edu.fje.daw2.joccartes;
 
-public class GenerarCarta {
+public class ObtenirCarta {
   String tipusCarta[] = { "ors", "espases", "copes", "bastons" };
 
   // Function that generates a random card, from 1 to 12.

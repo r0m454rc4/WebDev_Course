@@ -17,18 +17,10 @@ app.use(express.static("public"));
 
 // Here I declare some global variables.
 let partidaIniciada = [],
-  totalCartes = [],
-  quantitatPuntsIni = [];
-
-let codiPartida = 0, // I declare it globally in order to not declare the variable each time.
-  numJug = 0;
-
-quantitatPuntsIni[numJug] = 100;
-// I declare it here because I can't have it on "app.put" beucause it'll reset very time I request and quantitatRestant will always be the same.;
+  totalCartes = [];
 
 app.post("/iniciarJoc", (req, res) => {
   // http://localhost:8888/iniciarJoc
-
   let codiPartida = req.body.codiPartida; // codiPartida has the value of the body from the url.
 
   console.log(codiPartida);
@@ -63,8 +55,8 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
   // http://localhost:8888/obtenirCarta/1/1 --> Player 1 on codiPartida = 1.
   // http://localhost:8888/obtenirCarta/1/2 --> Player 2 on codiPartida = 1.
 
-  codiPartida = req.params.codiPartida;
-  numJug = req.params.numJug;
+  let codiPartida = req.params.codiPartida;
+  let numJug = req.params.numJug;
 
   if (partidaIniciada[codiPartida]) {
     // Function to generate a random card.
@@ -107,8 +99,8 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
   // http://localhost:8888/mostrarCartes/1/1 --> Player 1 on codiPartida = 1.
   // http://localhost:8888/mostrarCartes/1/2 --> Player 2 on codiPartida = 1.
 
-  codiPartida = req.params.codiPartida;
-  numJug = req.params.numJug;
+  let codiPartida = req.params.codiPartida;
+  let numJug = req.params.numJug;
 
   if (partidaIniciada[codiPartida]) {
     // If the player didn't get any yet, will be undefined.
@@ -118,7 +110,7 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
       // If the player doesn't have any card, because he already throwed them.
     } else if (totalCartes[numJug].length == 0) {
-      res.status(404).send(`El jugador ${numJug} no té cap carta per mostrar.`);
+      res.status(404).send(`El jugador ${numJug} no té cartes restants.`);
     } else {
       // I send the cards that the player has in a JSON format.
       res.json(totalCartes[numJug]);
@@ -137,51 +129,76 @@ app.put("/tirarCarta", (req, res) => {
   // http://localhost:8888/tirarCarta/1/1/1 --> Player 1 throws the second card on codiPartida = 1.
   // http://localhost:8888/tirarCarta/1/2/2 --> Player 2 throws the third card on codiPartida = 1.
 
-  codiPartida = req.body.codiPartida;
-  numJug = req.body.numJug;
-  carta = req.body.carta;
+  let codiPartida = req.body.codiPartida;
+  let numJug = req.body.numJug;
+  let carta = req.body.carta;
 
   if (partidaIniciada[codiPartida]) {
     // This three first conditionals are to check if the parameters are set.
     if (codiPartida == undefined) {
-      res.send(
-        `El jugador no pot tirar la carta a causa de no haver indicat el codi de partida.`
-      );
+      res
+        .status(404)
+        .send(
+          `El jugador no pot tirar la carta a causa de no haver indicat el codi de partida.`
+        );
     } else if (numJug == undefined) {
-      res.send(
-        `El jugador no pot jugar a la partida ${codiPartida} a causa de no haver indicat el seu codi de jugador`
-      );
+      res
+        .status(404)
+        .send(
+          `El jugador no pot jugar a la partida ${codiPartida} a causa de no haver indicat el seu codi de jugador`
+        );
     } else if (carta == undefined) {
-      res.send(
-        `El jugador ${numJug} no pot tirar la carta a causa de no haver indicat la carta que vol tirar.`
-      );
+      res
+        .status(404)
+        .send(
+          `El jugador ${numJug} no pot tirar la carta a causa de no haver indicat la carta que vol tirar.`
+        );
     } else if (totalCartes[numJug] == undefined) {
       // If the payer doesn't have any card yet.
       res
         .status(404)
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
-    } else if (totalCartes[numJug][carta] == undefined) {
-      // If the player doesn't have the card.
-      res.status(404).send(`El jugador ${numJug} no disposa d'aquesta carta.`);
-    } else if (totalCartes[numJug].length == 0) {
-      // If the player doesn't have any card, because he already throwed them.
-      res.status(404).send(`El jugador ${numJug} no té cap carta per mostrar.`);
     } else {
-      res.send(
-        `El jugador ${numJug} tira la carta ${totalCartes[numJug][carta]}`
-      );
+      let cartaTrobada = false;
 
-      totalCartes[numJug].splice([carta], [carta]); // I delete the card from totalCartes[numJug].
+      for (let i = 0; i < totalCartes[numJug].length; i++) {
+        // "i + 1" is because I'd like to be able to delete the first card of the array if the user enters 1.
+        if (i + 1 == carta) {
+          cartaTrobada = true;
+          break;
+        }
+      }
 
-      // The player always will have the card from index 0.
-      console.log(`El jugador ${numJug} ara té ${totalCartes[numJug]}`);
+      if (!cartaTrobada) {
+        // If the player doesn't have the card.
+        res
+          .status(404)
+          .send(`El jugador ${numJug} no disposa d'aquesta carta.`);
+      } else if (totalCartes[numJug].length == 0) {
+        // If the player doesn't have any card, because he already throwed them.
+        res.status(404).send(`El jugador ${numJug} no té cartes restants.`);
+      } else {
+        // Delete the card from the player using remove method, I rest 1 to carta because I added it before.
+        res.send(
+          `El jugador ${numJug} tira la carta ${totalCartes[numJug].splice(
+            [carta - 1],
+            1
+          )}`
+        );
+
+        console.log(`El jugador ${numJug} ara té ${totalCartes[numJug]}`);
+      }
     }
   } else {
-    res
-      .status(404)
-      .send(
-        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
-      );
+    if (codiPartida == undefined) {
+      res.status(404).send(`La partida encara no ha estat inicialitzada.`);
+    } else {
+      res
+        .status(404)
+        .send(
+          `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+        );
+    }
   }
 });
 
@@ -190,37 +207,47 @@ app.put("/moureJugador/aposta", (req, res) => {
   // http://localhost:8888/moureJugador/1/1/aposta/30  --> Player 1 bets 30 points on codiPartida = 1.
   // http://localhost:8888/moureJugador/1/2/aposta/50  --> Player 2 bets 30 points on codiPartida = 1.
 
-  codiPartida = req.body.codiPartida;
-  numJug = req.body.numJug;
-  quantitatApostada = parseInt(req.body.quantitatApostada);
+  // console.log(quantitatRestant[numJug]);
 
-  let quantitatRestant = 0;
-  quantitatPuntsJug = [];
-  quantitatPuntsJug[numJug] = quantitatPuntsIni[numJug];
+  let codiPartida = req.body.codiPartida;
+  let numJug = req.body.numJug;
+  let quantitatApostada = parseInt(req.body.quantitatApostada);
 
-  console.log(
-    `Quantitat punts inicials: ${quantitatPuntsJug} del jugador ${numJug}`
-  );
-  console.log(
-    `Quantitat fitxes apostades: ${quantitatApostada} pel jugador ${numJug}`
-  );
+  let quantitatPuntsIni = [],
+    quantitatPuntsJug = [],
+    quantitatRestant = [];
+  quantitatRestant[numJug] = 100;
 
-  console.log(`Quantitat punts jugador ${numJug} ${quantitatPuntsJug[numJug]}`);
+  // Initialize the player's points if not already done
+  if (!quantitatPuntsIni[numJug]) {
+    quantitatPuntsIni[numJug] = quantitatRestant[numJug];
+  }
+
+  // Initialize the player's points
+  if (!quantitatPuntsJug[numJug]) {
+    quantitatPuntsJug[numJug] = quantitatPuntsIni[numJug];
+  }
 
   if (partidaIniciada[codiPartida]) {
     // This three first conditionals are to check if the parameters are set.
     if (codiPartida == undefined) {
-      res.send(
-        `El jugador no pot apostar a causa de no haver indicat el codi de partida.`
-      );
+      res
+        .status(404)
+        .send(
+          `El jugador no pot apostar a causa de no haver indicat el codi de partida.`
+        );
     } else if (numJug == undefined) {
-      res.send(
-        `El jugador no pot apostar a causa de no haver indicat el seu codi de jugador`
-      );
+      res
+        .status(404)
+        .send(
+          `El jugador no pot apostar a causa de no haver indicat el seu codi de jugador`
+        );
     } else if (isNaN(quantitatApostada)) {
-      res.send(
-        `El jugador ${numJug} no pot apostar a causa de no haver indicat la quantitat.`
-      );
+      res
+        .status(404)
+        .send(
+          `El jugador ${numJug} no pot apostar a causa de no haver indicat la quantitat.`
+        );
     } else if (totalCartes[numJug] == undefined) {
       // If the payer didn't get any card yet.
       res
@@ -236,28 +263,32 @@ app.put("/moureJugador/aposta", (req, res) => {
     } else {
       if (quantitatPuntsJug[numJug] >= quantitatApostada) {
         console.log(`Quantitat apostada ${quantitatApostada}`);
-        quantitatRestant -= quantitatApostada;
+        quantitatRestant[numJug] -= quantitatApostada;
 
         res.send(
-          `El jugador ${numJug} aposta ${quantitatApostada} fitxes. Li queden ${quantitatRestant} fitxes`
+          `El jugador ${numJug} aposta ${quantitatApostada} fitxes. Li queden ${quantitatRestant[numJug]} fitxes`
         );
-      } else if (quantitatApostada >= quantitatRestant) {
+      } else if (quantitatApostada >= quantitatRestant[numJug]) {
         // If the user wants to bet more points that he have:
         res
           .status(404)
           .send(
-            `El jugador ${numJug} no pot apostar ${quantitatApostada} fitxes, ja que superen la quantitat de fitxes actuals.`
+            `El jugador ${numJug} no pot apostar ${quantitatApostada} fitxes, ja que superen la quantitat de fitxes disponibles.`
           );
-      } else if (quantitatRestant == 0) {
+      } else if (quantitatRestant[numJug] == 0) {
         res.status(404).send(`El jugador ${numJug} no té cap fitxa restant.`);
       }
     }
   } else {
-    res
-      .status(404)
-      .send(
-        `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
-      );
+    if (codiPartida == undefined) {
+      res.status(404).send(`La partida encara no ha estat inicialitzada.`);
+    } else {
+      res
+        .status(404)
+        .send(
+          `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`
+        );
+    }
   }
 });
 
@@ -265,17 +296,21 @@ app.put("/moureJugador/passa", (req, res) => {
   // http://localhost:8888/moureJugador/1/1/passa
   // http://localhost:8888/moureJugador/1/2/passa
 
-  codiPartida = req.body.codiPartida;
-  numJug = req.body.numJug;
+  let codiPartida = req.body.codiPartida;
+  let numJug = req.body.numJug;
 
   if (codiPartida == undefined) {
-    res.send(
-      `El jugador no pot apostar a causa de no haver indicat el codi de partida.`
-    );
+    res
+      .status(404)
+      .send(
+        `El jugador no pot apostar a causa de no haver indicat el codi de partida.`
+      );
   } else if (numJug == undefined) {
-    res.send(
-      `El jugador no apostar a causa de no haver indicat el seu codi de jugador`
-    );
+    res
+      .status(404)
+      .send(
+        `El jugador no apostar a causa de no haver indicat el seu codi de jugador`
+      );
   } else if (partidaIniciada[codiPartida]) {
     if (totalCartes[numJug] == undefined) {
       res
@@ -303,15 +338,20 @@ app.put("/moureJugador/passa", (req, res) => {
 app.delete("/acabarJoc", (req, res) => {
   // http://localhost:8888/acabarJoc/1
 
-  codiPartida = req.body.codiPartida; // codiPartida has the value of the parameter from the url.
+  let codiPartida = req.body.codiPartida; // codiPartida has the value of the parameter from the url.
 
   if (codiPartida == undefined) {
-    res.send(
-      `La partida no estat acabada a causa de no haver indicat un codi de partida.`
-    );
+    res
+      .status(404)
+      .send(
+        `La partida no estat acabada a causa de no haver indicat un codi de partida.`
+      );
   } else if (partidaIniciada[codiPartida]) {
     // If the game hasn't started yet.
     partidaIniciada[codiPartida] = false;
+
+    // totalCartes.clear(); is to reset the array, so the players doesn't have any card if they start the same game again.
+    totalCartes[codiPartida] = [];
 
     res.send(
       `La partida amb codi ${codiPartida} ha estat acabada correctament.`
