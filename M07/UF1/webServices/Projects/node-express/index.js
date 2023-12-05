@@ -23,8 +23,6 @@ app.post("/iniciarJoc", (req, res) => {
   // http://localhost:8888/iniciarJoc
   let codiPartida = req.body.codiPartida; // codiPartida has the value of the body from the url.
 
-  console.log(codiPartida);
-
   if (!partidaIniciada[codiPartida]) {
     // If the game hasn't started yet.
 
@@ -36,6 +34,11 @@ app.post("/iniciarJoc", (req, res) => {
     } else {
       // If the user had entered codiPartida.
       partidaIniciada[codiPartida] = true;
+
+      // Initialize totalCartes for this partida if not already done, this is because I had a bug when storing cards from different games, I've done this with the help of ChatGPT.
+      if (!totalCartes[codiPartida]) {
+        totalCartes[codiPartida] = []; // I create it.
+      }
 
       res.send(
         `La partida amb codi ${codiPartida} ha estat inicialitzada correctament.`
@@ -76,13 +79,13 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
     let tipusCarta = ["ors", "espases", "copes", "bastons"];
     let cartaTirada = generarCarta(tipusCarta);
 
-    // If I don't have the array to store the cards from the player:
-    if (!totalCartes[numJug]) {
-      totalCartes[numJug] = []; // I create it.
+    // If I don't have the array to store the cards from the player... I've done this with the help of ChatGPT.
+    if (!totalCartes[codiPartida][numJug]) {
+      totalCartes[codiPartida][numJug] = []; // I create it.
     }
     console.log(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
 
-    totalCartes[numJug].push(cartaTirada);
+    totalCartes[codiPartida][numJug].push(cartaTirada);
 
     res.json(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
     // res.send(`La carta aleatòria és: ${cartaTirada}`);
@@ -104,16 +107,18 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
 
   if (partidaIniciada[codiPartida]) {
     // If the player didn't get any yet, will be undefined.
-    if (totalCartes[numJug] == undefined) {
+    if (totalCartes[codiPartida][numJug] == undefined) {
       res
         .status(404)
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
       // If the player doesn't have any card, because he already throwed them.
-    } else if (totalCartes[numJug].length == 0) {
+    } else if (totalCartes[codiPartida][numJug].length == 0) {
       res.status(404).send(`El jugador ${numJug} no té cartes restants.`);
     } else {
       // I send the cards that the player has in a JSON format.
-      res.json(totalCartes[numJug]);
+      res.json(
+        `Partida ${codiPartida}, jugador ${numJug}: ${totalCartes[codiPartida][numJug]}`
+      );
       // res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
     }
   } else {
@@ -153,7 +158,7 @@ app.put("/tirarCarta", (req, res) => {
         .send(
           `El jugador ${numJug} no pot tirar la carta a causa de no haver indicat la carta que vol tirar.`
         );
-    } else if (totalCartes[numJug] == undefined) {
+    } else if (totalCartes[codiPartida][numJug] == undefined) {
       // If the payer doesn't have any card yet.
       res
         .status(404)
@@ -161,7 +166,7 @@ app.put("/tirarCarta", (req, res) => {
     } else {
       let cartaTrobada = false;
 
-      for (let i = 0; i < totalCartes[numJug].length; i++) {
+      for (let i = 0; i < totalCartes[codiPartida][numJug].length; i++) {
         // "i + 1" is because I'd like to be able to delete the first card of the array if the user enters 1.
         if (i + 1 == carta) {
           cartaTrobada = true;
@@ -174,19 +179,20 @@ app.put("/tirarCarta", (req, res) => {
         res
           .status(404)
           .send(`El jugador ${numJug} no disposa d'aquesta carta.`);
-      } else if (totalCartes[numJug].length == 0) {
+      } else if (totalCartes[codiPartida][numJug].length == 0) {
         // If the player doesn't have any card, because he already throwed them.
         res.status(404).send(`El jugador ${numJug} no té cartes restants.`);
       } else {
         // Delete the card from the player using remove method, I rest 1 to carta because I added it before.
         res.send(
-          `El jugador ${numJug} tira la carta ${totalCartes[numJug].splice(
-            [carta - 1],
-            1
-          )}`
+          `El jugador ${numJug} tira la carta ${totalCartes[codiPartida][
+            numJug
+          ].splice([carta - 1], 1)}`
         );
 
-        console.log(`El jugador ${numJug} ara té ${totalCartes[numJug]}`);
+        console.log(
+          `El jugador ${numJug} ara té ${totalCartes[codiPartida][numJug]}`
+        );
       }
     }
   } else {
@@ -218,12 +224,12 @@ app.put("/moureJugador/aposta", (req, res) => {
     quantitatRestant = [];
   quantitatRestant[numJug] = 100;
 
-  // Initialize the player's points if not already done
+  // Initialize the player's points if not already done.
   if (!quantitatPuntsIni[numJug]) {
     quantitatPuntsIni[numJug] = quantitatRestant[numJug];
   }
 
-  // Initialize the player's points
+  // Initialize the player's points.
   if (!quantitatPuntsJug[numJug]) {
     quantitatPuntsJug[numJug] = quantitatPuntsIni[numJug];
   }
@@ -248,12 +254,12 @@ app.put("/moureJugador/aposta", (req, res) => {
         .send(
           `El jugador ${numJug} no pot apostar a causa de no haver indicat la quantitat.`
         );
-    } else if (totalCartes[numJug] == undefined) {
+    } else if (totalCartes[codiPartida][numJug] == undefined) {
       // If the payer didn't get any card yet.
       res
         .status(404)
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
-    } else if (totalCartes[numJug].length == 0) {
+    } else if (totalCartes[codiPartida][numJug].length == 0) {
       // If the player doesn't have any card, because he already throwed them.
       res
         .status(404)
@@ -312,11 +318,11 @@ app.put("/moureJugador/passa", (req, res) => {
         `El jugador no apostar a causa de no haver indicat el seu codi de jugador`
       );
   } else if (partidaIniciada[codiPartida]) {
-    if (totalCartes[numJug] == undefined) {
+    if (totalCartes[codiPartida][numJug] == undefined) {
       res
         .status(404)
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
-    } else if (totalCartes[numJug].length == 0) {
+    } else if (totalCartes[codiPartida][numJug].length == 0) {
       // Here I'll never enter.
       res
         .status(404)
@@ -350,7 +356,7 @@ app.delete("/acabarJoc", (req, res) => {
     // If the game hasn't started yet.
     partidaIniciada[codiPartida] = false;
 
-    // totalCartes.clear(); is to reset the array, so the players doesn't have any card if they start the same game again.
+    // totalCartes[codiPartida] = [] is to reset the array, so the players doesn't have any card if they start the same game again.
     totalCartes[codiPartida] = [];
 
     res.send(

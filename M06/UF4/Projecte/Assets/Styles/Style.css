@@ -72,7 +72,7 @@ body {
 
 .header,
 .footer {
-  background-color: #999;
+  background-color: #f7ba43;
 }
 
 .sidebar2 {
@@ -80,8 +80,12 @@ body {
   color: #444;
 }
 
-/* Style the size and logo of the heroes. */
+/* Style the header image. */
+img#marvel-logo {
+  width: 100px;
+}
 
+/* Style the size and logo of the heroes. */
 img#captain-America-image {
   width: 150px;
   background-color: #add8e6;

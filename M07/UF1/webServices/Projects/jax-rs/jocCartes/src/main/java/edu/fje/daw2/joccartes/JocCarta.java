@@ -10,7 +10,6 @@ package edu.fje.daw2.joccartes;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 

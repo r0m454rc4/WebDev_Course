@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: lightcyan;
+  background-color: #555555;
   text-align: center;
   font-family: UbuntuRegular;
 }
@@ -17,7 +17,7 @@ ul.breadcrumb {
   padding: 10px 16px;
   margin-left: 5%;
   margin-right: 5%;
-  background-color: lightblue;
+  background-color: #000000;
   border-radius: 7.5px;
   text-align: center;
 }
@@ -31,24 +31,25 @@ ul.breadcrumb li {
 /* This is to add "/" before the li. */
 ul.breadcrumb li + li:before {
   padding: 8px;
-  color: black;
+  color: #6f6f6f;
   content: "/";
 }
 
 ul.breadcrumb li a {
-  color: black;
+  color: #6f6f6f;
 
   /* text-decoration: none is because I don'r want to show the url underlined. */
   text-decoration: none;
 }
 
 ul.breadcrumb li a:hover {
-  color: lightcoral;
+  color: #40c82a;
   text-decoration: underline;
 }
 
 /* Grid container that I use in index.html to split the page in different parts. */
 .contenidor-grid {
+  background-color: #328c1c;
   display: grid;
   grid-template-areas:
     "millorsJocs taulaImatges taulaImatges taulaImatges taulaImatges taulaImatges xarxesSocials"
@@ -91,39 +92,6 @@ ul.breadcrumb li a:hover {
   font-size: 30px;
 }
 
-/* Style the table of videogames. */
-#llistaVideojocs {
-  margin-left: 5%;
-  margin-right: 5%;
-  width: 90%;
-  border-collapse: collapse;
-}
-
-#llistaVideojocs th,
-#llistaVideojocs td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  text-align: left;
-}
-
-#llistaVideojocs th {
-  background-color: lightskyblue;
-  text-align: center;
-}
-
-/* nth-child is to select the children of tr (i this case.) */
-#llistaVideojocs tr:nth-child(even) {
-  background: lightgray;
-}
-
-#llistaVideojocs tr:nth-child(odd) {
-  background: lightsteelblue;
-}
-
-#llistaVideojocs tr:hover {
-  background-color: lightseagreen;
-}
-
 /* Add resposiveness to the grid table for small screens. */
 @media (max-width: 1280px) {
   .contenidor-grid {
@@ -148,6 +116,121 @@ ul.breadcrumb li a:hover {
   }
 }
 
+/* Flex container for llistaVideojocs. */
+.contenidor-flex {
+  display: flex;
+  margin: 20px auto;
+  /* Max-width is to say the space I want to use. */
+  max-width: 90%;
+  background-color: #328c1c;
+  border-radius: 10px;
+  /* This is to don't show more content if I have more than the size of the container */
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Breadcrumb styles */
+.breadcrumb {
+  padding: 15px;
+  background-color: #333;
+  color: #fff;
+}
+
+.breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation bar for platforms. */
+.barra_vertical {
+  /* position: fixed is because I want to move it when scrolling down. */
+  position: fixed;
+  padding: 20px;
+  height: 85%;
+  background-color: #000000;
+  border-radius: 5px;
+}
+
+.barra_plataformes {
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden auto;
+}
+
+.barra_plataformes li {
+  margin: 10px 0;
+}
+
+.barra_plataformes a {
+  /* Display: block is to have all of them wuth the same width. */
+  display: block;
+  padding: 16px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #6f6f6f;
+  background-color: #ececec;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.barra_plataformes a:hover {
+  background-color: #ccc;
+}
+
+/* Videogame table. */
+#llistaVideojocs {
+  width: 135%;
+  /* Border-collapse is to prevent the gap between the cells. */
+  border-collapse: collapse;
+  margin-left: 35%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#llistaVideojocs th,
+#llistaVideojocs td {
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+#llistaVideojocs th {
+  background-color: #0379d1;
+  color: #fff;
+}
+
+#llistaVideojocs tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#llistaVideojocs tr:hover {
+  background-color: #00ae01;
+  color: #fff;
+}
+
+/* Style images of videogames. */
+.contenidor-grid-imatges {
+  display: grid;
+  margin-left: 27%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* Two columns with two images in each column */
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 100px; /* Add gap between the images. */
+}
+
+/* Size of the image. */
+.imatge {
+  height: 237px;
+  width: 195px;
+  margin: 5px;
+}
+
+div#fonsImatge {
+  background-color: #44d62c;
+  padding: 25px;
+}
+
 /* Add style to the form that is on Contacte. */
 .formulari-contacte {
   width: 300px;
@@ -155,7 +238,6 @@ ul.breadcrumb li a:hover {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .formulari-contacte h2 {
