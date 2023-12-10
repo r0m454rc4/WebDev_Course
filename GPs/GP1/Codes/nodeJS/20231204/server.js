@@ -45,6 +45,7 @@ const server = http.createServer((req, res) => {
 
     if (consulta.get("operacio") == "compra") {
       let producte = { nom: consulta.get("producte") };
+
       compres.push(producte);
       res.writeHead(302, {
         Location: "/home",
@@ -90,6 +91,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8888, () => {
-  console.log("Servidor a http://localhost:3000");
+server.listen(8080, () => {
+  console.log("Servidor a http://localhost:8888");
 });
