@@ -7,9 +7,50 @@
 }
 
 body {
-  background-color: #555555;
+  background-color: #1a1a1a;
   text-align: center;
   font-family: UbuntuRegular;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #6f6f6f;
+  color: ghostwhite;
+  text-align: center;
+  padding: 20px;
+
+  border-radius: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.sobreNosaltres {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  color: ghostwhite;
+}
+
+article {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #6f6f6f;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  /* position: fixed; */
+  bottom: 0;
+  width: 89%;
+  border-radius: 10px;
+  margin-left: 5%;
 }
 
 /* Navigation bar. */
@@ -49,7 +90,7 @@ ul.breadcrumb li a:hover {
 
 /* Grid container that I use in index.html to split the page in different parts. */
 .contenidor-grid {
-  background-color: #328c1c;
+  /* background-color: #328c1c; */
   display: grid;
   grid-template-areas:
     "millorsJocs taulaImatges taulaImatges taulaImatges taulaImatges taulaImatges xarxesSocials"
@@ -58,32 +99,62 @@ ul.breadcrumb li a:hover {
   margin-left: 5%;
   margin-right: 5%;
   text-align: center;
+  color: whitesmoke;
 }
 
 .millorsJocs {
   grid-area: millorsJocs;
   margin-right: 15%;
   width: auto;
-  border: solid 3px #cccccc;
+  border: solid 3px #40c82a;
   border-radius: 10px;
 }
 
 .millorsJocs p {
   margin-top: 35px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .taulaImatges {
   grid-area: taulaImatges;
-  border: solid 3px #cccccc;
+  border: solid 3px #40c82a;
   border-radius: 10px;
+
+  display: flex;
+  padding: 5px;
+  flex-wrap: wrap;
+}
+
+.columnaImatge {
+  flex: 25%; /* This is to split the images from 3 to 2. */
+  padding: 5px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.columnaImatge img {
+  height: 237px;
+  width: 195px;
+  margin: 5px;
 }
 
 .xarxesSocials {
   grid-area: xarxesSocials;
   margin-left: 20%;
   width: auto;
-  border: solid 3px #cccccc;
+  border: solid 3px #40c82a;
   border-radius: 10px;
+}
+
+.xarxesSocials a {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .grid-container > div {
@@ -93,7 +164,7 @@ ul.breadcrumb li a:hover {
 }
 
 /* Add resposiveness to the grid table for small screens. */
-@media (max-width: 1280px) {
+@media (max-width: 750px) {
   .contenidor-grid {
     grid-template-areas:
       "millorsJocs millorsJocs millorsJocs"
@@ -144,12 +215,11 @@ ul.breadcrumb li a:hover {
 
 /* Navigation bar for platforms. */
 .barra_vertical {
-  /* position: fixed is because I want to move it when scrolling down. */
-  position: fixed;
+  position: sticky;
   padding: 20px;
-  height: 85%;
   background-color: #000000;
   border-radius: 5px;
+  z-index: 1; /* This is to hide the footer. */
 }
 
 .barra_plataformes {
@@ -182,16 +252,18 @@ ul.breadcrumb li a:hover {
   width: 135%;
   /* Border-collapse is to prevent the gap between the cells. */
   border-collapse: collapse;
-  margin-left: 35%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-left: 2%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-height: 100px;
+  overflow-y: auto;
   text-align: center;
 }
 
 #llistaVideojocs th,
 #llistaVideojocs td {
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 14.8px;
 }
 
 #llistaVideojocs th {
@@ -211,12 +283,12 @@ ul.breadcrumb li a:hover {
 /* Style images of videogames. */
 .contenidor-grid-imatges {
   display: grid;
-  margin-left: 27%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  /* Two columns with two images in each column */
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 100px; /* Add gap between the images. */
+  margin-left: 15%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* Three columns with three images in each column. */
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 93px; /* Gap that is between the images. */
 }
 
 /* Size of the image. */
@@ -267,7 +339,7 @@ div#fonsImatge {
 
 .button {
   border-radius: 4px;
-  background-color: green;
+  background-color: #40c82a;
   border: none;
   color: whitesmoke;
   text-align: center;
@@ -286,7 +358,7 @@ div#fonsImatge {
 }
 
 .button span:after {
-  content: "\00bb";
+  content: "\00bb"; /* This is to add >> next to Envia in the form. */
   position: absolute;
   opacity: 0;
   top: 0;

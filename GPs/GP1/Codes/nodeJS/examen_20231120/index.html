@@ -20,38 +20,59 @@
         Fet per <cite title="Source Title">Romà Sardá Casellas.</cite>
       </footer>
     </blockquote>
-    <form>
+
+    <form action="/compra" method="get">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="productes">Opcions</label>
+          <label class="input-group-text">Opcions</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Elegeix...</option>
-          <option value="1">A</option>
-          <option value="2">B</option>
-          <option value="3">C</option>
+
+        <!-- Here, name="producte" is to be able to select the product.-->
+        <select class="custom-select" name="producte">
+          <option value="Ampolla d'aigua - 1.35€">
+            Ampolla d'aigua - 1.35€
+          </option>
+          <option value="Cola - 2€">Cola - 2€</option>
+          <option value="Birra - 2.3€">Birra - 2.3€</option>
         </select>
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="productes"
-            >Número d'unitats (màxim 5)</label
-          >
+          <label class="input-group-text">Número d'unitats</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Quantitat...</option>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+
+        <input
+          type="number"
+          name="quantitatProductes"
+          value="1"
+          min="1"
+          max="100"
+          class="form-control"
+          placeholder="Unitats"
+          aria-label="Unitats"
+        />
       </div>
 
-      <button type="button" class="btn btn-success">Compra</button>
-      <button type="button" class="btn btn-info">Tramitar</button>
+      <!-- The type is submit because it's a form. -->
+      <button
+        type="submit"
+        name="consulta"
+        value="compra"
+        class="btn btn-success"
+      >
+        Compra
+      </button>
+
+      <!-- Here the name is the same becasue I'd like to compare if the opiton is "compra" or "tramita". -->
+      <button
+        type="submit"
+        name="consulta"
+        value="tramita"
+        class="btn btn-info"
+      >
+        Tramitar
+      </button>
     </form>
   </body>
 </html>
