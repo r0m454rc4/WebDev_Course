@@ -10,8 +10,8 @@ let promesa = new Promise((resolve, reject) => {
   // A la vida real, probablement facis servir alguna cosa com XHR o una API HTML5.
   setTimeout(function () {
     if (Math.random() * 10 > 5) resolve("OK!");
-    reject("problema");
-  }, 250);
+    reject("Problema, el número generat no és major que 5.");
+  }, 1000);
 });
 
 promesa
@@ -33,4 +33,4 @@ promesa
   .catch((e) => {
     console.error("¡error! " + e);
   });
-console.info("aixó s'executa de manera seqüencial");
+console.info("Esperant 1 segon.");

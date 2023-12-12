@@ -1,6 +1,8 @@
 body {
   margin: 40px;
   text-align: center;
+  /* I use Ubuntu Mono for the font. */
+  font-family: "Ubuntu Mono", monospace;
 }
 
 /* Style the grid. */
@@ -40,6 +42,7 @@ body {
     "footer";
 }
 
+/* I make it responsive on smaller screens. */
 @media only screen and (min-width: 500px) {
   .wrapper {
     grid-template-columns: 20% auto;
@@ -82,31 +85,14 @@ body {
 
 /* Style the header image. */
 img#marvel-logo {
-  width: 100px;
+  width: 120px;
+  /* float: left; */
 }
 
 /* Style the size and logo of the heroes. */
-img#captain-America-image {
-  width: 150px;
+img#logo-superheroi {
+  width: 100px;
   background-color: #add8e6;
   border-radius: 50%;
-  margin-right: 25px;
-}
-
-img#loki-image {
-  width: 150px;
-  border-radius: 50%;
-  margin-right: 25px;
-}
-
-img#iron-man-image {
-  width: 150px;
-  border-radius: 50%;
-  margin-right: 25px;
-}
-
-img#spider-man-image {
-  width: 150px;
-  border-radius: 50%;
-  margin-right: 25px;
+  margin-top: 10px;
 }
