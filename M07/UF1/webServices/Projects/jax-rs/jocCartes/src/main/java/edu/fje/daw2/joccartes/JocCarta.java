@@ -23,7 +23,8 @@ public class JocCarta {
     /**
      * Create a new game using codiPartida as an URL parameter.
      * http://localhost:8888/jocCartes_war_exploded/api/iniciarJoc/1.
-     *
+     * 
+     * 
      * @param codiPartida
      * @return True if codiPartida has been iniciated, or false if it hasn't.
      */
@@ -108,10 +109,10 @@ public class JocCarta {
             if (totalCartes.get(numJug) == null) {
                 return "El jugador " + numJug + " no està jugant en aquesta partida.";
             } else if (totalCartes.get(numJug).size() == 0) {
-                return "El jugador " + numJug + " no té cartes restants.";
+                return "El jugador " + numJug + " no té cartes.";
             } else {
                 // I covert ArrayList to string using .toString().
-                return totalCartes.get(numJug).toString();
+                return "Partida " + codiPartida + ", jugador " + numJug + ": " + totalCartes.get(numJug).toString();
             }
         }
 
@@ -188,15 +189,15 @@ public class JocCarta {
      *
      * @param codiPartida
      * @param numJug
-     * @param quantitat
+     * @param quantitatd
      * @return Bet amount from the player.
      */
     @PUT
-    @Path("/moureJugador/{codiPartida}/{numJug}/aposta/{quantitat}")
+    @Path("/moureJugador/aposta")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String apostar(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") Integer numJug,
-            @PathParam("quantitat") int quantitat) {
+    public String apostar(@FormParam("codiPartida") Integer codiPartida, @FormParam("numJug") Integer numJug,
+            @FormParam("quantitatApostada") int quantitat) {
 
         return "El jugador " + numJug + " de la partida " + codiPartida + " aposta " + quantitat + " fitxes.";
     }
@@ -210,35 +211,53 @@ public class JocCarta {
      * @return True if a player doesn't want to play, false if wants to play.
      */
     @PUT
-    @Path("/moureJugador/{codiPartida}/{numJug}/passa")
+    @Path("/moureJugador/passa")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String passar(@PathParam("codiPartida") Integer codiPartida, @PathParam("numJug") Integer numJug) {
-
-        return "El jugador " + numJug + " de la partida " + codiPartida + " decideix passar en aquest torn.";
+    public String passar(@FormParam("codiPartida") Integer codiPartida, @FormParam("numJug") Integer numJug) {
+        if (partidaIniciada.contains(codiPartida)) {
+            if (codiPartida == null) {
+                return "El jugador no pot tirar la carta a causa de no haver indicat el codi de partida.";
+            } else if (numJug == null) {
+                return "El jugador no pot jugar a la partida " + codiPartida
+                        + " a causa de no haver indicat el seu codi de jugador.";
+            } else {
+                return "El jugador " + numJug + " decideix passar en aquest torn.";
+            }
+        } else {
+            return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
+        }
     }
 
     /**
      * Method to emd a game.
-     * http://localhost:8888/jocCartes_war_exploded/api/acabarJoc/1
+     * http://localhost:8888/jocCartes_war_exploded/api/acabarJoc
      *
      * @param codiPartida
      * @return End the game.
      */
     @DELETE
-    @Path("/acabarJoc/{codiPartida}")
+    @Path("/acabarJoc")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String esborrarPartida(@PathParam("codiPartida") Integer codiPartida) {
+    public String esborrarPartida(@FormParam("codiPartida") Integer codiPartida) {
         if (partidaIniciada.contains(codiPartida)) {
+            // System.out.println("ENTRO - BORRAR PARTIDA SENSE TENIR CARTES.");
             partidaIniciada.remove(codiPartida);
-            // totalCartes.get(codiPartida).clear(); is to reset the array, so the players
-            // doesn't have any
-            // card if they start the same game again.
-            totalCartes.get(codiPartida).clear();
 
-            return "La partida amb codi " + codiPartida + " ha estat acabada correctament.";
+            if (totalCartes.get(codiPartida).isEmpty()) {
+                // System.out.println("FINAL - BORRAR PARTIDA SENSE TENIR CARTES.");
+                return "Algun dels jugadors no tenia cap carta, però la partida amb codi " + codiPartida
+                        + " ha estat acabada correctament.";
+            } else {
+                // totalCartes.get(codiPartida).clear(); is to reset the array, so the players
+                // doesn't have any
+                // card if they start the same game again.
+                totalCartes.get(codiPartida).clear();
+
+                return "La partida amb codi " + codiPartida + " ha estat acabada correctament.";
+            }
+        } else {
+            return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
         }
-
-        return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
     }
 }

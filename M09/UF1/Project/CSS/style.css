@@ -256,7 +256,7 @@ ul.breadcrumb li a:hover {
 
 /* Videogame table. */
 #llistaVideojocs {
-  width: 135%;
+  width: 119%;
   /* Border-collapse is to prevent the gap between the cells. */
   border-collapse: collapse;
   margin-left: 2%;

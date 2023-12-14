@@ -113,7 +113,7 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
         .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
       // If the player doesn't have any card, because he already throwed them.
     } else if (totalCartes[codiPartida][numJug].length == 0) {
-      res.status(404).send(`El jugador ${numJug} no té cartes restants.`);
+      res.status(404).send(`El jugador ${numJug} no té cartes.`);
     } else {
       // I send the cards that the player has in a JSON format.
       res.json(
@@ -357,11 +357,17 @@ app.delete("/acabarJoc", (req, res) => {
     partidaIniciada[codiPartida] = false;
 
     // totalCartes[codiPartida] = [] is to reset the array, so the players doesn't have any card if they start the same game again.
-    totalCartes[codiPartida] = [];
+    if (totalCartes[codiPartida].length > 0) {
+      totalCartes[codiPartida] = [];
 
-    res.send(
-      `La partida amb codi ${codiPartida} ha estat acabada correctament.`
-    );
+      res.send(
+        `La partida amb codi ${codiPartida} ha estat acabada correctament.`
+      );
+    } else {
+      res.send(
+        `Algun dels jugadors no tenia cap carta, però la partida amb codi ${codiPartida} ha estat acabada correctament.`
+      );
+    }
   } else {
     res
       .status(404)

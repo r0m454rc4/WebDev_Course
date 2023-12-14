@@ -7,5 +7,7 @@
 			"path": "jax-rs"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
 }

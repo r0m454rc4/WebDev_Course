@@ -1,0 +1,16 @@
+<div class="container text-center">
+  <!-- [segons]="25" is the amount of seconds at the beggining. -->
+  <!-- (completat) is an user created event, is spedified on an @Output -->
+  <comptador [segons]="25" (completat)="onCompteEnreraFinalitza()" #comptador>
+  </comptador>
+  <p>
+    <button class="btn btn-default" (click)="comptador.segons = 25">
+      Fer un reset
+    </button>
+  </p>
+  <p *ngIf="comptador.segons < 10">
+    Atenció! queden
+    <!-- comptador.segons comes from #comptador in line number 4. -->
+    <strong>{{ comptador.segons }} segons</strong>
+  </p>
+</div>
