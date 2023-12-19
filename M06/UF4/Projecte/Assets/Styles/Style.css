@@ -6,20 +6,21 @@ body {
 }
 
 /* Style the grid. */
-.sidebar {
-  grid-area: sidebar;
-}
-
-.sidebar2 {
-  grid-area: sidebar2;
-}
-
-.content {
-  grid-area: content;
-}
 
 .header {
   grid-area: header;
+}
+
+.barra-superherois {
+  grid-area: barra-superherois;
+}
+
+.portades-comics {
+  grid-area: portades-comics;
+}
+
+.detalls-comics {
+  grid-area: detalls-comics;
 }
 
 .footer {
@@ -36,9 +37,9 @@ body {
   grid-gap: 1em;
   grid-template-areas:
     "header"
-    "sidebar"
-    "content"
-    "sidebar2"
+    "barra-superherois"
+    "portades-comics"
+    "detalls-comics"
     "footer";
 }
 
@@ -47,21 +48,21 @@ body {
   .wrapper {
     grid-template-columns: 20% auto;
     grid-template-areas:
-      "header   header"
-      "sidebar  content"
-      "sidebar2 sidebar2"
-      "footer   footer";
+      "header header"
+      "barra-superherois portades-comics"
+      "detalls-comics detalls-comics"
+      "footer footer";
   }
 }
 
 @media only screen and (min-width: 600px) {
   .wrapper {
     grid-gap: 20px;
-    grid-template-columns: 120px auto 120px;
+    grid-template-columns: 130px auto 400px;
     grid-template-areas:
-      "header  header  header"
-      "sidebar content sidebar2"
-      "footer  footer  footer";
+      "header header header"
+      "barra-superherois portades-comics detalls-comics"
+      "footer footer footer";
   }
 }
 
@@ -78,7 +79,7 @@ body {
   background-color: #f7ba43;
 }
 
-.sidebar2 {
+.detalls-comics {
   background-color: #ccc;
   color: #444;
 }

@@ -14,6 +14,35 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
       rel="stylesheet"
     />
+    <script type="text/javascript">
+      let xhr;
+
+      function inici() {
+        xhr = new XMLHttpRequest();
+
+        document.getElementById("cadena").onkeyup = function () {
+          // onkeyup = each time I click a new key.
+          ajaxFunction(this.value);
+        };
+      }
+
+      function ajaxFunction(cadena) {
+        // Callback.
+        xhr.onreadystatechange = function () {
+          // xhr.readyState == 4 means that the AJAX call has been completed.
+          if (xhr.readyState == 4) {
+            // If the user enters some keys.
+            document.getElementById("cadenaInvertida").innerHTML =
+              xhr.responseText; // xhr.responseText is because I know that is text.
+          }
+        };
+
+        xhr.open("GET", "invertir?cadena=" + cadena, true); // The true is to say that is asynchronous.
+        xhr.send(null); // xhr.send(null) is because the request doesn't have body.
+      }
+
+      window.addEventListener("load", inici, true);
+    </script>
   </head>
 
   <body>
@@ -25,7 +54,10 @@
           id="marvel-logo"
         />
       </div>
-      <div class="box sidebar">
+
+      <div class="box barra-superherois">
+        <!-- HERE I NEED TO IMPLEMENT THE API CALL TO SHOW THE SUPERHEROES
+         -->
         <img
           src="./Assets/Images/captain-America.png"
           alt="Captain America"
@@ -45,14 +77,16 @@
         <img src="./Assets/Images/venom.jpg" alt="Vemom" id="logo-superheroi" />
       </div>
 
-      <div class="box content">
-        Contingut <br />
-        Més contingut
+      <div class="box portades-comics">
+        Portades <br />
+        Dels còmics
       </div>
 
-      <div class="box sidebar2">Sidebar 2</div>
+      <div class="box detalls-comics">Detalls còmic sel·leccionat.</div>
 
-      <div class="box footer">&copy; 2023 Romà Sardá Casellas. Tots els drets reservats.</div>
+      <div class="box footer">
+        &copy; 2023 Romà Sardá Casellas. Tots els drets reservats.
+      </div>
     </div>
   </body>
 </html>

@@ -36,7 +36,11 @@ public class JocCarta {
     // player, and the value is the content of the array.
     private static Map<Integer, List<String>> totalCartes = new HashMap<>();
 
-    Integer codiPartida = 0, numJug = 0, quantitatPuntsIni = 100;
+    // Create two maps to store bet points.
+    private static Map<Integer, List<Integer>> quantitatPuntsJug = new HashMap<>(), quantitatRestant = new HashMap<>();
+
+    Integer codiPartida = 0, numJug = 0;
+    Boolean partidaIniciadaPrev = false;
 
     @POST
     @Path("/iniciarJoc")
@@ -84,8 +88,19 @@ public class JocCarta {
              */
             totalCartes.computeIfAbsent(numJug, k -> new ArrayList<String>());
 
+            // This is to add 100 points to a player when I create it, and it's the first
+            // time the player gets a card.
+            quantitatRestant.computeIfAbsent(numJug, k -> new ArrayList<Integer>());
+
+            if (totalCartes.get(codiPartida).size() == 0 && !partidaIniciadaPrev) {
+                quantitatRestant.get(numJug).add(100);
+                // System.out.println("El jugador " + numJug + " té " +
+                // quantitatRestant.get(numJug) + " fitxes.");
+            }
+
             // Add the card to the player's list.
             totalCartes.get(numJug).add(cartaTirada);
+            partidaIniciadaPrev = true;
 
             return "El jugador " + numJug + " ha obtingut " + cartaTirada;
         }
@@ -134,8 +149,8 @@ public class JocCarta {
     @Produces(MediaType.TEXT_PLAIN)
     public String tirarCarta(@FormParam("codiPartida") Integer codiPartida, @FormParam("numJug") Integer numJug,
             @FormParam("carta") Integer carta) {
-
         System.out.println("Partida iniciada: " + partidaIniciada.contains(codiPartida));
+
         if (partidaIniciada.contains(codiPartida)) {
             // This three first conditionals are to check if the parameters are set.
             if (codiPartida == null) {
@@ -189,7 +204,7 @@ public class JocCarta {
      *
      * @param codiPartida
      * @param numJug
-     * @param quantitatd
+     * @param quantitat
      * @return Bet amount from the player.
      */
     @PUT
@@ -197,9 +212,53 @@ public class JocCarta {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
     public String apostar(@FormParam("codiPartida") Integer codiPartida, @FormParam("numJug") Integer numJug,
-            @FormParam("quantitatApostada") int quantitat) {
+            @FormParam("quantitatApostada") Integer quantitatApostada) {
+        if (partidaIniciada.contains(codiPartida)) {
+            // Create a new arraylist to store the values.
+            // List<Integer> puntsJug = quantitatPuntsJug.get(numJug);
+            // List<Integer> restant = quantitatRestant.get(numJug);
 
-        return "El jugador " + numJug + " de la partida " + codiPartida + " aposta " + quantitat + " fitxes.";
+            // int qPuntsJug = (puntsJug != null) ?
+            // puntsJug.stream().mapToInt(Integer::intValue).sum() : 0;
+            // int qRestant = (restant != null) ?
+            // restant.stream().mapToInt(Integer::intValue).sum() : 0;
+
+            if (codiPartida == null) {
+                return "El jugador no pot tirar la carta a causa de no haver indicat el codi de partida.";
+            } else if (numJug == null) {
+                return "El jugador no pot jugar a la partida " + codiPartida
+                        + " a causa de no haver indicat el seu codi de jugador.";
+            } else if (quantitatApostada == null) {
+                return "El jugador " + numJug + " no pot apostar a causa de no haver indicat la quantitat.";
+            } else if (totalCartes.get(numJug) == null) {
+                return "El jugador " + numJug + " no està jugant en aquesta partida.";
+            } else if (totalCartes.get(numJug).size() == 0) {
+                return "El jugador " + numJug + " no pot apostar fitxes a causa de no tenir cartes restants.";
+            } else {
+                // System.out.println("DEBUG - Quantitat punts jugador: " + qPuntsJug);
+                // System.out.println("DEBUG - Quantitat punts apostats: " + quantitatApostada);
+
+                // if (qPuntsJug >= quantitatApostada) {
+                // System.out.println("DEBUG - Entro");
+                // qRestant -= quantitatApostada;
+                // System.out.println("Quantitat restant: " + qRestant);
+
+                // } else if (quantitatApostada >= qRestant) {
+                // return "El jugador " + numJug + " no pot apostar " + quantitatApostada
+                // + " fitxes, ja que superen la quantitat de fitxes disponibles.";
+                // }
+                // // If the player doesn't have any point.
+                // else if (quantitatRestant.get(numJug).contains(0)) {
+                // return "El jugador " + numJug + " no té cap fitxa restant.";
+                // }
+                return "El jugador " + numJug + " aposta " + quantitatApostada + " fitxes. Li queden "
+                        + quantitatRestant.get(numJug)
+                        + " fitxes.";
+
+            }
+        } else {
+            return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
+        }
     }
 
     /**
@@ -244,7 +303,7 @@ public class JocCarta {
             // System.out.println("ENTRO - BORRAR PARTIDA SENSE TENIR CARTES.");
             partidaIniciada.remove(codiPartida);
 
-            if (totalCartes.get(codiPartida).isEmpty()) {
+            if (totalCartes.get(codiPartida).size() == 0) {
                 // System.out.println("FINAL - BORRAR PARTIDA SENSE TENIR CARTES.");
                 return "Algun dels jugadors no tenia cap carta, però la partida amb codi " + codiPartida
                         + " ha estat acabada correctament.";

@@ -17,7 +17,9 @@ app.use(express.static("public"));
 
 // Here I declare some global variables.
 let partidaIniciada = [],
-  totalCartes = [];
+  totalCartes = [],
+  // quantitatRestant[] is used to store the amount of points of a player.
+  quantitatRestant = [];
 
 app.post("/iniciarJoc", (req, res) => {
   // http://localhost:8888/iniciarJoc
@@ -60,6 +62,7 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
 
   let codiPartida = req.params.codiPartida;
   let numJug = req.params.numJug;
+  let partidaIniciadaPrev = false;
 
   if (partidaIniciada[codiPartida]) {
     // Function to generate a random card.
@@ -85,7 +88,15 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
     }
     console.log(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
 
+    // This is to add 100 points to a player when I create it, and it's the first time the player gets a card.
+    if (totalCartes[codiPartida][numJug].length == 0 && !partidaIniciadaPrev) {
+      // console.log(`Estat partida: ${!partidaIniciadaPrev}`);
+      quantitatRestant[numJug] = 100;
+    }
+
+    // I push the card to the array.
     totalCartes[codiPartida][numJug].push(cartaTirada);
+    partidaIniciadaPrev = true;
 
     res.json(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
     // res.send(`La carta aleatòria és: ${cartaTirada}`);
@@ -208,30 +219,20 @@ app.put("/tirarCarta", (req, res) => {
   }
 });
 
-// I must finish.
 app.put("/moureJugador/aposta", (req, res) => {
   // http://localhost:8888/moureJugador/1/1/aposta/30  --> Player 1 bets 30 points on codiPartida = 1.
   // http://localhost:8888/moureJugador/1/2/aposta/50  --> Player 2 bets 30 points on codiPartida = 1.
 
   // console.log(quantitatRestant[numJug]);
-
   let codiPartida = req.body.codiPartida;
   let numJug = req.body.numJug;
   let quantitatApostada = parseInt(req.body.quantitatApostada);
 
-  let quantitatPuntsIni = [],
-    quantitatPuntsJug = [],
-    quantitatRestant = [];
-  quantitatRestant[numJug] = 100;
-
-  // Initialize the player's points if not already done.
-  if (!quantitatPuntsIni[numJug]) {
-    quantitatPuntsIni[numJug] = quantitatRestant[numJug];
-  }
+  let quantitatPuntsJug = [];
 
   // Initialize the player's points.
   if (!quantitatPuntsJug[numJug]) {
-    quantitatPuntsJug[numJug] = quantitatPuntsIni[numJug];
+    quantitatPuntsJug[numJug] = quantitatRestant[numJug];
   }
 
   if (partidaIniciada[codiPartida]) {
@@ -268,7 +269,7 @@ app.put("/moureJugador/aposta", (req, res) => {
         );
     } else {
       if (quantitatPuntsJug[numJug] >= quantitatApostada) {
-        console.log(`Quantitat apostada ${quantitatApostada}`);
+        // console.log(`Quantitat apostada ${quantitatApostada}`);
         quantitatRestant[numJug] -= quantitatApostada;
 
         res.send(

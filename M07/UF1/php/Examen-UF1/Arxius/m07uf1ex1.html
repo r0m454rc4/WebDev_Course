@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>m07uf1ex1.html</title>
+    <font face="Arial">
+      <form action="m07uf1ex1.php" method="GET">
+        <b><u>CÀLCUL PREU VPS A MIDA</u></b
+        ><br />
+        <br />
+        <b>a) Introudeix les caracterísitiques del teu VPS:<br /></b>
+        <table>
+          <tbody>
+            <tr>
+              <td>Quantitat de CPUs (2€/mes per CPU):</td>
+              <td>
+                <select name="cpu">
+                  <option value="1" selected="selected">1 CPU</option>
+                  <option value="2">2 CPU</option>
+                  <option value="4">4 CPU</option>
+                  <option value="8">8 CPU</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Quantitat de RAM (1€/mes per GiB de RAM):</td>
+              <td>
+                <select name="ram">
+                  <option value="1" selected="selected">1 GiB</option>
+                  <option value="2">2 GiB</option>
+                  <option value="4">4 GiB</option>
+                  <option value="8">8 GiB</option>
+                  <option value="16">16 GiB</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Quantitat de dis dur SSD (0,15€/mes per GiB de SSD):</td>
+              <td>
+                <select name="disc">
+                  <option value="10" selected="selected">10 GiB</option>
+                  <option value="20">20 GiB</option>
+                  <option value="40">40 GiB</option>
+                  <option value="80">80 GiB</option>
+                  <option value="160">160 GiB</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Sistema operatiu:</td>
+              <td>
+                <select name="so" selected="selected">
+                  <option value="1">Debian 10 (1€/mes)</option>
+                  <option value="5">Windows Server 2019 Std. (5€/mes)</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>IP fixa:</td>
+              <td>
+                <select name="ip">
+                  <option value="0" selected="selected">No (0€/mes)</option>
+                  <option value="2">Sí (2€/mes)</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <b>b) Preu del VPS en Euros, Dolars i Lliures:</b><br />
+        <input
+          name="moneda[]"
+          value="euros"
+          type="checkbox"
+          checked
+        />Euros<br />
+        <input name="moneda[]" value="dolars" type="checkbox" />Dolars<br />
+        <input name="moneda[]" value="lliures" type="checkbox" />Lliures<br />
+        <br />
+        <table>
+          <tbody>
+            <tr>
+              <td><input value="Envia dades" type="submit" /></td>
+              <td><input value="Neteja dades" type="reset" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </font>
+  </body>
+</html>
