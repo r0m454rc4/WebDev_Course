@@ -3,6 +3,7 @@ body {
   text-align: center;
   /* I use Ubuntu Mono for the font. */
   font-family: "Ubuntu Mono", monospace;
+  font-size: 13px;
 }
 
 /* Style the grid. */
@@ -58,7 +59,7 @@ body {
 @media only screen and (min-width: 600px) {
   .wrapper {
     grid-gap: 20px;
-    grid-template-columns: 130px auto 400px;
+    grid-template-columns: 135px auto 400px;
     grid-template-areas:
       "header header header"
       "barra-superherois portades-comics detalls-comics"
@@ -92,8 +93,10 @@ img#marvel-logo {
 
 /* Style the size and logo of the heroes. */
 img#logo-superheroi {
-  width: 100px;
-  background-color: #add8e6;
+  font-family: "Ubuntu Mono", monospace;
+  width: 90px;
+  height: 90px;
+  border: 5px solid #e3242b;
   border-radius: 50%;
   margin-top: 10px;
 }

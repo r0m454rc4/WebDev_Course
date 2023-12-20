@@ -23,8 +23,9 @@
     let clauHash = MD5(hora + clauApiPrivada + clauApiPublica);
     // console.log(`Clau hash: ${clauHash}`);
 
+    var xhr = new XMLHttpRequest();
+
     function obtenirLogoSuperHeroi() {
-      var xhr = new XMLHttpRequest();
       xhr.open("GET", `https://gateway.marvel.com:443/v1/public/characters?ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`, true);
       xhr.responseType = "json";
 
@@ -34,12 +35,7 @@
           // console.log(dadesResposta);
 
           dadesResposta.forEach(superHeroi => {
-            // console.log(superHeroi.name);
-            // console.log(superHeroi.name);
-            // console.log(superHeroi.thumbnail);
-
-            document.getElementById("test").innerHTML += `${superHeroi.name}<br>`;
-            document.getElementById("test1").innerHTML += `${superHeroi.thumbnail.path + "." + superHeroi.thumbnail.extension}<br>`;
+            document.getElementById("test1").innerHTML += `<img src="${superHeroi.thumbnail.path + '.' + superHeroi.thumbnail.extension}" id="logo-superheroi">${superHeroi.name}<br>`;
           })
         } else {
           console.log("Ha ocorregut un error.");
@@ -49,7 +45,29 @@
       xhr.send();
     }
 
-    window.addEventListener("load", obtenirLogoSuperHeroi, true);
+    function obtenirComics() {
+      let idSuperHeroi = 1017100;
+
+      xhr.open("GET", `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`, true);
+      xhr.responseType = "json";
+
+      xhr.onload = function (e) {
+        if (this.status == 200) {
+          let resposta = this.response, dadesResposta = resposta.data.results;
+          console.log(dadesResposta);
+
+          // dadesResposta.forEach(superHeroi => {
+          //   document.getElementById("test1").innerHTML += `<img src="${superHeroi.thumbnail.path + '.' + superHeroi.thumbnail.extension}" id="logo-superheroi">${superHeroi.name}<br>`;
+          // })
+        } else {
+          console.log("Ha ocorregut un error.");
+        }
+      };
+
+      xhr.send();
+    }
+
+    window.addEventListener("load", obtenirComics, true);
   </script>
 </head>
 
@@ -60,17 +78,8 @@
     </div>
 
     <div class="box barra-superherois">
-      <!-- HERE I NEED TO IMPLEMENT THE API CALL TO SHOW THE SUPERHEROES
-         -->
-      <img src="./Assets/Images/captain-America.png" alt="Captain America" id="logo-superheroi" />
-      <img src="./Assets/Images/loki.jpg" alt="Loki" id="logo-superheroi" />
-      <img src="./Assets/Images/iron-man.jpg" alt="Iron-man" id="logo-superheroi" />
-      <img src="./Assets/Images/spider-man.jpg" alt="Spider-man" id="logo-superheroi" />
-      <img src="./Assets/Images/venom.jpg" alt="Vemom" id="logo-superheroi" />
+      <label id="test1"></label>
     </div>
-
-    <label id="test"></label>
-    <label id="test1"></label>
 
     <div class="box portades-comics">
       Portades <br />
