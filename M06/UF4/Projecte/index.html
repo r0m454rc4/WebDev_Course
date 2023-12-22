@@ -32,10 +32,13 @@
       xhr.onload = function (e) {
         if (this.status == 200) {
           let resposta = this.response, dadesResposta = resposta.data.results;
-          // console.log(dadesResposta);
 
           dadesResposta.forEach(superHeroi => {
-            document.getElementById("test1").innerHTML += `<img src="${superHeroi.thumbnail.path + '.' + superHeroi.thumbnail.extension}" id="logo-superheroi">${superHeroi.name}<br>`;
+            // console.log(`${superHeroi.name}: ${superHeroi.id}`);
+
+            document.getElementById("logos-superherois").innerHTML += `<img src="${superHeroi.thumbnail.path + '.' + superHeroi.thumbnail.extension}" id="logo-superheroi">${superHeroi.name}<br>`;
+
+            obtenirTotsElsComics();
           })
         } else {
           console.log("Ha ocorregut un error.");
@@ -45,20 +48,23 @@
       xhr.send();
     }
 
-    function obtenirComics() {
-      let idSuperHeroi = 1017100;
-
-      xhr.open("GET", `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`, true);
+    function obtenirTotsElsComics() {
+      // Get the first 14 comics from 10 characters of the API ordered by title. 
+      xhr.open("GET", `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=14&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`, true);
       xhr.responseType = "json";
 
       xhr.onload = function (e) {
         if (this.status == 200) {
           let resposta = this.response, dadesResposta = resposta.data.results;
-          console.log(dadesResposta);
+          // console.log(dadesResposta);
 
-          // dadesResposta.forEach(superHeroi => {
-          //   document.getElementById("test1").innerHTML += `<img src="${superHeroi.thumbnail.path + '.' + superHeroi.thumbnail.extension}" id="logo-superheroi">${superHeroi.name}<br>`;
-          // })
+          dadesResposta.forEach(comic => {
+            // console.log(`${comic.title}:  ${comic.id}`);
+
+            document.getElementById("comics").innerHTML += `<img src="${comic.thumbnail.path + '.' + comic.thumbnail.extension}" id="imatge-comic"><br>`;
+
+            obtenirDetallsComic()
+          })
         } else {
           console.log("Ha ocorregut un error.");
         }
@@ -67,26 +73,104 @@
       xhr.send();
     }
 
-    window.addEventListener("load", obtenirComics, true);
+    function obtenirComicsSuperHeroi() {
+      let idSuperHeroi = 1017100;
+
+      switch (idSuperHeroi) {
+        // Implement that case is document.getElemetByID of the superheroe.
+
+        case 1017100:
+          xhr.open("GET", `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`, true);
+          xhr.responseType = "json";
+          break;
+        default:
+          break;
+      }
+
+      xhr.onload = function (e) {
+        if (this.status == 200) {
+          let resposta = this.response, dadesResposta = resposta.data.results;
+          // console.log(dadesResposta);
+
+          dadesResposta.forEach(comic => {
+            document.getElementById("comics").innerHTML += `<img src="${comic.thumbnail.path + '.' + comic.thumbnail.extension}" id="imatge-comic"> <br>${comic.title}<br><br>`;
+          })
+        } else {
+          console.log("Ha ocorregut un error.");
+        }
+      };
+
+      xhr.send();
+    }
+
+    function obtenirDetallsComic() {
+      let idComic = 43507;
+
+      switch (idComic) {
+        // Implement that case is document.getElemetByID of the superheroe.
+
+        case 43507:
+          xhr.open("GET", `https://gateway.marvel.com:443/v1/public/comics/${idComic}?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`, true);
+          xhr.responseType = "json";
+          break;
+        default:
+          break;
+      }
+
+      xhr.onload = function (e) {
+        if (this.status == 200) {
+          let resposta = this.response, dadesResposta = resposta.data.results;
+          console.log(dadesResposta);
+          let dataFormatada = new Date(dadesResposta.modified);
+          let dia = dataFormatada.getMonth(), mes = dataFormatada.getMonth(), any = dataFormatada.getFullYear();
+          dataFormatada = `${dia}/${mes}/${any}`;
+          console.log(dataFormatada);
+          let creadors = comic.creators;
+
+          creadors.array.forEach(creador => {
+
+          });
+
+          document.getElementById("detall-comic").innerHTML += `<img src="${comic.thumbnail.path + '.' + comic.thumbnail.extension}" id="imatge-comic"><br>
+            <b><u>${comic.title}</u></b><br>
+            <b>Descripció</b>: ${comic.description}<br>
+            <b>Número de pàgines</b>: ${comic.pageCount}<br>
+            <b>Publicat</b>: ${dataFormatada}<br>
+            <b>Creador</b>: ${comic.creators}<br>
+            <b>Preu</b>: ${comic.prices}
+            <br>`;
+
+        } else {
+          console.log("Ha ocorregut un error.");
+        }
+      };
+
+      xhr.send();
+    }
+
+    window.addEventListener("load", obtenirLogoSuperHeroi, true);
   </script>
 </head>
 
 <body>
   <div class="wrapper">
     <div class="box header">
-      <img src="./Assets/Images/Marvel-Logo.png" alt="Marvel-Logo" id="marvel-logo" />
+      <a href="./index.html">
+        <img src="./Assets/Images/Marvel-Logo.png" alt="Marvel-Logo" id="marvel-logo" />
+      </a>
     </div>
 
     <div class="box barra-superherois">
-      <label id="test1"></label>
+      <label id="logos-superherois"></label>
     </div>
 
     <div class="box portades-comics">
-      Portades <br />
-      Dels còmics
+      <label id="comics"></label>
     </div>
 
-    <div class="box detalls-comics">Detalls còmic sel·leccionat.</div>
+    <div class="box detalls-comics">
+      <label id="detall-comic"></label>
+    </div>
 
     <div class="box footer">
       &copy; 2023 Romà Sardá Casellas. Tots els drets reservats.

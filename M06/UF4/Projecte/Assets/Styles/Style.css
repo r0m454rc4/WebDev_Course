@@ -93,10 +93,27 @@ img#marvel-logo {
 
 /* Style the size and logo of the heroes. */
 img#logo-superheroi {
-  font-family: "Ubuntu Mono", monospace;
   width: 90px;
   height: 90px;
   border: 5px solid #e3242b;
   border-radius: 50%;
   margin-top: 10px;
+}
+
+/* Style the size and logo of the comics. */
+img#imatge-comic {
+  height: 425px;
+  border: 5px solid #e3242b;
+  margin-top: 10px;
+}
+
+label#comics {
+  display: grid;
+  grid-gap: 60px;
+  grid-template-columns: repeat(4, 1fr);
+
+  margin-top: 10px;
+  margin-left: 17%;
+  margin-right: 20%;
+  margin-bottom: 25px;
 }
