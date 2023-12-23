@@ -567,6 +567,14 @@
                 superHeroi.thumbnail.path + "." + superHeroi.thumbnail.extension
               }" id="logo-superheroi">${superHeroi.name}<br>`;
 
+              let llistaSuperHerois =
+                document.getElementById("logos-superherois");
+
+              llistaSuperHerois.onclick = () => {
+                console.log(superHeroi.name);
+                obtenirComicsSuperHeroi(superHeroi.id);
+              };
+
               obtenirTotsElsComics();
             });
           } else {
@@ -609,17 +617,26 @@
               let titol = document.createElement("p");
               titol.textContent = comic.title;
 
+              let idC = document.createElement("p");
+
+              // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
+              idC.setAttribute("id", "idC");
+              idC.textContent = comic.id;
+
               // Append the image and title to the container
               contenidorComic.appendChild(imatge);
               contenidorComic.appendChild(titol);
+              contenidorComic.append(idC);
 
               // Here I add the div that I creaderd "contenidorComic" to the label "comics",
               document.getElementById("comics").appendChild(contenidorComic);
 
-              // TEST TO GET THE COMIC ID.
-              document.getElementById("comics").onclick = function () {
-                console.log(comic.id);
-                obtenirDetallsComic(comic.id);
+              // This is to get the information from a specific comic.
+              contenidorComic.onclick = () => {
+                console.log(contenidorComic.childNodes.item(2).innerHTML);
+                obtenirDetallsComic(
+                  contenidorComic.childNodes.item(2).innerHTML
+                );
               };
 
               // At the beggining, I show the information of the first comic on the grid layout.
@@ -633,23 +650,15 @@
         xhr.send();
       };
 
-      let obtenirComicsSuperHeroi = () => {
-        let idSuperHeroi = 1017100;
+      let obtenirComicsSuperHeroi = (idSuperHeroi) => {
+        // Implement that case is document.getElemetByID of the superheroe.
 
-        switch (idSuperHeroi) {
-          // Implement that case is document.getElemetByID of the superheroe.
-
-          case 1017100:
-            xhr.open(
-              "GET",
-              `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`,
-              true
-            );
-            xhr.responseType = "json";
-            break;
-          default:
-            break;
-        }
+        xhr.open(
+          "GET",
+          `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`,
+          true
+        );
+        xhr.responseType = "json";
 
         xhr.onload = function (e) {
           if (xhr.readyState == 4) {

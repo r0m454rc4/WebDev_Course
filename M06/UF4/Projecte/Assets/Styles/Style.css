@@ -118,3 +118,8 @@ label#comics {
   margin-right: 5%;
   margin-bottom: 25px;
 }
+
+/* This is to don't show "idComic" after the title. */
+p#idC {
+  display: none;
+}
