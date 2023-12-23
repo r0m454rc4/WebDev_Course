@@ -540,9 +540,6 @@
       let clauApiPrivada = "644d1d1f33e2505c06f2a394df96141f6f58d92b";
       let clauHash = MD5(hora + clauApiPrivada + clauApiPublica);
 
-      // idC is to store the comic ID.
-      let idC = [];
-
       var xhr = new XMLHttpRequest();
 
       let obtenirLogoSuperHeroi = () => {
@@ -598,8 +595,6 @@
 
             dadesResposta.forEach((comic) => {
               console.log(`${comic.title}: ${comic.id}`);
-              idComic = comic.id;
-              idC.push(idComic);
 
               // I crete a container for each comic, this is because of the title, if I don't have it, the title wouldn't be at the bottom of the image, the problem is caused because of the grid.
               let contenidorComic = document.createElement("div");
@@ -621,7 +616,14 @@
               // Here I add the div that I creaderd "contenidorComic" to the label "comics",
               document.getElementById("comics").appendChild(contenidorComic);
 
-              obtenirDetallsComic();
+              // TEST TO GET THE COMIC ID.
+              document.getElementById("comics").onclick = function () {
+                console.log(comic.id);
+                obtenirDetallsComic(comic.id);
+              };
+
+              // At the beggining, I show the information of the first comic on the grid layout.
+              obtenirDetallsComic(43507);
             });
           } else {
             console.log("Ha ocorregut un error.");
@@ -668,19 +670,7 @@
         xhr.send();
       };
 
-      let llegirId = () => {};
-
-      let obtenirDetallsComic = () => {
-        let idComic = idC[0];
-
-        // https://developer.mozilla.org/en-US/docs/Web/API/Document/images.
-        for (let imatge of document.images) {
-          if (imatge.id == "imatge-comic") {
-            // console.log(`Codi imatge: ${imatge.src.slice(44, 57)}`);
-            console.log(imatge);
-          }
-        }
-
+      let obtenirDetallsComic = (idComic) => {
         xhr.open(
           "GET",
           `https://gateway.marvel.com:443/v1/public/comics/${idComic}?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`,
@@ -690,8 +680,8 @@
 
         xhr.onload = function (e) {
           if (xhr.readyState == 4) {
-            let resposta = this.response,
-              dadesResposta = resposta.data.results;
+            let resposta = this.response;
+            dadesResposta = resposta.data.results;
             // console.log(dadesResposta);
 
             dadesResposta.forEach((comic) => {
