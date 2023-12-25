@@ -561,18 +561,34 @@
             dadesResposta.forEach((superHeroi) => {
               // console.log(`${superHeroi.name}: ${superHeroi.id}`);
 
-              document.getElementById(
-                "logos-superherois"
-              ).innerHTML += `<img src="${
+              let contenidorSuperHeroi = document.createElement("div");
+              let imatge = document.createElement("img");
+              imatge.src = `${
                 superHeroi.thumbnail.path + "." + superHeroi.thumbnail.extension
-              }" id="logo-superheroi">${superHeroi.name}<br>`;
+              }`;
+              imatge.id = "logo-superheroi";
 
-              let llistaSuperHerois =
-                document.getElementById("logos-superherois");
+              let nom = document.createElement("p");
+              nom.textContent = superHeroi.name;
 
-              llistaSuperHerois.onclick = () => {
-                console.log(superHeroi.name);
-                obtenirComicsSuperHeroi(superHeroi.id);
+              let idS = document.createElement("p");
+              idS.setAttribute("id", "idS");
+              idS.textContent = superHeroi.id;
+
+              contenidorSuperHeroi.appendChild(imatge);
+              contenidorSuperHeroi.appendChild(nom);
+              contenidorSuperHeroi.append(idS);
+
+              document
+                .getElementById("logos-superherois")
+                .appendChild(contenidorSuperHeroi);
+
+              contenidorSuperHeroi.onclick = () => {
+                // console.log(contenidorSuperHeroi.childNodes.item(2).innerHTML);
+                // console.log(superHeroi.name);
+                obtenirComicsSuperHeroi(
+                  contenidorSuperHeroi.childNodes.item(2).innerHTML
+                );
               };
 
               obtenirTotsElsComics();
@@ -586,10 +602,10 @@
       };
 
       let obtenirTotsElsComics = () => {
-        // Get the first 18 comics from 10 characters of the API ordered by title.
+        // Get the first 21 comics from 10 characters of the API ordered by title.
         xhr.open(
           "GET",
-          `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=18&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`,
+          `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=21&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`,
           true
         );
         xhr.responseType = "json";
@@ -602,7 +618,7 @@
             // console.log(dadesResposta);
 
             dadesResposta.forEach((comic) => {
-              console.log(`${comic.title}: ${comic.id}`);
+              // console.log(`${comic.title}: ${comic.id}`);
 
               // I crete a container for each comic, this is because of the title, if I don't have it, the title wouldn't be at the bottom of the image, the problem is caused because of the grid.
               let contenidorComic = document.createElement("div");
@@ -666,10 +682,44 @@
               dadesResposta = resposta.data.results;
             // console.log(dadesResposta);
 
+            // This is to clear the previous commics that were on "comics".
+            document.getElementById("comics").innerHTML = "";
+
             dadesResposta.forEach((comic) => {
-              document.getElementById("comics").innerHTML += `<img src="${
+              // console.log(`${comic.title}: ${comic.id}`)
+
+              let contenidorComic = document.createElement("div");
+              // Create an image element.
+              let imatge = document.createElement("img");
+              imatge.src = `${
                 comic.thumbnail.path + "." + comic.thumbnail.extension
-              }" id="imatge-comic"> <br>${comic.title}<br><br>`;
+              }`;
+              imatge.id = "imatge-comic";
+
+              // Create a paragraph element for the comic title.
+              let titol = document.createElement("p");
+              titol.textContent = comic.title;
+
+              let idC = document.createElement("p");
+
+              // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
+              idC.setAttribute("id", "idC");
+              idC.textContent = comic.id;
+
+              // Append the image and title to the container
+              contenidorComic.appendChild(imatge);
+              contenidorComic.appendChild(titol);
+              contenidorComic.append(idC);
+
+              document.getElementById("comics").appendChild(contenidorComic);
+
+              // This is to get the information from a specific comic.
+              contenidorComic.onclick = () => {
+                console.log(contenidorComic.childNodes.item(2).innerHTML);
+                obtenirDetallsComic(
+                  contenidorComic.childNodes.item(2).innerHTML
+                );
+              };
             });
           } else {
             console.log("Ha ocorregut un error.");
@@ -718,7 +768,7 @@
                 // console.log(escriptors);
               });
 
-              document.getElementById("detall-comic").innerHTML += `<img src="${
+              document.getElementById("detall-comic").innerHTML = `<img src="${
                 comic.thumbnail.path + "." + comic.thumbnail.extension
               }" id="imatge-comic"><br>
             <b><u>${comic.title}</u></b><br>
@@ -738,7 +788,7 @@
         xhr.send();
       };
 
-      window.addEventListener("load", obtenirTotsElsComics, true);
+      window.addEventListener("load", obtenirLogoSuperHeroi, true);
     </script>
   </head>
 

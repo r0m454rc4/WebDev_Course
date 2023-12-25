@@ -98,7 +98,7 @@ img#logo-superheroi {
   height: 90px;
   border: 5px solid #e3242b;
   border-radius: 50%;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 /* Style the size and logo of the comics. */
@@ -117,6 +117,12 @@ label#comics {
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 25px;
+}
+
+/* This is to don't show "idSuperHeroi" after the name. */
+/* https://stackoverflow.com/questions/45804017/how-to-hide-specific-html-paragraph-element */
+p#idS {
+  display: none;
 }
 
 /* This is to don't show "idComic" after the title. */
