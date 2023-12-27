@@ -10,6 +10,7 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
 
   var xhr = new XMLHttpRequest();
 
+  // Function to get the logos from the superheroes.
   let obtenirLogoSuperHeroi = () => {
     xhr.open(
       "GET",
@@ -39,6 +40,7 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
           let nom = document.createElement("p");
           nom.textContent = superHeroi.name;
 
+          // This is to add the ID of the superheroe as a paragraph.
           let idS = document.createElement("p");
           idS.setAttribute("id", "idS");
           idS.textContent = superHeroi.id;
@@ -69,6 +71,7 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
     xhr.send();
   };
 
+  // Function to fetch some comics.
   let obtenirTotsElsComics = () => {
     // Get the first 21 comics from 10 characters of the API ordered by title.
     xhr.open(
@@ -82,7 +85,6 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
       if (xhr.readyState == 4) {
         let resposta = this.response,
           dadesResposta = resposta.data.results;
-        let idComic = 0;
         // console.log(dadesResposta);
 
         dadesResposta.forEach((comic) => {
@@ -132,9 +134,8 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
     xhr.send();
   };
 
+  // Funcction to fetch the comics from a superheroe.
   let obtenirComicsSuperHeroi = (idSuperHeroi) => {
-    // Implement that case is document.getElemetByID of the superheroe.
-
     xhr.open(
       "GET",
       `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`,
@@ -193,6 +194,7 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
     xhr.send();
   };
 
+  // Function to fetch the details from a comic
   let obtenirDetallsComic = (idComic) => {
     xhr.open(
       "GET",
@@ -203,8 +205,8 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
 
     xhr.onload = function (e) {
       if (xhr.readyState == 4) {
-        let resposta = this.response;
-        dadesResposta = resposta.data.results;
+        let resposta = this.response,
+          dadesResposta = resposta.data.results;
         // console.log(dadesResposta);
 
         dadesResposta.forEach((comic) => {
@@ -254,3 +256,4 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
 
   obtenirLogoSuperHeroi();
 };
+ 
