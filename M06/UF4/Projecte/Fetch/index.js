@@ -22,106 +22,8 @@ window.onload = function () {
     return resposta.json();
   }
 
-  let OLS = obtenirLogoSuperHeroi()
-    .then((resposta) => {
-      let dadesResposta = resposta.data.results;
-
-      dadesResposta.forEach((superHeroi) => {
-        // console.log(`${superHeroi.name}: ${superHeroi.id}`);
-
-        let contenidorSuperHeroi = document.createElement("div");
-        let imatge = document.createElement("img");
-        imatge.src = `${
-          superHeroi.thumbnail.path + "." + superHeroi.thumbnail.extension
-        }`;
-        imatge.id = "logo-superheroi";
-
-        let nom = document.createElement("p");
-        nom.textContent = superHeroi.name;
-
-        // This is to add the ID of the superheroe as a paragraph.
-        let idS = document.createElement("p");
-        idS.setAttribute("id", "idS");
-        idS.textContent = superHeroi.id;
-
-        contenidorSuperHeroi.appendChild(imatge);
-        contenidorSuperHeroi.appendChild(nom);
-        contenidorSuperHeroi.append(idS);
-
-        document
-          .getElementById("logos-superherois")
-          .appendChild(contenidorSuperHeroi);
-
-        contenidorSuperHeroi.onclick = () => {
-          console.log(contenidorSuperHeroi.childNodes.item(2).innerHTML);
-          // console.log(superHeroi.name);
-
-          // Promise to get the comics from a superheroe.
-          obtenirComicsSuperHeroi(
-            contenidorSuperHeroi.childNodes.item(2).innerHTML
-          )
-            .then((resposta) => {
-              let dadesResposta = resposta.data.results;
-
-              // This is to clear the previous commics that were on "comics".
-              document.getElementById("comics").innerHTML = "";
-
-              dadesResposta.forEach((comic) => {
-                // console.log(`${comic.title}: ${comic.id}`)
-
-                let contenidorComic = document.createElement("div");
-                // Create an image element.
-                let imatge = document.createElement("img");
-                imatge.src = `${
-                  comic.thumbnail.path + "." + comic.thumbnail.extension
-                }`;
-                imatge.id = "imatge-comic";
-
-                // Create a paragraph element for the comic title.
-                let titol = document.createElement("p");
-                titol.textContent = comic.title;
-
-                let idC = document.createElement("p");
-
-                // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
-                idC.setAttribute("id", "idC");
-                idC.textContent = comic.id;
-
-                // Append the image and title to the container
-                contenidorComic.appendChild(imatge);
-                contenidorComic.appendChild(titol);
-                contenidorComic.append(idC);
-
-                document.getElementById("comics").appendChild(contenidorComic);
-
-                // This is to get the information from a specific comic.
-                contenidorComic.onclick = () => {
-                  // console.log(contenidorComic.childNodes.item(2).innerHTML);
-                  obtenirDetallsComic(
-                    contenidorComic.childNodes.item(2).innerHTML
-                  )
-                    // If there's an error, I print it.
-                    .catch((e) => {
-                      console.log("Ha ocorregut un error!");
-                      console.log(e);
-                    });
-                };
-              });
-            })
-            .catch((e) => {
-              console.log("Ha ocorregut un error!");
-              console.log(e);
-            });
-        };
-      });
-    })
-    .catch((e) => {
-      console.log("Ha ocorregut un error!");
-      console.log(e);
-    });
-
   // Async function to fetch some comics.
-  async function obtenirTotsElsComics() {
+  async function obtenirComics() {
     let url = `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=21&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`;
 
     let resposta = await fetch(url, {
@@ -133,70 +35,6 @@ window.onload = function () {
 
     return resposta.json();
   }
-
-  // Promise to get the first 21 comics from 10 characters of the API ordered by title.
-  let OTEC = obtenirTotsElsComics()
-    .then((resposta) => {
-      let dadesResposta = resposta.data.results;
-      let nCmpt = 0;
-
-      dadesResposta.forEach((comic) => {
-        // console.log(`${comic.title}: ${comic.id}`);
-
-        // I crete a container for each comic, this is because of the title, if I don't have it, the title wouldn't be at the bottom of the image, the problem is caused because of the grid.
-        let contenidorComic = document.createElement("div");
-        // Create an image element.
-        let imatge = document.createElement("img");
-        imatge.src = `${
-          comic.thumbnail.path + "." + comic.thumbnail.extension
-        }`;
-        imatge.id = "imatge-comic";
-
-        // Create a paragraph element for the comic title.
-        let titol = document.createElement("p");
-        titol.textContent = comic.title;
-
-        let idC = document.createElement("p");
-
-        // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
-        idC.setAttribute("id", "idC");
-        idC.textContent = comic.id;
-
-        // Append the image and title to the container
-        contenidorComic.appendChild(imatge);
-        contenidorComic.appendChild(titol);
-        contenidorComic.append(idC);
-
-        // Here I add the div that I creaderd "contenidorComic" to the label "comics",
-        document.getElementById("comics").appendChild(contenidorComic);
-
-        // This is to get the information from a specific comic.
-        contenidorComic.onclick = () => {
-          // console.log(contenidorComic.childNodes.item(2).innerHTML);
-          obtenirDetallsComic(
-            contenidorComic.childNodes.item(2).innerHTML
-          ).catch((e) => {
-            console.log("Ha ocorregut un error!");
-            console.log(e);
-          });
-        };
-
-        // At the beggining, I show the information of the first comic on the grid layout.
-        if (nCmpt == 0) {
-          obtenirDetallsComic(43507).catch((e) => {
-            console.log("Ha ocorregut un error!");
-            console.log(e);
-          });
-        }
-
-        // I increase the counter in order to change the comic that is shown.
-        nCmpt++;
-      });
-    })
-    .catch((e) => {
-      console.log("Ha ocorregut un error!");
-      console.log(e);
-    });
 
   // Async function to fetch the comics from a superheroe.
   async function obtenirComicsSuperHeroi(idSuperHeroi) {
@@ -264,4 +102,174 @@ window.onload = function () {
     <br>`;
     });
   }
+
+  // This is to start counting the seconds.
+  console.time("temps");
+
+  // Here I implement a Promise.all in order to execute obtenirLogoSuperHeroi() and obtenirComics() at the same time, as they're loaded at the beggining.
+  Promise.all([
+    // Promise to get the comics from a superheroe.
+    obtenirLogoSuperHeroi()
+      .then((resposta) => {
+        let dadesResposta = resposta.data.results;
+
+        dadesResposta.forEach((superHeroi) => {
+          // console.log(`${superHeroi.name}: ${superHeroi.id}`);
+
+          let contenidorSuperHeroi = document.createElement("div");
+          let imatge = document.createElement("img");
+          imatge.src = `${
+            superHeroi.thumbnail.path + "." + superHeroi.thumbnail.extension
+          }`;
+          imatge.id = "logo-superheroi";
+
+          let nom = document.createElement("p");
+          nom.textContent = superHeroi.name;
+
+          // This is to add the ID of the superheroe as a paragraph.
+          let idS = document.createElement("p");
+          idS.setAttribute("id", "idS");
+          idS.textContent = superHeroi.id;
+
+          contenidorSuperHeroi.appendChild(imatge);
+          contenidorSuperHeroi.appendChild(nom);
+          contenidorSuperHeroi.append(idS);
+
+          document
+            .getElementById("logos-superherois")
+            .appendChild(contenidorSuperHeroi);
+
+          contenidorSuperHeroi.onclick = () => {
+            console.log(contenidorSuperHeroi.childNodes.item(2).innerHTML);
+            // console.log(superHeroi.name);
+
+            obtenirComicsSuperHeroi(
+              contenidorSuperHeroi.childNodes.item(2).innerHTML
+            )
+              .then((resposta) => {
+                let dadesResposta = resposta.data.results;
+
+                // This is to clear the previous commics that were on "comics".
+                document.getElementById("comics").innerHTML = "";
+
+                dadesResposta.forEach((comic) => {
+                  // console.log(`${comic.title}: ${comic.id}`)
+
+                  let contenidorComic = document.createElement("div");
+                  // Create an image element.
+                  let imatge = document.createElement("img");
+                  imatge.src = `${
+                    comic.thumbnail.path + "." + comic.thumbnail.extension
+                  }`;
+                  imatge.id = "imatge-comic";
+
+                  // Create a paragraph element for the comic title.
+                  let titol = document.createElement("p");
+                  titol.textContent = comic.title;
+
+                  let idC = document.createElement("p");
+
+                  // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
+                  idC.setAttribute("id", "idC");
+                  idC.textContent = comic.id;
+
+                  // Append the image and title to the container
+                  contenidorComic.appendChild(imatge);
+                  contenidorComic.appendChild(titol);
+                  contenidorComic.append(idC);
+
+                  document
+                    .getElementById("comics")
+                    .appendChild(contenidorComic);
+
+                  // This is to get the information from a specific comic.
+                  contenidorComic.onclick = () => {
+                    // console.log(contenidorComic.childNodes.item(2).innerHTML);
+                    obtenirDetallsComic(
+                      contenidorComic.childNodes.item(2).innerHTML
+                    )
+                      // If there's an error, I print it.
+                      .catch((e) => {
+                        console.log("Ha ocorregut un error!");
+                        console.log(e);
+                      });
+                  };
+                });
+              })
+              .catch((e) => {
+                console.log("Ha ocorregut un error!");
+                console.log(e);
+              });
+          };
+        });
+      })
+      .catch((e) => {
+        console.log("Ha ocorregut un error!");
+        console.log(e);
+      }),
+
+    // Promise to get the first 21 comics from 10 characters of the API ordered by title.
+    obtenirComics()
+      .then((resposta) => {
+        let dadesResposta = resposta.data.results;
+        let nCmpt = 0;
+
+        dadesResposta.forEach((comic) => {
+          // console.log(`${comic.title}: ${comic.id}`);
+
+          // I crete a container for each comic, this is because of the title, if I don't have it, the title wouldn't be at the bottom of the image, the problem is caused because of the grid.
+          let contenidorComic = document.createElement("div");
+          // Create an image element.
+          let imatge = document.createElement("img");
+          imatge.src = `${
+            comic.thumbnail.path + "." + comic.thumbnail.extension
+          }`;
+          imatge.id = "imatge-comic";
+
+          // Create a paragraph element for the comic title.
+          let titol = document.createElement("p");
+          titol.textContent = comic.title;
+
+          let idC = document.createElement("p");
+
+          // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
+          idC.setAttribute("id", "idC");
+          idC.textContent = comic.id;
+
+          // Append the image and title to the container
+          contenidorComic.appendChild(imatge);
+          contenidorComic.appendChild(titol);
+          contenidorComic.append(idC);
+
+          // Here I add the div that I creaderd "contenidorComic" to the label "comics",
+          document.getElementById("comics").appendChild(contenidorComic);
+
+          // This is to get the information from a specific comic.
+          contenidorComic.onclick = () => {
+            // console.log(contenidorComic.childNodes.item(2).innerHTML);
+            obtenirDetallsComic(
+              contenidorComic.childNodes.item(2).innerHTML
+            ).catch((e) => {
+              console.log("Ha ocorregut un error!");
+              console.log(e);
+            });
+          };
+
+          // At the beggining, I show the information of the first comic on the grid layout.
+          if (nCmpt == 0) {
+            obtenirDetallsComic(43507).catch((e) => {
+              console.log("Ha ocorregut un error!");
+              console.log(e);
+            });
+          }
+
+          // I increase the counter in order to change the comic that is shown.
+          nCmpt++;
+        });
+      })
+      .catch((e) => {
+        console.log("Ha ocorregut un error!");
+        console.log(e);
+      }),
+  ]);
 };
