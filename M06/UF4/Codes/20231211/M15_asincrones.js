@@ -6,13 +6,13 @@
 
 function divisioPromesa(a, b, ms = 500) {
   return new Promise((resolve, reject) => {
-      setTimeout(() => {
-          if (b === 0) {
-              reject(new Error("divisió per zero"));
-          } else {
-              resolve(a / b);
-          }
-      }, ms);
+    setTimeout(() => {
+      if (b === 0) {
+        reject(new Error("divisió per zero"));
+      } else {
+        resolve(a / b);
+      }
+    }, ms);
   });
 }
 
@@ -22,16 +22,15 @@ async function divisioAsincrona(a, b, ms = 500) {
   return resultat;
 }
 
-
-divisioAsincrona(3,3,3000); // es una crida asíncrona, quan tinguem el resultat es resoldrà
-divisioAsincrona(2,3,2000); // es una crida asíncrona, quan tinguem el resultat es resoldrà
-divisioAsincrona(1,3,1000); // es una crida asíncrona, quan tinguem el resultat es resoldrà
+divisioAsincrona(3, 3, 3000); // es una crida asíncrona, quan tinguem el resultat es resoldrà
+divisioAsincrona(2, 3, 2000); // es una crida asíncrona, quan tinguem el resultat es resoldrà
+divisioAsincrona(1, 3, 1000); // es una crida asíncrona, quan tinguem el resultat es resoldrà
 
 ///més sobre asíncrones
 const bar = async () => 42; // el codi d'aquesta funció asíncrona retorna una promesa
 const bar2 = async () => {
-  const x=42;
-  console.log(x); 
+  const x = 42;
+  console.log(x);
   return x;
 }
 

@@ -22,6 +22,7 @@ new Promise((resolver, reject) => {
     );
     return "tercera";
   })
+  // Anterior doesn't exist, so it'll fail.
   .then((anterior) => {
     throw new Error("Algo falló");
   })

@@ -4,15 +4,15 @@
  * @version 1.0 20.11.2020
  */
 
-function divisioPromesa(a, b, ms = 500) {
+function divisioPromesa(a, b, ms) {
   return new Promise((resolve, reject) => {
-      setTimeout(() => {
-          if (b === 0) {
-              reject(new Error("divisió per zero"));
-          } else {
-              resolve(a / b);
-          }
-      }, ms);
+    setTimeout(() => {
+      if (b === 0) {
+        reject(new Error("divisió per zero"));
+      } else {
+        resolve(a / b);
+      }
+    }, ms);
   });
 }
 
@@ -21,11 +21,11 @@ async function divisioAsincrona(a, b, ms = 500) {
   console.info(resultat);
   return resultat;
 }
-  
+
 async function encadenadaAsincrona() {
   const r1 = await divisioAsincrona(900, 3),
-        r2 = await divisioAsincrona(r1, 2),
-        r3 = await divisioAsincrona(r2, 5);
+    r2 = await divisioAsincrona(r1, 2),
+    r3 = await divisioAsincrona(r2, 5);
   return r3;
 }
 

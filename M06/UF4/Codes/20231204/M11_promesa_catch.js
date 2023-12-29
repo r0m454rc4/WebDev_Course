@@ -33,4 +33,5 @@ promesa
   .catch((e) => {
     console.error("¡error! " + e);
   });
+
 console.info("Esperant 1 segon.");
