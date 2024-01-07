@@ -3,10 +3,10 @@
 import { IAvio } from './iAvio';
 import { Passatger } from './passatger';
 
-// This class now implements the atributs from IPersona interface.
+// This class now implements the atributs from IAvio interface.
 export class Avio implements IAvio {
   /**
-   * Constructor of the class Persona.
+   * Constructor of the class Avio.
    * @param nom name of the person.
    * @param dni nif from the person.
    * @param edat age from the person.
@@ -18,6 +18,8 @@ export class Avio implements IAvio {
     public seients: number,
     public origen: string,
     public desti: string,
+
+    // dniPassatger is an array of passengers.
     public dniPassatger: Passatger[]
   ) {
     this.numSerie = numSerie;

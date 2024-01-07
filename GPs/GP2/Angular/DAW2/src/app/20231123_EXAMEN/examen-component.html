@@ -26,7 +26,7 @@
         type="text"
         class="form-control"
         placeholder="Entra el DNI de l'esportista"
-        #dniEsportista
+        #CREACIO_dniEsportista
         required
       />
       <input
@@ -47,7 +47,7 @@
 
     <button
       class="btn btn-primary"
-      (click)="crearEsportista(dniEsportista.value, nomEsportista.value, posicioEsportista.value)"
+      (click)="crearEsportista(CREACIO_dniEsportista.value, nomEsportista.value, posicioEsportista.value)"
     >
       Crear esportista.
     </button>
@@ -104,14 +104,14 @@
         type="text"
         class="form-control"
         placeholder="DNI de l'esportista"
-        #dniEsportista
+        #AFEGIR_EQUIP_dniEsportista
         required
       />
     </div>
 
     <button
       class="btn btn-primary"
-      (click)="crearEQuip(esport.value, categoriaEquip.value, nomEquip.value, dniEsportista.value)"
+      (click)="crearEQuip(esport.value, categoriaEquip.value, nomEquip.value, AFEGIR_EQUIP_dniEsportista.value)"
     >
       Crear equip.
     </button>

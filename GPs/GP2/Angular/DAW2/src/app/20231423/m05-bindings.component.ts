@@ -36,6 +36,7 @@ export class M05_BindingsComponent {
 }
 
 @Component({
+  // Here I specify that I use the custom created selector.
   selector: 'comptador',
   template: `
     <div>
@@ -47,10 +48,10 @@ export class M05_BindingsComponent {
 })
 export class M05_CompteEnrera_Component {
   private intervalId;
-  // @Input() is because I want to be able to modify the segons from the html, if it's specified the HTML have priority.
+  // @Input() is because I want to be able to modify the segons from the html, if it's specified in the HTML has priority.
   @Input() segons: number = 60; //si no es defineix la prop d'entrada val 60.
 
-  // It outputs "completat" event, which is created by the suer.
+  // It outputs "completat" event, which is created by the user.
   @Output() completat: EventEmitter<any> = new EventEmitter();
   @Output() progres: EventEmitter<number> = new EventEmitter<number>();
 
@@ -65,6 +66,7 @@ export class M05_CompteEnrera_Component {
       this.completat.emit(null);
     }
 
+    // Emit sends the actual seconds.
     this.progres.emit(this.segons);
   }
 }

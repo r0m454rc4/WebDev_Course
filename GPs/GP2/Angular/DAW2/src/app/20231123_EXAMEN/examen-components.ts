@@ -9,13 +9,17 @@ import { Esportista } from './esportista';
   templateUrl: 'examen-component.html',
   styles: ['h1 { color: #900 }'],
 })
-export class repas_iterador_component {
-  llistaEsportistes: Esportista[] = [];
+export class examen_esportista_component {
+  llistaEsportistes: Esportista[] = [
+    new Esportista('1A', 'Joan', 'Davanter'),
+    new Esportista('2B', 'Ramon', 'Centre'),
+    new Esportista('3C', 'Colla2', 'Porter'),
+  ];
 
-  // Here I have an array that contains all of of the passengers that will be on the plane.
-  passatgerSelec = [this.llistaEsportistes[0], this.llistaEsportistes[2]];
-
-  llistaEquips: Equip[] = [];
+  llistaEspDefecte = [this.llistaEsportistes[0], this.llistaEsportistes[1]];
+  llistaEquips: Equip[] = [
+    new Equip('Basket', 'Benjami', 'Baskeboleros', this.llistaEspDefecte),
+  ];
 
   public crearEsportista(
     dniEsportista: string,
@@ -33,13 +37,15 @@ export class repas_iterador_component {
     nomEquip: string,
     dniEsportista: string
   ) {
-    // This is to be able to find if a dniEsportista is in the list.
+    // This is to be able to find if dniEsportista is in the list.
     let esportista = this.llistaEsportistes.find(
       (e) => e.dniEsportista == dniEsportista
     );
 
+    console.log(esportista);
+
     if (esportista) {
-      // If a passenger is found, I add it to the plane
+      // If a sportsman is found, add it to the team.
       let equip = new Equip(esport, categoria, nomEquip, [esportista]);
 
       this.llistaEquips.push(equip);
@@ -60,16 +66,21 @@ export class repas_iterador_component {
   }
 
   // Function to delete a sportsman.
-  esborrarEsportista(nomEsportista: string) {
+  esborrarEsportista(dniEsportista: string) {
     // Find the index of the Esportista with the given name
     const index = this.llistaEsportistes.findIndex(
-      (esportista) => esportista.nomEsportista === nomEsportista
+      (esportista) => esportista.dniEsportista === dniEsportista
     );
 
-    // Check if the Esportista with the given name exists
+    // Check if the Esportista with the given name exists, -1 means out of the array.
     if (index !== -1) {
       // Remove the Esportista from the array
-      this.llistaEsportistes.splice(index, 1);
+      // this.llistaEsportistes.splice(index, 1);
+      this.llistaEquips.splice(index);
+      // console.log(this.llistaEquips[index].dniEsportista);
+      console.log(`Index: ${index}`);
     }
+
+    console.log(`DNI esportista: ${dniEsportista}`);
   }
 }

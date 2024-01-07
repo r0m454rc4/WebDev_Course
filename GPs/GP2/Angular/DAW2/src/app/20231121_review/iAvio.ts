@@ -1,4 +1,4 @@
-// Interfície que repesenta un avió.
+// Interface that represents a plane.
 
 interface IAvio {
   numSerie: string;

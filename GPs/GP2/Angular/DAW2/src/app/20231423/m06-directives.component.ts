@@ -71,11 +71,13 @@ export class Alumne {
 export class M06_DirectivesComponent {
   color: string = 'red';
   dada: number = 4;
+
   alumnes = [
     { id: 11, nom: 'Sergi' },
     { id: 12, nom: 'Joan' },
     { id: 13, nom: 'Anna' },
   ];
+
   estatVisible: boolean = false;
 
   veureInfo(): void {

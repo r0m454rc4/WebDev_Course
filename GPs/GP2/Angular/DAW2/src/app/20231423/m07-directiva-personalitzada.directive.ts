@@ -15,7 +15,7 @@
  * Desenvolupament Aplicacions Web. Jesuïtes El Clot
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 @Directive({ selector: '[marcat]' })
 export class M07_DirectivaPersonalizada {
   constructor(el: ElementRef) {

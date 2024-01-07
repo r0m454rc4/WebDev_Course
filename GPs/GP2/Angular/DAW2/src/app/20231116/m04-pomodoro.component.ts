@@ -42,7 +42,7 @@ export class M04_PomodoroComponent {
 
   constructor() {
     this.resetPomodoro();
-    setInterval(() => this.tick(), 1000); // this.tick() is the thing that will do every second.
+    setInterval(() => this.tick(), 1000); // this.tick() will be executed every second.
   }
 
   resetPomodoro(): void {
@@ -56,8 +56,10 @@ export class M04_PomodoroComponent {
     if (!this.isPausa) {
       this.etiquetaBoto = 'Pausa';
 
+      // Here I have "--this.segons" , because I want to rest segons in the same conditional.
       if (--this.segons < 0) {
         this.segons = 59;
+        
         if (--this.minuts < 0) {
           this.resetPomodoro();
         }
@@ -65,8 +67,10 @@ export class M04_PomodoroComponent {
     }
   }
 
+  // Function that is called when "pausa" is clicked.
   conmutarPausa(): void {
     this.isPausa = !this.isPausa;
+
     if (this.minuts < 24 || this.segons < 59) {
       this.etiquetaBoto = this.isPausa ? 'Continua' : 'Pausa';
     }

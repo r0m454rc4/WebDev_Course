@@ -15,7 +15,7 @@
  * Desenvolupament Aplicacions Web. Jesuïtes El Clot
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'aplicacio',
@@ -27,16 +27,18 @@ import { Component, OnInit } from '@angular/core';
         class="list-group-item"
         *ngFor="let alumne of alumnes | ordenarPer : '!n'"
       >
-        nom : {{ alumne.n }}
+        <label *ngIf="alumne.n.length > 3">Nom : {{ alumne.n }}</label>
       </li>
     </ul>
   `,
 })
 export class M09_PipePersonalizadaComponent {
   articles: Array<any> = [];
+
   alumnes = [
     { i: 11, n: 'Sergi' },
-    { i: 12, n: 'Joan' },
-    { i: 13, n: 'Anna' },
+    { i: 12, n: 'Anna' },
+    { i: 13, n: 'Joan' },
+    { i: 14, n: 'Pep' },
   ];
 }

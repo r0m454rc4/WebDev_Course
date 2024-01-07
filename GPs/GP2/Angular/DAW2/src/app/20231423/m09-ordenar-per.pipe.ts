@@ -25,12 +25,19 @@ export class M09_OrdenarPerPipe implements PipeTransform {
     if (array) {
       let ordernarPerValor = args[0];
       let perValor = 1;
+
       if (ordernarPerValor.charAt(0) == '!') {
         perValor = -1;
         ordernarPerValor = ordernarPerValor.substring(1);
       }
 
       array.sort((a: any, b: any) => {
+        if (a.n.length > 3) {
+          console.log(`Inici: ${a.n}: ${a.n.length}`);
+          a = a.n.slice(0, 3) + '...';
+          console.log(`Resultat: ${a}`);
+        }
+
         if (a[ordernarPerValor] < b[ordernarPerValor]) {
           return -1 * perValor;
         } else if (a[ordernarPerValor] > b[ordernarPerValor]) {
@@ -39,6 +46,7 @@ export class M09_OrdenarPerPipe implements PipeTransform {
           return 0;
         }
       });
+
       return array;
     }
   }
