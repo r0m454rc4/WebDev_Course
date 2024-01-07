@@ -20,6 +20,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'aplicacio',
   template: `<h1>Directiva personalitzada</h1>
+  <!-- Here the paragraph uses marcat, which is an user created directive. -->
     <p marcat>Text marcat!</p>`,
 })
 export class M07_DirectivaPersonalitzadaComponent {

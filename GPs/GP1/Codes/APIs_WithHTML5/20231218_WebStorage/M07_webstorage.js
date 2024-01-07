@@ -1,12 +1,12 @@
 /*
-  The difference between localStorage & sessionStorage i s that localStorage keeps the values after closing the browser instead of sessionStorage, because this one deletes it.
+  The difference between localStorage & sessionStorage is that localStorage keeps the values after closing the browser instead of sessionStorage, because this one deletes it.
 */
 
 // emmagatzematge is an object.
 var emmagatzematge = {
   taula: document.getElementById("taula"), // Taula is a property.
 
-  // This is  a method fromn the object called emmagatzematge.
+  // This is  a method from the object called emmagatzematge.
   desar: function () {
     localStorage.setItem(
       document.getElementById("nom").value, // Key.
@@ -18,10 +18,10 @@ var emmagatzematge = {
   },
 
   mostrar: function () {
-    for (var i = 0; i < localStorage.length; i++) {
-      var fila = taula.insertRow(-1); // Add the row to the beggining of the table.
+    for (let i = 0; i < localStorage.length; i++) {
+      let fila = taula.insertRow(-1);
 
-      fila.insertCell(0).innerHTML = i; // This is to add the index of tht table at the beggining.
+      fila.insertCell(0).innerHTML = i; // This is to add the index of the row at the beggining.
       fila.insertCell(1).innerHTML = localStorage.key(i);
       fila.insertCell(2).innerHTML = localStorage.getItem(localStorage.key(i)); // getItem is to recover the value.
     }
@@ -46,20 +46,20 @@ var emmagatzematge = {
     emmagatzematge.mostrar();
   },
 
-  // Acabar.
   mostrarMitjana: function () {
     let mitjana = 0;
+    let fila = taula.insertRow(-1);
 
     for (let i = 0; i < localStorage.length; i++) {
-      var fila = taula.insertRow(-1);
+      // I multiply 1 because I want an integer, not a string.
 
-      fila.getItem(1).localStorage.key(i);
-      fila.getItem(2).localStorage.getItem(localStorage.key(i)); // getItem is to recover the value.
-
-      mitjana += localStorage.key(i);
+      mitjana +=
+        (localStorage.getItem(localStorage.key(i)) * 1) / localStorage.length;
     }
 
-    this.mostrarMitjana.mostrar();
+    fila.insertCell(0).innerHTML = mitjana;
+
+    console.log(mitjana);
   },
 };
 

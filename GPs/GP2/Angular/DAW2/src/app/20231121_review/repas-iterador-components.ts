@@ -27,6 +27,7 @@ export class repas_iterador_component {
     this.llistaPassatgers.push(new Passatger(nom, dni, parseInt(edat)));
   }
 
+  // This is to shaw the table when I click the button "Llistar passatgers".
   mostrarTaulaPassatgers: boolean = false;
 
   public mostrarPassatgers() {

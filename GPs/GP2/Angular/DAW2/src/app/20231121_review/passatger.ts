@@ -5,7 +5,7 @@ import { IPassatger } from './iPassatger';
 // This class now implements the atributs from IPersona interface.
 export class Passatger implements IPassatger {
   /**
-   * Constructor of the class Persona.
+   * Constructor of the class Passatger.
    * @param nom name of the person.
    * @param dniPassatger nif from the person.
    * @param edat age from the person.

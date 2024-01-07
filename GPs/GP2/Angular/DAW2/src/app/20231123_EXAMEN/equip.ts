@@ -3,7 +3,7 @@
 import { IEquip } from './iEquip';
 import { Esportista } from './esportista';
 
-// This class now implements the atributs from IPersona interface.
+// This class now implements the atributs from IEquip interface.
 export class Equip implements IEquip {
   constructor(
     public esport: string,

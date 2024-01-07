@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
     <button (click)="restar(n1.value, n2.value)">Resta</button>
 
     <div>
-      <!-- With whis I print the result of resultat -->
+      <!-- With this I print the result of resultat. -->
       <h1>El resultat és: {{ resultat }}</h1>
     </div>
 
@@ -29,11 +29,14 @@ export class M02_SumaComponent {
   resultat: number;
 
   constructor() {
-    this.resultat = 0; // On the beggining the result will be 0.
+    this.resultat = 0; // On the beggining the result is 0.
   }
+
+  // Methods used to add and rest.
   sumar(n1: string, n2: string): void {
     this.resultat = parseInt(n1) + parseInt(n2);
   }
+
   restar(n1: string, n2: string): void {
     this.resultat = parseInt(n1) - parseInt(n2);
   }
