@@ -31,13 +31,14 @@ public class JocCarta {
 
     // Here I declare some global variables.
     private static ArrayList<Integer> partidaIniciada = new ArrayList<>();
+    private static ArrayList<Integer> quantitatPuntsJug = new ArrayList<>();
 
     // I create a new Map called totalCartes, where the key is the name of the
     // player, and the value is the content of the array.
     private static Map<Integer, List<String>> totalCartes = new HashMap<>();
 
-    // Create two maps to store bet points.
-    private static Map<Integer, List<Integer>> quantitatPuntsJug = new HashMap<>(), quantitatRestant = new HashMap<>();
+    // Create a map to store bet points.
+    private static Map<Integer, List<Integer>> quantitatRestant = new HashMap<>();
 
     Integer codiPartida = 0, numJug = 0;
     Boolean partidaIniciadaPrev = false;
@@ -90,7 +91,7 @@ public class JocCarta {
 
             // This is to add 100 points to a player when I create it, and it's the first
             // time the player gets a card.
-            quantitatRestant.computeIfAbsent(numJug, k -> new ArrayList<Integer>());
+            quantitatRestant.computeIfAbsent(numJug, k -> new ArrayList<>());
 
             if (totalCartes.get(codiPartida).size() == 0 && !partidaIniciadaPrev) {
                 quantitatRestant.get(numJug).add(100);
@@ -215,13 +216,7 @@ public class JocCarta {
             @FormParam("quantitatApostada") Integer quantitatApostada) {
         if (partidaIniciada.contains(codiPartida)) {
             // Create a new arraylist to store the values.
-            // List<Integer> puntsJug = quantitatPuntsJug.get(numJug);
-            // List<Integer> restant = quantitatRestant.get(numJug);
-
-            // int qPuntsJug = (puntsJug != null) ?
-            // puntsJug.stream().mapToInt(Integer::intValue).sum() : 0;
-            // int qRestant = (restant != null) ?
-            // restant.stream().mapToInt(Integer::intValue).sum() : 0;
+            List<Integer> quantitatPuntsJug = quantitatRestant.get(numJug);
 
             if (codiPartida == null) {
                 return "El jugador no pot tirar la carta a causa de no haver indicat el codi de partida.";
@@ -235,22 +230,23 @@ public class JocCarta {
             } else if (totalCartes.get(numJug).size() == 0) {
                 return "El jugador " + numJug + " no pot apostar fitxes a causa de no tenir cartes restants.";
             } else {
-                // System.out.println("DEBUG - Quantitat punts jugador: " + qPuntsJug);
-                // System.out.println("DEBUG - Quantitat punts apostats: " + quantitatApostada);
+                System.out.println("DEBUG - Quantitat punts jugador: " + quantitatPuntsJug);
+                System.out.println("DEBUG - Quantitat punts apostats: " + quantitatApostada);
 
-                // if (qPuntsJug >= quantitatApostada) {
-                // System.out.println("DEBUG - Entro");
-                // qRestant -= quantitatApostada;
-                // System.out.println("Quantitat restant: " + qRestant);
+                if (quantitatPuntsJug >= quantitatApostada) {
+                    System.out.println("DEBUG - Entro");
+                    quantitatApostada -= quantitatPuntsJug.get(numJug);
+                    System.out.println("Quantitat restant: " + quantitatPuntsJug);
 
-                // } else if (quantitatApostada >= qRestant) {
-                // return "El jugador " + numJug + " no pot apostar " + quantitatApostada
-                // + " fitxes, ja que superen la quantitat de fitxes disponibles.";
-                // }
-                // // If the player doesn't have any point.
-                // else if (quantitatRestant.get(numJug).contains(0)) {
-                // return "El jugador " + numJug + " no té cap fitxa restant.";
-                // }
+                } else if (quantitatApostada >= quantitatPuntsJug) {
+                    return "El jugador " + numJug + " no pot apostar " + quantitatApostada
+                            + " fitxes, ja que superen la quantitat de fitxes disponibles.";
+                }
+                // If the player doesn't have any point.
+                else if (quantitatRestant.get(numJug).contains(0)) {
+                    return "El jugador " + numJug + " no té cap fitxa restant.";
+                }
+
                 return "El jugador " + numJug + " aposta " + quantitatApostada + " fitxes. Li queden "
                         + quantitatRestant.get(numJug)
                         + " fitxes.";
