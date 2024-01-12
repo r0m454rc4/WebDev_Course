@@ -31,7 +31,6 @@ public class JocCarta {
 
     // Here I declare some global variables.
     private static ArrayList<Integer> partidaIniciada = new ArrayList<>();
-    private static ArrayList<Integer> quantitatPuntsJug = new ArrayList<>();
 
     // I create a new Map called totalCartes, where the key is the name of the
     // player, and the value is the content of the array.
@@ -91,12 +90,12 @@ public class JocCarta {
 
             // This is to add 100 points to a player when I create it, and it's the first
             // time the player gets a card.
-            quantitatRestant.computeIfAbsent(numJug, k -> new ArrayList<>());
+            quantitatRestant.computeIfAbsent(codiPartida, k -> new ArrayList<>());
 
             if (totalCartes.get(codiPartida).size() == 0 && !partidaIniciadaPrev) {
                 quantitatRestant.get(numJug).add(100);
-                // System.out.println("El jugador " + numJug + " té " +
-                // quantitatRestant.get(numJug) + " fitxes.");
+                System.out.println("El jugador " + numJug + " té " +
+                        quantitatRestant.get(numJug) + " fitxes.");
             }
 
             // Add the card to the player's list.
@@ -230,15 +229,19 @@ public class JocCarta {
             } else if (totalCartes.get(numJug).size() == 0) {
                 return "El jugador " + numJug + " no pot apostar fitxes a causa de no tenir cartes restants.";
             } else {
-                System.out.println("DEBUG - Quantitat punts jugador: " + quantitatPuntsJug);
+                System.out.println("DEBUG - Quantitat punts jugador: " + numJug + quantitatPuntsJug);
                 System.out.println("DEBUG - Quantitat punts apostats: " + quantitatApostada);
 
-                if (quantitatPuntsJug >= quantitatApostada) {
+                if (quantitatPuntsJug.size() >= quantitatApostada) {
                     System.out.println("DEBUG - Entro");
-                    quantitatApostada -= quantitatPuntsJug.get(numJug);
+
+                    for (int i = 0; i < quantitatPuntsJug.size(); i++) {
+                        quantitatPuntsJug.set(i, quantitatPuntsJug.get(i) - quantitatApostada);
+                    }
+
                     System.out.println("Quantitat restant: " + quantitatPuntsJug);
 
-                } else if (quantitatApostada >= quantitatPuntsJug) {
+                } else if (quantitatApostada >= quantitatPuntsJug.size()) {
                     return "El jugador " + numJug + " no pot apostar " + quantitatApostada
                             + " fitxes, ja que superen la quantitat de fitxes disponibles.";
                 }

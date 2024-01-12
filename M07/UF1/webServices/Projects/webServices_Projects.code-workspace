@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "jax-rs"
+		},
+		{
+			"path": "graphQL"
 		}
 	],
 	"settings": {
