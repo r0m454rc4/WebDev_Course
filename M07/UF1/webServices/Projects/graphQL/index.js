@@ -29,7 +29,7 @@ const arrel = {
       if (codiPartida == undefined || codiPartida == "") {
         return `La partida no estat inicialitzada a causa de no haver indicat un codi de partida.`;
       } else {
-        // If the user had entered codiPartida.
+        // If the user entered codiPartida.
         partidaIniciada[codiPartida] = true;
 
         // Initialize totalCartes for this partida if not already done, this is because I had a bug when storing cards from different games, I've done this with the help of ChatGPT.
@@ -38,8 +38,8 @@ const arrel = {
         }
 
         console.log("La partida ha estat inicialitzada");
-
-        return `La partida amb codi ${codiPartida} ha estat inicialitzada correctament.`;
+        // If everything goes well, and is the first time the user starts a game, I'll get "true".
+        return partidaIniciada[codiPartida];
       }
     } else {
       return `La partida amb codi ${codiPartida} prèviament ja ha estat inicialitzada.`;

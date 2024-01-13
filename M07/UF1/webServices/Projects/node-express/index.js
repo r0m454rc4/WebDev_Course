@@ -109,7 +109,6 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
   }
 });
 
-// Finish.
 app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
   // http://localhost:8888/mostrarCartes/1/1 --> Player 1 on codiPartida = 1.
   // http://localhost:8888/mostrarCartes/1/2 --> Player 2 on codiPartida = 1.
@@ -120,15 +119,17 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
   if (partidaIniciada[codiPartida]) {
     // If the player didn't get any yet, will be undefined.
     if (totalCartes[codiPartida][numJug] == undefined) {
-      return `El jugador ${numJug} no està jugant en aquesta partida.`;
+      res
+        .status(404)
+        .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
       // If the player doesn't have any card, because he already throwed them.
     } else if (totalCartes[codiPartida][numJug].length == 0) {
-      return `El jugador ${numJug} no té cartes.`;
+      res.status(404).send(`El jugador ${numJug} no té cartes.`);
     } else {
       // I send the cards that the player has in a JSON format.
       let cartesRestants = totalCartes[codiPartida][numJug];
 
-      return `Partida ${codiPartida}, jugador ${numJug}: ${cartesRestants}`;
+      res.send(`Partida ${codiPartida}, jugador ${numJug}: ${cartesRestants}`);
       // res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
     }
   } else {
