@@ -78,7 +78,7 @@ public class JocCarta {
 
             // Array that has the possible types of cards.
             String[] tipusCarta = { "ors", "espases", "copes", "bastons" };
-            String cartaTirada = genCarta.generarCarta(tipusCarta);
+            String cartaObtinguda = genCarta.generarCarta(tipusCarta);
 
             /**
              * This line is from ChatGPT, because I had no idea how to do it.
@@ -99,10 +99,10 @@ public class JocCarta {
             }
 
             // Add the card to the player's list.
-            totalCartes.get(numJug).add(cartaTirada);
+            totalCartes.get(numJug).add(cartaObtinguda);
             partidaIniciadaPrev = true;
 
-            return "El jugador " + numJug + " ha obtingut " + cartaTirada;
+            return "El jugador " + numJug + " ha obtingut " + cartaObtinguda;
         }
 
         return "La partida amb codi " + codiPartida + " encara no ha estat inicialitzada.";
@@ -127,7 +127,9 @@ public class JocCarta {
                 return "El jugador " + numJug + " no té cartes.";
             } else {
                 // I covert ArrayList to string using .toString().
-                return "Partida " + codiPartida + ", jugador " + numJug + ": " + totalCartes.get(numJug).toString();
+                String cartesRestants = totalCartes.get(numJug).toString();
+
+                return "Partida " + codiPartida + ", jugador " + numJug + ": " + cartesRestants;
             }
         }
 
@@ -184,9 +186,10 @@ public class JocCarta {
                     // Delete the card from the player using remove method, I rest 1 to carta
                     // because I added it before.
                     // System.out.println(totalCartes.get(numJug).remove(carta - 1));
+                    String cartaTirada = totalCartes.get(numJug).remove(carta - 1);
 
                     return "El jugador " + numJug + " de la partida " + codiPartida + " tira la carta "
-                            + totalCartes.get(numJug).remove(carta - 1) + ".";
+                            + cartaTirada + ".";
                 }
             }
         } else {

@@ -80,13 +80,13 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
     };
 
     let tipusCarta = ["ors", "espases", "copes", "bastons"];
-    let cartaTirada = generarCarta(tipusCarta);
+    let cartaObtinguda = generarCarta(tipusCarta);
 
     // If I don't have the array to store the cards from the player... I've done this with the help of ChatGPT.
     if (!totalCartes[codiPartida][numJug]) {
       totalCartes[codiPartida][numJug] = []; // I create it.
     }
-    console.log(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
+    console.log(`El jugador ${numJug} ha obtingut ${cartaObtinguda}`);
 
     // This is to add 100 points to a player when I create it, and it's the first time the player gets a card.
     if (totalCartes[codiPartida][numJug].length == 0 && !partidaIniciadaPrev) {
@@ -95,10 +95,10 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
     }
 
     // I push the card to the array.
-    totalCartes[codiPartida][numJug].push(cartaTirada);
+    totalCartes[codiPartida][numJug].push(cartaObtinguda);
     partidaIniciadaPrev = true;
 
-    res.json(`El jugador ${numJug} ha obtingut ${cartaTirada}`);
+    res.json(`El jugador ${numJug} ha obtingut ${cartaObtinguda}`);
     // res.send(`La carta aleatòria és: ${cartaTirada}`);
   } else {
     res
@@ -109,6 +109,7 @@ app.get("/obtenirCarta/:codiPartida/:numJug", (req, res) => {
   }
 });
 
+// Finish.
 app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
   // http://localhost:8888/mostrarCartes/1/1 --> Player 1 on codiPartida = 1.
   // http://localhost:8888/mostrarCartes/1/2 --> Player 2 on codiPartida = 1.
@@ -119,17 +120,15 @@ app.get("/mostrarCartes/:codiPartida/:numJug", (req, res) => {
   if (partidaIniciada[codiPartida]) {
     // If the player didn't get any yet, will be undefined.
     if (totalCartes[codiPartida][numJug] == undefined) {
-      res
-        .status(404)
-        .send(`El jugador ${numJug} no està jugant en aquesta partida.`);
+      return `El jugador ${numJug} no està jugant en aquesta partida.`;
       // If the player doesn't have any card, because he already throwed them.
     } else if (totalCartes[codiPartida][numJug].length == 0) {
-      res.status(404).send(`El jugador ${numJug} no té cartes.`);
+      return `El jugador ${numJug} no té cartes.`;
     } else {
       // I send the cards that the player has in a JSON format.
-      res.json(
-        `Partida ${codiPartida}, jugador ${numJug}: ${totalCartes[codiPartida][numJug]}`
-      );
+      let cartesRestants = totalCartes[codiPartida][numJug];
+
+      return `Partida ${codiPartida}, jugador ${numJug}: ${cartesRestants}`;
       // res.send(`El jugador ${numJug} té: ${totalCartes[numJug]}`);
     }
   } else {
@@ -194,12 +193,13 @@ app.put("/tirarCarta", (req, res) => {
         // If the player doesn't have any card, because he already throwed them.
         res.status(404).send(`El jugador ${numJug} no té cartes restants.`);
       } else {
-        // Delete the card from the player using remove method, I rest 1 to carta because I added it before.
-        res.send(
-          `El jugador ${numJug} tira la carta ${totalCartes[codiPartida][
-            numJug
-          ].splice([carta - 1], 1)}`
+        // Delete the card from the player using remove method, I minus 1 to carta because I added it before.
+        let cartaTirada = totalCartes[codiPartida][numJug].splice(
+          [carta - 1],
+          1
         );
+
+        res.send(`El jugador ${numJug} tira la carta ${cartaTirada}`);
 
         console.log(
           `El jugador ${numJug} ara té ${totalCartes[codiPartida][numJug]}`

@@ -1,21 +1,21 @@
 // Schema.js
 
 const typeDefs = `#graphql
-  type Alumne {
-    codi: ID!
-    nom: String
-  }
-
+  # This is the entry point of the query.
   type Query {
-    obtenirAlumne(codi: ID!): Alumne
-    obtenirAlumnes: [Alumne]
+    iniciarJoc(codiPartida: ID!): String
+    obtenirCarta(codiPartida: ID!, numJug: Int!): String
+    mostrarCartes(codiPartida: ID!, numJug: Int!): String
   }
 
+  # This is to be able to submit or update data.
   type Mutation {
-    afegirAlumne(nom: String): Alumne
-    modificarAlumne(codi: ID!, nom: String): Alumne
-    esborrarAlumne(codi: ID!): Int
+    tirarCarta(codiPartida: ID!, numJug: Int!, carta: Int!): String
+    moureJugadorAposta(codiPartida: ID!, numJug: Int!, quantitatApostada: Int!): String
+    moureJugadorPassa(codiPartida: ID!, numJug: Int!): String
+    acabarJoc(codiPartida: ID!): String
   }
 `;
 
+// Here I export the module.
 module.exports = { typeDefs };
