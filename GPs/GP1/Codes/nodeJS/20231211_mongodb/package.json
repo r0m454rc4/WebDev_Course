@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "assert": "^2.1.0",
     "mongodb": "^4.1.3"
   }
 }

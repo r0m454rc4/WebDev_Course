@@ -1,0 +1,131 @@
+body {
+  margin: 40px;
+  text-align: center;
+  /* I use Ubuntu Mono for the font. */
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 13px;
+}
+
+/* Style the grid. */
+
+.header {
+  grid-area: header;
+}
+
+.barra-superherois {
+  grid-area: barra-superherois;
+}
+
+.portades-comics {
+  grid-area: portades-comics;
+}
+
+.detalls-comics {
+  grid-area: detalls-comics;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.wrapper {
+  background-color: #fff;
+  color: #444;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-areas:
+    "header"
+    "barra-superherois"
+    "portades-comics"
+    "detalls-comics"
+    "footer";
+}
+
+/* I make it responsive on smaller screens. */
+@media only screen and (min-width: 500px) {
+  .wrapper {
+    grid-template-columns: 20% auto;
+    grid-template-areas:
+      "header header"
+      "barra-superherois portades-comics"
+      "detalls-comics detalls-comics"
+      "footer footer";
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .wrapper {
+    grid-gap: 20px;
+    grid-template-columns: 135px auto 400px;
+    grid-template-areas:
+      "header header header"
+      "barra-superherois portades-comics detalls-comics"
+      "footer footer footer";
+  }
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 150%;
+}
+
+.header,
+.footer {
+  background-color: #f7ba43;
+}
+
+.detalls-comics,
+.barra-superherois {
+  background-color: #ccc;
+  color: #444;
+}
+
+/* Style the header image. */
+img#marvel-logo {
+  width: 120px;
+  /* float: left; */
+}
+
+/* Style the size and logo of the heroes. */
+img#logo-superheroi {
+  width: 90px;
+  height: 90px;
+  border: 5px solid #e3242b;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
+/* Style the size and logo of the comics. */
+img#imatge-comic {
+  height: 425px;
+  border: 5px solid #e3242b;
+  margin-top: 10px;
+}
+
+label#comics {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 25px;
+}
+
+/* This is to don't show "idSuperHeroi" after the name. */
+/* https://stackoverflow.com/questions/45804017/how-to-hide-specific-html-paragraph-element */
+p#idS {
+  display: none;
+}
+
+/* This is to don't show "idComic" after the title. */
+p#idC {
+  display: none;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <!--
+	pagina que mostra com utilitzar WebSockets per a canviar el color
+    de fons a tots els usuaris connectats. Utilitza Broadcasting
+    a diversos usuaris
+	@author sergi grau, sergi.grau@fje.edu
+	@version 1.0
+	date 02.03.2016
+	format del document UTF-8
+
+	CHANGELOG
+	19.02.2016
+	canviar el color de fons d'un altre usuari connectat
+	27.03.2017
+	actualització biblioteca client de socket.io
+	NOTES
+	ORIGEN
+    Desenvolupament Aplicacions Web. Jesuïtes el Clot
+	-->
+
+  <head>
+    <meta charset="utf-8" />
+    <title>DAW2</title>
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="M03_fons.js"></script>
+  </head>
+
+  <body>
+    R <input id="r" type="range" min="0" max="255" /> <br />
+    G <input id="g" type="range" min="0" max="255" /> <br />
+    B <input id="b" type="range" min="0" max="255" /> <br />
+  </body>
+</html>

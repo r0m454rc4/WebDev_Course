@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppEncaminamentModule } from './app-encaminament.module';
 
 import { M01_SalutacioComponent } from './20231026/m01-salutacio.component'; // I import a component.
 import { M02_SumaComponent } from './20231026/m02-suma.component';
@@ -8,7 +10,7 @@ import { M03_IteradorComponent } from './20231103/m03-iterador.component';
 import { M03_mitja_iterador_component } from './20231109/m03-mitja-iterador.component';
 import { M04_PomodoroComponent } from './20231116/m04-pomodoro.component';
 
-// Examen.
+// Exam.
 import { examen_esportista_component } from './20231123_EXAMEN/examen-components';
 
 import {
@@ -24,6 +26,10 @@ import { M09_OrdenarPerPipe } from './20231423/m09-ordenar-per.pipe';
 import { M09_PipePersonalizadaComponent } from './20231423/m09-pipe-personalitzada.component';
 import { repas_iterador_component } from './20231121_review/repas-iterador-components';
 
+import { M10_AnimacioComponent } from './20240118/m10-animacio.component';
+import { M10_AnimacionsComponent } from './20240118/m10-animacions.component';
+import { M11_EncaminamentComponent } from './20240118/m11-encaminament.component';
+
 @NgModule({
   declarations: [
     M01_SalutacioComponent,
@@ -37,7 +43,7 @@ import { repas_iterador_component } from './20231121_review/repas-iterador-compo
     // M05_BindingsComponent is dependant of M05_CompteEnrera_Component.
     M05_BindingsComponent,
     M05_CompteEnrera_Component,
-    
+
     M06_DirectivesComponent,
 
     M07_DirectivaPersonalizada,
@@ -47,9 +53,13 @@ import { repas_iterador_component } from './20231121_review/repas-iterador-compo
 
     M09_OrdenarPerPipe,
     M09_PipePersonalizadaComponent,
+
+    M10_AnimacioComponent,
+    M10_AnimacionsComponent,
+    M11_EncaminamentComponent,
   ], // Here I must say the components I want to be able to use.
-  imports: [BrowserModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppEncaminamentModule],
   providers: [],
-  bootstrap: [M09_PipePersonalizadaComponent], // This is the component I'm using.
+  bootstrap: [M11_EncaminamentComponent], // This is the component I'm using.
 })
 export class AppModule {}

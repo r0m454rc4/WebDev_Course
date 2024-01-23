@@ -1,4 +1,10 @@
-let xhr;
+/**
+ * Web graphic client.
+ *
+ * @author roma.sarda.casellas373@gmail.com
+ * @version 1.0.
+ * @date 19.01.24.
+ */
 
 function inici() {
   // If I click on the button called "Crear partida".
@@ -19,124 +25,196 @@ function inici() {
   document.getElementById("passar").addEventListener("click", passar);
 
   document.getElementById("acabarJoc").addEventListener("click", acabarJoc);
-
-  xhr = new XMLHttpRequest();
 }
 
 function iniciarJoc() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}`;
-  // data = parseInt(data);
-
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
+  let consulta = `query iniciarJoc($codiPartida: ID!) {
+    iniciarJoc(codiPartida: $codiPartida) {
+      ... on ResultatBoolea {
+          partidaIniciada
+      }
+      ... on ResultatString {
+          missatgeError
+      }
     }
-  });
+  }`;
 
-  xhr.open("POST", "http://localhost:4000/iniciarJoc");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send(data);
+  fetch(`/iniciarJoc`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.iniciarJoc));
 }
 
 function obtenirCarta() {
-  // Here I have some variables that sore the content from the input
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
+  // Here I declare codiPartida that stores the value from the input.
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
-  // data = parseInt(data);
+  let consulta = `query obtenirCarta($codiPartida: ID!, $numJug: Int!) {
+    obtenirCarta(codiPartida: $codiPartida, numJug: $numJug)
+  }`;
 
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      // console.log(this.responseText);
-    }
-  });
-
-  xhr.open(
-    "GET",
-    `http://localhost:4000/obtenirCarta/${codiPartida}/${numJug}`
-  );
-  xhr.send(data);
+  fetch(`/obtenirCarta/${codiPartida}/${numJug}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida, numJug },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.obtenirCarta));
 }
 
 function mostrarCartes() {
-  // Here I have some variables that sore the content from the input
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
+  // Here I declare codiPartida that stores the value from the input.
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
-  // data = parseInt(data);
+  let consulta = `query mostrarCartes($codiPartida: ID!, $numJug: Int!) {
+    mostrarCartes(codiPartida: $codiPartida, numJug: $numJug)
+  }`;
 
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      // console.log(this.responseText);
-    }
-  });
-
-  xhr.open(
-    "GET",
-    `http://localhost:4000/mostrarCartes/${codiPartida}/${numJug}`
-  );
-  xhr.send(data);
+  fetch(`/mostrarCartes/${codiPartida}/${numJug}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida, numJug },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.mostrarCartes));
 }
 
 function tirarCarta() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
-  let carta = document.getElementById("carta").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
+  let carta = document.getElementById("carta").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}&numJug=${numJug}&carta=${carta}`;
+  let consulta = `mutation tirarCarta($codiPartida: ID!, $numJug: Int!, $carta: Int!) {
+    tirarCarta(codiPartida: $codiPartida, numJug: $numJug, carta: $carta)
+  }`;
 
-  xhr.open("PUT", "http://localhost:4000/tirarCarta");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send(data);
+  fetch(`/tirarCarta`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida, numJug, carta },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.tirarCarta));
 }
 
 function apostar() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
-  let quantitatApostada = document.getElementById("quantitatApostada").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
+  let quantitatApostada =
+    document.getElementById("quantitatApostada").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}&numJug=${numJug}&quantitatApostada=${quantitatApostada}`;
+  let consulta = `mutation moureJugadorAposta($codiPartida: ID!, $numJug: Int!, $quantitatApostada: Int!) {
+    moureJugadorAposta(codiPartida: $codiPartida, numJug: $numJug, quantitatApostada: $quantitatApostada)
+    }`;
 
-  xhr.open("PUT", "http://localhost:4000/moureJugador/aposta");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send(data);
+  fetch(`/moureJugador/aposta`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida, numJug, quantitatApostada },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.moureJugadorAposta));
 }
 
 function passar() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
+  let consulta = `mutation moureJugadorPassa($codiPartida: ID!, $numJug: Int!) {
+    moureJugadorPassa(codiPartida: $codiPartida, numJug: $numJug)
+    }`;
 
-  xhr.open("PUT", "http://localhost:4000/moureJugador/passa");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send(data);
+  fetch(`/moureJugador/passa`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida, numJug },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.moureJugadorPassa));
 }
 
 function acabarJoc() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
 
-  // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
-  let data = `codiPartida=${codiPartida}`;
+  let consulta = `mutation acabarJoc($codiPartida: ID!) {
+    acabarJoc(codiPartida: $codiPartida) {
+      ... on ResultatBoolea {
+          partidaIniciada
+      }
+      ... on ResultatString {
+          missatgeError
+      }
+    }
+    }`;
 
-  xhr.open("DELETE", "http://localhost:4000/acabarJoc");
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send(data);
+  fetch(`/acabarJoc`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      // query is taken from consulta.
+      query: consulta,
+      variables: { codiPartida },
+    }),
+  })
+    .then((r) => r.json())
+    .then((dades) => console.log(dades.data.acabarJoc));
 }
 
 window.addEventListener("load", inici, true);

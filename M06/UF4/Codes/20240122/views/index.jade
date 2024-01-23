@@ -1,0 +1,11 @@
+doctype html
+html
+	head
+		title= "Xat en temps real"
+		script(src='/xat.js')
+		script(src='/socket.io/socket.io.js')
+	body
+		#contingut(style='width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;')
+		.controls
+			input#entrada(style='width:350px;')
+			input#enviar(type='button', value='enviar')

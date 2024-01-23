@@ -1,14 +1,16 @@
 use mysql;
-create user 'adcli'@'localhost' identified by "FjeClot23@";
-create database bdcli;
+create user 'rosaca'@'localhost' identified by "FjeClot23@";
+create database rosaca2023;
 use bdcli;
+
 create table tlcli(
 	codi int(10) unsigned not null,
 	nom varchar(20) not null,
 	cognoms varchar(50) not null,
 	email varchar(50) not null,
 	ctsnya varchar(255) not null
-);       
+);   
+    
 alter table tlcli add primary key(codi);
 alter table tlcli modify codi int(10) unsigned not null auto_increment;
 grant select,insert,delete, update on bdcli.tlcli to 'adcli'@'localhost';

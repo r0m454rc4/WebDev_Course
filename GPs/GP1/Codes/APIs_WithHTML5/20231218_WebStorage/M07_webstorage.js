@@ -13,8 +13,8 @@ var emmagatzematge = {
       document.getElementById("nota").value // Value that is stored.
     );
 
-    emmagatzematge.esborrarTaula();
-    emmagatzematge.mostrar();
+    // emmagatzematge.esborrarTaula();
+    // emmagatzematge.mostrar();
   },
 
   mostrar: function () {

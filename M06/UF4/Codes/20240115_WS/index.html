@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <!--
+	document comunicacions amb backend amb Node i WebSockets
+	@author sergi grau, sergi.grau@fje.edu
+	@version 1.0
+	date 	07/04/2014
+	format del document UTF-8
+
+	CHANGELOG
+		07/04/2014
+	document comunicacions amb backend amb Node i WebSockets
+
+	NOTES
+	ORIGEN
+	Desenvolupament en entorn client. Escola del Clot
+	-->
+  <head>
+    <meta charset="utf-8" />
+    <title>exercici1</title>
+    <meta name="author" content="sergi grau" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect("http://localhost:8888");
+      socket.emit("dadesDesDelClient", {
+        dades: "des del client",
+      });
+      socket.on("dadesDesDelServidor", function (data) {
+        console.log("CLIENT -> dades rebudes del servidor->" + data.dades);
+      });
+    </script>
+  </head>
+  <body>
+    WebSockets
+  </body>
+</html>

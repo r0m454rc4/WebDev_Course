@@ -21,13 +21,18 @@ let partidaIniciada = [],
   quantitatRestant = [];
 
 const arrel = {
+  // If the game is created, return a boolean, otherwise a string.
   iniciarJoc({ codiPartida }) {
     if (!partidaIniciada[codiPartida]) {
       // If the game hasn't started yet.
 
       // If the user didn't enter codiPartida, also I have codiPartida == "" because of the calls from the web.
       if (codiPartida == undefined || codiPartida == "") {
-        return `La partida no estat inicialitzada a causa de no haver indicat un codi de partida.`;
+        return {
+          // missatgeError returns a string, __typename is to specify the type I want to return.
+          missatgeError: `La partida no estat inicialitzada a causa de no haver indicat un codi de partida.`,
+          __typename: "ResultatString",
+        };
       } else {
         // If the user entered codiPartida.
         partidaIniciada[codiPartida] = true;
@@ -39,10 +44,16 @@ const arrel = {
 
         console.log("La partida ha estat inicialitzada");
         // If everything goes well, and is the first time the user starts a game, I'll get "true".
-        return partidaIniciada[codiPartida];
+        return {
+          partidaIniciada: partidaIniciada[codiPartida],
+          __typename: "ResultatBoolea",
+        };
       }
     } else {
-      return `La partida amb codi ${codiPartida} prèviament ja ha estat inicialitzada.`;
+      return {
+        missatgeError: `La partida amb codi ${codiPartida} prèviament ja ha estat inicialitzada.`,
+        __typename: "ResultatString",
+      };
     }
   },
 
@@ -120,8 +131,7 @@ const arrel = {
       } else if (numJug == undefined) {
         return `El jugador no pot jugar a la partida ${codiPartida} a causa de no haver indicat el seu codi de jugador`;
       } else if (carta == undefined) {
-        return;
-        `El jugador ${numJug} no pot tirar la carta a causa de no haver indicat la carta que vol tirar.`;
+        return `El jugador ${numJug} no pot tirar la carta a causa de no haver indicat la carta que vol tirar.`;
       } else if (totalCartes[codiPartida][numJug] == undefined) {
         // If the payer doesn't have any card yet.
         return `El jugador ${numJug} no està jugant en aquesta partida.`;
@@ -227,7 +237,10 @@ const arrel = {
   },
   acabarJoc({ codiPartida }) {
     if (codiPartida == undefined) {
-      return `La partida no estat acabada a causa de no haver indicat un codi de partida.`;
+      return {
+        missatgeError: `La partida no estat acabada a causa de no haver indicat un codi de partida.`,
+        __typename: "ResultatString",
+      };
     } else if (partidaIniciada[codiPartida]) {
       // If the game hasn't started yet.
       partidaIniciada[codiPartida] = false;
@@ -236,17 +249,27 @@ const arrel = {
       if (totalCartes[codiPartida].length > 0) {
         totalCartes[codiPartida] = [];
 
-        return `La partida amb codi ${codiPartida} ha estat acabada correctament.`;
+        return {
+          partidaIniciada: partidaIniciada[codiPartida],
+          __typename: "ResultatBoolea",
+        };
       } else {
-        return `Algun dels jugadors no tenia cap carta, però la partida amb codi ${codiPartida} ha estat acabada correctament.`;
+        return {
+          missatgeError: `Algun dels jugadors no tenia cap carta, però la partida amb codi ${codiPartida} ha estat acabada correctament.`,
+          __typename: "ResultatString",
+        };
       }
     } else {
-      return `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`;
+      return {
+        missatgeError: `La partida amb codi ${codiPartida} encara no ha estat inicialitzada.`,
+        __typename: "ResultatString",
+      };
     }
   },
 };
 
 const app = express();
+
 // This is to be able to use the browser and make post, put and delete.
 app.use(express.static("public"));
 
@@ -255,8 +278,71 @@ app.use(
   graphqlHTTP({
     schema: esquema,
     rootValue: arrel,
+    graphiql: true,
+  })
+);
+
+app.use(
+  "/iniciarJoc",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
+    graphiql: false,
+  })
+);
+
+app.use(
+  "/obtenirCarta/:codiPartida/:numJug",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
+    graphiql: false,
+  })
+);
+
+app.use(
+  "/mostrarCartes/:codiPartida/:numJug",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
+    graphiql: false,
+  })
+);
+
+app.use(
+  "/tirarCarta",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
+    graphiql: false,
+  })
+);
+
+app.use(
+  "/moureJugador/aposta",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
+    graphiql: false,
+  })
+);
+
+app.use(
+  "/moureJugador/passa",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
+    graphiql: false,
+  })
+);
+
+app.use(
+  "/acabarJoc",
+  graphqlHTTP({
+    schema: esquema,
+    rootValue: arrel,
     graphiql: false,
   })
 );
 app.listen(4000);
-console.log("Executant servidor GraphQL API a http://localhost:4000/graphql");
+console.log("Executant servidor GraphQL API a http://localhost:4000");

@@ -1,0 +1,79 @@
+<h1>Crear jugadors i assignar a equip</h1>
+
+<div class="form-group">
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Entra el id del jugador"
+    #id
+    required
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Entra el nom del jugador"
+    #nom
+    required
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Entra la posicio del jugador"
+    #posicio
+    required
+  />
+</div>
+<button
+  class="btn btn-primary"
+  (click)="crearJugador(id.value, nom.value, posicio.value)"
+>
+  crear jugador
+</button>
+<button class="btn btn-primary" (click)="assignarJugador()">afegir</button>
+<button class="btn btn-primary" (click)="desassignarJugador()">esborrar</button>
+
+<select class="form-control" [(ngModel)]="jugadorSeleccionat">
+  <option *ngFor="let jugador of llistaJugadors" [value]="jugador.id">
+    {{jugador.nom}}
+  </option>
+</select>
+
+<select class="form-control" [(ngModel)]="equipSeleccionat">
+  <option
+    *ngFor="let equip of llistaEquips;index as i; first as isPrimer"
+    [value]="i"
+  >
+    {{equip.nom}}
+  </option>
+</select>
+
+<h1>mostrar jugadors de l'equip</h1>
+<select
+  class="form-control"
+  [(ngModel)]="equipSeleccionatAmostrar"
+  (change)="mostrarJugadors()"
+>
+  >
+  <option
+    *ngFor="let equip of llistaEquips;index as i; first as isPrimer"
+    [value]="i"
+  >
+    {{equip.nom}}
+  </option>
+</select>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let j of llistaJugadorsEquipSeleccionat">
+      <td>{{j.id}}</td>
+      <td>{{j.nom}}</td>
+    </tr>
+  </tbody>
+</table>
