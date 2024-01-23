@@ -1,0 +1,9 @@
+{
+  "name": "daw2-websockets",
+  "version": "0.0.1",
+  "description": "sergi.grau@fje.edu",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  }
+}

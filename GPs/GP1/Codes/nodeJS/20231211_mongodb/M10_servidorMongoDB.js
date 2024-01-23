@@ -33,20 +33,19 @@ function iniciar() {
     let db = client.db("provaDAW2"); // Here I say the database that I'll use.
 
     // This function adds two users, "sergi" and "joan".
-    // afegirDocuments(db, err, function () {});
+    afegirDocuments(db, err, function () {});
 
     // consultarDocumentMenor40(db, err, function () {});
 
     // This function shows the information of the user with sergi as name.
-    consultarDocument(db, err, function () {});
+    // consultarDocument(db, err, function () {});
 
     // This function deletes all of the users of the database.
     // esborrarTotsDocuments(db, err, function () {
     //   client.close();
     // });
 
-    //atenció aquestes crides són asíncrones cal tancar la connexió en la darrera
-    // Malament db.close();
+    db.close();
   });
 
   function onRequest(req, res) {

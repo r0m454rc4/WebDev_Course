@@ -1,23 +1,23 @@
 <?php
 #
-echo "<h2>Lectura de BD - PDO - Errors amb try-catch</h2>";
+echo "<h2>BD - PDO - Errors amb try-catch</h2>";
 #
 # DADES CONNEXIÓ A BD
 #
 $dbhost = "localhost";
-$dbusername = "adcli";
+$dbusername = "rosaca";
 $dbuserpassword = "FjeClot23@";
-$baseDades = "bdcli";
+$baseDades = "rosaca23";
 #
 #
 # DADES TAULA
 #
-$taula = "tlcli";
+$taula = "rosaca2023";
 #
 try {
 	$bd = new PDO("mysql:host=$dbhost;dbname=$baseDades", $dbusername, $dbuserpassword);
 	$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); # Mode de gestió d'errors de PDO tipus exception
-	$peticio = "UPDATE $taula SET nom='antoni' WHERE codi=3";
+	$peticio = "UPDATE $taula SET email='joan@fje.edu' WHERE nom=joan";
 	$bd->exec($peticio); # exec() s'utilitza quan no hi ha un retorn de dades 
 	$consulta = "SELECT * FROM $taula";
 

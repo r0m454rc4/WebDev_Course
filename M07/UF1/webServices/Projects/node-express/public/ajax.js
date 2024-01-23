@@ -25,7 +25,7 @@ function inici() {
 
 function iniciarJoc() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}`;
@@ -44,8 +44,8 @@ function iniciarJoc() {
 
 function obtenirCarta() {
   // Here I have some variables that sore the content from the input
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
@@ -66,8 +66,8 @@ function obtenirCarta() {
 
 function mostrarCartes() {
   // Here I have some variables that sore the content from the input
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
@@ -88,9 +88,9 @@ function mostrarCartes() {
 
 function tirarCarta() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
-  let carta = document.getElementById("carta").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
+  let carta = document.getElementById("carta").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}&numJug=${numJug}&carta=${carta}`;
@@ -102,9 +102,10 @@ function tirarCarta() {
 
 function apostar() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
-  let quantitatApostada = document.getElementById("quantitatApostada").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
+  let quantitatApostada =
+    document.getElementById("quantitatApostada").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}&numJug=${numJug}&quantitatApostada=${quantitatApostada}`;
@@ -116,8 +117,8 @@ function apostar() {
 
 function passar() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
-  let numJug = document.getElementById("numJug").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
+  let numJug = document.getElementById("numJug").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}&numJug=${numJug}`;
@@ -129,7 +130,7 @@ function passar() {
 
 function acabarJoc() {
   // Here I declare codiPartida that stores the value from the input.
-  let codiPartida = document.getElementById("codiPartida").value;
+  let codiPartida = document.getElementById("codiPartida").value * 1;
 
   // The variable data must have this format: codiPartida= is the KEY, and ${codiPartida} is the VALUE.
   let data = `codiPartida=${codiPartida}`;
