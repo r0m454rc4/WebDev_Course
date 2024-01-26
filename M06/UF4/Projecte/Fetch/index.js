@@ -40,7 +40,7 @@ window.onload = () => {
 
   // Async function to fetch the comics from a superheroe.
   async function obtenirComicsSuperHeroi(idSuperHeroi) {
-    url = `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`;
+    let url = `https://gateway.marvel.com:443/v1/public/characters/${idSuperHeroi}/comics?orderBy=title&ts=${hora}&apikey=${clauApiPublica}&hash=${clauHash}`;
 
     let resposta = await fetch(url, {
       method: "GET",

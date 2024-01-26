@@ -6,13 +6,20 @@ public class Empleado {
   private int edad;
   private boolean casado;
   private double salario;
+  private String clasificacion;
 
   public Empleado(String nombre, String cedula, int edad, boolean casado, double salario) {
-    this.nombre = nombre;
-    this.cedula = cedula;
-    this.edad = edad;
-    this.casado = casado;
-    this.salario = salario;
+    // Call a method from a constructor.
+    if (controlEdad(edad)) {
+      this.nombre = nombre;
+      this.cedula = cedula;
+      this.edad = edad;
+      this.casado = casado;
+      this.salario = salario;
+      this.clasificacion = mostrarCalificacion(edad);
+    } else {
+      System.out.println("Empleado no valido.");
+    }
   }
 
   public String getNombre() {
@@ -55,27 +62,37 @@ public class Empleado {
     this.salario = salario;
   }
 
-  public static void mostrarCalificacion(int edad) {
-    Scanner sc = new Scanner(System.in);
-    edad = sc.nextInt();
-
-    if (edad <= 21) {
-      System.out.println("Principiante.");
-    } else if (edad >= 22 && edad <= 33) {
-      System.out.println("Intermedio.");
+  public static boolean controlEdad(int edad) {
+    if ((edad >= 18) && (edad <= 45)) {
+      return true;
     } else {
-      System.out.println("Senior.");
+      return false;
     }
-
-    sc.close();
   }
 
-  public String mostrarDadosEmpleado() {
-    return "Nombre: " + nombre +
-        "\nCedula: " + cedula +
-        "\nEdad: " + edad +
-        "\nCasado: " + casado +
-        "\nSalario: " + salario;
+  public static String mostrarCalificacion(int edad) {
+    String clasificacion;
+
+    if (edad <= 21) {
+      clasificacion = "Principiante.";
+    } else if (edad >= 22 && edad <= 33) {
+      clasificacion = "Intermedio.";
+    } else {
+      clasificacion = "Senior.";
+    }
+
+    return clasificacion;
+  }
+
+  @Override
+  public String toString() {
+    {
+      return "Nombre: " + nombre +
+          "\nCedula: " + cedula +
+          "\nEdad: " + edad +
+          "\nCasado: " + casado +
+          "\nSalario: " + salario;
+    }
   }
 
   public void augmentarSalario(double nuevoSalario) {

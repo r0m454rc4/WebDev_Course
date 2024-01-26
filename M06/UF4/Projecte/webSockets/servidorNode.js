@@ -77,7 +77,57 @@ io.on("connection", (socket) => {
     let dataResposta = await resposta.json();
 
     // console.log(`Resposta: ${JSON.stringify(dataResposta)}`);
-    socket.emit("dadesDesDelServidor", dataResposta);
+    socket.emit("dadesDesDelServidor_obtenirLogoSuperHeroi", dataResposta);
+  });
+
+  socket.on("obtenirComics", async function (data) {
+    let url = `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=21&ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
+
+    let resposta = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let dataResposta = await resposta.json();
+
+    // console.log(`Resposta: ${JSON.stringify(dataResposta)}`);
+    socket.emit("dadesDesDelServidor_obtenirComics", dataResposta);
+  });
+
+  socket.on("obtenirComicsSuperHeroi", async function (data) {
+    let url = `https://gateway.marvel.com:443/v1/public/characters/${data.idSuperHeroi}/comics?orderBy=title&ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
+
+    let resposta = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let dataResposta = await resposta.json();
+    // console.log(dataResposta);
+
+    // console.log(`Resposta: ${JSON.stringify(dataResposta)}`);
+    socket.emit("dadesDesDelServidor_obtenirComicsSuperHeroi", dataResposta);
+  });
+
+  socket.on("obtenirDetallsComic", async function (data) {
+    let url = `https://gateway.marvel.com:443/v1/public/comics/${data.idComic}?orderBy=title&ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
+
+    let resposta = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let dataResposta = await resposta.json();
+    // console.log(dataResposta);
+
+    // console.log(`Resposta: ${JSON.stringify(dataResposta)}`);
+    socket.emit("dadesDesDelServidor_obtenirDetallsComic", dataResposta);
   });
 });
 
