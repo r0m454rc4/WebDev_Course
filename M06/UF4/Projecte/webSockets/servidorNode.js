@@ -76,9 +76,8 @@ io.on("connection", (socket) => {
 
     let dataResposta = await resposta.json();
 
-    console.log(`Resposta: ${JSON.stringify(dataResposta)}`);
-
-    socket.emit(JSON.stringify(dataResposta));
+    // console.log(`Resposta: ${JSON.stringify(dataResposta)}`);
+    socket.emit("dadesDesDelServidor", dataResposta);
   });
 });
 

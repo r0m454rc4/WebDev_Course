@@ -1,0 +1,39 @@
+1- Crea un script sql .sql per 
+	usuari --> xxyyzz a on xxyyzz 2 primeres lletres noms i cogoms
+	base dades --> xxyyzz23 on xxyyzz 2 primeres lletres noms i cogoms
+	taula --> xxyyzz2023 on xxyyzz 2 primeres lletres noms i cogoms
+	Nom del script xxyyzz.sql on xxyyzz 2 primeres lletres noms i cogoms
+
+2- Script PHP per accedir a la base de dades creada amb el script .sql 
+   anterior i mostrar  el registres amb el codi = 4. Utilitza MySQLi.
+   El nom del script serà llegeix.php.
+
+3- Script PHP per accedir a la base de dades i modificar el registre
+   que té el camp "joan" i canviar el seu correu per "joan@fje.edu". 
+   Utilitza PDO. El nom del script serà modifica.php.
+   
+4- Script de PHP per crear una base de dades de nom daw2xxyyzz del qual,
+   un nou usuari de nom xxxyyyzzz (3 primeres lletres) tingui tots els
+   permisos garantitzats. Utilitza MySQLi. El nom del script serà
+   creabd.php.
+
+5- cf@collados.org --  Assumpte: daw2_m07uf3_exercici1 -- Adjunteu fitxers
+   Data límit: dijous 18-1-24 fins a les 21.00
+*******************************************************************************
+6- Script PHP que utilitzi sentències preparades utilitzant PDO que permeti crear 5
+registres nous (les dades són les que vostés vulguin) utilitzant la base de dades
+creada a la pregunta 1, amb la taula creada a la pregunta 1 i amb l'usuari creat a 
+la pregunta 1. Nom escript script6.php.
+
+7- Script PHP utilitzant MySQLi i sentències preparades per esborrar una entrada
+a partir del codi (el número de codi pot ser el que vulguin) i a partir de les dades
+introduïdes a la pregunta 6 (és a dir, esborrar qualsevol del registres introduïts
+a la pregunta 6). Nom escript script7.php.
+
+8-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici3 -- Adjunteu fitxers
+   Data límit: dimarts 25-1-24 fins a les 21.00
+
+
+
+
+

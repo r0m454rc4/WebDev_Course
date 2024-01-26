@@ -20,8 +20,6 @@ window.onload = () => {
     });
 
     // console.log(`Resposta: ${resposta}`);
-
-    console.log(resposta.json());
     return resposta.json();
   }
 
@@ -36,7 +34,7 @@ window.onload = () => {
       },
     });
 
-    console.log(`Resposta: ${resposta.json()}`);
+    // console.log(`Resposta: ${resposta.json()}`);
     return resposta.json();
   }
 
@@ -210,68 +208,69 @@ window.onload = () => {
         console.log(e);
       }),
 
-    // // Promise to get the first 21 comics from 10 characters of the API ordered by title.
-    // obtenirComics()
-    //   .then((resposta) => {
-    //     let dadesResposta = resposta.data.results;
-    //     let nCmpt = 0;
+    // Promise to get the first 21 comics from 10 characters of the API ordered by title.
+    obtenirComics()
+      .then((resposta) => {
+        let dadesResposta = resposta.data.results;
+        // console.log(resposta);
+        let nCmpt = 0;
 
-    //     dadesResposta.forEach((comic) => {
-    //       // console.log(`${comic.title}: ${comic.id}`);
+        dadesResposta.forEach((comic) => {
+          // console.log(`${comic.title}: ${comic.id}`);
 
-    //       // I crete a container for each comic, this is because of the title, if I don't have it, the title wouldn't be at the bottom of the image, the problem is caused because of the grid.
-    //       let contenidorComic = document.createElement("div");
-    //       // Create an image element.
-    //       let imatge = document.createElement("img");
-    //       imatge.src = `${
-    //         comic.thumbnail.path + "." + comic.thumbnail.extension
-    //       }`;
-    //       imatge.id = "imatge-comic";
+          // I crete a container for each comic, this is because of the title, if I don't have it, the title wouldn't be at the bottom of the image, the problem is caused because of the grid.
+          let contenidorComic = document.createElement("div");
+          // Create an image element.
+          let imatge = document.createElement("img");
+          imatge.src = `${
+            comic.thumbnail.path + "." + comic.thumbnail.extension
+          }`;
+          imatge.id = "imatge-comic";
 
-    //       // Create a paragraph element for the comic title.
-    //       let titol = document.createElement("p");
-    //       titol.textContent = comic.title;
+          // Create a paragraph element for the comic title.
+          let titol = document.createElement("p");
+          titol.textContent = comic.title;
 
-    //       let idC = document.createElement("p");
+          let idC = document.createElement("p");
 
-    //       // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
-    //       idC.setAttribute("id", "idC");
-    //       idC.textContent = comic.id;
+          // This is to add an id to the paragraph, I use it on the css because I don't want this information to be shown.
+          idC.setAttribute("id", "idC");
+          idC.textContent = comic.id;
 
-    //       // Append the image and title to the container
-    //       contenidorComic.appendChild(imatge);
-    //       contenidorComic.appendChild(titol);
-    //       contenidorComic.append(idC);
+          // Append the image and title to the container
+          contenidorComic.appendChild(imatge);
+          contenidorComic.appendChild(titol);
+          contenidorComic.append(idC);
 
-    //       // Here I add the div that I creaderd "contenidorComic" to the label "comics",
-    //       document.getElementById("comics").appendChild(contenidorComic);
+          // Here I add the div that I creaderd "contenidorComic" to the label "comics",
+          document.getElementById("comics").appendChild(contenidorComic);
 
-    //       // This is to get the information from a specific comic.
-    //       contenidorComic.onclick = () => {
-    //         // console.log(contenidorComic.childNodes.item(2).innerHTML);
-    //         obtenirDetallsComic(
-    //           contenidorComic.childNodes.item(2).innerHTML
-    //         ).catch((e) => {
-    //           console.log("Ha ocorregut un error!");
-    //           console.log(e);
-    //         });
-    //       };
+          // This is to get the information from a specific comic.
+          contenidorComic.onclick = () => {
+            // console.log(contenidorComic.childNodes.item(2).innerHTML);
+            obtenirDetallsComic(
+              contenidorComic.childNodes.item(2).innerHTML
+            ).catch((e) => {
+              console.log("Ha ocorregut un error!");
+              console.log(e);
+            });
+          };
 
-    //       // At the beggining, I show the information of the first comic on the grid layout.
-    //       if (nCmpt == 0) {
-    //         obtenirDetallsComic(43507).catch((e) => {
-    //           console.log("Ha ocorregut un error!");
-    //           console.log(e);
-    //         });
-    //       }
+          // At the beggining, I show the information of the first comic on the grid layout.
+          if (nCmpt == 0) {
+            obtenirDetallsComic(43507).catch((e) => {
+              console.log("Ha ocorregut un error!");
+              console.log(e);
+            });
+          }
 
-    //       // I increase the counter in order to change the comic that is shown.
-    //       nCmpt++;
-    //     });
-    //   })
-    //   .catch((e) => {
-    //     console.log("Ha ocorregut un error!");
-    //     console.log(e);
-    //   }),
+          // I increase the counter in order to change the comic that is shown.
+          nCmpt++;
+        });
+      })
+      .catch((e) => {
+        console.log("Ha ocorregut un error!");
+        console.log(e);
+      }),
   ]);
 }

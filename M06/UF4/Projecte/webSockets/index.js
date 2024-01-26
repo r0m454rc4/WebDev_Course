@@ -514,7 +514,9 @@ window.onload = () => {
 
     // Each time the server gets new data.
     socket.on("dadesDesDelServidor", function (resposta) {
+      console.log("Entro.");
       let dadesResposta = resposta.data.results;
+      // console.log(dadesResposta);
 
       dadesResposta.forEach((superHeroi) => {
         // console.log(`${superHeroi.name}: ${superHeroi.id}`);

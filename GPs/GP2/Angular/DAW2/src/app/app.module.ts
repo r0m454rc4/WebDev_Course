@@ -30,6 +30,8 @@ import { M10_AnimacioComponent } from './20240118/m10-animacio.component';
 import { M10_AnimacionsComponent } from './20240118/m10-animacions.component';
 import { M11_EncaminamentComponent } from './20240118/m11-encaminament.component';
 
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     M01_SalutacioComponent,
@@ -58,7 +60,12 @@ import { M11_EncaminamentComponent } from './20240118/m11-encaminament.component
     M10_AnimacionsComponent,
     M11_EncaminamentComponent,
   ], // Here I must say the components I want to be able to use.
-  imports: [BrowserModule, BrowserAnimationsModule, AppEncaminamentModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppEncaminamentModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [M11_EncaminamentComponent], // This is the component I'm using.
 })
