@@ -7,13 +7,13 @@ function dibuixar() {
   let queen = new Image(); // Now queen is an image.
   let pawn = new Image();
 
-  queen.onload = function () {
+  queen.onload = () => {
     // When queen charges:
     ctx.drawImage(queen, 100, 100, 75, 75); // I draw it.
   };
   queen.src = "queen.png";
 
-  pawn.onload = function () {
+  pawn.onload = () => {
     ctx.drawImage(pawn, 175, 100, 75, 75); // I draw it.
   };
   pawn.src = "pawn.png";

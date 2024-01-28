@@ -5,7 +5,7 @@ imatge.onload = function () {
 };
 try {
   document.createElement("canvas").getContext("2d");
-  //window.addEventListener("load", dibuixar, true);
+  // window.addEventListener("load", dibuixar, true);
 } catch (e) {
   alert("HTML5 Canvas no suportat.");
 }
@@ -15,17 +15,17 @@ function dibuixar() {
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
     ctx.drawImage(imatge, 0, 0);
-    // ferNegatiu(imatge, ctx, canvas);
+    ferNegatiu(imatge, ctx, canvas);
     // escalaGrisos(imatge, ctx, canvas);
-    escalaVermells(imatge, ctx, canvas);
+    // escalaNegres(imatge, ctx, canvas);
+    // escalaVermells(imatge, ctx, canvas);
   }
 }
 
 // -- SWAP COLORS. -- //
-
 function ferNegatiu(imageObj, context, canvas) {
   var destX = 0;
-  var destY = 100;
+  var destY = 150;
 
   context.drawImage(imageObj, destX, destY);
   var imageData = context.getImageData(0, 100, canvas.width, canvas.height);
@@ -40,11 +40,10 @@ function ferNegatiu(imageObj, context, canvas) {
   context.putImageData(imageData, 0, 100);
 }
 
-// -- GREYSCALE -- //
-
+// -- GREYSCALE. -- //
 function escalaGrisos(imageObj, context, canvas) {
   var destX = 0;
-  var destY = 100;
+  var destY = 150;
 
   context.drawImage(imageObj, destX, destY);
   var imageData = context.getImageData(0, 100, canvas.width, canvas.height);
@@ -64,11 +63,10 @@ function escalaGrisos(imageObj, context, canvas) {
   context.putImageData(imageData, 0, 100);
 }
 
-// -- BLACK AND WHITE -- //
-
+// -- BLACK AND WHITE. -- //
 function escalaNegres(imageObj, context, canvas) {
   var destX = 0;
-  var destY = 100;
+  var destY = 150;
 
   context.drawImage(imageObj, destX, destY);
   var imageData = context.getImageData(0, 100, canvas.width, canvas.height);
@@ -83,7 +81,7 @@ function escalaNegres(imageObj, context, canvas) {
       color = 0;
     }
 
-    pixels[i] = color; // We make the average to paint it grey.
+    pixels[i] = color;
     pixels[i + 1] = color;
     pixels[i + 2] = color;
   }
@@ -91,9 +89,10 @@ function escalaNegres(imageObj, context, canvas) {
   context.putImageData(imageData, 0, 100);
 }
 
+// -- RED SCALE. -- //
 function escalaVermells(imageObj, context, canvas) {
   var destX = 0;
-  var destY = 100;
+  var destY = 150;
 
   context.drawImage(imageObj, destX, destY);
   var imageData = context.getImageData(0, 100, canvas.width, canvas.height);
@@ -108,7 +107,7 @@ function escalaVermells(imageObj, context, canvas) {
       color = 0;
     }
 
-    pixels[i] = color; // We make the average to paint it grey.
+    pixels[i] = color;
     pixels[i + 1] = suma / 3;
     pixels[i + 2] = suma / 3;
   }

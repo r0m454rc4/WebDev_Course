@@ -62,10 +62,12 @@ var emmagatzematge = {
       nota: document.getElementById("nota").value,
     };
 
+    // Here I add alumne, which is an object to the db called alumnes.
     magatzemObjsAlumnes.add(alumne);
     emmagatzematge.esborrarTaula();
     emmagatzematge.mostrar(magatzemObjsAlumnes);
   },
+
   mostrar: function (magatzemObjsAlumnes) {
     magatzemObjsAlumnes.openCursor().onsuccess = function (event) {
       var cursor = event.target.result;
@@ -78,11 +80,13 @@ var emmagatzematge = {
       }
     };
   },
+
   esborrarTaula: function () {
     while (taula.rows.length > 0) {
       taula.deleteRow(0);
     }
   },
+
   esborrarItem: function () {
     magatzemObjsAlumnes = db
       .transaction("alumnes", "readwrite")

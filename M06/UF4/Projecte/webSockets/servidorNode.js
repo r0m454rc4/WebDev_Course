@@ -65,7 +65,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("obtenirLogoSuperHeroi", async function (data) {
-    let url = `https://gateway.marvel.com:443/v1/public/characters?ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
+    let url = `https://gateway.marvel.com:443/v1/public/characters?limit=50&ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
 
     let resposta = await fetch(url, {
       method: "GET",
@@ -81,7 +81,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("obtenirComics", async function (data) {
-    let url = `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=21&ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
+    let url = `https://gateway.marvel.com:443/v1/public/comics?characters=1011334%2C1017100%2C1009144%2C1010699%2C1009146%2C1016823%2C1009148%2C1009149%2C1010903%2C1011266&orderBy=title&limit=54&ts=${data.hora}&apikey=${data.clauApiPublica}&hash=${data.clauHash}`;
 
     let resposta = await fetch(url, {
       method: "GET",

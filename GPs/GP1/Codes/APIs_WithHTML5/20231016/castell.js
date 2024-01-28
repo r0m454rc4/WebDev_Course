@@ -21,7 +21,6 @@ function dibuixar() {
 }
 
 // -- GENERATE SNOW --/
-
 function generarNeu(imageObj, context, canvas) {
   var destX = 0;
   var destY = 0;
@@ -43,26 +42,30 @@ function generarNeu(imageObj, context, canvas) {
       color = 255;
     } else color = 0;
 
-    pixels[i] = pixels[i];
-    pixels[i + 1] = pixels[i + 1];
-    pixels[i + 2] = pixels[i];
+    if (suma <= 100) {
+      for (let x = 0; x < 1; x++) {
+        let coordAleatoriaX = Math.random() * 300;
+        let coordAleatoriaY = Math.random() * 350;
+        let blancAleatori = Math.random() * 128 + 127;
 
-    for (let x = 0; x < 1; x++) {
-      let coordAleatoriaX = Math.random() * 300;
-      let coordAleatoriaY = Math.random() * 350;
-      let blancAleatori = Math.random() * 128 + 127;
+        pixels[i] = pixels[i];
+        pixels[i + 1] = pixels[i + 1];
+        pixels[i + 2] = pixels[i];
 
-      console.log(parseInt(canvas.width * coordAleatoriaY) + coordAleatoriaX) *
-        4;
+        // console.log(
+        //   parseInt(canvas.width * coordAleatoriaY) + coordAleatoriaX
+        // ) * 4;
 
-      pixels[parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4)] =
-        blancAleatori;
-      pixels[
-        parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 1)
-      ] = blancAleatori;
-      pixels[
-        parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 2)
-      ] = blancAleatori;
+        pixels[
+          parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4)
+        ] = blancAleatori;
+        pixels[
+          parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 1)
+        ] = blancAleatori;
+        pixels[
+          parseInt((canvas.width * coordAleatoriaY + coordAleatoriaX) * 4 + 2)
+        ] = blancAleatori;
+      }
     }
   }
 

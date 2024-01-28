@@ -37,9 +37,9 @@ window.onload = function () {
   // When I drag the itmage I call this function and the value I store is the id(creu/ ratlla), not the image.
   function gestionarIniciDrag(ev) {
     ev.dataTransfer.setData("imatge", ev.target.id); // dataTransfer works like a clipboard.
-    var dragIcon = document.createElement("img");
+    let dragIcon = document.createElement("img");
     dragIcon.src = "./HTML-logo.png";
-    dragIcon.width =5
+
     ev.dataTransfer.setDragImage(dragIcon, -10, -10);
   }
 

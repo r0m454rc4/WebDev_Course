@@ -34,6 +34,7 @@
           context.fill();
 
           //canviem l'origen
+          // Here I draw the cube.
           context.save();
           context.translate(100, 100); // The new coordinate "0, 0" will be on "100, 100".
           context.rotate(Math.PI / 4); // gira tot el canvas
@@ -46,6 +47,7 @@
           dibuixaRectangle(context);
           context.stroke();
 
+          // This is to write "canvas".
           context.font = "60px Amatic SC"; // I use a font that I added from Google fonts.
           context.fillStyle = "#996600";
           context.textAlign = "center";
