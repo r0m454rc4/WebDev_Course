@@ -1,7 +1,0 @@
-http://littlesvr.ca/apng/assembler/assembler.php
-
-Time to display each frame: 1/1 seconds.
-
-time12.txt
-----------------------
-delay=11/12

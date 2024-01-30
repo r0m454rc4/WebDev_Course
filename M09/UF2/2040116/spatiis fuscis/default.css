@@ -19,7 +19,7 @@ h3 {
   margin: 0;
   padding: 0;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 200;
   color: #2d2d2d;
 }
 
@@ -38,9 +38,6 @@ p {
   line-height: 180%;
 }
 
-strong {
-}
-
 a {
   color: rgba(0, 0, 0, 0.8);
 }
@@ -51,9 +48,6 @@ a:hover {
 
 a img {
   border: none;
-}
-
-img.border {
 }
 
 img.alignleft {
@@ -121,7 +115,7 @@ hr {
   bottom: 210px;
   letter-spacing: -1px;
   text-transform: lowercase;
-  font-size: 7.5em;
+  font-size: 7em;
   font-weight: 400;
   color: #df0101;
 }
@@ -146,7 +140,7 @@ hr {
 
 #menu {
   overflow: hidden;
-  background: #df0101;
+  background-image: url("images/fons.png");
 }
 
 #menu ul {
@@ -169,17 +163,14 @@ hr {
   text-align: center;
   font-size: 18px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
+  color: black;
   border: none;
 }
 
 #menu a:hover,
 #menu .current_page_item a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-#menu .current_page_item a {
+  color: black;
 }
 
 #menu .last {
@@ -230,7 +221,6 @@ hr {
 #animated-img {
   position: relative;
   left: center;
-  top: ;
 }
 
 /* Footer */
@@ -361,9 +351,6 @@ ul.style3 .first {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-#portfolio {
-}
-
 #portfolio .box {
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
@@ -442,7 +429,6 @@ ul.style3 .first {
   display: inline-block;
   margin-top: 2em;
   padding: 0em 1em;
-  background: #df0101;
   letter-spacing: 0.1em;
   line-height: 3em;
   text-decoration: none;
