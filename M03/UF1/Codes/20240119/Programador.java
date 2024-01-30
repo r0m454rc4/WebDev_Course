@@ -27,4 +27,11 @@ public class Programador extends Empleado {
   public void setLenguajeDominante(String lenguajeDominante) {
     this.lenguajeDominante = lenguajeDominante;
   }
+
+  @Override
+  public String toString() {
+    return super.toString() +
+        "\nLíneas de código por hora: " + lineasDeCodigoPorHora +
+        "\nLenguaje dominante: " + lenguajeDominante;
+  }
 }

@@ -1,0 +1,8 @@
+td.examen {
+  width: 150px;
+  height: 100px;
+  padding: 0px;
+  border: 1px solid #aaaaaa;
+  margin: 0px;
+  cursor: pointer;
+}

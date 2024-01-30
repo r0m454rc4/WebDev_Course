@@ -237,14 +237,16 @@ window.onload = () => {
           document.getElementById("detall-comic").innerHTML = `<img src="${
             comic.thumbnail.path + "." + comic.thumbnail.extension
           }" id="imatge-comic"><br>
-        <b><u>${comic.title}</u></b><br>
-        <b>Descripció</b>: ${comic.description}<br>
-        <b>Publicat</b>: ${dataFormatada}<br>
-        <b>Número de pàgines</b>: ${comic.pageCount}<br>
-        <b>Preu</b>: ${preuComic}$<br>
-        <br><b>Escriptors</b>: ${escriptors}<br>
-        <b>Dibuixants</b>: ${dibuixants}
-        <br>`;
+          <p id="paragraf-detall-comic">
+            <b><u>${comic.title}</u></b><br>
+            <b>Descripció</b>: ${comic.description}<br>
+            <b>Publicat</b>: ${dataFormatada}<br>
+            <b>Número de pàgines</b>: ${comic.pageCount}<br>
+            <b>Preu</b>: ${preuComic}$<br>
+            <br><b>Escriptors</b>: ${escriptors}<br>
+            <b>Dibuixants</b>: ${dibuixants}
+            <br>
+          </p>`;
         });
       } else {
         console.log("Ha ocorregut un error.");

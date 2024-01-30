@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <title>DAW2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="roma.sarda.casellas373@gmail.com" />
+  </head>
+
+  <body>
+    <h1>Exercici 2.</h1>
+
+    <video
+      id="movies"
+      oncanplay="iniciVideo()"
+      onended="parar()"
+      autobuffer="true"
+      width="400px"
+      height="300px"
+    >
+      <source
+        src="media/big_buck_bunny.ogv"
+        type='video/ogg; codecs="theora, vorbis"'
+      />
+    </video>
+
+    <br />
+    <button id="inici" onclick="anarInici()">Inici</button>
+    <br />
+    <button id="final" onclick="anarFinal()">Final</button> <br />
+    <button id="estatReproduit" onclick="reprodueix()">Reprodueix</button>
+    <br />
+    <button id="estatParat" onclick="pausa()">Pausa</button> <br />
+    <label id="temps">0</label>
+  </body>
+
+  <script src="./exercici2.js"></script>
+</html>

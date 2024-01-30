@@ -5,6 +5,8 @@ public class Principal {
     System.out.println("Empleado 1:\n" + e2);
     // System.out.println("Empleado 2:\n " + e3);
 
+    System.out.println("--- --- --- ---");
+
     Programador p1 = new Programador("Victor", "Pica Teclas", 24, true, 275, 5, "Java");
 
     System.out.println("Programador 1:\n" + p1);

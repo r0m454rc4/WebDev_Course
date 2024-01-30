@@ -101,7 +101,7 @@ function escalaVermells(imageObj, context, canvas) {
   for (var i = 0; i < pixels.length; i += 4) {
     suma = pixels[i] + pixels[i + 1] + pixels[i + 2];
 
-    if (suma / 1 > 127) {
+    if (suma > 127) {
       color = 255;
     } else {
       color = 0;

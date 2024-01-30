@@ -260,7 +260,7 @@ window.onload = () => {
           <br><b>Escriptors</b>: ${escriptors}<br>
           <b>Dibuixants</b>: ${dibuixants}
           <br>
-        <p>`;
+        </p>`;
       });
     });
   }

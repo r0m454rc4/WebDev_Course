@@ -86,20 +86,20 @@ public class Empleado {
 
   @Override
   public String toString() {
-    {
-      return "Nombre: " + nombre +
-          "\nCedula: " + cedula +
-          "\nEdad: " + edad +
-          "\nCasado: " + casado +
-          "\nSalario: " + salario;
-    }
+    return "Nombre: " + nombre +
+        "\nCedula: " + cedula +
+        "\nEdad: " + edad +
+        "\nCasado: " + casado +
+        "\nSalario: " + salario +
+        "\nCalificacion: " + clasificacion;
+
   }
 
   public void augmentarSalario(double nuevoSalario) {
     Scanner sc = new Scanner(System.in);
+    System.out.print("Ingrese el nuevo salario: ");
     nuevoSalario = sc.nextDouble();
     this.salario = nuevoSalario;
-
     sc.close();
   }
 }
