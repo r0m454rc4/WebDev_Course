@@ -36,7 +36,7 @@ window.onload = () => {
       context.translate(x, y);
       context.rotate(angleInicial);
       // context.moveTo(radi, 0);
-      context.moveTo(350, 350);
+      context.moveTo(400, 400);
 
       for (let i = 0; i < costats; i++) {
         context.lineTo(radi * Math.cos(a * i), radi * Math.sin(a * i));
@@ -52,11 +52,16 @@ window.onload = () => {
 
   let dibuixaCircumferencia = (context) => {
     if (canvas.getContext) {
-      context.save();
-      context.translate(300, 300);
-      context.rotate(Math.PI / 4);
-      ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-      context.stroke();
+      ctx.beginPath();
+      let graus = 360;
+      var radians = (Math.PI / 180) * graus;
+      ctx.arc(100, 175, 50, 0, radians, true);
+      ctx.closePath(); // Close the canvas.
+      ctx.fillStyle = "orange";
+      ctx.strokeStyle = "blue";
+      context.restore();
+      ctx.fill();
+      ctx.stroke();
     }
   };
 

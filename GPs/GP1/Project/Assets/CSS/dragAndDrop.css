@@ -1,0 +1,82 @@
+body {
+  background-image: url("../Images/grifo.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 430px;
+  display: grid;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-position-y: 250px;
+}
+
+.drag {
+  width: 970px;
+  margin-left: 460px;
+  height: 110px;
+  border-radius: 30px;
+  background-color: rgba(173, 216, 230, 0.5);
+  margin-top: 120px;
+  margin-bottom: 20px;
+  border: 2px solid rgb(139, 205, 226);
+}
+
+img {
+  object-fit: cover;
+  height: 100px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.container-left {
+  width: 430px;
+}
+
+.container-right {
+  width: 430px;
+}
+
+.containers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.square {
+  width: 150px;
+  height: 110px;
+  background-color: rgba(173, 216, 230, 0.5);
+  border-radius: 10px;
+  margin-right: 60px;
+  margin-left: 120px;
+  border: 2px solid lightblue;
+}
+
+.text {
+  color: black;
+  width: 1%;
+}
+
+/* Agrega estos estilos a tu archivo de estilos CSS */
+.verificar-container {
+  text-align: center;
+}
+
+.boton-verificar {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* Color de fondo, puedes cambiarlo según tu paleta de colores */
+  color: #fff; /* Color del texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo al pasar el ratón */
+}
+
+.boton-verificar:hover {
+  background-color: #2980b9; /* Color de fondo al pasar el ratón */
+}

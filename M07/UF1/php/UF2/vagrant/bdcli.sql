@@ -1,6 +1,6 @@
 use mysql;
-create user 'rosaca'@'localhost' identified by "FjeClot23@";
-create database rosaca2023;
+create user 'adcli'@'localhost' identified by "FjeClot23@";
+create database bdcli;
 use bdcli;
 
 create table tlcli(

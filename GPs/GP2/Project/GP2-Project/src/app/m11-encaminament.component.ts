@@ -1,66 +1,29 @@
-/*
- * Component que definex el marc per a fer uns encaminaments a altres components
- * @author sergi grau, sergi.grau@fje.edu
- * @version 1.0
- * date 15.10.2017
- * format del document UTF-8
- *
- * CHANGELOG
- * 15.10.2017
- * - Component que definex el marc per a fer uns encaminaments a altres components
- * 1.12.2020
- * - Actualització a Angular 11
- * NOTES
- * ORIGEN
- * Desenvolupament Aplicacions Web. Jesuïtes El Clot
- */
-
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'aplicacio',
   template: `
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">{{ titol }}</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+    <mat-tab-group>
+      <mat-tab
+        class="nav-item nav-link active"
+        label="Salutacio"
+        routerLink="/salutacio"
+        routerLinkActive="active"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- routerLink="/salutacio is like an href but for angular. -->
-          <!-- routerLinkActive="active" is to say that is active -->
-          <a
-            class="nav-item nav-link active"
-            routerLink="/salutacio"
-            routerLinkActive="active"
-            >Salutacio
-          </a>
-          <a
-            class="nav-item nav-link"
-            routerLink="/suma"
-            routerLinkActive="active"
-            >Suma</a
-          >
-          <a
-            class="nav-item nav-link"
-            routerLink="/iterador"
-            routerLinkActive="active"
-            >iterador</a
-          >
-        </div>
-      </div>
-    </nav>
+        Salutacio
+      </mat-tab>
+      <mat-tab
+        class="nav-item nav-link"
+        label="Suma"
+        routerLink="/suma"
+        routerLinkActive="active"
+      >
+        Suma
+      </mat-tab>
+    </mat-tab-group>
     <router-outlet></router-outlet>
   `,
 })
 export class M11_EncaminamentComponent {
-  titol = 'DAW2 demo de routing';
+  titol = 'Hola';
 }
