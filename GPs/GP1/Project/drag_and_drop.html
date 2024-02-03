@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Assets/CSS/dragAndDrop.css" />
+    <link rel="stylesheet" href="./Assets/CSS/style.css" />
+    <script type="text/javascript" src="./JS/drag_and_drop.js"></script>
+    <script type="text/javascript" src="./JS/canvas.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav">
+          <a href="./index">
+            <canvas id="areaDibuix" width="150" height="150">
+              El teu navegador no suporta canvas.
+            </canvas>
+          </a>
+          <li><a href="/index" class="active">Inicio</a></li>
+          <li><a href="/nosotros">Nosotros</a></li>
+          <li><a href="/kids">Noticias </a></li>
+          <li><a href="/drag_and_drop">Drag and drop</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+          <li><a href="/admin">Admin</a></li>
+          <li><a href="/login">Login </a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="drag">
+      <img
+        id="reservas_agua"
+        src="./Assets/Images/reservas_agua.png"
+        alt="Imagen de reservas de agua"
+        draggable="true"
+      />
+      <img
+        id="gota"
+        src="./Assets/Images/gota.png"
+        alt="Imagen de una gota"
+        draggable="true"
+      />
+      <img
+        id="rio"
+        src="./Assets/Images/rio.png"
+        alt="Imagen de un río"
+        draggable="true"
+      />
+      <img
+        id="sequia"
+        src="./Assets/Images/sequia.png"
+        alt="Imagen de sequía"
+        draggable="true"
+      />
+      <img
+        id="lluvia"
+        src="./Assets/Images/lluvia.png"
+        alt="Imagen de lluvia"
+        draggable="true"
+      />
+      <img
+        id="regar"
+        src="./Assets/Images/regar.png"
+        alt="Imagen de regar"
+        draggable="true"
+      />
+      <img
+        id="lago"
+        src="./Assets/Images/lago.png"
+        alt="Imagen de un lago"
+        draggable="true"
+      />
+      <img
+        id="mar"
+        src="./Assets/Images/nivel_mar.png"
+        alt="Imagen del nivel del mar"
+        draggable="true"
+      />
+    </div>
+    <div class="containers">
+      <div class="container-left">
+        <div class="container">
+          <div id="square1" class="square"></div>
+          <p class="text">RESERVAS DE AGUA.</p>
+        </div>
+
+        <div class="container">
+          <div id="square2" class="square"></div>
+          <p class="text">GOTA.</p>
+        </div>
+
+        <div class="container">
+          <div id="square3" class="square"></div>
+          <p class="text">RIO.</p>
+        </div>
+      </div>
+
+      <div class="container-right">
+        <div class="container">
+          <p class="text">SEQUIA.</p>
+          <div id="square4" class="square"></div>
+        </div>
+
+        <div class="container">
+          <p class="text">LLUVIA.</p>
+          <div id="square5" class="square"></div>
+        </div>
+
+        <div class="container">
+          <p class="text">REGAR.</p>
+          <div id="square6" class="square"></div>
+        </div>
+      </div>
+    </div>
+    <div class="verificar-container">
+      <button id="verificarBoton" class="boton-verificar">Verificar</button>
+    </div>
+  </body>
+</html>

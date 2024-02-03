@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modificar usuari</title>
+    <link rel="stylesheet" href="./Assets/CSS/style.css" />
+    <script type="text/javascript" src="./JS/canvas.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav">
+          <a href="./index">
+            <canvas id="areaDibuix" width="150" height="150">
+              El teu navegador no suporta canvas.
+            </canvas>
+          </a>
+          <li><a href="/index" class="active">Inicio</a></li>
+          <li><a href="/nosotros">Nosotros</a></li>
+          <li><a href="/kids">Noticias </a></li>
+          <li><a href="/drag_and_drop">Drag and drop</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+          <li><a href="/admin">Admin</a></li>
+          <li><a href="/login">Login </a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <form method="post" class="form" id="registreUsuari">
+      <div class="Group">
+        <label for="nomUsuari">Nom usuari a modificar.</label>
+        <input
+          id="nomUsuari"
+          name="nomUsuari"
+          placeholder="Pepito123"
+          type="text"
+          required
+        />
+
+        <label for="nomCognom">Nom i Cognom</label>
+        <input
+          id="nomCognom"
+          name="nomCognom"
+          placeholder="Javier Torres Museo"
+          type="text"
+          required
+        />
+
+        <label for="edat">Edat</label>
+        <input id="edat" name="edat" placeholder="23" type="text" required />
+
+        <label for="correu">Correu</label>
+        <input
+          id="correu"
+          name="correu"
+          placeholder="abc@email.com"
+          type="email"
+          required
+        />
+
+        <label for="passwd">Password</label>
+        <input id="passwd" name="passwd" type="password" required />
+
+        <label for="telf">Telefon</label>
+        <input id="telf" name="telf" type="text" required />
+      </div>
+
+      <div class="Group">
+        <button id="botoEnvia" class="btn" type="submit">
+          Modificar usuari
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

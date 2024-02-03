@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "graphQL"
+		},
+		{
+			"path": "SOAP"
 		}
 	],
 	"settings": {
