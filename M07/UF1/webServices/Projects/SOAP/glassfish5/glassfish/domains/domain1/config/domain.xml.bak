@@ -63,6 +63,7 @@
   <servers>
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin"></application-ref>
+      <application-ref ref="backendSOAP" virtual-servers="server"></application-ref>
       <resource-ref ref="jdbc/__TimerPool"></resource-ref>
       <resource-ref ref="jdbc/__default"></resource-ref>
       <resource-ref ref="jdbc/sample"></resource-ref>
@@ -463,5 +464,17 @@
     <secure-admin-principal dn="CN=localhost-instance,OU=GlassFish,O=Oracle Corporation,L=Santa Clara,ST=California,C=US"></secure-admin-principal>
   </secure-admin>
   <clusters></clusters>
-  <applications></applications>
+  <applications>
+    <application context-root="/backendSOAP" object-type="user" directory-deployed="true" name="backendSOAP" location="file:/home/r0m454rc4/DAW2/M07/UF1/webServices/Projects/SOAP/backendSOAP/build/web/">
+      <property name="archiveType" value="war"></property>
+      <property name="appLocation" value="file:/home/r0m454rc4/DAW2/M07/UF1/webServices/Projects/SOAP/backendSOAP/build/web/"></property>
+      <property name="defaultAppName" value="web"></property>
+      <property name="keepSessions" value="true"></property>
+      <module name="backendSOAP">
+        <engine sniffer="webservices"></engine>
+        <engine sniffer="security"></engine>
+        <engine sniffer="web"></engine>
+      </module>
+    </application>
+  </applications>
 </domain>
