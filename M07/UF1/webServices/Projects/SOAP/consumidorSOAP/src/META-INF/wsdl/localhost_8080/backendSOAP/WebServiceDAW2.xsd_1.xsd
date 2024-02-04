@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://joccartes.daw2.fje.edu/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://joccartes.daw2.fje.edu/">
+
+<xs:element name="acabarJoc" type="tns:acabarJoc"/>
+
+<xs:element name="acabarJocResponse" type="tns:acabarJocResponse"/>
+
+<xs:element name="iniciarJoc" type="tns:iniciarJoc"/>
+
+<xs:element name="iniciarJocResponse" type="tns:iniciarJocResponse"/>
+
+<xs:element name="mostrarCartes_codiPartida_numJug" type="tns:mostrarCartes_codiPartida_numJug"/>
+
+<xs:element name="mostrarCartes_codiPartida_numJugResponse" type="tns:mostrarCartes_codiPartida_numJugResponse"/>
+
+<xs:element name="moureJugador_aposta" type="tns:moureJugador_aposta"/>
+
+<xs:element name="moureJugador_apostaResponse" type="tns:moureJugador_apostaResponse"/>
+
+<xs:element name="moureJugador_passa" type="tns:moureJugador_passa"/>
+
+<xs:element name="moureJugador_passaResponse" type="tns:moureJugador_passaResponse"/>
+
+<xs:element name="obtenirCarta" type="tns:obtenirCarta"/>
+
+<xs:element name="obtenirCartaResponse" type="tns:obtenirCartaResponse"/>
+
+<xs:element name="tirarCarta" type="tns:tirarCarta"/>
+
+<xs:element name="tirarCartaResponse" type="tns:tirarCartaResponse"/>
+
+<xs:complexType name="tirarCarta">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+<xs:element name="numJug" type="xs:int" minOccurs="0"/>
+<xs:element name="carta" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tirarCartaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="acabarJoc">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="acabarJocResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="iniciarJoc">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="iniciarJocResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mostrarCartes_codiPartida_numJug">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+<xs:element name="numJug" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mostrarCartes_codiPartida_numJugResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="moureJugador_passa">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+<xs:element name="numJug" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="moureJugador_passaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="moureJugador_aposta">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+<xs:element name="numJug" type="xs:int" minOccurs="0"/>
+<xs:element name="quantitatApostada" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="moureJugador_apostaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenirCarta">
+<xs:sequence>
+<xs:element name="codiPartida" type="xs:int" minOccurs="0"/>
+<xs:element name="numJug" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenirCartaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

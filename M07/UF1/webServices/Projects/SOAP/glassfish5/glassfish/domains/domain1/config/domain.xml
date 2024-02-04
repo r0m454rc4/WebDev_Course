@@ -465,7 +465,7 @@
   </secure-admin>
   <clusters></clusters>
   <applications>
-    <application context-root="/backendSOAP" object-type="user" name="backendSOAP" directory-deployed="true" location="file:/home/r0m454rc4/DAW2/M07/UF1/webServices/Projects/SOAP/backendSOAP/build/web/">
+    <application context-root="/backendSOAP" object-type="user" directory-deployed="true" name="backendSOAP" location="file:/home/r0m454rc4/DAW2/M07/UF1/webServices/Projects/SOAP/backendSOAP/build/web/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="file:/home/r0m454rc4/DAW2/M07/UF1/webServices/Projects/SOAP/backendSOAP/build/web/"></property>
       <property name="defaultAppName" value="web"></property>
