@@ -1,0 +1,70 @@
+1- Crean un script sql .sql per 
+	usuari --> xxyyzz a on xxyyzz 2 primeres lletres noms i cogoms
+	base dades --> xxyyzz23 on xxyyzz 2 primeres lletres noms i cogoms
+	taula --> xxyyzz2023 on xxyyzz 2 primeres lletres noms i cogoms
+	Nom del script xxyyzz.sql on xxyyzz 2 primeres lletres noms i cogoms
+
+2- Script PHP per accedir a la base de dades creada amb el script .sql 
+   anterior i mostrar  el registres amb el codi = 4. Utilitza MySQLi.
+   El nom del script serà llegeix.php.
+
+3- Script PHP per accedir a la base de dades i modificar el registre
+   que té el camp "joan" i canviar el seu correu per "joan@fje.edu". 
+   Utilitza PDO. El nom del script serà modifica.php.
+   
+4- Script de PHP per crear una base de dades de nom daw2xxyyzz del qual,
+   un nou usuari de nom xxxyyyzzz (3 primeres lletres) tingui tots els
+   permisos garantitzats. Utilitza MySQLi. El nom del script serà
+   creabd.php.
+
+5- cf@collados.org --  Assumpte: daw2_m07uf3_exercici1 -- Adjunteu fitxers
+   Data límit: dijous 18-1-24 fins a les 21.00
+*******************************************************************************
+6- Script PHP que utilitzi sentències preparades utilitzant PDO que permeti crear 5
+registres nous (les dades són les que vostés vulguin) utilitzant la base de dades
+creada a la pregunta 1, amb la taula creada a la pregunta 1 i amb l'usuari creat a 
+la pregunta 1. Nom escript script6.php.
+
+7- Script PHP utilitzant MySQLi i sentències preparades per esborrar una entrada
+a partir del codi (el número de codi pot ser el que vulguin) i a partir de les dades
+introduïdes a la pregunta 6 (és a dir, esborrar qualsevol del registres introduïts
+a la pregunta 6). Nom escript script7.php.
+
+8-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici2 -- Adjunteu fitxers
+   Data límit: dimarts 25-1-24 fins a les 21.00
+*******************************************************************************
+9- Script PHP que utilitzi sentències múltiple utilitzant MySQLi que permeti mostrar
+tots els registres de la taula tlcli de la base de dades bdcli que dins del camp email
+tinguin una adreça amb el domini .com i tots els registres que dins del camp nom
+tinguin un string que comenci per "p". Nom escript script9.php.
+
+10- Script PHP que utilitzant PDO, sentències preparades i transaccions permeti afegir
+4 nous registres (les dades són les que vostés vulguin) a la taula tlcli de la base de
+dades bdcli. Nom escript script10.php.
+
+11-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici3 -- Adjunteu fitxers
+   Data límit: dimarts 1-2-24 fins a les 21.00
+*******************************************************************************
+12- Crea una aplicació utilitzant un formulari HTML de nom app12.html que permeti introduir un
+nom i enviar-lo utilitzant un mètode de lectura a un script PHP de nom app12.php que utilitzarà
+aquest nom per mostrar tots els registres de la taula tlci de la base bdcli a on el camp "nom" coincideixi amb 
+el valor enviat des del formulari. El script app12.php utilitzarà per fer aquesta tasca un procediment emmagatzemat
+en la base de dades bdcli de nom "llegeix_noms" que s'haurà de crear si no existeix. Si existeix un procediment més
+antic amb aquest nom s'haurà d'esborrar prèviament. S'haurà d'utilitzar l'extensió PDO per fer aquest exercici. 
+
+13-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici4 -- Adjunteu fitxers app12.html i app12.php
+   Data límit: dimarts 1-2-24 fins a les 21.00
+*************************************************************************************
+14- Crea un formulari de nom ctsnya.html per indicar el codi d'un usuari del qual es vol escriure un nou password del qual s'haurà
+de desar el hash de la contrasenya de manera segura. Les dades s'hauran d'enviar de manera segura i s'haurà d'assegurar 
+dins del formulari que la contrasenya no es veu i que compleix el format mínim d'una contrasenya segura. El script PHP que ha de rebre
+les dades enviades i escriure la contrasenya s'ha d'anomenar ctrsnya.php. S'ha de treballar amb els usuaris definits
+a la taula tlcli de la base de dades bdcli.
+
+15-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici5 -- Adjunteu fitxers ctsnya.html i ctsnya.php
+   Data límit: dijous 8-2-24 fins a les 21.00
+
+
+
+ 
+
