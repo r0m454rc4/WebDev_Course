@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="./ctrsnya.php" method="post">
+      <label>Codi usuari:</label>
+      <input type="text" name="codiUsuari" />
+
+      <label>Nova contrasenya usuari:</label>
+      <input
+        type="password"
+        name="passwdUsuari"
+        pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+      />
+      <br />
+      <button type="submit">Envia</button>
+    </form>
+  </body>
+</html>
