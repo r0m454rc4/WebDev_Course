@@ -102,10 +102,23 @@ img#logo-superheroi {
 }
 
 /* Style the size and logo of the comics. */
-img#imatge-comic {
+img#imatge-comic,
+#imatge-detall-comic {
   height: 425px;
   border: 5px solid #e3242b;
   margin-top: 10px;
+}
+
+img#imatge-detall-comic {
+  position: fixed;
+  margin-left: -145px;
+}
+
+p#paragraf-detall-comic {
+  position: fixed;
+  margin-top: 450px;
+  margin-left: 25px;
+  margin-right: 70px;
 }
 
 label#comics {

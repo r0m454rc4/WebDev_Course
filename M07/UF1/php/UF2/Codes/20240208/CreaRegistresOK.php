@@ -24,36 +24,43 @@
 		$sentencia->bindParam(1, $estat_comanda);
 		$sentencia->bindParam(2, $valor_comanda);
 		$sentencia->bindParam(3, $codicli);
+
 		//Assignació del valor a cada paràmetre i enviament al servidor amb ordre d'execució
 		$estat_comanda="lliurada";
 		$valor_comanda=128.45;
 		$codicli=2;
 		$sentencia->execute();
+
 		//Assignació del valor a cada paràmetre i enviament al servidor amb ordre d'execució
 		$estat_comanda="lliurada";
 		$valor_comanda=28.45;
 		$codicli=5;		
 		$sentencia->execute();
+
 		//Assignació del valor a cada paràmetre i enviament al servidor amb ordre d'execució
 		$estat_comanda="lliurament";
 		$valor_comanda=18.50;
 		$codicli=3;		
 		$sentencia->execute();
+
 		//Assignació del valor a cada paràmetre i enviament al servidor amb ordre d'execució
 		$estat_comanda="lliurament";
 		$valor_comanda=8.25;
 		$codicli=2;		
 		$sentencia->execute();
+
 		//Assignació del valor a cada paràmetre i enviament al servidor amb ordre d'execució
 		$estat_comanda="processant";
 		$valor_comanda=95.45;
 		$codicli=1;		
 		$sentencia->execute();
+
 		//Assignació del valor a cada paràmetre i enviament al servidor amb ordre d'execució
 		$estat_comanda="rebuda";
 		$valor_comanda=97.53;
 		$codicli=8;		
 		$sentencia->execute();
+		
 		//Tancament sessió	
 		echo "Dades introduïdes amb exit<br>";	
 		$bd=null;//Tancant connexió

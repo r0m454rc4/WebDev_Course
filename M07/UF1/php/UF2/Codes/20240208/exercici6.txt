@@ -72,7 +72,7 @@ a la taula tlcli de la base de dades bdcli.
 	3r- Mostri novament tots els registres de tlcmd.
 El nom del script serà script17.php.
 
-18-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici5 -- Adjunteu fitxers ctsnya.html i ctsnya.php
+18-cf@collados.org --  Assumpte: daw2_m07uf3_cognom_nom_exercici6 -- Adjunteu fitxers ctsnya.html i ctsnya.php
    Data límit: dijous 13-2-24 fins a les 21.00
 
  

@@ -14,7 +14,6 @@
 	$valor=8.25;
 	#
 	try{
-		
 		$bd = new PDO("mysql:host=$dbhost;dbname=$baseDades",$dbusername,$dbuserpassword);
 		$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); # Mode de gestió d'errors de PDO tipus exception
 		$bd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); # Per defecte cada la línia de la taula es recollida com un array associatiu. Els índex són els camps de la taula.
@@ -30,7 +29,7 @@
 		//Execució
 		$sentencia->execute();
 		//Recollida de dades i Visualització dels resultats
-		echo "<b><u>Registres de la base de dades amb nom $nom i cognoms $cognoms: </u></b><br><br>";
+		echo "<b><u>Registres de la base de dades $baseDades: </u></b><br><br>";
 		echo "<table style='border:1px solid black; border-collapse:collapse;'>\n";
 		echo "\t\t<td style='border:1px solid black; border-collapse:collapse;'><b>Nom Client</b></td>\n";
 		echo "\t\t<td style='border:1px solid black; border-collapse:collapse;'><b>ID Comanda</b></td>\n";
