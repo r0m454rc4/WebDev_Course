@@ -26,24 +26,26 @@ export class M09_OrdenarPerPipe implements PipeTransform {
       let ordernarPerValor = args[0];
       let perValor = 1;
 
-      if (ordernarPerValor.charAt(0) == '!') {
+      if (ordernarPerValor.charAt(0) == '!n') {
         perValor = -1;
         ordernarPerValor = ordernarPerValor.substring(1);
       }
 
       array.sort((a: any, b: any) => {
-        if (a.n.length > 3) {
-          console.log(`Inici: ${a.n}: ${a.n.length}`);
-          a = a.n.slice(0, 3) + '...';
-          console.log(`Resultat: ${a}`);
-        }
-
         if (a[ordernarPerValor] < b[ordernarPerValor]) {
           return -1 * perValor;
         } else if (a[ordernarPerValor] > b[ordernarPerValor]) {
           return 1 * perValor;
         } else {
           return 0;
+        }
+      });
+
+      array.forEach((a: any) => {
+        if (a.n.length > 3) {
+          console.log(`Inici: ${a.n}: ${a.n.length}`);
+          a.n = a.n.slice(0, 3) + '...';
+          console.log(`Resultat: ${a.n}`);
         }
       });
 

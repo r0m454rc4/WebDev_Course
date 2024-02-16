@@ -1,0 +1,25 @@
+<h2>Codificacio de caràcters</h2>
+Caràcter:
+<input type="text" #caracter enviarCaracter />
+<button class="btn btn-primary" (click)="enviar()">Codifica</button>
+
+<div *ngIf="inputEnviat">
+  <ul class="list-group">
+    <!-- To have the names in alfabethical order, ordenarPer : '!n' must be changed to ordenarPer : 'n' -->
+    <li class="list-group-item">
+      <!-- https://stackoverflow.com/questions/94037/convert-character-to-ascii-code-in-javascript -->
+      <label>Decimal : {{ caracter.value.charCodeAt(0) }}</label>
+    </li>
+
+    <li class="list-group-item">
+      <!-- https://www.geeksforgeeks.org/javascript-program-to-convert-a-number-to-binary/ -->
+      <label>Binari : {{ caracter.value.charCodeAt(0).toString(2) }}</label>
+    </li>
+
+    <li class="list-group-item">
+      <label
+        >Hexadecimal : {{ caracter.value.charCodeAt(0).toString(16) }}</label
+      >
+    </li>
+  </ul>
+</div>

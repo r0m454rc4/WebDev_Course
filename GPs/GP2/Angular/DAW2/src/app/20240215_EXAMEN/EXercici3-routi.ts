@@ -28,29 +28,13 @@ import { Component } from '@angular/core';
           <!-- routerLinkActive="active" is to say that is active -->
 
           <section>
-            <a routerLink="/salutacio" routerLinkActive="active">
-              <button mat-raised-button color="accent">Salutacio</button>
+            <a routerLink="/inici" routerLinkActive="active">
+              <button mat-raised-button color="accent">Inici</button>
             </a>
-          </section>
 
-          <section>
-            <a
-              class="nav-item nav-link"
-              routerLink="/suma"
-              routerLinkActive="active"
-            >
-              <button mat-raised-button color="primary">Suma</button></a
-            >
-          </section>
-
-          <section>
-            <a
-              class="nav-item nav-link"
-              routerLink="/iterador"
-              routerLinkActive="active"
-            >
-              <button mat-raised-button color="warn">Iterador</button></a
-            >
+            <a routerLink="/crear" routerLinkActive="active">
+              <button mat-raised-button color="accent">Crear</button>
+            </a>
           </section>
         </div>
       </div>
@@ -66,6 +50,6 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class M11_EncaminamentComponent {
+export class Exercici3Routing {
   titol = 'DAW2 demo de routing';
 }
