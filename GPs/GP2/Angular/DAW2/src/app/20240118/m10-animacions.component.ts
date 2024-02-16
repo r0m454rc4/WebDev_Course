@@ -16,7 +16,7 @@
  */
 
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
+
 @Component({
   selector: 'aplicacio',
   template: `
@@ -34,7 +34,7 @@ import { NgModule } from '@angular/core';
       }
 
       animacio {
-        background-color: #0F0;
+        background-color: #0f0;
         width: 100%;
         display: block;
         overflow: hidden;

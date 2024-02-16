@@ -23,8 +23,8 @@ import { M03_IteradorComponent } from './20231103/m03-iterador.component';
 
 const encaminaments: Routes = [
   // If the path is empty, redirects to tho component salutacio.
-  { path: '', redirectTo: '/salutacio', pathMatch: 'full' },
-  { path: 'salutacio', component: M01_SalutacioComponent },
+  // { path: '', redirectTo: '/crear', pathMatch: 'full' },
+  { path: 'crear', component: M01_SalutacioComponent },
   { path: 'suma', component: M02_SumaComponent },
   { path: 'iterador', component: M03_IteradorComponent },
 ];

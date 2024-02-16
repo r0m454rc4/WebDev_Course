@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+
 import { AppEncaminamentModule } from './app-encaminament.module';
 
 import { M01_SalutacioComponent } from './20231026/m01-salutacio.component'; // I import a component.
@@ -26,11 +33,17 @@ import { M09_OrdenarPerPipe } from './20231423/m09-ordenar-per.pipe';
 import { M09_PipePersonalizadaComponent } from './20231423/m09-pipe-personalitzada.component';
 import { repas_iterador_component } from './20231121_review/repas-iterador-components';
 
+import { Examen } from './20240115_CorrecioExamen/examen.component';
 import { M10_AnimacioComponent } from './20240118/m10-animacio.component';
 import { M10_AnimacionsComponent } from './20240118/m10-animacions.component';
 import { M11_EncaminamentComponent } from './20240118/m11-encaminament.component';
 
-import { MatButtonModule } from '@angular/material/button';
+import { Exercici1Component } from './20240215_EXAMEN/Exercici1';
+import { Exercici1Directiva } from './20240215_EXAMEN/Exercici1-DirectivaCaracter';
+import { Exercici2Component } from './20240215_EXAMEN/Exercici2';
+import { Exercici2_OrdenarNotaPipe } from './20240215_EXAMEN/Exercici2-Pipe';
+import { ExerciciExamen3Component } from './20240215_EXAMEN/Exercici3'; 
+import { Exercici3Routing } from './20240215_EXAMEN/EXercici3-routi';
 
 @NgModule({
   declarations: [
@@ -56,17 +69,32 @@ import { MatButtonModule } from '@angular/material/button';
     M09_OrdenarPerPipe,
     M09_PipePersonalizadaComponent,
 
+    Examen,
+
     M10_AnimacioComponent,
     M10_AnimacionsComponent,
     M11_EncaminamentComponent,
+
+    Exercici1Component,
+    Exercici1Directiva,
+    Exercici2Component,
+    Exercici2_OrdenarNotaPipe,
+    ExerciciExamen3Component,
+    Exercici3Routing,
   ], // Here I must say the components I want to be able to use.
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppEncaminamentModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+
+    AppEncaminamentModule,
   ],
   providers: [],
-  bootstrap: [M11_EncaminamentComponent], // This is the component I'm using.
+  bootstrap: [Exercici2Component], // This is the component I'm using.
 })
 export class AppModule {}

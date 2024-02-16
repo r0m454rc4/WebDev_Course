@@ -1,0 +1,23 @@
+<h2>Alumnes</h2>
+
+<ul class="list-group">
+  <!-- To have the names in alfabethical order, ordenarPer : '!n' must be changed to ordenarPer : 'n' -->
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Codi</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Nota</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let alumne of alumnes; index as i">
+        <td>{{ alumne.codi }}</td>
+        <td>{{ alumne.nomPersona }}</td>
+        <td>{{ alumne.nota}}</td>
+      </tr>
+    </tbody>
+    <br />
+  </table>
+</ul>
