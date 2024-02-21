@@ -6,7 +6,7 @@ interface IPersona {
   codi: string;
   nomPersona: string;
   // nota: Assignatura;
-  nota: number;
+  nota: string;
 }
 
 export { IPersona };

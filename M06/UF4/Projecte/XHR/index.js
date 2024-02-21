@@ -7,7 +7,7 @@ window.onload = () => {
   let clauApiPublica = "259739d55d281046e127f42ae4236545";
   let clauApiPrivada = "644d1d1f33e2505c06f2a394df96141f6f58d92b";
   let clauHash = MD5(hora + clauApiPrivada + clauApiPublica);
-
+  
   var xhr = new XMLHttpRequest();
 
   // Function to get the logos from the superheroes.

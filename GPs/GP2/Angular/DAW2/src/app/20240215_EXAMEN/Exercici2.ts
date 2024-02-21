@@ -31,14 +31,14 @@ export class Exercici2Component {
   // ];
 
   alumnes = [
-    new Alumne('3', 'Anna', 8),
-    new Alumne('1', 'Sergi', 5),
-    new Alumne('2', 'Joan', 3),
+    new Alumne('3', 'Anna', '8'),
+    new Alumne('1', 'Sergi', '5'),
+    new Alumne('2', 'Joan', '3'),
   ];
 
   ordreAscendent: boolean = false;
 
-  // I've done this part with the help of chatGPT.
+  // https://stackoverflow.com/questions/38678101/angular-2-using-pipe-in-click-event
   public filtrarPerNota() {
     this.ordreAscendent = !this.ordreAscendent;
     let notaFiltrada = new Exercici2_OrdenarNotaPipe().transform(
@@ -47,5 +47,9 @@ export class Exercici2Component {
     );
 
     console.log(notaFiltrada);
+  }
+
+  public trobarNota(nota: string) {
+    console.log(nota);
   }
 }

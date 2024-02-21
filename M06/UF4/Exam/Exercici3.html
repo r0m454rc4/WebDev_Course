@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      var socket = io.connect("http://localhost:8888");
+      window.addEventListener("load", inici, true);
+
+      function obtenirCoordenades(canvas, evt, ctx) {
+        var rect = canvas.getBoundingClientRect();
+        var x = evt.clientX - rect.left;
+        var y = evt.clientY - rect.top;
+
+        socket.emit("dadesDesDelClient", {
+          x: `${x}`,
+          y: `${y}`,
+        });
+        socket.on("dadesDesDelServidor", function (data) {
+          console.log(data);
+          ctx.lineTo(x + 1, y + 1);
+          ctx.stroke();
+        });
+      }
+
+      // console.log("x: " + x + " y: " + y);
+
+      function inici() {
+        if (canvas.getContext) {
+          var ctx = canvas.getContext("2d");
+          ctx.beginPath();
+          canvas.addEventListener(
+            "mousemove",
+            function (evt) {
+              obtenirCoordenades(document.getElementById("canvas"), evt, ctx);
+            },
+            false
+          );
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas"> </canvas>
+  </body>
+</html>

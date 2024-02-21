@@ -1,5 +1,4 @@
 <?php
-	//
 	// Dades de la connexió
     //
     $servidor = 'localhost';

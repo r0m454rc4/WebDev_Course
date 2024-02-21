@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <title>DAW2</title>
+    <meta name="author" content="Roma Sarda Casellas" />
+    <script type="text/javascript">
+      let xhr = new XMLHttpRequest();
+
+      xhr.open("GET", `ciutats`, true);
+
+      // Here I say that the response type is json, is from XHR2.
+      xhr.responseType = "xml";
+
+      xhr.onload = function (e) {
+        // xhr.readyState == 4 is the same as this.status == 200.
+        if (xhr.readyState == 4) {
+          let resposta = this.response;
+          console.log(resposta);
+          document.getElementById("respostaXHR").innerHTML = resposta;
+        } else {
+          console.log("Ha ocorregut un error.");
+        }
+      };
+
+      xhr.send();
+    </script>
+  </head>
+
+  <body>
+    <label id="respostaXHR"></label>
+  </body>
+</html>

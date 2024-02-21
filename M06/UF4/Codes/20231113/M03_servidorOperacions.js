@@ -16,7 +16,7 @@
  */
 var http = require("http");
 var fs = require("fs");
-var operacions = ["1+2", "2*2", "5*5", "10/2"];
+var operacions = ["1+2", "2*2", "5*4", "10/2", "10-20"];
 var numOperacio = 0;
 var encertades = 0;
 
@@ -56,7 +56,7 @@ function iniciar() {
       } else {
         // Check the last answer.
         if (res == eval(operacions[numOperacio - 1])) encertades++;
-        response.write("FINAL = " + encertades + " operacions encertades");
+        response.write(`Has ecertat ${encertades} operacions, sobre un total de ${operacions.length}`);
       }
       response.end();
     } else {

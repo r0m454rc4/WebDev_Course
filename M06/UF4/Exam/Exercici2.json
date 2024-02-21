@@ -1,0 +1,16 @@
+{
+  "ciutats": {
+    "ciutat": [
+      {
+        "nom": "Barcelona",
+        "max": 15,
+        "min": 9
+      },
+      {
+        "nom": "Boston",
+        "max": 8,
+        "min": -2
+      }
+    ]
+  }
+}

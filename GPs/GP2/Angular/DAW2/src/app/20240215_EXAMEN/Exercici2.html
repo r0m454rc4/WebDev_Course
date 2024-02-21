@@ -28,6 +28,6 @@
   </table>
 
   Nota:
-  <input type="number" />
-  <button class="btn btn-primary">Envia</button>
+  <input type="number" #notaATrobar />
+  <button class="btn btn-primary" (click)="trobarNota(notaATrobar.value)">Envia</button>
 </ul>

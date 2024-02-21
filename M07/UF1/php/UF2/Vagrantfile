@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     v.cpus = 2
     v.customize ['modifyvm', :id, '--clipboard', 'bidirectional']     
     config.vm.synced_folder "./Codes", "/var/www/html" # S'ha de crear prèviament una carpeta de nom codi a la mateixa carpeta a on es troba Vagrantfile
-    config.vm.synced_folder "./vagrant", "/home/vagrant/vagrant" # S'ha de crear prèviament una carpeta de nom vagrant a la mateixa carpeta a on es troba Vagrantfile
+    config.vm.synced_folder "./Codes", "/home/vagrant/vagrant" # S'ha de crear prèviament una carpeta de nom vagrant a la mateixa carpeta a on es troba Vagrantfile
   end
 
   config.vm.network "public_network"

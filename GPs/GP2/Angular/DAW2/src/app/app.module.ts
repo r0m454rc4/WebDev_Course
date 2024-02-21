@@ -43,7 +43,7 @@ import { Exercici1Directiva } from './20240215_EXAMEN/Exercici1-DirectivaCaracte
 import { Exercici2Component } from './20240215_EXAMEN/Exercici2';
 import { Exercici2_OrdenarNotaPipe } from './20240215_EXAMEN/Exercici2-Pipe';
 import { ExerciciExamen3Component } from './20240215_EXAMEN/Exercici3'; 
-import { Exercici3Routing } from './20240215_EXAMEN/EXercici3-routi';
+import { Exercici3Routing } from './20240215_EXAMEN/EXercici3-routing';
 
 @NgModule({
   declarations: [
@@ -95,6 +95,6 @@ import { Exercici3Routing } from './20240215_EXAMEN/EXercici3-routi';
     AppEncaminamentModule,
   ],
   providers: [],
-  bootstrap: [Exercici2Component], // This is the component I'm using.
+  bootstrap: [Exercici3Routing], // This is the component I'm using.
 })
 export class AppModule {}
