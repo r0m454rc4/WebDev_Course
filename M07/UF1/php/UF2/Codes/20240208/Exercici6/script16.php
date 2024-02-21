@@ -28,9 +28,9 @@ try {
 		}
 		echo "\t</tr>\n";
 	}
-
 	echo "</table>\n";
 	echo "<br><b>Total registres:</b> " . $resultat->rowCount();
+	
 	$pdo = null; //Tancant connexió
 } catch (PDOException $e) {
 	print "Error!!! " . $e->getMessage() . "<br>";

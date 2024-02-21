@@ -1,10 +1,10 @@
-// Class that represents a person.
+// Class that represents a subject.
 
 // This class now implements the atributs from IPersona interface.
 export class Assignatura {
-  nota: number;
+  nota: string;
 
-  constructor(nota: number) {
+  constructor(nota: string) {
     this.nota = nota;
   }
 }

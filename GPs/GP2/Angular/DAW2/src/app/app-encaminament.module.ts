@@ -17,16 +17,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { M01_SalutacioComponent } from './20231026/m01-salutacio.component';
-import { M02_SumaComponent } from './20231026/m02-suma.component';
-import { M03_IteradorComponent } from './20231103/m03-iterador.component';
+import { Exercici2Component } from './20240215_EXAMEN/Exercici2';
+import { Exercici3CrearComponent } from './20240215_EXAMEN/Exercici3-crear';
 
 const encaminaments: Routes = [
   // If the path is empty, redirects to tho component salutacio.
-  // { path: '', redirectTo: '/crear', pathMatch: 'full' },
-  { path: 'crear', component: M01_SalutacioComponent },
-  { path: 'suma', component: M02_SumaComponent },
-  { path: 'iterador', component: M03_IteradorComponent },
+  { path: '', redirectTo: '/inici', pathMatch: 'full' },
+  { path: 'inici', component: Exercici2Component },
+  { path: 'crear', component: Exercici3CrearComponent },
+  // { path: 'iterador', component: M03_IteradorComponent },
 ];
 
 @NgModule({

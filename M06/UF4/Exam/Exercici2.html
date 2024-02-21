@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <title>DAW2</title>
+    <meta name="author" content="Roma Sarda Casellas" />
+    <script type="text/javascript">
+      var peticio = new Request("/ciutats");
+
+      fetch(peticio)
+        .then((response) => {
+          return response.json();
+        })
+        .then((dades) => {
+          console.log(dades.ciutats.ciutat);
+
+          dades.ciutats.ciutat.forEach((ciutat) => {
+            if (ciutat.max || ciutat.min < 0) {
+              document.getElementById("respostaFetch").style.color = "blue";
+            } else if (ciutat.max || ciutat.min == 0) {
+              document.getElementById("respostaFetch").style.color = "black";
+            } else {
+              document.getElementById("respostaFetch").style.color = "red";
+            }
+            document.getElementById(
+              "respostaFetch"
+            ).innerHTML += `${ciutat.nom} ${ciutat.max} ${ciutat.min}<br>`;
+          });
+        });
+    </script>
+  </head>
+
+  <body>
+    <label id="respostaFetch"></label>
+  </body>
+</html>

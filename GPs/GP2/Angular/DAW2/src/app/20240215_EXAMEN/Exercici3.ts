@@ -30,8 +30,8 @@ export class ExerciciExamen3Component {
   // ];
 
   alumnes = [
-    new Alumne('3', 'Anna', 8),
-    new Alumne('1', 'Sergi', 5),
-    new Alumne('2', 'Joan', 3),
+    new Alumne('3', 'Anna', "8"),
+    new Alumne('1', 'Sergi', "5"),
+    new Alumne('2', 'Joan', "3"),
   ];
 }

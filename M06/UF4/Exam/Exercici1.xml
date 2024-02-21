@@ -1,0 +1,13 @@
+<ciutats>
+  <ciutat>
+    <nom/>Barcelona<nom/>
+    <max>15</max>
+    <min>9</min>
+  </ciutat>
+
+  <ciutat>
+    <nom/>Boston<nom/>
+    <max>8</max>
+    <min>-2</min>
+  </ciutat>
+</ciutats>

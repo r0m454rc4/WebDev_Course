@@ -50,12 +50,12 @@
 	$sentencia->execute();
 	//	
 	// COMMIT DE LA TRANSACCIÓ
-	echo "<u>4- Commit de la Transacció</u><br><br>"; 
+	echo "<u>4- Commit de la Transacció</u><br><br>";
 	if(!$bd->commit()){ //Comprova que passa si comentes les línies 53 a 58
 		echo "Error de transacció<br>";
 		$bd->rollback();
 		$bd->close();
-		exit();		
+		exit();
 	}	
 	echo "<u>5- Transacció finalitzada</u><br><br>";
 	//TANCAMENT DE LA CONNEXIÓ

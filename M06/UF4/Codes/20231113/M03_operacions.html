@@ -37,7 +37,7 @@
           if (xhr.readyState == 4) {
             document.getElementById("operacio").innerHTML = xhr.responseText; // I'm getting the new quesiton.
             if (
-              document.getElementById("operacio").innerHTML.split(" ")[0] ===
+              document.getElementById("operacio").innerHTML.split(" ")[0] ==
               "FINAL" // I'm sending the answer, and if it's the last operation, I clear the interval, in order to stop asking.
             )
               clearInterval(id);
