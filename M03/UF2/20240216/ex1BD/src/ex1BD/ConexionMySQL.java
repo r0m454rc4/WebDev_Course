@@ -13,7 +13,7 @@ public class ConexionMySQL{
 			//cargar el driver, para que funcione la conexion. estipula el 
 			//lenguaje de comunicacion con la BD
 			Class.forName("com.mysql.jdbc.Driver");
-			//establecemos la conexion. parametros: donde esta la bd, usuario, contraseña
+			//establecemos la conexion. parametros: donde esta la bd, usuario, contraseï¿½a
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/bdclientes","root","");
 			//preparamos la consulta
 			Statement sentencia = conexion.createStatement();			
@@ -22,13 +22,13 @@ public class ConexionMySQL{
 			//recorremos el resultado para visualizar cada fila, con un bucle while mientras haya registros
 			while(resul.next()){	
 				//Sacamos los resultados	
-                                System.out.println("CLIENTE NÚMERO "+resul.getString("codCliente"));
+                                System.out.println("CLIENTE Nï¿½MERO "+resul.getString("codCliente"));
                                 System.out.println("Nombre: "+resul.getString("nombre"));
                                 System.out.println("Apellidos: "+resul.getString("apellido"));
                                 System.out.println("DNI: "+resul.getString("dni"));
 
-                                System.out.println("Teléfono: "+resul.getString("telefono"));
-                                System.out.println("Correo electrónico: "+resul.getString("email"));
+                                System.out.println("Telï¿½fono: "+resul.getString("telefono"));
+                                System.out.println("Correo electrï¿½nico: "+resul.getString("email"));
                                 System.out.println("-----------------------------------------------\n");				
 			}//fin del while
 			//cerramos resulSet

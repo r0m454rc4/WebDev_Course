@@ -5,9 +5,8 @@
 	$baseDades='bdcli';
 	$taula='tlcli';
 	#
-	$ctsnya_a_validar="ClotFje22@";
-	#$ctsnya_a_validar="ClotFje23#";
-	$codi=5;
+	$ctsnya_a_validar="Holabuen0sdias#";
+	$codi=1;
 	try{
 		#Connexió
 		$connbd = new PDO("mysql:host=$dbhost;dbname=$baseDades",$dbusername,$dbuserpassword);

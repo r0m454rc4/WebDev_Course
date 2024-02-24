@@ -5,8 +5,8 @@
 	$baseDades='bdcli';
 	$taula='tlcli';
 	#
-	$cts="ClotFje23#";
-	$codi=5;
+	$cts="Holabuen0sdias#";
+	$codi=1;
 	#
 	try{
 		# Connexió
@@ -14,7 +14,6 @@
 		# Enable exceptions on errors
 		$connbd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		#Emmagatzemant una contrasenya de manera segura dins de la base de dades
-		$cts="ClotFje23#";
 		$hash_cts=password_hash($cts, PASSWORD_DEFAULT);
 		$sql = "UPDATE ".$taula." SET ctsnya='".$hash_cts."' WHERE codi=".$codi;
 		$connbd->exec($sql);
