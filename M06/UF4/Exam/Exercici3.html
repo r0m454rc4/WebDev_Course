@@ -10,7 +10,7 @@
       var socket = io.connect("http://localhost:8888");
       window.addEventListener("load", inici, true);
 
-      function obtenirCoordenades(canvas, evt, ctx) {
+      let obtenirCoordenades = (canvas, evt, ctx) => {
         var rect = canvas.getBoundingClientRect();
         var x = evt.clientX - rect.left;
         var y = evt.clientY - rect.top;
@@ -19,14 +19,13 @@
           x: `${x}`,
           y: `${y}`,
         });
+
         socket.on("dadesDesDelServidor", function (data) {
-          console.log(data);
-          ctx.lineTo(x + 1, y + 1);
+          console.log(`CLIENT -> dades rebudes del servidor-> x:${x}, y: ${y}`);
+          ctx.lineTo(x, y);
           ctx.stroke();
         });
-      }
-
-      // console.log("x: " + x + " y: " + y);
+      };
 
       function inici() {
         if (canvas.getContext) {
@@ -44,6 +43,11 @@
     </script>
   </head>
   <body>
-    <canvas id="canvas"> </canvas>
+    <canvas
+      id="canvas"
+      width="400"
+      height="400"
+      style="border: 1px solid black"
+    ></canvas>
   </body>
 </html>
