@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www/html":{"owner":"www-data","group":"www-data","guestpath":"/var/www/html","hostpath":"/home/vadimvolkov/DAW2/M07/UF1/php/Projecte/src","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/vadimvolkov/DAW2/M08/UF1/Practices/m08uf1pr2","disabled":false,"__vagrantfile":true}}}

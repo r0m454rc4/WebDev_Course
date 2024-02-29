@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
 	config.vm.hostname = "daw2-rosaca-m08uf1pr4.fjeclot.net"
   
 	config.vm.provider "virtualbox" do |v|
-		v.name = "daw2-rosaca-m08uf1pr4"
+		v.name = "daw2-rosaca-M08uf1pr4"
 		v.memory = 2048
 		v.cpus = 2
 		v.customize ['modifyvm', :id, '--clipboard', 'bidirectional', '--groups', '/DAW2']     

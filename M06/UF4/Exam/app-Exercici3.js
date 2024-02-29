@@ -14,11 +14,12 @@ io.on("connection", (socket) => {
 
   socket.maxConnections = 2;
 
-  socket.emit("dadesDesDelServidor", { data: "ABC" });
   socket.on("dadesDesDelClient", function (data) {
     console.log(
       `SERVIDOR -> dades rebudes del client-> x:${data.x}, y:${data.y}`
     );
+
+    socket.emit("dadesDesDelServidor", `x:${data.x}, y:${data.y}`);
   });
 });
 
