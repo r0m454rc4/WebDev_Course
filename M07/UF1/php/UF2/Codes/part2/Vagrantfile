@@ -1,0 +1,60 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bookworm64"
+  config.vm.hostname = "servidor"
+  
+  config.vm.provider "virtualbox" do |v|
+    v.name = "laravel"
+    v.memory = 2048
+    v.cpus = 2
+    v.customize ['modifyvm', :id, '--clipboard', 'bidirectional']     
+    config.vm.synced_folder "./", "/var/www/html" # S'ha de crear prèviament una carpeta de nom codi a la mateixa carpeta a on es troba Vagrantfile
+    config.vm.synced_folder "./", "/home/vagrant/scripts" # S'ha de crear prèviament una carpeta de nom scritps a la mateixa carpeta a on es troba Vagrantfile
+  end
+
+  config.vm.network "public_network"
+  
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update -y
+    #
+    # paquets de suport en general
+    #
+    sudo apt-get install -y net-tools
+    sudo apt-get install -y whois
+    sudo apt-get install -y nano
+    sudo apt-get install -y aptitude
+	#
+	# dockers
+	#
+	sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+	sudo apt-get update -y
+	sudo sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose
+	#
+	# apache php mysql
+	#
+	sudo apt-get install -y apache2 apache2-doc
+    sudo apt-get install -y libapache2-mod-php
+    sudo apt-get install -y php8.2
+    sudo apt-get install -y mariadb-server mariadb-client
+    sudo apt-get install -y php8.2-mysql
+    #
+    # composer
+    #
+    sudo apt-get install -y php-bcmath php-json php-mbstring php-tokenizer php-xml php-zip
+    sudo apt-get install -y composer
+    #
+    #
+    # Paquet de suport de Laravel
+    #
+    sudo apt-get install -y php-curl
+    #
+    # configurant permisos i grups adapats a l'usuari vagrant
+    #
+    sudo gpasswd -a vagrant docker
+    sudo gpasswd -a vagrant www-data
+    sudo chmod -R 770 /var/www/html
+    exit
+  SHELL
+
+end
