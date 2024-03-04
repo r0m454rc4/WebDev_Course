@@ -25,21 +25,21 @@ public class EjemploCRUD {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/amigos", "root", "");
 
 			// Prepare statement
-			String query = "INSERT INTO amigos (dni, nombre, telef, email) VALUES (?, ?, ?, ?)";
-			PreparedStatement statement = conexion.prepareStatement(query);
-			statement.setString(1, dni);
-			statement.setString(2, nombre);
-			statement.setString(3, telef);
-			statement.setString(4, email);
+			String consulta = "INSERT INTO amigos (dni, nombre, telef, email) VALUES (?, ?, ?, ?)";
+			PreparedStatement sentencia = conexion.prepareStatement(consulta);
+			sentencia.setString(1, dni);
+			sentencia.setString(2, nombre);
+			sentencia.setString(3, telef);
+			sentencia.setString(4, email);
 
 			// Execute the query.
-			int rowsInserted = statement.executeUpdate();
-			if (rowsInserted > 0) {
-				System.out.println("Una nova dada ha estat introduida!");
+			int filasInsertadas = sentencia.executeUpdate();
+			if (filasInsertadas > 0) {
+				System.out.println("Una nueva fila ha sido insertada!");
 			}
 
 			// Close resources.
-			statement.close();
+			sentencia.close();
 			conexion.close();
 			sc.close();
 		} catch (SQLException e) {
