@@ -12,25 +12,29 @@ router.get("/operacio", function (req, res, next) {
 });
 
 router.get("/suma", function (req, res, next) {
-  res.render("operacio", {
+  res.render("resultatOperacio", {
+    titol: "suma",
     calcularSuma: parseInt(req.query.n1) + parseInt(req.query.n2),
   });
 });
 
 router.get("/resta", function (req, res, next) {
-  res.render("operacio", {
+  res.render("resultatOperacio", {
+    titol: "resta",
     calcularSuma: parseInt(req.query.n1) - parseInt(req.query.n2),
   });
 });
 
 router.get("/multipilicacio", function (req, res, next) {
-  res.render("operacio", {
+  res.render("resultatOperacio", {
+    titol: "multiplicacio",
     calcularSuma: parseInt(req.query.n1) * parseInt(req.query.n2),
   });
 });
 
 router.get("/divisio", function (req, res, next) {
-  res.render("operacio", {
+  res.render("resultatOperacio", {
+    titol: "divisio",
     calcularSuma: parseInt(req.query.n1) / parseInt(req.query.n2),
   });
 });

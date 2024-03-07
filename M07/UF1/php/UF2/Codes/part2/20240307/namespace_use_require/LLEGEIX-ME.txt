@@ -1,0 +1,12 @@
+1- Treballant amb namespace i use
+	a) Exemples i teoria: https://www.w3schools.com/php/php_namespaces.asp
+	b) Lectura 1: https://diego.com.es/namespaces-en-php
+       (Especialment la secció "Introducción")
+    c) Lectura 2: https://www.phptutorial.net/php-oop/php-namespace/
+		(Especialment la secció "Why namespaces")
+	d) Exemples a classe:
+		Copia la carpeta test dins /var/www/html
+		Copia test.php i test1.php dins /var/www/html
+
+
+

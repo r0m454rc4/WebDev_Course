@@ -1,0 +1,2 @@
+https://www.parthpatel.net/laravel-tutorial-for-beginner/
+https://www.itsolutionstuff.com/post/how-to-rollback-migration-in-laravelexample.html
