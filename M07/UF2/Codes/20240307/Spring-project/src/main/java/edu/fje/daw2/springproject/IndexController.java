@@ -15,7 +15,7 @@ public class IndexController {
         return "test";
     }
 
-    // http://localhost:8080/operacions?n1=6&n2=2
+    // http://localhost:8080/operacions?n1=6&n2=2.
     @GetMapping("/operacions")
     public String operar(
             @RequestParam(defaultValue = "0", required = false) int n1,
