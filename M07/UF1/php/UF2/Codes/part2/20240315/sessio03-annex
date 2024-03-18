@@ -1,0 +1,9 @@
+Models
+*1 https://laravel.com/docs/10.x/eloquent
+*2 https://laravel.com/docs/10.x/eloquent#generating-model-classes  --> https://laravel.com/docs/10.x/eloquent#table-names
+*3 https://www.parthpatel.net/laravel-tutorial-for-beginner/
+*4 https://www.educba.com/laravel-models/
+*5 https://laravel-guide.readthedocs.io/en/latest/eloquent/#retrieving-models
+
+Controlador
+*1 https://www.quora.com/What-does-compact-do-in-Laravel -> The compact() function creates an array from variables and their values.

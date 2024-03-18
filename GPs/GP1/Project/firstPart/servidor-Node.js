@@ -340,6 +340,8 @@ function iniciarNode() {
         requestBody += data;
       });
 
+      console.log(req.method);
+
       req.on("end", function () {
         // querystring.parse(requestBody) is to get the data from the form and split it on diffent parts in a json format.
         let formData = querystring.parse(requestBody);

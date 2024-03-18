@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- When I click, I click the cutom method that I created. -->
+      <button @click="increment">{{ comptadorSuma }}</button>
+      <button @click="decrement">{{ comptadorResta }}</button>
+    </div>
+    <script type="module">
+      import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
+      const app = createApp({
+        data() {
+          return {
+            comptadorSuma: 19,
+            comptadorResta: 16,
+          };
+        },
+        methods: {
+          // This is a custom method that I created.
+          increment() {
+            if (this.comptadorSuma <= 29) {
+              this.comptadorSuma++;
+            }
+          },
+
+          decrement() {
+            if (this.comptadorResta >= 11) {
+              this.comptadorResta--;
+            }
+          },
+        },
+        mounted() {
+          this.increment();
+          this.decrement();
+          //   console.log("comptador" + this.comptador);
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,3863 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="content-type">
+    <title>INSTALLING DEBIAN 12.1.0 and Guest Additions</title>
+  </head>
+  <body style="background-color: Silver;">
+    <br>
+    <table width="100%" cellspacing="0" cellpadding="0" border="1"
+      bgcolor="#000000">
+      <tbody>
+        <tr>
+          <td style="width: 210px; font-weight: bold;" align="center"
+            bgcolor="#000000"><font color="#ffffff" face="Arial">SM1:
+              Open-source Operating Systems</font></td>
+          <td style="width: 100px; font-weight: bold; color: rgb(0, 0,
+            0);" align="center" bgcolor="#ffffff"><font face="Arial">ASIX/DAW/DAM-1<br>
+            </font> </td>
+          <td style="width: 420px; font-weight: bold; background-color:
+            rgb(0, 0, 0); color: rgb(255, 255, 255);" align="center"><font
+              face="Arial">Task A1: Initial installations and
+              configuration of Virtualbox and Debian GNU/Linux</font> </td>
+          <td style="width: 50px; font-weight: bold; color: rgb(0, 0,
+            0); background-color: rgb(255, 255, 255);" align="center"
+            bgcolor="#ffffff"><font face="Arial">18-09-2023</font></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div align="center"><span style="font-family: Arial;"><span
+          style="font-weight: bold;"><big><big>Task A1: INITIAL
+              INSTALLATION AND CONFIGURATION OF VIRTUALBOX AND DEBIAN
+              GNU/LINUX&nbsp;&nbsp; </big></big></span></span><br>
+      <span style="font-family: Arial;"><span style="font-weight: bold;"></span></span></div>
+    <span style="font-family: Arial;"><span style="font-weight: bold;">
+        <br>
+      </span></span><br>
+    <span style="font-family: Arial;"><span style="font-weight: bold;"><font
+          style="font-family: Arial;" face="Helvetica, Arial,
+          sans-serif"><big style="text-decoration: underline;"><big><span
+                style="font-weight: bold;">GENERAL CONDITIONS</span></big></big><br>
+        </font></span></span><font face="Arial"><u>D</u><span
+        style="color: rgb(0, 0, 0);"><u>eadline DAW1:</u> On <b>26-9-23</b>
+        teacher will check that your operating system is working
+        properly</span><b style="color: rgb(0, 0, 0);">&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </b></font><br>
+    <font face="Arial"><span style="color: rgb(0, 0, 0);"><u>Deadline
+          ASIX1:</u> On <b>28-9-23</b> teacher will check that your
+        operating system is working properly</span></font><font
+      face="Arial"><br style="color: rgb(0, 0, 0);">
+    </font><span style="font-family: Arial;"><span style="font-weight:
+        bold;"><font face="Arial"><br>
+          <br>
+          <big style="text-decoration: underline;"><big><span
+                style="font-weight: bold;">TASK<br>
+              </span></big></big></font></span></span><font face="Arial"><span
+        data-contrast="auto" lang="EN-US"><u><span style="font-family:
+            Arial;"><span style="font-weight: bold;"><font face="Arial"><big
+                  style="text-decoration: underline;"><big><span
+                      style="font-weight: bold;"><span
+                        style="font-family: Arial;"><span
+                          style="font-weight: bold;"><font size="+1"
+                            face="Arial"><span style="font-weight:
+                              bold;"><u><br>
+                                PART 1: BEFORE STARTING</u></span></font><font
+                            size="+1"><span style="font-family: Arial;"><span
+                                style="font-weight: bold;"><u> </u></span></span></font></span></span></span></big></big><span
+                  style="text-decoration: underline;"><span
+                    style="font-weight: bold;"></span></span></font><font
+                size="+1" face="Arial"><span style="font-weight: bold;"><br>
+                </span></font></span></span><br>
+          What is an operating system?</u></span></font><font
+      face="Arial"><br>
+      An <b>operating system</b> (<b>OS</b>) is software that:</font><font
+      face="Arial"><br>
+      &nbsp;&nbsp;&nbsp; * manages the computer hardware (CPU, RAM, Hard
+      drives, peripheral devices)<br>
+      &nbsp;&nbsp;&nbsp; * </font><font face="Arial">manages a</font><font
+      face="Arial">pplications (text editors, web browser games,.....)
+      running on the computer<br>
+      &nbsp;&nbsp;&nbsp; * acts as a Interface between user and hardware
+      and applications running on the computer<br>
+      &nbsp;&nbsp;&nbsp; * manages files and folders<br>
+      <br>
+      For users, software developers and system administrators&nbsp; it
+      would be extremely difficult to work with computers without the
+      help of an operating system.&nbsp; Only people with broad&nbsp;
+      knowlegde of electronics and programing would be able to work with
+      computers without the help of an operating system.<br>
+      <br>
+    </font><font face="Arial"><span data-contrast="auto" lang="EN-US"><u>Typical
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          operating systems for laptops and desktops:<br>
+        </u>&nbsp;&nbsp;&nbsp; * GNU/Linux<br>
+        &nbsp;&nbsp;&nbsp; * Microsoft Windos<br>
+        &nbsp;&nbsp;&nbsp; * MAC OS X<br>
+      </span></font>
+    <p><font face="Arial"><span data-contrast="auto" lang="EN-US"><u>What
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            is a Virtual Machine?</u><br>
+          1- A&#8239;<strong>V</strong></span><span data-contrast="auto"
+          lang="EN-US"><strong>irtual Machine</strong></span><span
+          data-contrast="auto" lang="EN-US">&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">(VM)&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">is<br>
+          &nbsp;&nbsp;&nbsp; * A</span><span data-contrast="auto"
+          lang="EN-US"> </span><span data-contrast="auto" lang="EN-US">virtual
+
+
+
+
+
+
+
+          computer and it means </span><span data-contrast="auto"
+          lang="EN-US"></span><span data-contrast="auto" lang="EN-US">that
+
+
+
+
+
+
+
+        </span><span data-contrast="auto" lang="EN-US">it uses virtual
+          hardware.<br>
+          &nbsp;&nbsp;&nbsp; * A virtual computer is made of a set of
+          files stored in a physical machine (also called "host"
+          machine).<br>
+          &nbsp;&nbsp;&nbsp; * Virtual hardware are CPU, RAM, Drives,
+          etc made of files </span></font><font face="Arial"><span
+          data-contrast="auto" lang="EN-US"><font face="Arial"><span
+              data-contrast="auto" lang="EN-US">stored in a host
+              machine.<br>
+              &nbsp;&nbsp;&nbsp; * Virtual machines are also called
+              "guest machines" of a "host machine".</span></font></span></font><br>
+      <font face="Arial"><span data-contrast="auto" lang="EN-US"><font
+            face="Arial"><span data-contrast="auto" lang="EN-US"><font
+                face="Arial"><span data-contrast="auto" lang="EN-US">&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+                  * Each virtual machine runs its</span><span
+                  data-contrast="auto" lang="EN-US">&nbsp;own operating
+                  system</span><span data-contrast="auto" lang="EN-US">&nbsp;</span><span
+                  data-contrast="auto" lang="EN-US">and applications</span><span
+                  data-contrast="auto" lang="EN-US"> separately</span><span
+                  data-contrast="auto" lang="EN-US">&nbsp;from</span><span
+                  data-contrast="auto" lang="EN-US">&nbsp;the</span><span
+                  data-contrast="auto" lang="EN-US">&nbsp;other VMs and
+                  the host machines. A virtual machine in fact is
+                  another computer running inside the host machine.<br>
+                  &nbsp;&nbsp;&nbsp; * You can run different operating
+                  systems in different virtual machines running on a
+                  host machine. </span></font></span></font></span></font><font
+        face="Arial"><span data-contrast="auto" lang="EN-US">This means
+          that</span><span data-contrast="auto" lang="EN-US">, for
+          example,</span><span data-contrast="auto" lang="EN-US">&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">a virtual MacOS virtual
+          machine can run on a physical PC working with Linux.</span></font><br>
+      <font face="Arial"><span data-contrast="auto" lang="EN-US"><font
+            face="Arial"><span data-contrast="auto" lang="EN-US"><font
+                face="Arial"><span data-contrast="auto" lang="EN-US"></span></font></span></font></span></font></p>
+    <font face="Arial">2- A virtual machine, commonly shortened to just
+      VM, is no different than any other physical computer like a
+      laptop, smart phone, or server. It has a CPU, memory, disks to
+      store your files, and can connect to the internet if needed. While
+      the hardware that make up your physical computer is tangible
+      (physical), virtual hardware (virtual hard drive, virtual ram
+      memory, virtual network cards,.....) exist&nbsp; only as files
+      stored in a physical hard drive or physical ram memory. Virtual
+      hardware is not physical but it is as real as a physical hardware.<br>
+      <br>
+      3- VMs can share resources from the host machine, including CPUs,
+      network bandwidth, memory and disk space. For instance, if you are
+      running a 8 core CPU/16GiB RAM/1TiB hard drive&nbsp; host machine
+      and also, you are running a 2 core CPU/2GiB RAM/100GiB hard drive
+      virtual machine then, your host machine can work only with the
+      remaining 6 cores, 14GiB of RAM and 900GiB. &nbsp; &nbsp; </font>
+    <p><font face="Arial"><u>What are virtual machines used for?</u><br>
+        <span data-contrast="auto" lang="EN-US">Virtual machines</span><span
+          data-contrast="auto" lang="EN-US">&#8239;</span><span
+          data-contrast="auto" lang="EN-US">(VMs)&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">allow&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">a business</span><span
+          data-contrast="auto" lang="EN-US">&nbsp;to:<br>
+          &nbsp;&nbsp;&nbsp; * run an operating system</span><span
+          data-contrast="auto" lang="EN-US">&nbsp;that behaves like a
+          complete</span><span data-contrast="auto" lang="EN-US">ly</span><span
+          data-contrast="auto" lang="EN-US">&nbsp;separate computer</span><span
+          data-contrast="auto" lang="EN-US">&nbsp;in an app window
+          on&nbsp;</span><span data-contrast="auto" lang="EN-US">a&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">desktop.</span></font><font
+        face="Arial"><span data-contrast="auto" lang="EN-US"><br>
+          &nbsp;&nbsp;&nbsp; * run&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">software&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">that&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">requires a different
+          operating system<br>
+          &nbsp;&nbsp;&nbsp; * test</span><span data-contrast="auto"
+          lang="EN-US">&nbsp;app</span><span data-contrast="auto"
+          lang="EN-US">lications</span><span data-contrast="auto"
+          lang="EN-US">&nbsp;in a safe and isolated environment.<br>
+          &nbsp;&nbsp;&nbsp; * I</span><span data-contrast="auto"
+          lang="EN-US">mprove efficiency</span><span
+          data-contrast="auto" lang="EN-US"> =&gt; Saving physical hard
+          drive space, time and managements costs <br>
+          &nbsp;&nbsp;&nbsp; * P</span><span data-contrast="auto"
+          lang="EN-US">erform specific tasks&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">considered</span><span
+          data-contrast="auto" lang="EN-US">&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">too&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">risky to&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">carry out&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">in a host environment, such
+          as accessing virus-infected data&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">or&nbsp;</span><span
+          data-contrast="auto" lang="EN-US">testing operating systems.<br>
+          &nbsp;&nbsp;&nbsp; * run multiples operating systems on a
+          single physical computer<br>
+          &nbsp;&nbsp;&nbsp; * run legacy (old version)&nbsp;
+          applications =&gt; Reducing migration to a new operating
+          system costs<br>
+          &nbsp;&nbsp;&nbsp; * Easy management and maintenance of
+          multiple operating syste </span></font></p>
+    <font face="Arial"><u>What is a virtual machine manager</u><br>
+      &nbsp;&nbsp;&nbsp; * It is a special kind of application whose
+      porpouse is to work as user interface for managing (creating,
+      modifying, removing, starting, stopping,..) virtual machines.<br>
+      &nbsp;&nbsp;&nbsp; * Popular virtual machine managers:<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - VirtualBox<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - VMWare Workstation Player<br>
+    </font><br>
+    <span style="font-family: Arial;"><span style="font-weight: bold;"><font
+          face="Arial"><big style="text-decoration: underline;"><big><span
+                style="font-weight: bold;"><span style="font-family:
+                  Arial;"><span style="font-weight: bold;"><font
+                      size="+1" face="Arial"><span style="font-weight:
+                        bold;"><u>PART 2: </u></span></font><font
+                      size="+1"><span style="font-family: Arial;"><span
+                          style="font-weight: bold;"><u>INSTALLING
+                            VIRTUALBOX AND </u></span></span></font></span></span></span></big></big><span
+            style="text-decoration: underline;"><span
+              style="font-weight: bold;"></span></span></font><font
+          size="+1" face="Arial"><span style="font-weight: bold;"><u>VIRTUAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              BOX EXTENSION PACK</u><br>
+            <u><br>
+            </u></span></font></span></span><span style="font-family:
+      Arial;"><b>1- </b>Hardware requirements: <a
+        href="https://www.virtualbox.org/wiki/End-user_documentation">https://www.virtualbox.org/wiki/End-user_documentation<br>
+      </a><br>
+      <b>2-</b>&nbsp; Download <b>VirtualBox</b> <b>7.0.10</b>:</span><font
+      face="Arial"><br>
+    </font>
+    <ul>
+      <li><font face="Arial">GNU/Linux hosts: </font><span
+          style="font-family: Arial;"><a
+            href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a></span><span
+          style="font-family: Arial;"></span></li>
+      <li><span style="font-family: Arial;">Windows hosts:&nbsp;<a
+href="https://download.virtualbox.org/virtualbox/7.0.10/VirtualBox-7.0.10-158379-Win.exe">https://download.virtualbox.org/virtualbox/7.0.10/VirtualBox-7.0.10-158379-Win.exe</a></span></li>
+    </ul>
+    <span style="font-family: Arial;"></span>
+    <blockquote><span style="font-family: Arial;"></span></blockquote>
+    <span style="font-family: Arial;"> </span><font face="Arial"><b>3-
+      </b>Install <b>VirtualBox</b>:<br>
+    </font>
+    <ul>
+      <li><font face="Arial"><font face="Arial">GNU/</font>Linux hosts:</font></li>
+      <ul>
+        <li><font face="Arial">User Manual: <a
+              href="http://download.virtualbox.org/virtualbox/UserManual.pdf">http://download.virtualbox.org/virtualbox/UserManual.pdf</a><br>
+          </font></li>
+        <li><font face="Arial">Page 43&nbsp; --&gt; Section 2.3.3
+            Performing the Installation</font></li>
+      </ul>
+      <li><font face="Arial">Windows hosts:</font></li>
+      <ul>
+        <li><font face="Arial">User Manual:<a
+              href="https://download.virtualbox.org/virtualbox/6.1.26/UserManual.pdf">
+            </a></font><font face="Arial"><font face="Arial"><a
+                href="http://download.virtualbox.org/virtualbox/UserManual.pdf">http://download.virtualbox.org/virtualbox/UserManual.pdf</a></font></font></li>
+        <li><font face="Arial">Page 38 --&gt; Section 2.1.2 Performing
+            the Installation<br>
+          </font></li>
+      </ul>
+    </ul>
+    <font face="Arial"> <b>4- </b>Download and Install <b>VirtualBox
+        7.0.10 Oracle VM VirtualBox Extension Pack:<br>
+      </b></font>
+    <ul>
+      <li><font face="Arial">What is VirtualBox Extension Pack?: <a
+            href="https://www.virtualbox.org/manual/ch01.html#intro-installing">https://www.virtualbox.org/manual/ch01.html#intro-installing</a></font><br>
+      </li>
+      <li><font face="Arial">Download: <a
+href="https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack">https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack</a><br>
+        </font></li>
+      <li><font face="Arial">Install:&nbsp;</font></li>
+      <ul>
+        <li><font face="Arial"><font face="Arial">GNU/</font>Linux
+            hosts: <a
+              href="https://phoenixnap.com/kb/install-virtualbox-extension-pack">https://phoenixnap.com/kb/install-virtualbox-extension-pack</a></font><br>
+        </li>
+        <li><font face="Arial">Windows hosts: <a
+              href="https://phoenixnap.com/kb/install-virtualbox-extension-pack">https://phoenixnap.com/kb/install-virtualbox-extension-pack</a></font><br>
+        </li>
+      </ul>
+    </ul>
+    <div align="center"> </div>
+    <font face="Arial"><a
+href="https://www.nakivo.com/blog/how-to-install-virtualbox-extension-pack/">
+      </a><b>5- </b>VirtualBox Language: File -&gt;&nbsp; Preferences
+      -&gt; Language -&gt;&nbsp; English(built-in)<br>
+    </font><br>
+    <br>
+    <span style="font-family: Arial;"><span style="font-weight: bold;"><font
+          size="+1" face="Arial"><span style="font-weight: bold;"><u>PART
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              3: </u></span></font><font size="+1"><span
+            style="font-family: Arial;"><span style="font-weight: bold;"><u>INSTALLING
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                DEBIAN 12.1.0 AND VIRTUALBOX GUEST ADDITIONS STEP BY
+                STEP</u></span></span><br>
+        </font></span><b><u><br>
+          3.1- INSTALLATING DEBIAN 12.1.0</u><br>
+      </b></span><span style="font-family: Arial;"><span
+        style="font-weight: bold;"><br>
+        0- </span>Before starting: Check that you are working with </span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><b>VirtualBox</b>
+        <b>7.0.10</b> and </span></span><span style="font-family:
+      Arial;"><span style="font-family: Arial;"><font face="Arial"><b>VirtualBox
+
+
+
+
+
+
+
+
+
+
+
+            7.0.10 Oracle VM VirtualBox Extension Pack</b></font> </span><br>
+      <br>
+      <b>1-</b> Download the installation image of <b>Debian</b> <b>12.1.0</b>
+      called <b>debian-12.1.0-amd64-DVD-1.iso</b> from </span><span
+      style="font-family: Arial;"><a
+        href="https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/">this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        link</a> (you can find the image at the bottom).<b><br>
+      </b></span>
+    <div align="center"> <span style="font-family: Arial;"></span></div>
+    <span style="font-family: Arial;"><b><br>
+        2</b></span><span style="font-family: Arial;"><b>-</b> Create a
+      new virtual machine with te following specifications:</span><font
+      face="Arial"><br>
+    </font>
+    <ul>
+      <li><font face="Arial">Name and operating system:</font></li>
+      <ul>
+        <li><font face="Arial">Name: <b>debian12.1</b></font></li>
+        <li><font face="Arial"><font face="Arial">Type:</font><b><font
+                face="Arial"> <b>Linux</b></font></b></font></li>
+        <li><font face="Arial"><font face="Arial"><font face="Arial">Version:</font></font><b><font
+                face="Arial"><b><font face="Arial"> <b>Debi</b><b>an (</b><b>64-bit)</b></font></b></font></b></font></li>
+      </ul>
+      <li><font face="Arial"><font face="Arial"><font face="Arial">Memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              size:</font></font></font></li>
+      <ul>
+        <li><font face="Arial">Memory: <b>2048MB</b></font></li>
+      </ul>
+      <li><font face="Arial">Hard Disk:</font></li>
+      <ul>
+        <li><font face="Arial">Select --&gt; <b>Cr</b><b>e</b><b>ate a
+              virtual hard </b><b>disk now</b></font></li>
+      </ul>
+      <li><font face="Arial">Hard disk file type (if required):</font></li>
+      <ul>
+        <li><font face="Arial">Select --&gt; <b>VDI (Virtual</b><b>Box
+              Disk Image)</b></font></li>
+      </ul>
+      <li><font face="Arial">Storage on physical hard disk </font><font
+          face="Arial"><font face="Arial">(if required)</font>:</font></li>
+      <ul>
+        <li><font face="Arial">Select --&gt; <b>D</b><b>ynam</b><b>ically
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              alloca</b><b>ted</b></font></li>
+      </ul>
+      <li><font face="Arial">File Location and size:</font></li>
+      <ul>
+        <li><font face="Arial">Size of the virtual hard disk: <b>20GB</b></font></li>
+      </ul>
+    </ul>
+    <font face="Arial"><b>3- </b>Additional configuration parameters:<br>
+    </font>
+    <ul>
+      <li><font face="Arial">System --&gt; Processor --&gt; Enable
+          PAE/NX</font></li>
+      <li><font face="Arial">System --&gt; Motherboard --&gt; Boot
+          Order:</font></li>
+      <ul>
+        <li><font face="Arial">1st device: Optical. Enabled (checked) <br>
+          </font></li>
+        <li><font face="Arial">2nd device: Hard Disk. Enabled (checked)<br>
+          </font></li>
+        <li><font face="Arial">3rd device: Network. Disabled (unchecked)<br>
+          </font></li>
+        <li><font face="Arial">4th device: Floppy. </font><font
+            face="Arial"><font face="Arial">Disabled (unchecked)</font></font></li>
+      </ul>
+      <li><font face="Arial">Audio --&gt; Disable Audio<br>
+        </font> </li>
+      <li><font face="Arial">Network:</font></li>
+      <ul>
+        <li><font face="Arial">&nbsp;Enable Network Adapter.</font></li>
+        <li><font face="Arial">&nbsp;Attached to: NAT</font></li>
+      </ul>
+      <li><font face="Arial">Storage:</font></li>
+      <ul>
+        <li><font face="Arial">1st&nbsp; step: Storage Devices --&gt;
+            Controller IDE --&gt; Select Empty</font></li>
+        <li><font face="Arial">2nd step: Attributes --&gt; Click on the
+            small DVD icon --&gt; Select&nbsp; "Choose Virtual Optical
+            Disk File..." --&gt; Find and Select <b>debian-12.1.0-amd64-DVD-1.iso</b></font></li>
+      </ul>
+      <li><font face="Arial">USB: <br>
+        </font></li>
+      <ul>
+        <li><font face="Arial">Enable USB Controller</font></li>
+        <li><font face="Arial">USB 3.0 (xHCI) Controller (only available
+            if you have previously installed VirtualBox Extension pack)
+            <br>
+          </font></li>
+      </ul>
+    </ul>
+    <font face="Arial"> </font>
+    <ul>
+    </ul>
+    <font face="Arial"> <b>4</b><b>-</b> Start your newly created
+      virtual machine. </font><br>
+    <span style="font-family: Arial;"><br>
+      <span style="font-weight: bold;"> </span></span><span
+      style="font-family: Arial;"><b>5-</b> Select <b>Graphical Install</b><br>
+      <span style="font-style: italic; text-decoration: underline;"></span>
+      <br>
+      <span style="font-weight: bold;"> 6- </span>Select a language: <span
+        style="font-weight: bold;">English</span>.<br>
+      <br>
+      <span style="font-weight: bold;"> 7-&nbsp;</span> Select your
+      location: <b>Other</b> --&gt; <b>Europe</b> --&gt; <b>Andorra
+        or Spain</b></span><font face="Arial">.</font><br>
+    <span style="font-family: Arial;"><br style="font-weight: bold;">
+      <span style="font-weight: bold;"> 8- </span>Configure locales: <b>United
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        States - en_US.UTF-8</b>.<br>
+      <br>
+      <span style="font-weight: bold;">9- </span>Keymap to use: <b>Catalan</b>
+      or <b>Spanish</b><br>
+      <br>
+      <span style="font-weight: bold;"> 10-</span> Configure the
+      network:<br>
+    </span>
+    <ul>
+      <li><font face="Arial">Hostname: </font><span style="font-family:
+          Arial;"><span style="font-weight: bold;">inf1-xxyyzz</span></span><span
+          style="font-family: Arial;"><span style="font-family: Arial;">,
+            where <b>xx</b>=two first letters of your name, <b>yy</b>=two
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            first letters of your first surname and<b> zz</b>=</span><span
+            style="font-family: Arial;"><span style="font-family:
+              Arial;">two first letters of your second surname (For
+              instance, the hostname for somebody called <i>Jaume Pons
+                Martínez</i>&nbsp; would be<i> inf1-japoma</i>).</span></span></span></li>
+      <li><span style="font-family: Arial;"><span style="font-family:
+            Arial;"><span style="font-family: Arial;">Domain name:</span></span></span><span
+          style="font-family: Arial;"> <span style="font-weight: bold;">fjeclot.net</span>.</span><br
+          style="font-weight: bold;">
+        <span style="font-family: Arial;"></span></li>
+    </ul>
+    <span style="font-family: Arial;"> </span><span style="font-family:
+      Arial;"><b>11-</b> Set up users and passwords:<br>
+    </span>
+    <ul>
+      <li><span style="font-family: Arial;">Root password: </span><span
+          style="font-family: Arial;"><span style="font-weight: bold;">fjeclot</span></span></li>
+      <li><span style="font-family: Arial;">Full name for the new user:
+        </span><span style="font-family: Arial;"><span
+            style="font-family: Arial;">Write <b>xxyyzz</b>, where <b>xx</b>=two
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            first letters of your name, <b>yy</b>=two first letters of
+            your first surname and<b> zz</b>=</span><span
+            style="font-family: Arial;"><span style="font-family:
+              Arial;">two first letters of your second surname</span></span><span
+            style="font-family: Arial;"> </span><span
+            style="font-family: Arial;"><span style="font-family:
+              Arial;"><span style="font-family: Arial;"><span
+                  style="font-family: Arial;">(For instance, the
+                  username for somebody called <i>Enric Pons Giménez</i>&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  would be<i> enpogi</i>).</span></span></span></span></span></li>
+      <li><span style="font-family: Arial;"><span style="font-family:
+            Arial;"><span style="font-family: Arial;"><span
+                style="font-family: Arial;"><span style="font-family:
+                  Arial;">Username for your account: </span></span></span></span></span><span
+          style="font-family: Arial;"><span style="font-family: Arial;"><span
+              style="font-family: Arial;"><span style="font-family:
+                Arial;"><span style="font-family: Arial;"><span
+                    style="font-family: Arial;"><span
+                      style="font-family: Arial;">Write <b>xxyyzz</b>,
+                      where <b>xx</b>=two first letters of your name, <b>yy</b>=two
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      first letters of your first surname and<b> zz</b>=</span><span
+                      style="font-family: Arial;"><span
+                        style="font-family: Arial;">two first letters of
+                        your second surname</span></span><span
+                      style="font-family: Arial;"> </span><span
+                      style="font-family: Arial;"><span
+                        style="font-family: Arial;"><span
+                          style="font-family: Arial;"><span
+                            style="font-family: Arial;">(For instance,
+                            the username for somebody called <i>Enric
+                              Pons Giménez</i>&nbsp; would be<i> enpogi</i>).</span></span></span></span></span>
+                  <span style="font-family: Arial;"></span><span
+                    style="font-family: Arial;"></span></span></span></span></span></span></li>
+      <li><span style="font-family: Arial;"><span style="font-family:
+            Arial;"><span style="font-family: Arial;"><span
+                style="font-family: Arial;"><span style="font-family:
+                  Arial;">Password for the new user: <b>clotfje</b></span></span></span></span></span><span
+          style="font-family: Arial;"><span style="font-family: Arial;"><span
+              style="font-family: Arial;"><span style="font-family:
+                Arial;"><span style="font-family: Arial;"><span
+                    style="font-family: Arial;"></span></span></span></span></span></span></li>
+    </ul>
+    <span style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-weight: bold;">12-&nbsp;</span> Partition disks
+        --&gt; <b>Guided-use entire disk </b></span><br>
+      <b><br>
+        13- </b>Select <b>SCSI1 (0,0,0) (sda) - 21.5 GB ATA VBOX
+        HARDDISK</b> (Don't worry if the number showed by the system is
+      not 1).<br>
+      <br>
+      <b>14-</b> Select <b>All files in one partition (recommended for
+        new users)</b>.<br>
+      <br>
+      <span style="font-weight: bold;">15-</span> Select <b>Finish
+        partitioning and write changes to disk</b>. <br>
+      <br>
+      <b>16-</b> Answer&nbsp;<b> Yes</b> to the question <b>Write the
+        changes to disk</b>? <br>
+      <br>
+      <span style="font-weight: bold;">17-</span> Now, the <span
+        style="font-weight: bold;">base system</span> will be installed
+      in your host. It takes a few minutes to complete this task. </span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-family: Arial;"><span style="font-family: Arial;"><span
+              style="font-style: italic; text-decoration: underline;">Take
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              it easy!!!.</span></span></span></span> <br>
+      <br>
+      <span style="font-weight: bold;">18-</span> Configure the package
+      manager --&gt; Answer <b>No</b> to the question <b>Scan extra
+        installation media?</b><b> </b><br>
+      <br>
+    </span><span style="font-family: Arial;"><span style="font-family:
+        Arial;"><span style="font-weight: bold;">19-</span> Configure
+        the package manager --&gt; </span></span><span
+      style="font-family: Arial;"><span style="font-family: Arial;">Answer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <b>Yes</b> to the question</span><b> Use a network mirror?</b>
+      and select the following mirror: <span style="font-weight: bold;">United
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        States</span> --&gt; <span style="font-weight: bold;">deb.debian.org</span>.<br>
+      <br>
+      <span style="font-weight: bold;">20-</span> HTTP proxy
+      information: <b>None (blank)</b>. <b>Do not write anything</b>.<br>
+      &nbsp; <br>
+      <span style="font-weight: bold;">21-&nbsp; </span>Now, your
+      package manager (a software required to download and install
+      programs on Debian GNU/Linux) will be configured. Afterwards, a
+      first group of important software packages will be downloaded from
+      the server and installed in your computer.</span><span
+      style="font-family: Arial;"> It takes a few minutes to complete
+      this task. </span><span style="font-family: Arial;"><span
+        style="font-family: Arial;"></span></span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-family: Arial;"><span style="font-style: italic;
+            text-decoration: underline;">Take it easy!!!.</span></span></span></span><br>
+    <span style="font-family: Arial;"><br>
+      <span style="font-weight: bold;"> 22- </span>Answer <span
+        style="font-weight: bold;">No</span> to the question made by the
+      system in the window&nbsp; <b>Configuring popularity-conquest</b>.<br>
+      <br style="font-weight: bold;">
+      <span style="font-weight: bold;"> 23-&nbsp; </span>In <b>Software
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        selection</b>&nbsp; select :<br>
+    </span>
+    <ul>
+      <li><b><span style="font-family: Arial;"> Debian desktop
+            environment</span></b></li>
+      <li><b><span style="font-family: Arial;">...GNOME</span></b></li>
+      <li><b><span style="font-family: Arial;">...MATE<br>
+          </span></b></li>
+      <li><b><span style="font-family: Arial;">web server</span></b></li>
+      <li><span style="font-family: Arial;"><span style="font-weight:
+            bold;"></span> <b>SSH server</b></span></li>
+      <li><span style="font-family: Arial;"><b>Standard system utilities</b></span></li>
+    </ul>
+    <span style="font-family: Arial;"><span style="font-family: Arial;">Now,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        part of the selected software will be downloaded and installed.
+        It could take a few minutes to complete this task (it depends on
+        your internet connection and&nbsp; features of your laptop). </span></span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-family: Arial;"><span style="font-style: italic;
+            text-decoration: underline;">Take it easy!!!.</span></span><br>
+        <br>
+        <b>24- </b>Select <b>gdm3</b> as a default display manager. </span></span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-family: Arial;"><span style="font-family: Arial;">Now,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            the rest&nbsp; of the selected software will be downloaded
+            and installed. It could take several minutes to complete
+            this task. </span></span><span style="font-family: Arial;"><span
+            style="font-family: Arial;"><span style="font-family:
+              Arial;"><span style="font-style: italic; text-decoration:
+                underline;">Take it easy!!!.</span></span></span></span>
+        <br>
+        <br>
+      </span><span style="font-weight: bold;">25-</span>&nbsp; Answer <span
+        style="font-weight: bold;">Yes</span> to the question <b>Install
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        the GRUB boot loader to your primary drive?</b>.<br>
+      <b><br>
+      </b><b>26-</b> Select <b>/dev/sda</b> at the next section.<br>
+      <b><br>
+      </b><b> </b><b> 27- </b>Now, the installation is complete.
+      Reboot your system. Afterwards:<br>
+    </span>
+    <ul>
+      <li><span style="font-family: Arial;">Select the first option in
+          the GRUB menu (*Debian GNU/Linux).</span></li>
+      <li><span style="font-family: Arial;"><span style="font-family:
+            Arial;">Select&nbsp; your&nbsp; username.</span></span></li>
+      <li><span style="font-family: Arial;"><span style="font-family:
+            Arial;">Click on the gear icon at the bottom right corner</span></span></li>
+      <li><span style="font-family: Arial;"><span style="font-family:
+            Arial;">Select MATE as your desktop. <br>
+          </span></span></li>
+      <li><span style="font-family: Arial;">Write&nbsp; your password
+          and press Enter<br>
+        </span></li>
+    </ul>
+    <span style="font-family: Arial;">If everything works
+      properly,&nbsp; the selected desktop appears. </span><br>
+    <span style="font-family: Arial;"> <b> <br>
+      </b></span><span style="font-family: Arial;"><b><span
+          style="font-family: Arial;"><b>28- </b></span></b><span
+        style="font-family: Arial;">Check your Internet connection: </span></span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-family: Arial;"><span style="font-family: Arial;">Select</span><b><span
+              style="font-family: Arial;"> <b>Applications</b> --&gt; I<b>nternet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </b>--&gt; <b>Firefox</b></span></b><span
+            style="font-family: Arial;"><b> </b>and s</span></span>urf
+        the net with</span><b><span style="font-family: Arial;"> <b>Firefox</b>.
+        </span></b></span><font face="Arial"><b><br>
+        <br>
+        29-</b> Power off your system in the right way.</font> <font
+      face="Arial"> Select <b>System</b> --&gt; <b>Shut Down</b>
+      --&gt; <b>Shut Down</b>. </font><span style="font-family:
+      Arial;"><b><br>
+      </b></span><u><br>
+    </u><u> </u><u> </u><span style="font-family: Arial;"><b><u>3.2-&nbsp;</u><u>
+        </u><u>INSTALLING VIRTUALBOX GUEST ADDITIONS ON DEBIAN GNU/Linux
+          11.5.0</u><br>
+      </b></span><br>
+    <span style="font-family: Arial;"><b>0- </b>Before starting -&gt;
+      What are VirtualBox Guest Additions?<br>
+    </span>
+    <ul>
+      <li>
+        <div class="sect1" lang="en">
+          <meta http-equiv="content-type" content="text/html;
+            charset=windows-1252">
+          <p><font face="Arial">The Guest Additions are designed to be
+              installed <span class="emphasis"><em>inside</em></span> a
+              virtual machine after the guest operating system has been
+              installed. They consist of device drivers and system
+              applications that optimize the guest operating system for
+              better performance and usability. </font><br>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="sect1" lang="en">
+          <div class="sect1" lang="en">
+            <meta http-equiv="content-type" content="text/html;
+              charset=windows-1252">
+            <p><font face="Arial"> The Guest Additions offer the
+                following features: </font></p>
+          </div>
+        </div>
+      </li>
+      <ul>
+        <li><font face="Arial">Mouse pointer integration</font></li>
+        <li><font face="Arial">Shared folders</font></li>
+        <li><font face="Arial">Better video support</font></li>
+        <li><font face="Arial">Time synchronization with the host
+            machine</font></li>
+        <li><font face="Arial">Shared clipboard</font></li>
+        <li><font face="Arial">Also provide: Seamless windows, Generic
+            host/guest communication channels and Automated logins</font></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><font face="Arial">For further information: <a
+            href="https://www.virtualbox.org/manual/ch04.html#guestadd-intro">https://www.virtualbox.org/manual/ch04.html#guestadd-intro</a></font><br>
+      </li>
+    </ul>
+    <span style="font-family: Arial;"><b><br>
+        1- </b>Boot your virtual computer: Select <b>debian12.1</b>
+      and press <b>Start</b>. Afterwards, log in with your user
+      account.<br>
+      <br>
+      <b>2-</b> Open a terminal: </span><span style="font-family:
+      Arial;"><span style="font-family: Arial;">Select <b>Applications</b>
+        --&gt;<b> System Tools&nbsp;</b> --&gt;<b> MATE Terminal</b></span>.<br>
+      <br>
+      <b>3-</b> Become the <b>root</b> user running&nbsp; <b>su -</b>
+      . Write the <b>root</b> user password.<br>
+      <br>
+      <b>4- </b>Gain access to the directory <b>/etc/apt</b> running
+      on your terminal:&nbsp; <b><font face="Courier New">cd /etc/apt</font></b><font
+        face="Courier New"> </font><br>
+      <br>
+      <b>5-</b> With the help of the <b>nano</b> text editor we are
+      going to change a file called <b>sources.list</b>:<br>
+    </span>
+    <ul>
+      <li><span style="font-family: Arial;">Run on your terminal: <font
+            face="Courier New"><b>nano sources.list</b></font></span><span
+          style="font-family: Arial;"></span><span style="font-family:
+          Arial;"></span></li>
+      <li><span style="font-family: Arial;">Add <b>#</b> before any
+          line starting with<b> deb cdrom</b>.</span></li>
+      <li><span style="font-family: Arial;">&nbsp;Save <b>sources.list
+          </b>(press <i>&lt;ctrl + o&gt; and &lt;enter&gt;</i>).</span></li>
+      <li><span style="font-family: Arial;">&nbsp;Leave the <b>nano</b>
+          text editor </span><span style="font-family: Arial;"><span
+            style="font-family: Arial;">(press <i>&lt;ctrl + x</i>&gt;)</span></span></li>
+    </ul>
+    <span style="font-family: Arial;"> <b>6-</b> Update the list of
+      sofware packages available of you repository server.&nbsp; Run on
+      your terminal:&nbsp; <font face="Courier New"><b>apt-get update</b></font><br>
+      <br>
+      <b>7-</b> Install the command line package manager called <b>aptitude</b>.
+      Run </span><span style="font-family: Arial;"><b><span
+          style="font-family: Arial;"> </span></b><span
+        style="font-family: Arial;">on your terminal:</span><b> <font
+          face="Courier New">apt-get install aptitude</font></b><br>
+      <br>
+    </span><span style="font-family: Arial;"><b>8-</b> Install the
+      following software packages: <b>gcc</b>, <b>make</b>,<b>build-essential</b>,<b>
+        dkms</b>,<b> module-assistant&nbsp;</b> </span><span
+      style="font-family: Arial;"><span style="font-family: Arial;">and<b>
+          linux-headers-6.1.0-11-amd64</b></span>. Run on your terminal:<br>
+      <br>
+      <font face="Courier New"><b>aptitude install gcc make
+          build-essential dkms module-assistant
+          linux-headers-6.1.0-11-amd64</b></font><br>
+      <br>
+    </span><span style="font-family: Arial;"><span style="font-family:
+        Arial;">It takes a few minutes to complete this task.</span></span><span
+      style="font-family: Arial;"><span style="font-family: Arial;"><span
+          style="font-family: Arial;"><span style="font-family: Arial;"><span
+              style="font-family: Arial;"><span style="font-family:
+                Arial;"><span style="font-style: italic;
+                  text-decoration: underline;">Take it easy!!!.</span></span></span></span>
+        </span></span> </span><span style="font-family: Arial;"></span><span
+      style="font-family: Arial;"><b><br>
+        <br>
+        9-</b> Select the <b>Devices</b> menu --&gt;<b> Insert Guest
+        Additions CD image</b> and:</span><span style="font-family:
+      Arial;"><br>
+    </span>
+    <ul>
+      <li><span style="font-family: Arial;">If a new window
+          automatically appears where you can select among several
+          options,&nbsp; select <b>Do Nothing</b>. </span><span
+          style="font-family: Arial;"></span></li>
+    </ul>
+    <ul>
+      <li><span style="font-family: Arial;">If&nbsp; nothing appears,
+          run the following command:&nbsp;&nbsp; <b><font face="Courier
+              New">mount /dev/cdrom&nbsp; /media/cdrom0<br>
+            </font></b></span></li>
+    </ul>
+    <span style="font-family: Arial;"><b>10-</b> Run the command:&nbsp;
+      <b><font face="Courier New">/bin/bash
+          /media/cdrom0/VBoxLinuxAdditions.run</font></b><br>
+      <b><br>
+        11-</b> Close the<b> MATE Terminal</b>.<br>
+    </span><span style="font-family: Arial;"></span>
+    <p><font face="Arial"><b>12-</b> Shutdown your system i</font><font
+        face="Arial"><font face="Arial">n the right way.</font> Select <b>System</b>
+        --&gt; <b>Shut Down</b> --&gt; <b>Shutdown</b>.<br>
+      </font></p>
+    <p><font face="Arial"><span style="font-family: Arial;"><b>13-</b>
+          Eject the VBox</span><span style="font-family: Arial;">GuestAdditions.iso
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          cdrom image:</span></font><font face="Arial"><br>
+      </font></p>
+    <ul>
+      <li><font face="Arial">1st&nbsp; step: Select Storage --&gt;
+          Storage Devices --&gt; Controller IDE --&gt;
+          VBoxGuestAdditions.iso<br>
+        </font></li>
+      <li><font face="Arial">2nd step: Select Attributes --&gt; Click on
+          the small DVD icon --&gt; Select&nbsp; <b>Remove Disk from
+            VirtualDrive</b><br>
+        </font></li>
+    </ul>
+    <p><b><font face="Arial">13-&nbsp; </font></b><font face="Arial">Boot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        (Start) Debian GNU/Linux. <font face="Arial">Gain access to
+          your Desktop.<br>
+        </font></font></p>
+    <p><font face="Arial"><font face="Arial"><b>14-</b>&nbsp; R</font>esize
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        your window and your Desktop with the help of your mouse.</font><span
+        style="font-family: Arial;"><br>
+      </span></p>
+    <p><font face="Arial"><b>15-</b> Power off your system in the right
+        way.</font> <font face="Arial"> Select <b>System</b> --&gt; <b>Shut
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          Down</b> --&gt; <b>Shut Down</b>.</font></p>
+    <p> <font face="Arial"><u><b><font face="Arial"><u><b>3.3- ADD NEW
+                  REPOSITORIES TO YOUR PACKAGE MANAGER</b></u><br>
+            </font> </b></u></font></p>
+    <p><font face="Arial"><b>0- </b>Before starting:<br>
+      </font></p>
+    <blockquote>
+      <ul>
+        <li><font face="Arial">A <b>software package</b> contains all
+            of the files required to install or unistall programs on
+            Debian GNU/Linux<br>
+          </font></li>
+      </ul>
+    </blockquote>
+    <blockquote>
+      <ul>
+        <li>
+          <p><font face="Arial">A<b> </b><b><em class="firstterm">package
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  manager</em></b> keeps track of what software is
+              installed on your computer, and allows you to easily
+              install new software, upgrade software to newer versions,
+              or remove software that you previously installed.&nbsp;
+              The job of a package manager is to present an interface
+              which assists the user in managing the collection of
+              packages installed on his or her system.</font></p>
+        </li>
+        <li><font face="Arial">A <b>software repository</b> is a
+            storage location for software packages. An external hard
+            drive, a DVD/CDROM or a Shared Folder in a computer
+            (repository server)&nbsp; in the LAN or Internet could be a
+            software repository.&nbsp; Debian GNU/Linux have many
+            mirrors (an image or clone of a main repository server)
+            around the world. Usually, a computer downloads software
+            packages from a software repository with the help of package
+            manager. The package manager will install the software
+            package in the systeme as well.<br>
+          </font></li>
+      </ul>
+      <ul>
+        <li><font face="Arial"><b>aptitude</b> is a package
+            manager&nbsp; and it reads the list of software repositories
+            or "sources" from the&nbsp; file <b>/etc/apt/source.list</b>.</font></li>
+      </ul>
+      <ul>
+        <li><font face="Arial"><b>Update </b>and <b>upgrade</b> --&gt;
+          </font><font face="Arial"><font face="Arial"><a
+                href="https://linuxconfig.org/apt-update-vs-apt-upgrade">https://linuxconfig.org/apt-update-vs-apt-upgrade</a></font><a
+              href="https://linuxconfig.org/apt-update-vs-apt-upgrade"><br>
+            </a></font></li>
+      </ul>
+    </blockquote>
+    <p><font face="Arial"><b><br>
+          1-</b>&nbsp; </font><font face="Arial"><span style="color:
+          rgb(0, 0, 0);"><font size="3"><font face="Arial">As a <b>root</b>
+              user, change <b>/etc/apt/sources.list</b> in order to add
+              the <b>contrib</b> and <b>non-free</b> repository
+              addresses (or sources).&nbsp; Adding these new
+              repositories allows the system&nbsp; to gain access to
+              some extra useful software packages.&nbsp; The new <b>sources.list</b>&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              file should have the following contents:</font></font></span></font><font
+        face="Arial"><span style="color: rgb(0, 0, 0);"><font size="3"><b><br>
+            </b></font></span></font><font face="Arial"><u><b><br>
+            <img src="sourceslist.png" alt="" width="1265" height="346"><br>
+          </b></u></font></p>
+    <p><br>
+      <font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font size="3">After changing&nbsp; the contents of
+              <b>/etc/apt/sources.list</b>, run: <font face="Courier
+                New"><b>apt</b><b>itude update</b></font></font></span></font><br>
+        <br>
+        <font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+              size="3"><font face="Arial"><span style="color: rgb(0, 0,
+                  0);"><font size="3"><span style="color: rgb(0, 0, 0);"><font
+                        size="3"><b>2</b><b>-</b> </font></span></font></span></font><font
+                face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                    size="3"><span style="color: rgb(0, 0, 0);"><font
+                        size="3">Install a useful&nbsp; GUI text editor
+                        called&nbsp; </font></span></font></span></font><b><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      size="3"><span style="color: rgb(0, 0, 0);"><font
+                          size="3">Geany</font></span></font></span></font></b><font
+                face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                    size="3"><span style="color: rgb(0, 0, 0);"><font
+                        size="3">&nbsp; on your system. Just follow the
+                        next steps as a<b> </b></font></span></font></span></font><b><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      size="3"><span style="color: rgb(0, 0, 0);"><font
+                          size="3">root</font></span></font></span></font></b><font
+                face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                    size="3"><span style="color: rgb(0, 0, 0);"><font
+                        size="3"> user:</font></span></font></span></font><font
+                face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                    size="3"><span style="color: rgb(0, 0, 0);"><font
+                        size="3">&nbsp; <font face="Courier New"><b>aptitude&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            install geany</b></font></font></span></font></span></font><br>
+              <br>
+              <b>3- </b>Install the <b>arial</b> font (and another
+              useful fonts). </font></span></font><font face="Arial"><span
+            style="color: rgb(0, 0, 0);"><font size="3">Run: <b><font
+                  face="Courier New">aptitude install
+                  ttf-mscorefonts-installer<br>
+                </font></b></font></span></font></font></p>
+    <p><span style="font-family: Arial;"><span style="font-family:
+          Arial;">It takes a few minutes to complete this task.</span></span><span
+        style="font-family: Arial;"><span style="font-family: Arial;"><span
+            style="font-family: Arial;"><span style="font-family:
+              Arial;"><span style="font-family: Arial;"><span
+                  style="font-family: Arial;"><span style="font-style:
+                    italic; text-decoration: underline;">Take it
+                    easy!!!.</span></span></span></span> </span></span>
+      </span><span style="font-family: Arial;"></span><span
+        style="font-family: Arial;"><b><br>
+        </b></span></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font size="3"><b>4- </b></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font size="3"><font face="Arial"><font face="Arial"><span
+                    style="color: rgb(0, 0, 0);"><font size="3">Install
+                    </font></span></font></font><b><font face="Arial"><font
+                    face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                        size="3"><b>MATE Tweak</b></font></span></font></font></b><font
+                face="Arial"><font face="Arial"><span style="color:
+                    rgb(0, 0, 0);"><font size="3">. Run:</font></span></font></font><b><font
+                  face="Arial"><font face="Arial"><span style="color:
+                      rgb(0, 0, 0);"><font size="3">&nbsp; <font
+                          face="Courier New"><b>aptitude install
+                            mate-tweak</b></font></font></span></font></font></b><br>
+            </font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font size="3"><b>4- Logout</b> as <b>root</b>.
+              Run:<b> <font face="Courier New">exit</font></b></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font size="3"><b><font face="Arial"><font face="Arial"><span
+                      style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                          style="color: rgb(0, 0, 0);"><font
+                            face="Arial"><span style="color: rgb(0, 0,
+                              0);"><font face="Arial"><span
+                                  style="color: rgb(0, 0, 0);"><font
+                                    face="Arial"><span style="color:
+                                      rgb(0, 0, 0);"><font face="Arial"><span
+                                          style="color: rgb(0, 0, 0);"><font
+                                            face="Arial"><span
+                                              style="color: rgb(0, 0,
+                                              0);"><font face="Arial"><span
+                                                  style="color: rgb(0,
+                                                  0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><font
+                    face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                        face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                            size="3"><font face="Arial"><font
+                                face="Arial"><span style="color: rgb(0,
+                                  0, 0);"><font face="Arial"><span
+                                      style="color: rgb(0, 0, 0);"><font
+                                        face="Arial"><span style="color:
+                                          rgb(0, 0, 0);"><font
+                                            face="Arial"><span
+                                              style="color: rgb(0, 0,
+                                              0);"><font face="Arial"><span
+                                                  style="color: rgb(0,
+                                                  0, 0);"><font
+                                                    face="Arial"><span
+                                                      style="color:
+                                                      rgb(0, 0, 0);"><br>
+                                                    </span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font></b></font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font size="3"><b><font face="Arial"><font
+                    face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                        face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                            face="Arial"><span style="color: rgb(0, 0,
+                              0);"><font face="Arial"><span
+                                  style="color: rgb(0, 0, 0);"><font
+                                    face="Arial"><span style="color:
+                                      rgb(0, 0, 0);"><font face="Arial"><span
+                                          style="color: rgb(0, 0, 0);"><font
+                                            face="Arial"><span
+                                              style="color: rgb(0, 0,
+                                              0);"><font face="Arial"><span
+                                                  style="color: rgb(0,
+                                                  0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font>5-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </b>Show the <b>Trash bin</b> and <b>Computer</b> icons
+              on your <b>Desktop</b>:<br>
+              &nbsp;&nbsp;&nbsp; a) </font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font size="3"><font face="Arial"><font face="Arial"><span
+                    style="color: rgb(0, 0, 0);"></span></font></font>Select
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              System --&gt; Control Center --&gt; Look and Feel --&gt;
+              MATE Tweak. Enable <b>Trash </b>and <b>Computer</b>.<br>
+              &nbsp;&nbsp;&nbsp; b) Check that<b> Trash</b></font></span><b><span
+              style="color: rgb(0, 0, 0);"></span></b><b> bin</b> and <b>Computer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </b>appear on your <b>Desktop</b>.<br>
+        </font> <font face="Arial"> <span style="color: rgb(0, 0, 0);"><font
+              size="3"><span style="color: rgb(0, 0, 0);"><font size="3">
+                </font></span></font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font size="3"><b>6-</b><b> </b>Start the <b>LibreOffice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                Writer </b>text editor: Applications --&gt; Office
+              --&gt; LibreOffice Writer.&nbsp;</font><font size="3"> </font></span></font><font
+          face="Arial"><span style="color: rgb(0, 0, 0);">Check that the
+            <b>arial</b> font is now available.<br>
+          </span></font><font face="Arial"><span style="color: rgb(0, 0,
+            0);"></span></font><font face="Arial"><span style="color:
+            rgb(0, 0, 0);"></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><u><b><font face="Arial"><u><b>3.4-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    ATTACH A physical USB DRIVE TO DEBIAN GNU/Linux<br>
+                  </b></u></font></b></u><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><br>
+                                        <b>1-</b> </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><font
+          face="Arial"><span style="color: rgb(0, 0, 0);"><font
+              face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);">Start a terminal
+                                        (MATE Terminal) and using the <span
+                                          style="font-weight: bold;">su</span>
+                                        <b>-</b> command, become the <b>root</b>
+                                        user<span style="font-weight:
+                                          bold;"></span>.<br>
+                                        <b><br>
+                                          2-</b> Provide your user with
+                                        the proper permissions to work
+                                        with shared folders by running
+                                        the command:<br>
+                                      </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font face="Arial"><span style="color: rgb(0, 0,
+                0);"><font face="Arial"><span style="color: rgb(0, 0,
+                    0);"><font face="Arial"><span style="color: rgb(0,
+                        0, 0);"><font face="Arial"><span style="color:
+                            rgb(0, 0, 0);"><font face="Arial"><span
+                                style="color: rgb(0, 0, 0);"><font
+                                  face="Arial"><span style="color:
+                                    rgb(0, 0, 0);"><font face="Arial"><span
+                                        style="color: rgb(0, 0, 0);"><font
+                                          face="Courier New"><b>gpasswd&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            -a&nbsp; xxyyzz&nbsp; vboxsf<br>
+                                          </b></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font></p>
+    <p align="left"><font face="Arial"><font face="Arial"><span
+            style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                    style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);">where <b>xxyyzz</b>
+                                        is the user created by you
+                                        during the installation process
+                                        of Debian GNU/Linux.<br>
+                                        <b><br>
+                                          3-</b> Log out as<b> root</b>.</span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><font
+          face="Arial"><span style="color: rgb(0, 0, 0);"><font
+              face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);">
+                                            Afterwards, </span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);">Close&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          the terminal
+                                                          window
+                                                          properly
+                                                          and&nbsp; log
+                                                          out as
+                                                          standard user
+                                                          from your
+                                                          desktop.
+                                                          Finally, gain
+                                                          access to your
+                                                          desktop again.<br>
+                                                          </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font>&nbsp;<b><br>
+                                              4-</b> Plug your <b>USB</b>
+                                            drive into your laptop.</span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><br>
+      <font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font face="Arial"><span style="color: rgb(0, 0,
+                0);"><font size="3"><font face="Arial"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font face="Arial"><span style="color: rgb(0, 0,
+                0);"><font size="3"><font face="Arial"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><b>5-&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            </b>Attach and open a <b>USB</b>
+                                            drive into your virtual
+                                            machine:</span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);">
+                                            Click on the&nbsp; "USB
+                                            settings.." icon</span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);">&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            a</span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);">t</span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);">
+                                            the bottom right corner of
+                                            your virtual machine and
+                                            select your USB drive.
+                                            Automatically a folder
+                                            showing the contents of your
+                                            USB drive will appear.</span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font face="Arial"><span style="color: rgb(0, 0,
+                0);"><font size="3"><font face="Arial"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  size="3"><font face="Arial"><font face="Arial"><span
+                        style="color: rgb(0, 0, 0);"><font face="Arial"><span
+                            style="color: rgb(0, 0, 0);"><font
+                              face="Arial"><span style="color: rgb(0, 0,
+                                0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></font></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><u><b><font face="Arial"><u><b>3.5-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    SHARING FOLDERS BETWEEN THE HOST (PHYSICAL)&nbsp;
+                    MACHINE AND THE VIRTUAL MACHINE<br>
+                  </b></u></font></b></u><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><b><br>
+                                                          1- Shutdown </b>your
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          virtual
+                                                          computer.<br>
+                                                          <b><br>
+                                                          2- </b>Create
+                                                          a new folder,
+                                                          called<b> s</b><b>haring</b>,
+                                                          inside the
+                                                          folder <b>VirtualBox
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          VMs</b> of
+                                                          your <u>host
+                                                          operating</u>
+                                                          system. Create
+                                                          a new empty
+                                                          file called <b>inf1_xxyyzz.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          </b>inside the
+                                                          folder sharing
+                                                          </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);">of
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          your <u>host
+                                                          operating</u>
+                                                          system.
+                                                          Remember: </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font><font
+        face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+            0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                  face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                      face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                          face="Arial"><span style="color: rgb(0, 0,
+                            0);"><font face="Arial"><span style="color:
+                                rgb(0, 0, 0);"><font face="Arial"><span
+                                    style="color: rgb(0, 0, 0);"><font
+                                      face="Arial"><span style="color:
+                                        rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"><b>xx</b>=two
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          first letters
+                                                          of your name<b>,
+                                                          </b><b>yy</b>=two
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          first letters
+                                                          of your first
+                                                          surname and<b>
+                                                          zz</b>=</span><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;">two
+                                                          first letters
+                                                          of your second
+                                                          surname</span></span><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"></span><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;"><span
+                                                          style="font-family:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Arial;">.</span></span></span></span></span></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font></p>
+    <p><font face="Arial"><font face="Arial"><span style="color: rgb(0,
+            0, 0);"><font face="Arial"><span style="color: rgb(0, 0,
+                0);"><font face="Arial"><span style="color: rgb(0, 0,
+                    0);"><font face="Arial"><span style="color: rgb(0,
+                        0, 0);"><font face="Arial"><span style="color:
+                            rgb(0, 0, 0);"><font face="Arial"><span
+                                style="color: rgb(0, 0, 0);"><font
+                                  face="Arial"><span style="color:
+                                    rgb(0, 0, 0);"><font face="Arial"><span
+                                        style="color: rgb(0, 0, 0);"><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><b>3-</b>
+                                                          On <b>VirtualB</b><b>ox
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          Manager</b>,
+                                                          select your
+                                                          virtual
+                                                          machine and,
+                                                          afterwards,
+                                                          select <b>Shared
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          folders</b>. <br>
+                                                          <b><br>
+                                                          4-</b> Select
+                                                          <b>Machine
+                                                          Folders</b>
+                                                          and click on
+                                                          the small blue
+                                                          rectangle with
+                                                          a green cross
+                                                          at the right
+                                                          side of the
+                                                          window. A
+                                                          window will
+                                                          appear with a
+                                                          form to add a
+                                                          new shared
+                                                          folder. Add a
+                                                          new one with
+                                                          the following
+                                                          features:<br>
+                                                          &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          <b>a)</b>
+                                                          Folder Path:
+                                                          Look for <b>sharing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          </b>on your
+                                                          system and
+                                                          select it.<br>
+                                                          &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          <b>b)</b>
+                                                          Folder Name
+                                                          --&gt; </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><b>sharing</b></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><br>
+                                                          &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          <b>c)</b>
+                                                          Select<b>
+                                                          Auto-mount<br>
+                                                          &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          d) </b>Mount
+                                                          point --&gt; <b>Do
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                          no write
+                                                          anything</b><br>
+                                                          <b><br>
+                                                          5- </b>Boot
+                                                          your virtual
+                                                          machine.<br>
+                                                          </span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><font
+                                          face="Arial"><span
+                                            style="color: rgb(0, 0, 0);"><font
+                                              face="Arial"><span
+                                                style="color: rgb(0, 0,
+                                                0);"><font face="Arial"><span
+                                                    style="color: rgb(0,
+                                                    0, 0);"><font
+                                                      face="Arial"><span
+                                                        style="color:
+                                                        rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font></p>
+    <font face="Arial"><font face="Arial"><span style="color: rgb(0, 0,
+          0);"><font face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                    face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                        face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                            face="Arial"><span style="color: rgb(0, 0,
+                              0);"><font face="Arial"><span
+                                  style="color: rgb(0, 0, 0);"><font
+                                    face="Arial"><span style="color:
+                                      rgb(0, 0, 0);"><font face="Arial"><span
+                                          style="color: rgb(0, 0, 0);"><font
+                                            face="Arial"><span
+                                              style="color: rgb(0, 0,
+                                              0);"><font face="Arial"><span
+                                                  style="color: rgb(0,
+                                                  0, 0);"><font
+                                                    face="Arial"><span
+                                                      style="color:
+                                                      rgb(0, 0, 0);"><font
+                                                        face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><font
+                                                          face="Arial"><span
+                                                          style="color:
+                                                          rgb(0, 0, 0);"><b>6-</b>
+                                                          Select&nbsp;
+                                                          and open the <b>sf_sharing</b>
+                                                          folder on your
+                                                          Desktop. Check
+                                                          that the file
+                                                          <b>inf1_xxyyzz.txt</b>
+                                                          created in
+                                                          step 2
+                                                          appears. Copy
+                                                          the file on
+                                                          the Desktop of
+                                                          your virtual
+                                                          machine.&nbsp;</span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font><font
+        face="Arial"><span style="color: rgb(0, 0, 0);"><font
+            face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                    face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                        face="Arial"><span style="color: rgb(0, 0, 0);"><font
+                            face="Arial"><span style="color: rgb(0, 0,
+                              0);"><font face="Arial"><span
+                                  style="color: rgb(0, 0, 0);"><font
+                                    face="Arial"><span style="color:
+                                      rgb(0, 0, 0);"></span></font></span></font></span></font></span></font></span></font></span></font></span></font></span></font></font>
+    <br>
+    <span style="font-family: Arial;"><span style="font-weight: bold;"><font
+          size="+1" face="Arial"><span style="font-weight: bold;"><u><br>
+              PART 4: CHECKING YOUR SYSTEM</u></span></font><font
+          size="+1"><span style="font-family: Arial;"><span
+              style="font-weight: bold;"></span></span></font></span></span>
+    <p><font face="Arial"><b>1-</b><b> </b>Your system boots and you
+        can gain access to your system.<br>
+      </font></p>
+    <p><font face="Arial"><b>2-</b> Username. If your user&nbsp; does
+        not have the proper username,&nbsp; we will not accept your
+        system and your mark will be zero.<br>
+      </font></p>
+    <p><font face="Arial"><b>3-</b> </font><font face="Arial"><font
+          face="Arial">Host name</font>. </font><font face="Arial">If
+        your machine does not have the proper hostname,&nbsp; we will
+        not accept your system and your mark will be zero.</font></p>
+    <p><font face="Arial"><b>4-</b> Yo can surf the internet with the
+        help of your browser.<br>
+      </font><font face="Arial"><br>
+        <b>5</b><b>-</b> You can resize you virtual system</font>.</p>
+    <p><font face="Arial"><b>6- </b>Geany has been installed on your
+        system<br>
+      </font></p>
+    <p><font face="Arial"><b>7- </b>The arial font has been installed
+        on your system<br>
+      </font></p>
+    <p><font face="Arial"><b>8- </b><span style="color: rgb(0, 0, 0);"><font
+            size="3">Show the <b>Trash bin</b> and <b>Computer</b>
+            icons on your <b>Desktop</b><br>
+          </font></span></font></p>
+    <p><font face="Arial"><b>9- </b><span style="color: rgb(0, 0, 0);"><font
+            size="3">Show the contents of a <b>USB drive</b> on Debian
+            GNU/Linux<br>
+          </font></span></font></p>
+    <p><font face="Arial"><b>10- </b><span style="color: rgb(0, 0, 0);"><font
+            size="3">Show the contents of <b>sharing</b> on Debian
+            GNU/Linux</font></span><br>
+      </font></p>
+  </body>
+</html>
