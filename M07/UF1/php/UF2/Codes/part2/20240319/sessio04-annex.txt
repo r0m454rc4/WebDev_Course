@@ -1,0 +1,3 @@
+https://medium.com/@miladev95/laravel-pagination-with-seeders-and-factory-1e7f7a35256d
+https://welcm.uk/blog/getting-started-with-faker-in-laravel
+https://github.com/fzaninotto/Faker?tab=readme-ov-file#fakerproviderdatetime

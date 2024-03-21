@@ -20,8 +20,9 @@ Route::get('/', function () {
     // Here I open inici.blade.php, which is on resources/views.
     return view('inici');
 });
+
 /*
-    If I type /trebs, it'll execute a method from ControladorTreballador.
+    If I type /treballadors, it'll execute a method from ControladorTreballador.
     I use resource, as I want to be able to use get, post, update or delete at the same time.
 
     GET/HEAD -> index, show, edit, create.
@@ -30,16 +31,23 @@ Route::get('/', function () {
     DELETE-> destroy.
 */
 
-Route::resource('treballadors', ControladorTreballador::class);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::resource('trebs', ControladorTreballador::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('treballadors', ControladorTreballador::class);
 });
 
 require __DIR__.'/auth.php';

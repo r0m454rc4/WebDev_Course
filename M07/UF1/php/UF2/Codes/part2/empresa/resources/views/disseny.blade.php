@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
     <body>
-        <div class="container">
+        <div class="container-fluid" >
             @yield('content')
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>

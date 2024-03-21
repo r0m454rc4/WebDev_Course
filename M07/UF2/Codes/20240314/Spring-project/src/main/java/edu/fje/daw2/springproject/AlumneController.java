@@ -22,7 +22,7 @@ public class AlumneController {
     }
     Alumne al = new Alumne(nom, cognom, nota);
     model.addAttribute("al", al);
-    // model.addAttribute("alumnes", a);
+    
     return "al";
   }
 }
