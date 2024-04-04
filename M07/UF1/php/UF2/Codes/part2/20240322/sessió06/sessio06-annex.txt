@@ -1,0 +1,2 @@
+https://medium.com/@przyczynski/laravel-working-with-composite-keys-8c4b282f5523
+https://github.com/coenjacobs/eloquent-composite-primary-keys

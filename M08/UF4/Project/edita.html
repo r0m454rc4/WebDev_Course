@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Editar</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+  </head>
+  <body>
+    <h2>Editar</h2>
+    <form
+      action="https://zend-rosaca.fjeclot.net/projFinal/edita.php"
+      method="POST"
+    >
+      Unitat organitzativa: <input type="text" name="unorg" /><br />
+      Usuari: <input type="text" name="uid" /><br /><br />
+      Escull una opcio: <br />
+
+      <input type="radio" name="radioValue" value="uidNumber" /><span
+        >Numero d'identificacio</span
+      ><br />
+      <input type="radio" name="radioValue" value="gidNumber" /><span>Grup</span
+      ><br />
+      <input type="radio" name="radioValue" value="homeDirectory" /><span
+        >Directori Personal</span
+      ><br />
+      <input type="radio" name="radioValue" value="loginShell" /><span
+        >Shell</span
+      ><br />
+      <input type="radio" name="radioValue" value="cn" /><span>Nom complet</span
+      ><br />
+      <input type="radio" name="radioValue" value="sn" /><span>Cognom</span
+      ><br />
+      <input type="radio" name="radioValue" value="givenName" /><span>Nom</span
+      ><br />
+      <input type="radio" name="radioValue" value="postalAddress" /><span
+        >Adressa</span
+      ><br />
+      <input type="radio" name="radioValue" value="mobile" /><span>Mobil</span
+      ><br />
+      <input type="radio" name="radioValue" value="telephoneNumber" /><span
+        >Telefon</span
+      ><br />
+      <input type="radio" name="radioValue" value="title" /><span>Titol</span
+      ><br />
+      <input type="radio" name="radioValue" value="description" /><span
+        >Descripcio</span
+      ><br /><br />
+      <input
+        type="text"
+        name="nouContingut"
+        placeholder="Contigut a modificar"
+      /><br /><br />
+      <input type="submit" value="Editar usuari" />
+      <input type="reset" value="Netejar" />
+    </form>
+    <a href="https://zend-rosaca.fjeclot.net/projFinal/menu.php"
+      >Torna al menu</a
+    >
+  </body>
+</html>

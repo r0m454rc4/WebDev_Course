@@ -1,34 +1,39 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {M00_Home} from './app/views/M00_Home';
 
-// Import created component.
-import { Home } from "./app/views/Home";
+import {M06_Home} from './app/views/M06_Home_routing';
+import {M06_Detalls} from './app/views/M06_Detalls_routing';
+import {M07_Camera} from './app/views/M07_Camera';
+import {M09_Sqlite} from './app/views/M09_Sqlite';
+import { M08_Mapes } from './app/views/M08_Mapes';
+import { M10_Suma } from './app/views/M10_Suma';
+/**
+ * Modificacions al component principal d'entrada de React
+ * per incloure encaminaments, però no components
+ * @version 1.0 28.03.2020
+ * @author sergi.grau@fje.edu
+ */
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function App() {
+
+
   return (
-    <View style={styles.principal}>
-      <Text style={styles.textos}>DAW2</Text>
-      <Button title="Pulsa" onPress={() => alert("Pulsado")}>
-        Pulsa
-      </Button>
-
-      {/* Use created component. */}
-      <Home></Home>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+       <Stack.Screen name="Zero" component={M00_Home} />
+        <Stack.Screen name="Home" component={M06_Home} />
+        <Stack.Screen name="Detall" component={M06_Detalls} />
+        <Stack.Screen name="Camera" component={M07_Camera} />
+        <Stack.Screen name="Mapes" component={M08_Mapes} />
+        <Stack.Screen name="SQLite" component={M09_Sqlite} />
+        <Stack.Screen name="Suma" component={M10_Suma} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  principal: {
-    flex: 1,
-    backgroundColor: "lightgrey",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  textos: {
-    color: "red",
-    fontWeight: "bold",
-  },
-});
+export default App;
