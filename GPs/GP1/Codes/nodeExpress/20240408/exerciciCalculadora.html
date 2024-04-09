@@ -1,0 +1,85 @@
+<!-- Use enter to submit the result. -->
+
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      //author sergi grau  sergi.grau@fje.edu
+      import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
+      const app = createApp({
+        data() {
+          return {
+            expressio: [],
+            nombres: [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              0,
+              "+",
+              "-",
+              "*",
+              "/",
+              "C",
+              "=",
+            ],
+            res: 0,
+          };
+        },
+        methods: {
+          calcular: function (event) {
+            console.log(this.expressio);
+            if (event.target.id == "=") {
+              // eval is calculate a string.
+              this.res = eval(this.expressio.join(""));
+              this.expressio = [];
+            } else if (event.target.id == "C") {
+              this.expressio = [];
+              this.res = cadenaCerca0;
+            } else {
+              console.log(event.target.id);
+              this.expressio.push(event.target.id);
+            }
+          },
+
+          calcularPerTeclat: function (event) {
+            // 13 is return is ascii.
+            if (event.keyCode == 13) {
+              // eva is calculate a string.
+              this.res = eval(this.expressio.join(""));
+              this.expressio = [];
+            }
+          },
+        },
+        template: `
+        <div v-on:keyup.enter="calcularPerTeclat($event)">
+          <div v-on:click="calcular($event)">
+            <span v-for="nombre in nombres">
+            <button :id='nombre'>{{nombre}}</button>
+            </span>      
+          </div>
+
+          <label>Resultat: {{res}}</label>
+        </div>
+    `,
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Treballador;
 
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
     PUT (and PATCH) -> update.
     DELETE-> destroy.
 */
+
 class ControladorTreballador extends Controller
 {
     /**
@@ -57,7 +59,7 @@ class ControladorTreballador extends Controller
             'categoria' => 'required',
             'nom_feina' => 'required',
             'sou' => 'required'
-            ]);
+        ]);
         $treballador = Treballador::create($nouTreballador);
         return view('dashboard');
     }
@@ -68,7 +70,7 @@ class ControladorTreballador extends Controller
     public function show(string $id)
     {
         $dades_treballador = Treballador::findOrFail($tid);
-        return view('mostra',compact('dades_treballador'));
+        return view('mostra', compact('dades_treballador'));
     }
 
     /**
@@ -77,7 +79,7 @@ class ControladorTreballador extends Controller
     public function edit(string $id)
     {
         $dades_treballador = Treballador::findOrFail($tid);
-        return view('actualitza',compact('dades_treballador'));
+        return view('actualitza', compact('dades_treballador'));
     }
 
     /**

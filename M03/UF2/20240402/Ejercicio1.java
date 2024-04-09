@@ -16,23 +16,23 @@ public class Ejercicio1 {
 
 		switch (opcio) {
 			case 1:
-				try {
-					System.out.println("Introduzca el dni: ");
-					String dni = sc.next();
-					System.out.println("Introduzca el nombre: ");
-					String nombre = sc.next();
-					System.out.println("Introduzca los apellidos: ");
-					String apellidos = sc.next();
-					System.out.println("Introduzca el telef: ");
-					String telef = sc.next();
-					System.out.println("Introduzca email: ");
-					String email = sc.next();
+				System.out.println("Introduzca el dni: ");
+				String dni = sc.next();
+				System.out.println("Introduzca el nombre: ");
+				String nombre = sc.next();
+				System.out.println("Introduzca los apellidos: ");
+				String apellidos = sc.next();
+				System.out.println("Introduzca el telef: ");
+				String telef = sc.next();
+				System.out.println("Introduzca email: ");
+				String email = sc.next();
 
+				try {
 					// Establish connection
 					Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/contactos", "root", "");
 
 					// Prepare statement
-					String consulta = "INSERT INTO contactos (dni, nombre, apellidos, telef, email) VALUES (?, ?, ?, ?)";
+					String consulta = "INSERT INTO contactos (dni, nombre, apellidos, telef, email) VALUES (?, ?, ?, ?, ?)";
 					PreparedStatement sentencia = conexion.prepareStatement(consulta);
 					sentencia.setString(1, dni);
 					sentencia.setString(2, nombre);
