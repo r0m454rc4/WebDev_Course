@@ -32,7 +32,7 @@ create procedure gentrecat2()
 begin
 	set @nTreb = 11;
 	while @nTreb <= 50 do
-		insert into treballadors_romsar (nom, cognoms, categoria, observacions) values (concat('nom', @nTreb), concat('cognom',@nTreb), 2, 'Treballador generic - categoria 2');		
+		insert into treballadors_romsar (nom, cognoms, categoria, observacions) values (concat('nom', @nTreb), concat('cognom',@nTreb), 2, 'Treballador generic - categoria 2');
 		set @nTreb = @nTreb + 1;
 	end while; 
 end//
