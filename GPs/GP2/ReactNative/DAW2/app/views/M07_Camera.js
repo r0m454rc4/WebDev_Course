@@ -1,6 +1,11 @@
-import React from 'react';
-import { TouchableHighlight, StyleSheet, Image, Text, View } from 'react-native';
-
+import React from "react";
+import {
+  TouchableHighlight,
+  StyleSheet,
+  Image,
+  Text,
+  View,
+} from "react-native";
 
 /**
  * Classe que hereta de Component i que implementa un component
@@ -10,40 +15,37 @@ import { TouchableHighlight, StyleSheet, Image, Text, View } from 'react-native'
  * @author sergi.grau@fje.edu
  */
 
-import { Camera } from 'expo-camera';
-
+import { Camera } from "expo-camera";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#000',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#000",
   },
   preview: {
     flex: 2,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   capture: {
     width: 200,
     height: 40,
     borderRadius: 35,
     borderWidth: 5,
-    borderColor: '#FFF',
+    borderColor: "#FFF",
     marginBottom: 15,
-
   },
   cancel: {
-    position: 'absolute',
+    position: "absolute",
     right: 20,
     top: 20,
-    backgroundColor: 'transparent',
-    color: '#FFF',
-    fontWeight: '600',
+    backgroundColor: "transparent",
+    color: "#FFF",
+    fontWeight: "600",
     fontSize: 17,
-  }
+  },
 });
 
 export class M07_Camera extends React.Component {
@@ -60,7 +62,7 @@ export class M07_Camera extends React.Component {
       // this.props.updateImage(data.uri);
       // console.log('Path to image: ' + data.uri);
     } catch (err) {
-      console.log('err: ', err);
+      console.log("err: ", err);
     }
   };
   renderCamera() {
@@ -71,8 +73,8 @@ export class M07_Camera extends React.Component {
         }}
         style={styles.preview}
         flashMode={Camera.Constants.FlashMode.off}
-        permissionDialogTitle={'permis denegat'}
-        permissionDialogMessage={'calen permisos per a fer servir la càmera'}
+        permissionDialogTitle={"permis denegat"}
+        permissionDialogMessage={"calen permisos per a fer servir la càmera"}
       >
         <TouchableHighlight
           style={styles.capture}
@@ -88,14 +90,12 @@ export class M07_Camera extends React.Component {
   renderImage() {
     return (
       <View>
-        <Image
-          source={{ uri: this.state.path }}
-          style={styles.preview}
-        />
+        <Image source={{ uri: this.state.path }} style={styles.preview} />
         <Text
           style={styles.cancel}
           onPress={() => this.setState({ path: null })}
-        >Cancel
+        >
+          Cancel
         </Text>
       </View>
     );

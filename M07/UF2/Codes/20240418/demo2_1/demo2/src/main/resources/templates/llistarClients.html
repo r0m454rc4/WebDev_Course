@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DAW2 Spring</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Llistat clients</li>
+        </ol>
+    </nav>
+    <ul class="list-group">
+        <!--@thymesVar id="client" type="edu.fje.daw2.m07.model.Client"-->
+        <li class="list-group-item"  th:each="client, dades: ${clients}" >
+            <!--/*@thymesVar id="nom" type="String"*/-->
+            <!--/*@thymesVar id="cognom" type="String"*/-->
+            <!--/*@thymesVar id="volumCompres" type="int"*/-->
+            <span th:text="${dades.index}" />
+            <span th:text="${client.nom}" />
+            <span th:text="${client.cognom}" />
+            <span th:text="${client.volumCompres}" />
+            <span th:if="${client.volumCompres>100}">SUPERA 100</span>
+        </li>
+
+    </ul>
+</div>
+<div th:include="plantilla_peu :: copy"></div>
+
+</body>
+</html>

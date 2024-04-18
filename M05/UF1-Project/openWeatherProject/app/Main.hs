@@ -1,5 +1,5 @@
 -- To compile it: stack build.
--- To run it: stack exec openWeatherProject-exe
+-- To run it: stack exec openWeatherProject-exe.
 
 {-# LANGUAGE OverloadedStrings #-}
 
@@ -13,11 +13,13 @@ data Weather = Weather
   , temperature :: Float
   } deriving Show
 
+-- Here I firter the data I want to get.
 instance FromJSON Weather where
   parseJSON = withObject "weather" $ \v -> do
     weatherArray <- v .: "weather"
     let weatherObj = V.head weatherArray
     main <- v .: "main"
+    -- Here I
     temp <- main .: "temp"
     desc <- weatherObj .: "description"
     return $ Weather desc temp
@@ -38,7 +40,7 @@ fetchWeather apiKey ciutat = do
       putStrLn $ "Failed to parse weather data: " ++ err
       return Nothing
   where
-    url = "http://api.openweathermap.org/data/2.5/weather?q="++ ciutat ++ "&appid=" ++ apiKey
+    url = "http://api.openweathermap.org/data/2.5/weather?q="++ ciutat ++ "&appid=" ++ apiKey ++ "&units=metric"
     request = setRequestMethod "GET" $ setRequestHeader "Accept" ["application/json"] $ parseRequest_ url
 
 main :: IO ()
