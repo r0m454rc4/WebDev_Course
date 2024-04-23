@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  form(name="input", method="get")
+    | Nom: 
+    input(type="text", name="nom")
+    |  Hobbie: 
+    input(type="text", name="hobbie")
+    |  Any practica: 
+    input(type="number", name="anyPractica")
+
+    br
+    br
+
+    input(
+      type='submit'
+      value='GuardaUsuari'
+      formaction='guardaUsuari'
+    )
+    br
+    br
+    a(href='./index') Anar a index.

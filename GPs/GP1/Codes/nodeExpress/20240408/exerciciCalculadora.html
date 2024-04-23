@@ -1,5 +1,3 @@
-<!-- Use enter to submit the result. -->
-
 <!DOCTYPE html>
 <html lang="ca">
   <head>
@@ -13,7 +11,6 @@
     <div id="app"></div>
 
     <script type="module">
-      //author sergi grau  sergi.grau@fje.edu
       import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
       const app = createApp({
@@ -43,6 +40,7 @@
         },
         methods: {
           calcular: function (event) {
+            // this.expressio is the number I pressed.
             console.log(this.expressio);
             if (event.target.id == "=") {
               // eval is calculate a string.
@@ -50,7 +48,7 @@
               this.expressio = [];
             } else if (event.target.id == "C") {
               this.expressio = [];
-              this.res = cadenaCerca0;
+              // this.res = cadenaCerca0;
             } else {
               console.log(event.target.id);
               this.expressio.push(event.target.id);
@@ -58,7 +56,7 @@
           },
 
           calcularPerTeclat: function (event) {
-            // 13 is return is ascii.
+            // 13 is return in ascii.
             if (event.keyCode == 13) {
               // eva is calculate a string.
               this.res = eval(this.expressio.join(""));

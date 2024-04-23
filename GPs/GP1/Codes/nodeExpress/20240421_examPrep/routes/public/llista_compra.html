@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Productes</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+
+      const app = createApp({
+        data() {
+          return {
+            expressio: [],
+            inputs: {
+              productes: "",
+              quantitat: "",
+            },
+            seleccionats: [],
+          };
+        },
+        // methods: {
+        //   afegirProducte: function (event) {
+        //     console.log(this.expressio);
+        //     if (event.target.id == "=") {
+        //       // eval is calculate a string.
+        //       this.res = eval(this.expressio.join(""));
+        //       this.expressio = [];
+        //     } else if (event.target.id == "C") {
+        //       this.expressio = [];
+        //       // this.res = cadenaCerca0;
+        //     } else {
+        //       console.log(event.target.id);
+        //       this.expressio.push(event.target.id);
+        //     }
+        //   },
+        // },
+        template: `
+        <section>
+          <blockquote class="blockquote">
+            <p class="mb-0">Productes.</p>
+            <footer class="blockquote-footer">
+              Fet per <cite title="Source Title">Romà Sardá Casellas.</cite>
+            </footer>
+          </blockquote>
+
+          <form action="/compra" method="get">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text">Opcions</label>
+              </div>
+
+              <!-- Here, name="producte" is to be able to select the product.-->
+              <select class="custom-select" name="producte" v-model="inputs.productes">
+                <option value="taronja">Taronja</option>
+                <option value="poma">Poma</option>
+                <option value="pera">Pera</option>
+              </select>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text">Número d'unitats</label>
+              </div>
+
+              <input
+                type="number"
+                name="quantitatProductes"
+                value="1"
+                min="1"
+                max="100"
+                class="form-control"
+                placeholder="Unitats"
+                aria-label="Unitats"
+              />
+            </div>
+            
+            <!-- The type is submit because it's a form. -->
+            <div v-on:click="afegirProducte($event)"><button
+              type="submit"
+              name="consulta"
+              value="compra"
+              class="btn btn-success" 
+            >
+              Compra
+            </button></div>
+
+            <!-- Here the name is the same because I'd like to compare if the option is "compra" or "tramita". -->
+            <button
+              type="submit"
+              name="consulta"
+              value="tramita"
+              class="btn btn-info"
+            >
+              Tramitar
+            </button>
+          </form>
+          <br/>
+
+          <p>
+            <strong>Seleccionat:</strong> {{inputs.productes}}
+          </p>
+        </section>`,
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
