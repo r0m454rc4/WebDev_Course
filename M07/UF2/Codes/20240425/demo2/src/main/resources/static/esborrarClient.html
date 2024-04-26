@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>DAW2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/indexJPA.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Esborrar client</li>
+        </ol>
+    </nav>
+    <form action="/esborrarClient" method="post">
+        <div class="mb-3">
+            <label for="id" class="form-label">id</label>
+            <input type="text" class="form-control" id="id" name="id" placeholder="Entra el id">
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="afegeix">
+    </form>
+</div>
+
+</body>
+</html>

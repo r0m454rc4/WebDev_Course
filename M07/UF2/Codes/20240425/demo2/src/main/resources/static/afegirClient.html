@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>DAW2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/indexJPA.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Afegir Client</li>
+        </ol>
+    </nav>
+    <form action="/afegirClient" method="post">
+
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" placeholder="Entra el nom">
+        </div>
+        <div class="mb-3">
+            <label for="cognom" class="form-label">Cognom</label>
+            <input type="text" class="form-control" id="cognom" name="cognom" placeholder="Entra el cognom">
+        </div>
+        <div class="mb-3">
+            <label for="volum" class="form-label">Volum</label>
+            <input type="text" class="form-control" id="volum" name="volum" placeholder="Entra el volum">
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="afegeix">
+    </form>
+</div>
+
+</body>
+</html>

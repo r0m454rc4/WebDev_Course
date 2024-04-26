@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>DAW2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/static/indexJPA.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modificar alumne</li>
+        </ol>
+    </nav>
+    <form action="/modificarUsuari" method="post">
+        <div class="mb-3">
+            <label for="id" class="form-label">Cognom</label>
+            <input type="number" class="form-control" id="id" name="id" placeholder="Entra un id">
+        </div>
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" placeholder="Entra el nom">
+        </div>
+        <div class="mb-3">
+            <label for="cognom" class="form-label">Cognom</label>
+            <input type="text" class="form-control" id="cognom" name="cognom" placeholder="Entra una cognom">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Entra un email">
+        </div>
+        <input class="btn btn-primary" type="submit" value="modifica">
+    </form>
+</div>
+
+</body>
+</html>
