@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Encadenar efectes amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 29.01.2014">
+
+    <title>jQuery 5</title>
+    <style>
+        .capsa {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('#inici').click(function () {
+                $('.capsa').fadeOut().fadeIn().slideUp().slideDown().fadeTo(1000, 0.1).fadeTo(1000, 1);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="inici">Start</button>
+    <div class="capsa"></div>
+</body>
+
+</html>

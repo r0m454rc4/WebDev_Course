@@ -1,0 +1,30 @@
+/* styles.css */
+
+.VBox {
+    -fx-background-color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    margin: auto;
+}
+
+.Label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.TextField, .PasswordField {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.Button {
+    padding: 10px;
+    background-color: #007bfc;
+    text-fill: #ffffff;
+    font-weight: bold;
+}

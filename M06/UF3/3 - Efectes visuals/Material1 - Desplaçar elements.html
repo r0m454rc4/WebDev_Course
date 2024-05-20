@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Desplaçar elements amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2014">
+
+    <title>jQuery 1</title>
+    <style>
+        .contingut {
+            width: 530px;
+            height: 190px;
+            margin: 50px auto auto auto;
+            background-color: #E1E1E1;
+            padding: 10px;
+        }
+        .contingut .capsa {
+            width: 125px;
+            height: 125px;
+            float: left;
+            margin-right: 10px;
+        }
+        .contingut .capsa:last-child {
+            margin-right: 0;
+        }
+        .contingut .accions {
+            background-color: #333333;
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 10px;
+        }
+        .contingut .accions button {
+            height: 35px;
+        }
+        .un {
+            background-color: red;
+        }
+        .dos {
+            background-color: green;
+        }
+        .tres {
+            background-color: blue;
+        }
+        .quatre {
+            background-color: orange;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('#puja').click(function () {
+                $('.un').slideUp(4000);
+                $('.dos').slideUp(3000);
+                $('.tres').slideUp(2000);
+                $('.quatre').slideUp(1000);
+            });
+            $('#baixa').click(function () {
+                $('.un').slideDown(4000);
+                $('.dos').slideDown(3000);
+                $('.tres').slideDown(2000);
+                $('.quatre').slideDown(1000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="contingut">
+        <div class="accions">
+            <button id="baixa">Baixa</button>
+            <button id="puja">Puja</button>
+        </div>
+        <div class="capsa un"></div>
+        <div class="capsa dos"></div>
+        <div class="capsa tres"></div>
+        <div class="capsa quatre"></div>
+    </div>
+</body>
+
+</html>

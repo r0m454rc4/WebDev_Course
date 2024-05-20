@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Scroll amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 05.02.2015">
+
+    <title>jQuery 2</title>
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+        body {
+            ￼ margin: 0;
+            background-color: #5dace7;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        .cap {
+            height: 150px;
+            background-color: #0174cd;
+        }
+        
+        .cap h1 {
+            width: 1000px;
+            margin: auto;
+            padding: 0;
+            line-height: 100px;
+            font-size: 40px;
+            color: #FFFFFF;
+        }
+        
+        .contenidor {
+            margin: -50px auto auto auto;
+            width: 1000px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            min-height: 1300px;
+            position: relative;
+        }
+        
+        .contenidor .esquerra {
+            margin-right: 240px;
+            padding: 20px;
+        }
+        
+        .contenidor .esquerra h1 {
+            margin: 0;
+        }
+        
+        .contenidor .dreta {
+            width: 200px;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #F1F1F1;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .contenidor .dreta .important {
+            border: solid 1px #CCCCCC;
+            text-align: center;
+            width: 200px;
+        }
+        
+        .mosca {
+            position: fixed;
+            top: 10px;
+        }
+        
+        ￼
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        var origenImportant = {};
+        $(function () {
+            origenImportant = $('.important').offset(); // retorna left i top
+            $(window).scroll(function () {
+                mostrarMosca();
+            });
+        });
+
+        function mostrarMosca() {
+            var _important = $('.important');
+            var posicioScroll = $('body').scrollTop();
+            console.log(posicioScroll);
+            if (origenImportant.top < posicioScroll) {
+                _important.addClass("mosca");
+            } else {
+                _important.removeClass("mosca");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="cap">
+        <h1>jQuery</h1>
+    </div>
+    <div class="contenidor">
+        <div class="esquerra">
+            <p>Desenvolupament d'aplicacions web</p>
+        </div>
+        <div class="dreta">
+            <ul>
+                <li><a href="#"> Item 1</a>
+                </li>
+                <li><a href="#"> Item 2</a>
+                </li>
+                <li><a href="#"> Item 3</a>
+                </li>
+                <li><a href="#"> Item 4</a>
+                </li>
+                <li><a href="#"> Item 5</a>
+                </li>
+                <li><a href="#"> Item 6</a>
+                </li>
+            </ul>
+            <div class="important">
+                <p>DAW2</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

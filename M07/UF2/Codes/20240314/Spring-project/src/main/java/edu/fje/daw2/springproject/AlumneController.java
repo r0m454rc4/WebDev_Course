@@ -12,7 +12,7 @@ public class AlumneController {
   ArrayList<Alumne> alumnes = new ArrayList<>();
 
   @GetMapping("/afegirAlumne")
-  public String dividir(
+  public String alumne(
       @RequestParam(required = true) String nom,
       @RequestParam(required = true) String cognom,
       @RequestParam(defaultValue = "0", required = true) Double nota,
@@ -22,7 +22,7 @@ public class AlumneController {
     }
     Alumne al = new Alumne(nom, cognom, nota);
     model.addAttribute("al", al);
-    
-    return "al";
+
+    return "alumnes";
   }
 }

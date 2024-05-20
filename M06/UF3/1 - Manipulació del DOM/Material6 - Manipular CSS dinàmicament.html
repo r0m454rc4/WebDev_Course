@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Manipular CSS dinàmicament amb jQuery" />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 17.12.2014" />
+
+    <title>jQuery 6</title>
+    <script src="jquery.js"></script>
+    <script>
+      $(function () {
+        $("#verd-btn").click(function () {
+          // Here I delete the previous colors using removeClass.
+          $("#contingut").removeClass();
+          $("#contingut").addClass("verd");
+        });
+        $("#vermell-btn").click(function () {
+          $("#contingut").removeClass();
+          $("#contingut").addClass("vermell");
+        });
+        $("#groc-btn").click(function () {
+          $("#contingut").removeClass();
+          $("#contingut").addClass("groc");
+        });
+      });
+    </script>
+    <style type="text/css">
+      .verd {
+        background-color: #008000;
+        color: #ffffff;
+      }
+      .vermell {
+        background-color: #ff0000;
+        color: #ffffff;
+      }
+      .groc {
+        background-color: #ffff00;
+        color: #000000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="contingut">Desenvolupament web en entorn client</p>
+    <button id="verd-btn">Verd</button>
+    <button id="vermell-btn">Vermell</button>
+    <button id="groc-btn">Groc</button>
+  </body>
+</html>

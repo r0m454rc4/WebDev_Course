@@ -1,0 +1,40 @@
+<!-- https://stackoverflow.com/questions/17703710/changing-the-color-of-a-clicked-table-row-using-jquery -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      .highlight {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="data" border="1" cellspacing="1" width="500">
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+
+    <script src="./jquery.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#data td").click(function () {
+          $(this).toggleClass("highlight");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.projecte.projecte.controllers.EspacioController">
+    <VBox fx:id="vbox" alignment="CENTER" spacing="20.0">
+
+        <TableView fx:id="espacioTable">
+            <columns>
+                <TableColumn fx:id="propietarioColumn" prefWidth="100.0" text="Propietario" />
+                <TableColumn fx:id="direccionColumn" prefWidth="100.0" text="Dirección" />
+                <TableColumn fx:id="fechaPrestamoInicialColumn" prefWidth="100.0" text="Fecha prestamo inicial" />
+                <TableColumn fx:id="fechaPrestamoFinalColumn" prefWidth="100.0" text="Fecha prestamo final" />
+                <TableColumn fx:id="numeroPlantasColumn" prefWidth="100.0" text="Número plantas" />
+                <TableColumn fx:id="numeroMetrosCuadradosColumn" prefWidth="100.0" text="Número metros cuadrados" />
+                <TableColumn fx:id="cantidadHabitacionesColumn" prefWidth="100.0" text="Cantidad habitaciones" />
+                <TableColumn fx:id="comedorColumn" prefWidth="100.0" text="Comedor" />
+                <TableColumn fx:id="accionesColumn" prefWidth="100.0" text="Acciones" />
+            </columns>
+        </TableView>
+
+        <Button fx:id="showHabitacionesButton" text="Mostrar habitaciones" onAction="#mostrarEspacios"/>
+        <Button fx:id="returnMenuButton" text="Volver al menú" onAction="#onReturnMenuClick"/>
+
+        <Label text="Insertar nuevo espacio" style="-fx-font-size: 24px;" />
+
+        <Label text="Propietario"/>
+        <TextField fx:id="propietarioField"/>
+
+        <Label text="Dirección del edificio"/>
+        <TextField fx:id="direccionEdificioField"/>
+
+        <Label text="Fecha de préstamo inicial"/>
+        <TextField fx:id="fechaPrestamoInicialField"/>
+
+        <Label text="Fecha de préstamo final"/>
+        <TextField fx:id="fechaPrestamoFinalField"/>
+
+        <Label text="Número de plantas"/>
+        <TextField fx:id="numPlantasField"/>
+
+        <Label text="Número de metros cuadrados"/>
+        <TextField fx:id="numMetrosCuadradosField"/>
+
+        <Label text="Cantidad de habitaciones"/>
+        <TextField fx:id="cantidadHabitacionesField"/>
+
+        <Label text="Comedor"/>
+        <CheckBox fx:id="comedorField"/>
+
+        <Button text="Insertar" onAction="#insertarEspacio"/>
+
+        <Button fx:id="returnMenu" onAction="#onReturnMenuClick" text="Volver al menú" style="-fx-min-width: 200px;"/>
+    </VBox>
+</ScrollPane>

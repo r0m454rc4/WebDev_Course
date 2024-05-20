@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Detecció de clicks amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script>
+        $(function () {
+
+            $('.boto1').click(function () {
+                alert("boto1 polsat");
+            });
+            $('body').on("click", ".boto2", function () {
+                alert("Botó 2 polsat");
+            });
+
+            setTimeout(function () {
+                $('.nou').append("<button class='boto1'>B1</button>");
+                $('.nou').append("<button class='boto2'>B2</button>");
+            }, 2000);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="nou">AAAA</div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Canvi d'elements amb el ratolí amb jQuery"
+    />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 15.01.2015" />
+
+    <title>jQuery 6</title>
+    <style type="text/css">
+      .info {
+        width: 530px;
+        border: solid 2px yellow;
+        padding: 10px;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+
+    <script src="jquery.js"></script>
+    <script>
+      $(function () {
+        $(".hoverinfo")
+          .mouseover(function () {
+            $(".info").html($(this).attr("rel"));
+            $(".info").fadeIn();
+          })
+          .mouseleave(function () {
+            $(".info").hide();
+          });
+      });
+    </script>
+  </head>
+
+  <body>
+    <label>Nom:</label>
+    <input type="text" name="nom" class="hoverinfo" rel="entra el teu nom" placeholder="pepe botellas" />
+    <label>Email:</label>
+    <input
+      type="email"
+      name="email"
+      class="hoverinfo"
+      rel="entra el teu email"
+    />
+    <button class="hoverinfo" rel="envia informació">Envia</button>
+    <div class="info"></div>
+  </body>
+</html>

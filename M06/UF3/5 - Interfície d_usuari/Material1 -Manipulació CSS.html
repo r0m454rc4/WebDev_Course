@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Manipulació de CSS amb jQuery" />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 02.02.2015" />
+
+    <title>jQuery 1</title>
+    <style>
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+      body {
+        margin: 0;
+        background-color: #5dace7;
+      }
+
+      .cap {
+        height: 150px;
+        background-color: #0174cd;
+      }
+
+      .cap h1 {
+        margin: 0 50px 0 50px;
+        padding: 0;
+        line-height: 100px;
+        font-size: 40px;
+        color: #ffffff;
+      }
+
+      .contenidor {
+        margin: -50px 50px 0 50px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        min-height: 500px;
+        position: relative;
+      }
+
+      .contenidor .left {
+        margin-right: 20%;
+        padding: 20px;
+      }
+
+      .contenidor .esquerra h1 {
+        margin: 0;
+      }
+
+      .contenidor .dreta {
+        width: 16%;
+        padding: 2%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #f1f1f1;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      .contenidor .dreta h3 {
+        margin: 0;
+        line-height: 30px;
+        color: #333333;
+      }
+
+      .contenidor .dreta select {
+        width: 100%;
+      }
+    </style>
+    <script src="jquery.js"></script>
+
+    <script>
+      $(function () {
+        // The method "on" is slower, as it's dynamic, as you can use it with a button created using js.
+        $(".color").on("change", function () {
+          var color = $(this).val();
+          if (color == "#") {
+            color = "";
+          }
+          $("h1, h2").css("color", color);
+        });
+        $(".mida").on("change", function () {
+          var mida = $(this).val();
+          if (mida == "#") {
+            mida = "";
+          }
+          $("p").css("font-size", mida);
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="cap">
+      <h1>JQUERY</h1>
+    </div>
+    <div class="contenidor">
+      <div class="esquerra">
+        <h1>títol</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+      <div class="dreta">
+        <h3>color títol</h3>
+        <select class="color">
+          <option value="#">Default</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="orange">Orange</option>
+          <option value="blue">Blue</option>
+        </select>
+        <h3>mida</h3>
+        <select class="mida">
+          <option value="#">Default</option>
+          <option value="10px">10px</option>
+          <option value="15px">15px</option>
+          <option value="20px">20px</option>
+          <option value="25px">25px</option>
+        </select>
+      </div>
+    </div>
+  </body>
+</html>

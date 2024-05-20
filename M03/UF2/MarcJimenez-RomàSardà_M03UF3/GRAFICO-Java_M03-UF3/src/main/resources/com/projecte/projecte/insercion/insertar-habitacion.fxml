@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="vbox" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.projecte.projecte.controllers.HabitacionController">
+
+    <TableView fx:id="habitacionTable">
+        <columns>
+            <TableColumn fx:id="numeroHabitacionColumn" prefWidth="100.0" text="Número habitación" />
+            <TableColumn fx:id="direccionColumn" prefWidth="100.0" text="Dirección" />
+            <TableColumn fx:id="numMetrosCuadradosColumn" prefWidth="100.0" text="Número metros cuadrados" />
+            <TableColumn fx:id="cantidadCamasColumn" prefWidth="100.0" text="Cantidad camas" />
+            <TableColumn fx:id="idEspacioColumn" prefWidth="100.0" text="ID espacio" />
+            <TableColumn fx:id="accionesColumn" prefWidth="100.0" text="Acciones" />
+        </columns>
+    </TableView>
+
+    <Button fx:id="showHabitacionesButton" text="Mostrar habitaciones" onAction="#mostrarHabitaciones"/>
+    <Button fx:id="returnMenuButton" text="Volver al menú" onAction="#onReturnMenuClick"/>
+
+    <Label text="Insertar Habitación" style="-fx-font-size: 24px;" />
+
+    <Label text="Insertar nueva habitación" style="-fx-font-size: 24px;" />
+
+    <Label text="Número de habitación"/>
+    <TextField fx:id="numeroHabitacionField"/>
+
+    <Label text="Dirección"/>
+    <TextField fx:id="direccionField"/>
+
+    <Label text="Número de metros cuadrados"/>
+    <TextField fx:id="numMetrosCuadradosField"/>
+
+    <Label text="Cantidad de camas"/>
+    <TextField fx:id="cantidadCamasField"/>
+
+    <Label text="ID del espacio"/>
+    <TextField fx:id="idEspacioField"/>
+
+    <Button text="Insertar" onAction="#insertHabitacion"/>
+
+    <Button fx:id="returnMenu" onAction="#onReturnMenuClick" text="Volver al menú" style="-fx-min-width: 200px;"/>
+</VBox>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Detecció de canvis amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 2</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('#fruites').change(function () {
+                alert("Has seleccionat: " + $(this).val());
+            });
+            $('body').on("change", "#unitats", function () {
+                alert("Input value changed to: " + $(this).val());
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <select id="fruites">
+        <option value="poma">Poma</option>
+        <option value="pera">Pera</option>
+        <option value="taronja">Taronja</option>
+    </select>
+    <input type="text" value="" id="unitats" />
+</body>
+
+</html>

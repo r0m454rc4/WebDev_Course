@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Selecció d'elements germans amb jQuery" />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 17.12.2014" />
+
+    <title>jQuery 2</title>
+    <script src="jquery.js"></script>
+    <script>
+      $(function () {
+        // Here I create a button before loading llista.
+        $("#llista").before("<button>Botó 1</button>");
+        $("<button>Botó 2</button>").insertAfter("#llista");
+        // #llista is to selec all all elements that have #llista as id.
+        $("#llista").prepend("<li>List Item 4</li>");
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="contenidor">
+      <ul id="llista">
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+      </ul>
+    </div>
+  </body>
+</html>

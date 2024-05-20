@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Manipulació de llistes amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 9</title>
+    <script src="jquery.js"></script>
+    <script>
+        var noms = [
+            {
+                id: 1,
+                nom: 'JavaScript'
+            },
+            {
+                id: 2,
+                nom: 'Angular'
+            },
+            {
+                id: 3,
+                nom: 'jQuery'
+            },
+            {
+                id: 4,
+                nom: 'BootStrap'
+            }
+                ];
+        $(function () {
+            $.each(noms, function (index, obj) {
+                $('#llista').append("<li>#" + index + " " +
+                    obj.nom + "</li>");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="llista"></ul>
+</body>
+
+</html>

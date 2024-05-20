@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Validació simple amb jQuery" />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 15.01.2015" />
+
+    <title>jQuery 1</title>
+    <style>
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+      body {
+        background-color: #fff;
+        font-family: "Ubuntu", sans-serif;
+      }
+
+      form {
+        width: 500px;
+        padding: 20px;
+        background-color: #333;
+        border-radius: 5px;
+        margin: 10px auto auto auto;
+        color: #747474;
+        border: solid 2px #000;
+      }
+
+      form label {
+        font-size: 14px;
+        line-height: 30px;
+        width: 27%;
+        display: inline-block;
+        text-align: right;
+      }
+
+      .entrada {
+        clear: both;
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      form input {
+        height: 30px;
+        width: 330px;
+        margin-left: 10px;
+        background-color: #191919;
+        border: solid 1px #404040;
+        padding-left: 10px;
+        color: #db7400;
+      }
+
+      form input:hover {
+        background-color: #262626;
+      }
+
+      form input:focus {
+        border-color: #db7400;
+      }
+
+      form .titol {
+        margin: -20px -20px 25px -20px;
+        padding: 10px 10px 10px 20px;
+        position: relative;
+        background-color: #db7400;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      form .titol h1 {
+        line-height: 50px;
+        margin: 0px;
+        padding: 0px;
+        color: #fff;
+        font-weight: normal;
+      }
+
+      .accions {
+        text-align: right;
+      }
+
+      .boto {
+        background-color: #db7400;
+        border: solid 1px #000;
+        border-radius: 5px;
+        color: #fff;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .error input {
+        border-color: red;
+      }
+
+      .error-data {
+        color: red;
+        font-size: 11px;
+        position: absolute;
+        bottom: -15px;
+        left: 30%;
+      }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+      $(function () {
+        $(".boto").click(function (event) {
+          event.preventDefault();
+          var inputs = $("input");
+          var isError = false;
+
+          $(".entrada").removeClass("error");
+          $(".error-data").remove();
+          for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            if (
+              $(input).hasClass("obligatori") &&
+              !validarObligatori($(input).val())
+            ) {
+              afegirError($(input), "Aquest és un camp obligatori");
+              isError = true;
+            }
+
+            if ($(input).hasClass("nombre") && !validarNombre($(input).val())) {
+              afegirError($(input), "Aquest camp només permet nombres");
+              isError = true;
+            }
+
+            if (isError === false) {
+              $("#formulari").submit();
+            }
+          }
+        });
+      });
+      /** funció que valida el camps obligatoris */
+
+      function validarObligatori(valor) {
+        if (valor == "") return false;
+        return true;
+      }
+
+      function validarNombre(valor) {
+        if (valor != "") {
+          return !isNaN(parseInt(valor, 10)) && isFinite(valor);
+        }
+        return true;
+      }
+
+      function afegirError(element, error) {
+        element.parent().addClass("error");
+        element.after("<div class='error-data'>" + error + "</div>");
+      }
+    </script>
+  </head>
+
+  <body>
+    <form id="formulari" method="POST">
+      <div class="titol">
+        <h1>Registre</h1>
+      </div>
+      <div class="entrada">
+        <label for="nom">Nom:</label>
+        <input name="nom" id="nom" type="text" class="obligatori" />
+      </div>
+
+      <div class="entrada">
+        <label for="telf">Telf:</label>
+        <input name="telf" id="telf" type="text" class="nombre" />
+      </div>
+      <div class="entrada">
+        <label for="naixement">Data naixement:</label>
+        <input
+          name="naixement"
+          id="naixement"
+          type="text"
+          class="obligatori data"
+          placeholder="DD/MM/YYYY"
+        />
+      </div>
+
+      <div class="accions">
+        <button class="boto">Submit</button>
+      </div>
+    </form>
+    ￼
+  </body>
+</html>

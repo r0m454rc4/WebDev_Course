@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Actualització de contingut amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 3</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function() {
+            $('#fruites').change(function () {
+                $('#producte').html($(this).val());
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 id="producte">Producte</h1>
+    <select id="fruites">
+        <option value="poma">Poma</option>
+        <option value="pera">Pera</option>
+        <option value="taronja">Taronja</option>
+    </select>
+</body>
+
+</html>

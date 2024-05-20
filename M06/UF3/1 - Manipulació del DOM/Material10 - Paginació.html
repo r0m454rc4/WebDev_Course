@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Paginació amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 10</title>
+    <script src="jquery.js"></script>
+    <script>
+        var noms = [
+            {
+                id: 1,
+                nom: 'JavaScript'
+            },
+            {
+                id: 2,
+                nom: 'Angular'
+            },
+            {
+                id: 3,
+                nom: 'jQuery'
+            },
+            {
+                id: 4,
+                nom: 'BootStrap'
+            }
+                ];
+        var midaPagina = 1;
+        var paginaActual = 1;
+        var mostrats = [];
+        var total = noms.length;
+
+        function actualitzarLlista() {
+         
+            var fi = (paginaActual * midaPagina);
+            var inici = (fi - midaPagina);
+            mostrats = noms.slice(inici, fi);
+            $('#llista').empty();
+            if (paginaActual <= 1) {
+                $('.anterior').prop("disabled", true);
+            }
+            else {
+                $('.anterior').prop("disabled", false);
+            }
+            if ((paginaActual * midaPagina) >= total) {
+                $('.seguent').prop("disabled", true);
+            }
+            else {
+                $('.seguent').prop("disabled", false);
+            }
+            
+            $.each(mostrats, function (index, obj) {
+                $('#llista').append("<li>"+obj.nom+"</li>");
+            });
+        }
+
+        $(function () {
+
+            actualitzarLlista();
+            $('.seguent').click(function () {
+                if ((paginaActual * midaPagina) <= total) paginaActual++;
+                actualitzarLlista();
+            });
+            $('.anterior').click(function () {
+                if (paginaActual > 1) paginaActual--;
+                actualitzarLlista();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="llista"></ul>
+    <button class="anterior">anterior</button>
+    <button class="seguent">seguent</button>
+</body>
+
+</html>

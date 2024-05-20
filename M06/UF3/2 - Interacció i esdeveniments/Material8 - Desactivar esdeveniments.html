@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Desactivar esdeveniments amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 7</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('.submit-btn').on("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                var resposta = confirm("Vols enviar les dades?");
+                if (resposta) {
+                    $('#formulari').submit();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form method="POST" id="formulari">
+        <label>Nom:</label>
+        <input type="text" name="nom" placeholder="entra el teu nom" />
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="entra el teu email" />
+        <button class="submit-btn">Envia</button>
+    </form>
+
+</body>
+
+</html>

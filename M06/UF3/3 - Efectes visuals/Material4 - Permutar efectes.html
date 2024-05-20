@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Permutar efectes amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 29.01.2014">
+
+    <title>jQuery 4</title>
+
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('.canviarFade').click(function () {
+                $('.text').fadeToggle();
+            });
+            $('.canviarSlide').click(function () {
+                //$('.text').slideToggle();   
+                //$('.text').slideToggle(1000);
+
+                /*$('.text').slideToggle(1000, function(){
+                        alert('animació acabada');
+                    });*/
+                //$('.text').stop();
+            });
+            $('.canviarHide').click(function () {
+                $('.text').toggle();
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <button class="canviarFade">canviar Fade!</button>
+        <button class="canviarSlide">canviar Slide!</button>
+        <button class="canviarHide">canviar Hide!</button>
+    </div>
+    <p class="text">Desenvolupament d'aplicacions web, entorn client, desenvolupament amb jquery</p>
+</body>
+
+</html>

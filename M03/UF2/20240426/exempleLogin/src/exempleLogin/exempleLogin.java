@@ -32,7 +32,7 @@ public class exempleLogin extends JFrame{
 		
 		// Crear y agregar los botones
 		btnAcceptar = new JButton("Acceptar");
-		// Establecer botón Acceptar por defecto
+		// Establecer boton Acceptar por defecto
 		getRootPane().setDefaultButton(btnAcceptar);
 		
 		btnCancelar = new JButton("Cancelar");
@@ -47,7 +47,7 @@ public class exempleLogin extends JFrame{
 					if(txtUser.getText().length() > 0 && txtPass.getText().length() > 0) {
 						//Si el usuario si fue validado correctamente
 						/*if(validarUsuario(txtUser.getText(), txtPass.getText())) {
-							//Código para mostrar la ventana principal
+							//Cï¿½digo para mostrar la ventana principal
 							setVisible(false);
 							VentanaPrincipal ventana1 = new VentanaPrincipal();
 							ventana1.mostrar();
@@ -67,10 +67,10 @@ public class exempleLogin extends JFrame{
 			}
 		};
 		
-		//Asociar escuchador para el botón Acceptar
+		//Asociar escuchador para el boton Acceptar
 		btnAcceptar.addActionListener(escuchadorbtnAcceptar);
 		
-		//Agregar escuchador botón cancelar
+		//Agregar escuchador boton cancelar
 		ActionListener escuchadorbtnCancelar = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				//Terminar programa
@@ -78,12 +78,12 @@ public class exempleLogin extends JFrame{
 			}
 		};
 		
-		//Asociar escuchador para el botón Cancelar
+		//Asociar escuchador para el boton Cancelar
 		btnCancelar.addActionListener(escuchadorbtnCancelar);
-		setTitle("Identificació Usuaris");
-		//Tamaño del Frame
+		setTitle("Identificaciï¿½ Usuaris");
+		//Tamaï¿½o del Frame
 		setSize(800,150);
-		//Que no se pueda cambiar de tamaño
+		//Que no se pueda cambiar de tamaï¿½o
 		setResizable(false);
 		setVisible(true);
 		

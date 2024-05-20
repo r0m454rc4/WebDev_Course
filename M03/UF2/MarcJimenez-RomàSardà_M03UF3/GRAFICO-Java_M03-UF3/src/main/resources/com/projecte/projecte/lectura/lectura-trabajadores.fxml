@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.util.Callback?>
+
+<VBox fx:id="vbox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.projecte.projecte.controllers.TrabajadorEspacioController">
+    <TableView fx:id="trabajadorEspacioTable">
+        <columns>
+            <TableColumn fx:id="dniColumn" prefWidth="100.0" text="DNI" />
+            <TableColumn fx:id="nombreColumn" prefWidth="100.0" text="Nombre" />
+            <TableColumn fx:id="apellidoColumn" prefWidth="100.0" text="Apellido" />
+            <TableColumn fx:id="edadColumn" prefWidth="100.0" text="Edad" />
+            <TableColumn fx:id="trabajoAsignadoColumn" prefWidth="100.0" text="Trabajo asignado" />
+            <TableColumn fx:id="fechaContratacionColumn" prefWidth="100.0" text="Fecha contratación" />
+            <TableColumn fx:id="fechaBajaColumn" prefWidth="100.0" text="Fecha baja" />
+            <TableColumn fx:id="idEspacioColumn" prefWidth="100.0" text="ID espacio" />
+            <TableColumn fx:id="accionesColumn" prefWidth="100.0" text="Acciones" />
+        </columns>
+    </TableView>
+    <Button fx:id="showTrabajadoresEspaciosButton" text="Mostrar trabajadores espacio" onAction="#mostrarTrabajadoresEspacios"/>
+    <Button fx:id="returnMenuButton" text="Volver al menú" onAction="#onReturnMenuClick"/>
+</VBox>

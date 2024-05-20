@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="vbox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.projecte.projecte.controllers.UsuarioController">
+    <TableView fx:id="userTable">
+    <columns>
+        <TableColumn fx:id="nombreColumn" prefWidth="100.0" text="Nombre" />
+        <TableColumn fx:id="rolColumn" prefWidth="100.0" text="Rol" />
+        <TableColumn fx:id="accionesColumn" prefWidth="100.0" text="Acciones" />
+    </columns>
+    </TableView>
+    <Button fx:id="showUsuariosButton" text="Mostrar usuarios" onAction="#showUsers"/>
+    <Button fx:id="returnMenuButton" text="Volver al menú" onAction="#onReturnMenuClick"/>
+
+</VBox>

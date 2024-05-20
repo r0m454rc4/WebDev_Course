@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Afegir contingut a un element amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 17.12.2014">
+
+    <title>jQuery 4</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            // Here I search #contenidor and add this html.
+            $('#contenidor').html("<p>nou contingut</p>");
+            $('#contenidor').prepend("<p>contingut per sobre.</p>");
+            $('#contenidor').append("<button>Botó</button>");
+
+            // Here I add "algun text" to area.
+            $('#area').val("algun text");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="contenidor">
+        <p>Contingut inicial</p>
+    </div>
+    <textarea id="area"></textarea>
+</body>
+
+</html>

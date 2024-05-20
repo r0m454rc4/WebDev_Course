@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Esdeveniments i propietats amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 17.12.2014">
+
+    <title>jQuery 7</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('#search-input').keyup(function () {
+                if ($(this).val().length > 2) {
+                    $('#search-btn').prop("disabled", false);
+                } else {
+                    $('#search-btn').prop("disabled", true);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="search-input" />
+    <button id="search-btn" disabled>Cerca</button>
+</body>
+
+</html>

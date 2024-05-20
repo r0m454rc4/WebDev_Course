@@ -12,7 +12,7 @@ public class IndexController {
             @RequestParam(defaultValue = "William", required = false) String nom,
             Model model) {
         model.addAttribute("usuari", nom);
-        return "test";
+        return "salutacio";
     }
 
     // http://localhost:8080/operacions?n1=6&n2=2.
@@ -21,6 +21,7 @@ public class IndexController {
             @RequestParam(defaultValue = "0", required = false) int n1,
             @RequestParam(defaultValue = "0", required = false) int n2,
             Model model) {
+        // Here I create an instance of Resultats.
         Resultats op = new Resultats(n1, n2);
         model.addAttribute("res", op);
         return "resultatOperacions";
@@ -67,4 +68,3 @@ public class IndexController {
         return "resultat";
     }
 }
-

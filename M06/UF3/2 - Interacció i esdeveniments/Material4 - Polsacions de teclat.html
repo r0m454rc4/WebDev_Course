@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Polsacions de teclat amb jQuery" />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 15.01.2015" />
+
+    <title>jQuery 4</title>
+    <script src="jquery.js"></script>
+    <script>
+      $(function () {
+        $(".entrada").keyup(function () {
+          $("#llista").append("<li>Key up!</li>");
+        });
+        $(".entrada").keydown(function (event) {
+          $("#llista").append("<li>Key down!</li>");
+          if (event.which == 13) {
+            $("#llista").append("<li>polsat enter!</li>");
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <input type="text" class="entrada" />
+    <ul id="llista"></ul>
+  </body>
+</html>

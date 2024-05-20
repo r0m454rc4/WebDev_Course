@@ -14,7 +14,6 @@ import java.util.List;
  * Controlador de clients
  * Verifica el funcionament de curl
  * 
- * @author sergi.grau@fje.edu
  * @version 1.0 21.3.19
  * @version 2.0 25.3.24
  */
@@ -27,7 +26,6 @@ public class ClientsController {
 
     @ModelAttribute("clients")
     public List<Client> inicialitzar() {
-
         List<Client> clients = new ArrayList<>();
         for (Client c : repositori.findAll()) {
             clients.add(c);
@@ -37,17 +35,17 @@ public class ClientsController {
 
     @RequestMapping(value = { "/client", "/usuari" })
     String mostrarFormulari() {
-        return ("formulari");
+        return "formulari";
     }
 
     @RequestMapping(value = { "/deleteClient" })
     String mostrarFormulariEsborrat() {
-        return ("formulariEsborrar");
+        return "formulariEsborrar";
     }
 
     @RequestMapping(value = { "/canviarClient" })
     String mostrarFormulariModificar() {
-        return ("formulariModificar");
+        return "formulariModificar";
     }
 
     @RequestMapping(value = "/desarClient", method = RequestMethod.POST)
@@ -62,8 +60,9 @@ public class ClientsController {
         if (!model.containsAttribute("clients")) {
             model.addAttribute("clients", clients);
         }
+
         clients.add(c);
-        return ("llistarClients");
+        return "llistarClients";
     }
 
     @RequestMapping(value = "/modificarClient", method = RequestMethod.POST)
@@ -73,43 +72,44 @@ public class ClientsController {
             @RequestParam(defaultValue = "") String cognom,
             @RequestParam(defaultValue = "") int volumCompres,
             ModelMap model) {
-        Client c = repositori.findById(id).get();
-        c.setNom(nom);
-        c.setCognom(cognom);
-        c.setVolumCompres(volumCompres);
+        Client c = repositori.findById(id).orElse(null);
 
-        repositori.save(c);
-        System.out.println(c);
+        if (c != null) {
+            c.setNom(nom);
+            c.setCognom(cognom);
+            c.setVolumCompres(volumCompres);
+            repositori.save(c);
+        }
 
-        // Client c = new Client(nom, cognom, volumCompres);
-        // repositori.save(c);
-        //
-        // if (!model.containsAttribute("clients")) {
-        // model.addAttribute("clients", clients);
-        // }
-        // clients.add(c);
-        return ("llistarClients");
+        // Firstly, I clear all clients, then, I add
+        clients.clear();
+
+        for (Client client : repositori.findAll()) {
+            clients.add(client);
+        }
+
+        return "llistarClients";
     }
 
     @RequestMapping(value = "/esborrarClient", method = RequestMethod.POST)
     String esborrarClient(@SessionAttribute("clients") List<Client> clients,
             @RequestParam(defaultValue = "") String id) {
-
-        System.out.println(id);
         repositori.deleteById(id);
-        return ("llistarClients");
+
+        clients.removeIf(client -> client.getId().equals(id));
+
+        return "llistarClients";
     }
 
     @RequestMapping(value = "/mostrarClients", method = RequestMethod.GET)
     String mostrarClients(@SessionAttribute("clients") List<Client> clients, ModelMap model) {
         clients.clear();
         for (Client c : repositori.findAll()) {
-            System.out.println(c);
             clients.add(c);
         }
         if (!model.containsAttribute("clients")) {
             model.addAttribute("clients", clients);
         }
-        return ("llistarClients");
+        return "llistarClients";
     }
 }

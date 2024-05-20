@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Esvair elements amb jQuery" />
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript" />
+    <meta name="author" content="sergi.grau@fje.edu" />
+    <meta name="version" content="1.0 15.01.2014" />
+
+    <title>TINGUES PIETAT, SERGI</title>
+    <style>
+      .list li {
+        line-height: 30px;
+      }
+    </style>
+    <script src="jquery.js"></script>
+
+    <script>
+      $(function () {
+        $("#afegeix").click(function () {
+          var item = $("#nou-element").val();
+          if (item.length > 0) {
+            // fadeIn() is to add an effect after adding an element.
+            var nouElement = $(
+              "</label>" +
+                item +
+                " <button class='esborra-btn'>X</button><br>" +
+                "</label>" +
+                "</label>" + "<br>"+
+                " <input type='text' id='nou-element' />" +
+                "</label>"
+            ).fadeIn();
+            $(".llista").append(nouElement);
+            $("#nou-element").val("");
+          }
+        });
+
+        $(".esborra-btn").click(function () {
+          // $(this) is the selected element (button and li).
+          $(this).parent().remove();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="contingut">
+      <div class="superior">
+        <label>Hobbies:</label>
+        <input type="text" id="nou-element" />
+        <button id="afegeix">Afegeix</button>
+      </div>
+      <ol class="llista"></ol>
+    </div>
+  </body>
+</html>

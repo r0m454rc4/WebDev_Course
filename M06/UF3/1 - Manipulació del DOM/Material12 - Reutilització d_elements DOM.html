@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Reutilització d'elements del DOM amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 12</title>
+    <script src="jquery.js"></script>
+    <script>
+        var noms = [
+            {
+                id: 1,
+                nom: 'JavaScript'
+            },
+            {
+                id: 2,
+                nom: 'Angular'
+            },
+            {
+                id: 3,
+                nom: 'jQuery'
+            },
+            {
+                id: 4,
+                nom: 'BootStrap'
+            }
+                ];
+
+        $(function () {
+            $.each(noms, function (index, obj) {
+                var copia = $('#llista').first().clone();
+                copia.find('.id').html(obj.id);
+                $('#llista').append(copia);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="llista">
+        <li class="nom"><span class="id" >Java </span>
+        </li>
+    </ul>
+
+</body>
+
+</html>

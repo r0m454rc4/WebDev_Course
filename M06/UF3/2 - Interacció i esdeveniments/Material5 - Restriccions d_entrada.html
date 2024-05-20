@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Restriccions d'entrada amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <meta name="version" content="1.0 15.01.2015">
+
+    <title>jQuery 5</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $('.entrada').keypress(function (event) {
+                var regex = new RegExp("^[a-zA-Z0-9]+$");
+                var key = String.fromCharCode(event.which);
+                if (!regex.test(key)) {
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" class="entrada" />
+</body>
+
+</html>

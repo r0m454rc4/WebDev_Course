@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Selecció d'elements amb jQuery">
+    <meta name="keywords" content="HTML,CSS,jQuery,JavaScript">
+    <meta name="author" content="sergi.grau@fje.edu">
+    <title>jQuery 1</title>
+    <script src="jquery-2.1.1.js"></script>
+    <script>
+        $(function () {
+            var contingut = $("#contingut");
+            console.log(contingut.text());
+
+            var span = $(".span-element");
+            console.log(span.text());
+
+            var llistaElements = $("li");
+            var i = 1;
+
+            //utilitzem la funció each de jQuery
+            llistaElements.each(function () {
+                console.log("Loop: " + i);
+                i++;
+            });
+
+            var nofollow = $('a[rel="nofollow"]');
+            console.log(nofollow.text());
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="titol">Desenvolupament web d'aplicacions Web</div>
+    <div id="contingut">Desenvolupament en entorn client
+    </div>
+    <a href="#">link</a>
+    <a href="#" rel="nofollow">segon link</a>
+    <ul class="info-list">
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+    </ul>
+    <button>Botó 1</button>
+    <span class="span-element">Span 1</span>
+</body>
+
+</html>
